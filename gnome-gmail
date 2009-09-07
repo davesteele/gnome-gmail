@@ -1,0 +1,51 @@
+#!/usr/bin/python
+
+import sys
+import urlparse
+import gio
+import string
+
+def appendUrl( tourl, urltag, dict, dicttag ):
+	try:
+		tourl = tourl + "&" + urltag + "=" + dict[dicttag][0]
+	except:
+		pass
+
+	return tourl
+
+
+
+try:
+	# get the path string from the 'possible' mailto url
+	usplit = urlparse.urlsplit( sys.argv[1], "mailto" )
+except IndexError:
+	# couldn't even get an email address - just open a default mail page
+	gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( ["http://www.gmail.com"] )
+	sys.exit( 0 )
+
+path = usplit.path
+
+try:
+	# for some reason, urlsplit is not splitting off the query string
+	# do it here
+	( address, qs ) = string.split( path, "?", 1 )
+except ValueError:
+	address = path
+	qs = usplit.query
+
+qsdict = urlparse.parse_qs( qs )
+qsdict['to'] = []
+qsdict['to'].append( address )
+
+tourl = "https://gmail.google.com/gmail?view=cm&cmid=0&fs=1&tearoff=1"
+
+tourl = appendUrl( tourl, "to", qsdict, "to" )
+tourl = appendUrl( tourl, "su", qsdict, "subject" )
+tourl = appendUrl( tourl, "body", qsdict, "body" )
+tourl = appendUrl( tourl, "cc", qsdict, "cc" )
+tourl = appendUrl( tourl, "bcc", qsdict, "bcc" )
+
+print tourl
+
+gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( [tourl] )
+
