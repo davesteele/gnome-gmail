@@ -1,9 +1,9 @@
 Package: gnome-gmail
-Version: 1.1-1
+Version: 1.1-2
 Section: gnome
 Priority: optional
 Architecture: all
-Depends: python, gnome
+Depends: python, gnome-control-center
 Maintainer: Dave Steele <daves@users.sourceforge.net>
 Description: Add GMail support to Gnome
  Add GMail to the list of preferred mail readers for Gnome
