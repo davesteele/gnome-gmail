@@ -38,6 +38,7 @@ qsdict['to'] = []
 qsdict['to'].append( address )
 
 tourl = "https://gmail.google.com/gmail?view=cm&cmid=0&fs=1&tearoff=1"
+tourl = "https://gmail.google.com/gmail?view=cm&tf=0&fs=1"
 
 tourl = appendUrl( tourl, "to", qsdict, "to" )
 tourl = appendUrl( tourl, "su", qsdict, "subject" )
