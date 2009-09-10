@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.1
+Version: 1.2
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
