@@ -1,6 +1,6 @@
 prefix = 
 package = gnome-gmail
-version = 1.1
+version = 1.2
 release = 1
 
 arch = noarch
@@ -71,5 +71,5 @@ deb:
 	install -d debian/usr/share/gnome-control-center/default-apps
 	install gnome-gmail.xml debian/usr/share/gnome-control-center/default-apps
 	dpkg-deb --build debian
-	mv debian.deb gnome-gmail_1.1-2_all.deb
+	mv debian.deb gnome-gmail_1.2-1_all.deb
 
