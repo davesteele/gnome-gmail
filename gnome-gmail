@@ -2,7 +2,8 @@
 
 import sys
 import urlparse
-import gio
+#import gio
+import webbrowser
 import string
 
 def appendUrl( tourl, urltag, dict, dicttag ):
@@ -20,7 +21,8 @@ try:
 	usplit = urlparse.urlsplit( sys.argv[1], "mailto" )
 except IndexError:
 	# couldn't even get an email address - just open a default mail page
-	gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( ["http://www.gmail.com"] )
+	#gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( ["http://www.gmail.com"] )
+	webbrowser.open_new_tab( "http://www.gmail.com" )
 	sys.exit( 0 )
 
 path = usplit.path
@@ -48,5 +50,7 @@ tourl = appendUrl( tourl, "bcc", qsdict, "bcc" )
 
 print tourl
 
-gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( [tourl] )
+
+#gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( [tourl] )
+webbrowser.open_new_tab( tourl )
 
