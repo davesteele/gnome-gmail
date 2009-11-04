@@ -2,13 +2,20 @@
 
 import sys
 import urlparse
-#import gio
 import webbrowser
 import string
 
 def appendUrl( tourl, urltag, dict, dicttag ):
 	try:
 		tourl = tourl + "&" + urltag + "=" + dict[dicttag][0]
+	except:
+		pass
+	else:
+		return tourl
+
+	try:
+		tag = dicttag.upper()
+		tourl = tourl + "&" + urltag + "=" + dict[tag][0]
 	except:
 		pass
 
@@ -36,10 +43,8 @@ except ValueError:
 	qs = usplit.query
 
 qsdict = urlparse.parse_qs( qs )
-qsdict['to'] = []
-qsdict['to'].append( address )
+qsdict['to'] = [ address ]
 
-tourl = "https://gmail.google.com/gmail?view=cm&cmid=0&fs=1&tearoff=1"
 tourl = "https://gmail.google.com/gmail?view=cm&tf=0&fs=1"
 
 tourl = appendUrl( tourl, "to", qsdict, "to" )
@@ -50,7 +55,5 @@ tourl = appendUrl( tourl, "bcc", qsdict, "bcc" )
 
 print tourl
 
-
-#gio.app_info_get_default_for_type( "text/html", 1 ).launch_uris( [tourl] )
 webbrowser.open_new_tab( tourl )
 
