@@ -1,6 +1,6 @@
 prefix = 
 package = gnome-gmail
-version = 1.2
+version = 1.3
 release = 1
 
 arch = noarch
