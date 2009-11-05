@@ -71,5 +71,5 @@ deb:
 	install -d debian/usr/share/gnome-control-center/default-apps
 	install gnome-gmail.xml debian/usr/share/gnome-control-center/default-apps
 	dpkg-deb --build debian
-	mv debian.deb gnome-gmail_1.2-1_all.deb
+	mv debian.deb gnome-gmail_1.3-1_all.deb
 
