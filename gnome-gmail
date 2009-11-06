@@ -6,22 +6,12 @@ import webbrowser
 import string
 
 def appendUrl( tourl, urltag, dict, dicttag ):
-	try:
-		tourl = tourl + "&" + urltag + "=" + dict[dicttag][0]
-	except:
-		pass
-	else:
-		return tourl
 
-	try:
-		tag = dicttag.upper()
-		tourl = tourl + "&" + urltag + "=" + dict[tag][0]
-	except:
-		pass
+	for (key, value) in dict.iteritems():
+		if( key.lower() == dicttag.lower() ):
+			tourl = tourl + "&" + urltag + "=" + value[0]
 
-	return tourl
-
-
+	return( tourl )
 
 try:
 	# get the path string from the 'possible' mailto url

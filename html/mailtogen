@@ -1,0 +1,17 @@
+#!/usr/bin/python
+
+import urllib
+
+
+murl = "mailto:"
+
+murl = murl + urllib.quote_plus( "Joe User <user1@example.com>" ) + "?"
+murl = murl + "cc=" + urllib.quote_plus( "user2@example.com" ) + "&"
+murl = murl + "bcc=" + urllib.quote_plus( "lurker@example.com" ) + "&"
+murl = murl + "subject=" + urllib.quote_plus( "A GMail solution for Gnome" ) + "&"
+murl = murl + "body=" + urllib.quote_plus( "A useful program for \"mailto\" links - http://gnome-gmail.sourceforge.net/" )
+
+
+print murl
+
+
