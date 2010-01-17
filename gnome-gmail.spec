@@ -25,6 +25,7 @@ mail handler. It opens in the default web browser.
 rm -Rf %{buildroot}
 install -D gnome-gmail %{buildroot}/usr/bin/gnome-gmail
 install -D gnome-gmail.xml %{buildroot}/usr/share/gnome-control-center/default-apps/gnome-gmail.xml
+install -D gnomegmail.glade %{buildroot}/usr/lib/gnome-gmail/gnomegmail.glade
 
 %clean
 rm -Rf %{buildroot}
@@ -36,8 +37,13 @@ rm -Rf %{buildroot}
 %doc README COPYING
 %attr( 0755, root, root) /usr/bin/gnome-gmail
 %attr( 0644, root, root) /usr/share/gnome-control-center/default-apps/gnome-gmail.xml
+%attr( 0644, root, root) /usr/lib/gnome-gmail/gnomegmail.glade
 
 %changelog
+* Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.3-1
+- Support for Nautilus - Send files via GMail
+- Added mailto test cases - improved mailto handling
+
 * Wed Nov 04 2009 Dave Steele <daves@users.sourceforge.net> - 1.3-1
 - Web page updated with resources for mailto: test and Send Link bookmarklet
 - Fixes to broken 1.2 RPM install
