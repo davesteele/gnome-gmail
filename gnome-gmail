@@ -154,7 +154,11 @@ class ConfigInfo():
 
 	def readConfig( self ):
 		self.user = self.client.get_string( self.basedir + 'user' )
+		if self.user == None:
+			self.user = ""
 		self.savepassword = self.client.get_bool( self.basedir + 'savepassword' )
+		if self.savepassword == None:
+			self.savepassword = False
 
 		try:
 			if self.savepassword:
