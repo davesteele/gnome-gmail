@@ -180,7 +180,7 @@ class ConfigInfo():
 		return( len( self.password) > 0 and len( self.user) > 0  )
 
 	def queryConfigInfo( self ):
-		self.xml = gtk.glade.XML( "/home/daves/sourceforge/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
+		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
 
 		self.window = self.xml.get_widget( "dialog1" )
 

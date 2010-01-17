@@ -11,7 +11,7 @@ fullyqualifiedname = ${shortname}-${release}
 scriptfiles = gnome-gmail
 
 tarfiles = Makefile ${package}.spec $(scriptfiles)\
-	README COPYING gnome-gmail.xml
+	README COPYING gnome-gmail.xml control gnomegmail.glade test
 
 signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
 signopt := $(if $(signopt), --sign, )
@@ -70,6 +70,8 @@ deb:
 	install gnome-gmail debian/usr/bin
 	install -d debian/usr/share/gnome-control-center/default-apps
 	install gnome-gmail.xml debian/usr/share/gnome-control-center/default-apps
+	install -d debian/usr/lib/gnome-gmail
+	install gnomegmail.glade debian/usr/lib/gnome-gmail
 	dpkg-deb --build debian
 	mv debian.deb gnome-gmail_${version}-1_all.deb
 
