@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.3
+Version: 1.4
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -28,6 +28,9 @@ install -D gnome-gmail.xml %{buildroot}/usr/share/gnome-control-center/default-a
 
 %clean
 rm -Rf %{buildroot}
+
+%post
+
 
 %files
 %doc README COPYING
