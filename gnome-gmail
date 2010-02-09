@@ -179,27 +179,60 @@ class ConfigInfo():
 	def infoComplete( self ):
 		return( len( self.password) > 0 and len( self.user) > 0  )
 
-	def queryConfigInfo( self ):
-		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
 
-		self.window = self.xml.get_widget( "dialog1" )
+
+	def gconfToDialog( self, foo = 0, bar=0 ):
+
+		print "regetting configuration information"
+		self.readConfig()
 
 		user_field = self.xml.get_widget( 'entryUserName' )
-		password_field = self.xml.get_widget( 'entryPW' )
-		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-
 		user_field.set_text( self.user )
-		password_field.set_text( self.password )
-		savepassword_field.set_active( self.savepassword )
 
+		password_field = self.xml.get_widget( 'entryPW' )
+		password_field.set_text( self.password )
+
+		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+		savepassword_field.set_active( self.savepassword )
+		
+	def dialogToGconf( self ):
+		user_field = self.xml.get_widget( 'entryUserName' )
+		self.user = user_field.get_text()
+
+		password_field = self.xml.get_widget( 'entryPW' )
+		self.password = password_field.get_text()
+
+		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+		self.savepassword = savepassword_field.get_active()
+
+		self.writeConfig()
+		
+	def callConfigure( self, foo, bar = 1 ):
+
+		self.dialogToGconf()
+
+		os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
+
+		return( True )
+
+
+	def queryConfigInfo( self ):
+
+		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
+
+		configButton = self.xml.get_widget( "buttonConfigure") 
+		hid = configButton.connect( "button-press-event", self.callConfigure )
+
+		wind = self.xml.get_widget( "dialog1" )
+		# todo - should map window focus event to gconfToDialog(), but it isn't working
+
+		self.gconfToDialog()
+
+		self.window = self.xml.get_widget( "dialog1" )
 		response = self.window.run()
 
 		if response == 1:
-			self.user = user_field.get_text()
-			self.password = password_field.get_text()
-			self.savepassword = savepassword_field.get_active()
-
-			self.writeConfig()
+			self.dialogToGconf()
 		else:
 			raise GGError( "User cancelled \"Send To...\"" )
 
