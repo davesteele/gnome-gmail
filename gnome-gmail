@@ -149,6 +149,7 @@ class ConfigInfo():
 		self.user = ""
 		self.password = ""
 		self.savepassword = False
+		self.appsdomain = ""
 
 		#self.keyring.set_credentials( (self.user, "") )
 
@@ -156,9 +157,14 @@ class ConfigInfo():
 		self.user = self.client.get_string( self.basedir + 'user' )
 		if self.user == None:
 			self.user = ""
+
 		self.savepassword = self.client.get_bool( self.basedir + 'savepassword' )
 		if self.savepassword == None:
 			self.savepassword = False
+
+		self.appsdomain = self.client.get_string( self.basedir + 'appsdomain' )
+		if self.appsdomain == None:
+			self.appsdomain = ""
 
 		try:
 			if self.savepassword:
@@ -173,33 +179,67 @@ class ConfigInfo():
 		self.client.set_string( self.basedir + 'user', self.user )
 		self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
 
+
 		if self.savepassword:
 			self.keyring.set_credentials( (self.user, self.password) )
 
 	def infoComplete( self ):
 		return( len( self.password) > 0 and len( self.user) > 0  )
 
-	def queryConfigInfo( self ):
-		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
 
-		self.window = self.xml.get_widget( "dialog1" )
+
+	def gconfToDialog( self, foo = 0, bar=0 ):
+
+		print "regetting configuration information"
+		self.readConfig()
 
 		user_field = self.xml.get_widget( 'entryUserName' )
-		password_field = self.xml.get_widget( 'entryPW' )
-		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-
 		user_field.set_text( self.user )
-		password_field.set_text( self.password )
-		savepassword_field.set_active( self.savepassword )
 
+		password_field = self.xml.get_widget( 'entryPW' )
+		password_field.set_text( self.password )
+
+		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+		savepassword_field.set_active( self.savepassword )
+		
+	def dialogToGconf( self ):
+		user_field = self.xml.get_widget( 'entryUserName' )
+		self.user = user_field.get_text()
+
+		password_field = self.xml.get_widget( 'entryPW' )
+		self.password = password_field.get_text()
+
+		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+		self.savepassword = savepassword_field.get_active()
+
+		self.writeConfig()
+		
+	def callConfigure( self, foo, bar = 1 ):
+
+		self.dialogToGconf()
+
+		os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
+
+		return( True )
+
+
+	def queryConfigInfo( self ):
+
+		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
+
+		configButton = self.xml.get_widget( "buttonConfigure") 
+		hid = configButton.connect( "button-press-event", self.callConfigure )
+
+		wind = self.xml.get_widget( "dialog1" )
+		# todo - should map window focus event to gconfToDialog(), but it isn't working
+
+		self.gconfToDialog()
+
+		self.window = self.xml.get_widget( "dialog1" )
 		response = self.window.run()
 
 		if response == 1:
-			self.user = user_field.get_text()
-			self.password = password_field.get_text()
-			self.savepassword = savepassword_field.get_active()
-
-			self.writeConfig()
+			self.dialogToGconf()
 		else:
 			raise GGError( "User cancelled \"Send To...\"" )
 
@@ -216,6 +256,12 @@ class GMailURL( ):
 		self.mailtoURL = mailtoURL
 		self.enableNetAccess = enableNetAccess
 		self.configInfo = cfg
+
+		self.configInfo.readConfig()
+
+		self.appsdomainstr = self.configInfo.appsdomain
+		if( len( self.appsdomainstr ) > 0 ):
+			self.appsdomainstr = "a/" + self.appsdomainstr + "/"
 
 		self.mailDict = self.mailto2dict( )
 
@@ -267,7 +313,7 @@ class GMailURL( ):
 
 		dct = self.mailDict
 
-		tourl = "https://mail.google.com/mail?view=cm&tf=0&fs=1"
+		tourl = "https://mail.google.com/%smail?view=cm&tf=0&fs=1" % self.appsdomainstr
 
 		tourl = self.appendUrl( tourl, "to", dct, "to" )
 		tourl = self.appendUrl( tourl, "su", dct, "subject" )
@@ -278,7 +324,7 @@ class GMailURL( ):
 		return( tourl )
 
 	def simpleGMailURL( self ):
-		return( "https://mail.google.com/" )
+		return( "https://mail.google.com/%s" % self.appsdomainstr )
 
 
 	def hasAttachment( self ):
@@ -287,7 +333,7 @@ class GMailURL( ):
 	def imapGMailURL( self ):
 		""" if the mailto refers to an attachment, use IMAP to upload the file """
 
-		imap_url = "https://mail.google.com/mail/#drafts"
+		imap_url = "https://mail.google.com/%smail/#drafts" % self.appsdomainstr
 
 		if not self.enableNetAccess:
 			return( imap_url )
@@ -350,22 +396,26 @@ def main( ):
 	else:
 		mailto = ""
 
+	cfg = ConfigInfo()
+
+	sessionbus = dbus.SessionBus()
+	notifications_object = sessionbus.get_object(
+		'org.freedesktop.Notifications',
+		'/org/freedesktop/Notifications')
+	interface = dbus.Interface(
+		notifications_object,
+		'org.freedesktop.Notifications')
+
+
 	try:
-		cfg = ConfigInfo()
 		gm = GMailURL( mailto, cfg )
 		gmailurl = gm.gmailURL()
 	except GGError as gerr:
-		sessionbus = dbus.SessionBus()
-		notifications_object = sessionbus.get_object(
-			'org.freedesktop.Notifications',
-			'/org/freedesktop/Notifications')
-		interface = dbus.Interface(
-			notifications_object,
-			'org.freedesktop.Notifications')
-
 		interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", gerr.value, [], {}, 3000 )
 	else:
+		print "url is %s" % gmailurl
 		webbrowser.open_new_tab( gmailurl )
+
 
 if __name__ == "__main__":
 	main()

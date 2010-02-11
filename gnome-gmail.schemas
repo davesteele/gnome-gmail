@@ -1,0 +1,42 @@
+
+<gconfschemafile>
+<schemalist>
+<schema>
+   <key>/schemas/apps/gnome-gmail/savepassword</key>
+   <applyto>/apps/gnome-gmail/savepassword</applyto>
+   <owner>gnome-gmail</owner>
+   <type>bool</type>
+   <default>FALSE</default>
+   <locale name="C">
+      <short>Save IMAP password?</short>
+      <long>When checked, Gnome Gmail will save the IMAP password in the Gnome 
+keyring. IMAP is used to upload file attachments to GMail.</long>
+   </locale>
+</schema>
+<schema>
+   <key>/schemas/apps/gnome-gmail/user</key>
+   <applyto>/apps/gnome-gmail/user</applyto>
+   <owner>gnome-gmail</owner>
+   <type>string</type>
+   <default></default>
+   <locale name="C">
+      <short>Saved IMAP user name</short>
+      <long>Gnome Gmail will save the last user name for file attachment
+uploads here.</long>
+   </locale>
+</schema>
+<schema>
+   <key>/schemas/apps/gnome-gmail/appsdomain</key>
+   <applyto>/apps/gnome-gmail/appsdomain</applyto>
+   <owner>gnome-gmail</owner>
+   <type>string</type>
+   <default></default>
+   <locale name="C">
+      <short>Google Apps domain</short>
+      <long>To use Gnome Gmail with Google Apps, enter the domain name
+here</long>
+   </locale>
+</schema>
+</schemalist>
+</gconfschemafile>
+
