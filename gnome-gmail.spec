@@ -40,7 +40,7 @@ rm -Rf %{buildroot}
 %attr( 0644, root, root) /usr/lib/gnome-gmail/gnomegmail.glade
 
 %changelog
-* Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.3-1
+* Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.4-1
 - Support for Nautilus - Send files via GMail
 - Added mailto test cases - improved mailto handling
 
