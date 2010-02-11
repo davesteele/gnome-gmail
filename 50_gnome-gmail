@@ -1,0 +1,6 @@
+/apps/gnome-gmail/savepassword false
+/apps/gnome-gmail/user ""
+/schemas/apps/gnome-gmail/appsdomain ""
+/desktop/gnome/url-handlers/mailto/command "gnome-gmail %s"
+/desktop/gnome/url-handlers/mailto/enabled true
+/desktop/gnome/url-handlers/mailto/needs_terminal false
