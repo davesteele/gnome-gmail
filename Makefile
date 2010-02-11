@@ -10,13 +10,15 @@ fullyqualifiedname = ${shortname}-${release}
 
 scriptfiles = gnome-gmail
 
-tarfiles = Makefile ${package}.spec $(scriptfiles)\
-	README COPYING gnome-gmail.xml gnomegmail.glade test \
-	control postinst prerm
-
-iconsizes = 16x16 22x22 24x24 32x32 48x48
+iconsizes = 16x16 24x24 32x32 48x48
 iconbasedir = ${prefix}/usr/share/icons/hicolor
 iconclass = apps
+
+tarfiles = Makefile ${package}.spec $(scriptfiles)\
+	README COPYING gnome-gmail.xml gnomegmail.glade test \
+	gnome-gmail.schemas 50_gnome-gmail \
+	${foreach i, ${iconsizes}, icons/gmail-${i}.png } \
+	control postinst prerm
 
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
@@ -50,7 +52,7 @@ tar: ${shortname}.tgz
 ${shortname}.tgz: ${tarfiles} 
 	-${RM} -r ${shortname}
 	${MKDIR} ${shortname}
-	${CP} ${tarfiles} ${shortname}
+	${CP} --parents ${tarfiles} ${shortname}
 	${TAR} -czf ${shortname}.tgz ${shortname}
 
 clean:
@@ -80,7 +82,7 @@ install:
 	install gnome-gmail.xml ${xmldir}
 	install gnomegmail.glade ${libdir}
 	install gnome-gmail.schemas ${schemadir}
-	install 50_gnome-gmail ${gconfdefdir}
+	#install 50_gnome-gmail ${gconfdefdir}
 	${foreach i, ${iconsizes}, install -m 0644 icons/gmail-${i}.png ${iconbasedir}/${i}/${iconclass}/gmail.png; }
 	if [ -f ${iconbasedir}/icon-theme.cache ]; \
 		then \

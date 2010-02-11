@@ -7,8 +7,12 @@ if [ -f /usr/share/icons/hicolor/icon-theme.cache ]; then \
   gtk-update-icon-cache -f /usr/share/icons/hicolor >/dev/null 2>&1; \
 fi
 
+# this is for setting GMail as the default mailer automatically
+# gconftool-2 runs as the wrong user, and Ubuntu and Fedora don't agree
+# on the storage location for default value file storage. Punt for now.
+
 #gconftool-2 --set --type=string /desktop/gnome/url-handlers/mailto/command "gnome-gmail %s"
 #gconftool-2 --set --type=bool /desktop/gnome/url-handlers/mailto/enabled true
 #gconftool-2 --set --type=bool /desktop/gnome/url-handlers/mailto/needs_terminal false
 
-update-gconf-defaults
+#update-gconf-defaults

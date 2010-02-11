@@ -23,9 +23,10 @@ mail handler. It opens in the default web browser.
 
 %install
 rm -Rf %{buildroot}
-install -D gnome-gmail %{buildroot}/usr/bin/gnome-gmail
-install -D gnome-gmail.xml %{buildroot}/usr/share/gnome-control-center/default-apps/gnome-gmail.xml
-install -D gnomegmail.glade %{buildroot}/usr/lib/gnome-gmail/gnomegmail.glade
+make prefix=%{buildroot} install
+#install -D gnome-gmail %{buildroot}/usr/bin/gnome-gmail
+#install -D gnome-gmail.xml %{buildroot}/usr/share/gnome-control-center/default-apps/gnome-gmail.xml
+#install -D gnomegmail.glade %{buildroot}/usr/lib/gnome-gmail/gnomegmail.glade
 
 %clean
 rm -Rf %{buildroot}
@@ -38,6 +39,10 @@ rm -Rf %{buildroot}
 %attr( 0755, root, root) /usr/bin/gnome-gmail
 %attr( 0644, root, root) /usr/share/gnome-control-center/default-apps/gnome-gmail.xml
 %attr( 0644, root, root) /usr/lib/gnome-gmail/gnomegmail.glade
+%attr( 0755, root, root) /usr/share/icons/hicolor/16x16/apps/gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gmail.png
 
 %changelog
 * Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.4-1
