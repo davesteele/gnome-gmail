@@ -7,7 +7,7 @@
       <name>Gmail</name>
       <executable>gnome-gmail</executable>
       <command>gnome-gmail %s</command>
-      <icon-name>redhat-email.png</icon-name>
+      <icon-name>gmail</icon-name>
       <run-in-terminal>false</run-in-terminal>
     </mail-reader>
   </mail-readers>

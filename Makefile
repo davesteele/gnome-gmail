@@ -1,6 +1,6 @@
 prefix = 
 package = gnome-gmail
-version = 1.4
+version = 1.5
 release = 1
 
 arch = noarch
@@ -13,6 +13,16 @@ scriptfiles = gnome-gmail
 tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	README COPYING gnome-gmail.xml gnomegmail.glade test \
 	control postinst prerm
+
+iconsizes = 16x16 22x22 24x24 32x32 48x48
+iconbasedir = ${prefix}/usr/share/icons/hicolor
+iconclass = apps
+
+bindir = ${prefix}/usr/bin
+xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
+libdir = ${prefix}/usr/lib/gnome-gmail
+schemadir = ${prefix}/usr/share/gconf/schemas
+gconfdefdir = ${prefix}/usr/share/gconf/defaults
 
 signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
 signopt := $(if $(signopt), --sign, )
@@ -60,23 +70,35 @@ ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm: ${shortname}.tg
 	${MV} ${arch}/${fullyqualifiedname}.${arch}.rpm .
 	${RMDIR} ${arch}
 
-debian/changelog: debian/changelog.in Makefile
+installdirs = ${bindir} ${xmldir} ${libdir} ${iconbasedir} ${schemadir} \
+	${gconfdefdir} \
+	${foreach i, ${iconsizes}, ${iconbasedir}/${i}/${iconclass}}
 
-deb:
+install:
+	install -d ${installdirs}
+	install gnome-gmail ${bindir}
+	install gnome-gmail.xml ${xmldir}
+	install gnomegmail.glade ${libdir}
+	install gnome-gmail.schemas ${schemadir}
+	install 50_gnome-gmail ${gconfdefdir}
+	${foreach i, ${iconsizes}, install -m 0644 icons/gmail-${i}.png ${iconbasedir}/${i}/${iconclass}/gmail.png; }
+	if [ -f ${iconbasedir}/icon-theme.cache ]; \
+		then \
+			gtk-update-icon-cache -f ${iconbasedir}; \
+	fi
+
+debinstall:
 	-rm -rf debian
 	mkdir debian
 	mkdir debian/DEBIAN
+	make prefix=./debian install
+
+debian/changelog: debian/changelog.in Makefile
+
+deb: debinstall
 	cp control debian/DEBIAN
 	cp postinst debian/DEBIAN
 	cp prerm debian/DEBIAN
-	install -d debian/usr/bin
-	install gnome-gmail debian/usr/bin
-	install -d debian/usr/share/gnome-control-center/default-apps
-	install gnome-gmail.xml debian/usr/share/gnome-control-center/default-apps
-	install -d debian/usr/lib/gnome-gmail
-	install gnomegmail.glade debian/usr/lib/gnome-gmail
-	install -d debian/usr/share/gconf/schemas
-	install gnome-gmail.schemas debian/usr/share/gconf/schemas
 	dpkg-deb --build debian
 	mv debian.deb gnome-gmail_${version}-1_all.deb
 
