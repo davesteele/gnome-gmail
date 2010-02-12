@@ -11,6 +11,7 @@ Buildroot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: control-center
 Requires: python
 Requires: pygobject2
+Requires: gconf-editor
 
 %description
 This package makes Gmail a choice in the Gnome control panel for the default
@@ -24,9 +25,6 @@ mail handler. It opens in the default web browser.
 %install
 rm -Rf %{buildroot}
 make prefix=%{buildroot} install
-#install -D gnome-gmail %{buildroot}/usr/bin/gnome-gmail
-#install -D gnome-gmail.xml %{buildroot}/usr/share/gnome-control-center/default-apps/gnome-gmail.xml
-#install -D gnomegmail.glade %{buildroot}/usr/lib/gnome-gmail/gnomegmail.glade
 
 %clean
 rm -Rf %{buildroot}
@@ -43,6 +41,7 @@ rm -Rf %{buildroot}
 %attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gmail.png
+%attr( 0644, root, root) /etc/gconf/schemas/gnome-gmail.schemas
 
 %changelog
 * Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.4-1

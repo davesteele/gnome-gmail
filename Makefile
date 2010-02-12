@@ -23,7 +23,7 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
 libdir = ${prefix}/usr/lib/gnome-gmail
-schemadir = ${prefix}/usr/share/gconf/schemas
+schemadir = ${prefix}/etc/gconf/schemas
 gconfdefdir = ${prefix}/usr/share/gconf/defaults
 
 signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
