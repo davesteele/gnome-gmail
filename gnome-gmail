@@ -457,7 +457,7 @@ def main( ):
 			 "Email message created by <a href=\"http://gnome-gmail.sourceforge.net\">Gnome Gmail</a>", 
 			[ "configuregg", "Configure Google Apps support",
 			  "hidegg", "Don't show this again" ],
-			{}, 7000 )
+			{ "urgency":0, "category":"email"}, 7000 )
 
 		import gobject
 		loop = gobject.MainLoop()
