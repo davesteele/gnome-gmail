@@ -37,6 +37,19 @@ uploads here.</long>
 here</long>
    </locale>
 </schema>
+<schema>
+   <key>/schemas/apps/gnome-gmail/hideconfirmation</key>
+   <applyto>/apps/gnome-gmail/hideconfirmation</applyto>
+   <owner>gnome-gmail</owner>
+   <type>bool</type>
+   <default>FALSE</default>
+   <locale name="C">
+      <short>Hide confirmation dialog</short>
+      <long>When checked, Gnome Gmail will suppress the confirmation
+notification that appears with each message created. The notification includes
+a link to allow Gnome Gmail to be configured for Google Apps support.</long>
+   </locale>
+</schema>
 </schemalist>
 </gconfschemafile>
 
