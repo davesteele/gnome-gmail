@@ -150,6 +150,7 @@ class ConfigInfo():
 		self.password = ""
 		self.savepassword = False
 		self.appsdomain = ""
+		self.hideconfirmation = False
 
 		#self.keyring.set_credentials( (self.user, "") )
 
@@ -166,6 +167,10 @@ class ConfigInfo():
 		if self.appsdomain == None:
 			self.appsdomain = ""
 
+		self.hideconfirmation = self.client.get_bool( self.basedir + 'hideconfirmation' )
+		if self.hideconfirmation == None:
+			self.hideconfirmation = False
+
 		try:
 			if self.savepassword:
 				(luser, self.password ) = self.keyring.get_credentials(self.user)
@@ -178,15 +183,13 @@ class ConfigInfo():
 	def writeConfig( self ):
 		self.client.set_string( self.basedir + 'user', self.user )
 		self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
-
+		self.client.set_bool( self.basedir + 'hideconfirmation', self.hideconfirmation )
 
 		if self.savepassword:
 			self.keyring.set_credentials( (self.user, self.password) )
 
 	def infoComplete( self ):
 		return( len( self.password) > 0 and len( self.user) > 0  )
-
-
 
 	def gconfToDialog( self, foo = 0, bar=0 ):
 
@@ -389,7 +392,34 @@ class GMailURL( ):
 
 		return( gmailurl )
 
+loop = None
+notificationId = None
+
+def notificationSignal( id, actionKey ):
+	global notificationId
+
+	if id == notificationId:
+
+		if actionKey == "configuregg":
+			os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
+
+		if actionKey == "hidegg":
+			cfg = ConfigInfo()
+			cfg.readConfig()
+			cfg.hideconfirmation = True
+			cfg.writeConfig()
+
+def notificationClosed( id, bar ):
+	global loop
+	global notificationId
+
+	if id == notificationId:
+		if loop:
+			loop.quit()
+
 def main( ):
+	global loop
+	global notificationId
 
 	if( len( sys.argv ) > 1 ):
 		mailto = sys.argv[1]
@@ -397,8 +427,12 @@ def main( ):
 		mailto = ""
 
 	cfg = ConfigInfo()
+	cfg.readConfig()
 
-	sessionbus = dbus.SessionBus()
+	import dbus.glib
+	loop = dbus.mainloop.glib.DBusGMainLoop()
+	#sessionbus = dbus.SessionBus( mainloop = loop )
+	sessionbus = dbus.SessionBus( mainloop = loop )
 	notifications_object = sessionbus.get_object(
 		'org.freedesktop.Notifications',
 		'/org/freedesktop/Notifications')
@@ -406,6 +440,8 @@ def main( ):
 		notifications_object,
 		'org.freedesktop.Notifications')
 
+	sessionbus.add_signal_receiver( notificationSignal, "ActionInvoked" )
+	sessionbus.add_signal_receiver( notificationClosed, "NotificationClosed" )
 
 	try:
 		gm = GMailURL( mailto, cfg )
@@ -413,9 +449,19 @@ def main( ):
 	except GGError as gerr:
 		interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", gerr.value, [], {}, 3000 )
 	else:
-		print "url is %s" % gmailurl
 		webbrowser.open_new_tab( gmailurl )
 
+	if not cfg.hideconfirmation:
+		notificationId = interface.Notify( "gnome-gmail", 0, '', 
+			"Gnome Gmail",
+			 "Email message created by <a href=\"http://gnome-gmail.sourceforge.net\">Gnome Gmail</a>", 
+			[ "configuregg", "Configure Google Apps support",
+			  "hidegg", "Don't show this again" ],
+			{ "urgency":0, "category":"email"}, 7000 )
+
+		import gobject
+		loop = gobject.MainLoop()
+		loop.run()
 
 if __name__ == "__main__":
 	main()
