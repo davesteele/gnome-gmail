@@ -54,6 +54,9 @@ class GMailIMAP( ):
 				#print "Adding ", header, self.mailDict[ header.lower() ][0]
 				msg[ header ] = self.mailDict[ header.lower() ][0]
 
+		if "subject" not in self.mailDict:
+			msg[ "Subject" ] = "Sending %s" % self.mailDict[ "attach" ][0]
+
 		msg.preamble = "Mime message attached"
 
 
@@ -193,7 +196,6 @@ class ConfigInfo():
 
 	def gconfToDialog( self, foo = 0, bar=0 ):
 
-		print "regetting configuration information"
 		self.readConfig()
 
 		user_field = self.xml.get_widget( 'entryUserName' )
