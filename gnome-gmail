@@ -7,6 +7,7 @@ import webbrowser
 import string
 import imaplib
 import os
+import re
 
 from email import encoders
 from email.message import Message
@@ -103,7 +104,15 @@ class GMailIMAP( ):
 
 		imapObj.login( user, password )
 
-		result = imapObj.append( "[Gmail]/Drafts", None, None, self.messageText )
+		try:
+			draftFolder = imapObj.lsub( "/", "*]/Drafts" )[1][0]
+
+			draftFolder = re.search( '[^\"]+\]/Drafts', draftFolder ).group(0)
+
+		except:
+			raise GGError( "Unable to determine IMAP Drafts folder location" )
+
+		result = imapObj.append( draftFolder, None, None, self.messageText )
 
 		imapObj.logout()
 
@@ -430,10 +439,10 @@ def main( ):
 
 	cfg = ConfigInfo()
 	cfg.readConfig()
+	cfg.writeConfig()
 
 	import dbus.glib
 	loop = dbus.mainloop.glib.DBusGMainLoop()
-	#sessionbus = dbus.SessionBus( mainloop = loop )
 	sessionbus = dbus.SessionBus( mainloop = loop )
 	notifications_object = sessionbus.get_object(
 		'org.freedesktop.Notifications',
