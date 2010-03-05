@@ -30,6 +30,9 @@ make prefix=%{buildroot} install
 rm -Rf %{buildroot}
 
 %post
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule /etc/gconf/schemas/gnome-gmail.schemas > /dev/null
+
 
 
 %files
