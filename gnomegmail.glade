@@ -76,6 +76,8 @@ for the file upload</property>
                   <widget class="GtkEntry" id="entryUserName">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip" translatable="yes">The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')</property>
                     <property name="invisible_char">&#x25CF;</property>
                   </widget>
                   <packing>
@@ -86,6 +88,8 @@ for the file upload</property>
                   <widget class="GtkEntry" id="entryPW">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
+                    <property name="has_tooltip">True</property>
+                    <property name="tooltip" translatable="yes">Enter the password for the mail account</property>
                     <property name="visibility">False</property>
                     <property name="invisible_char">&#x25CF;</property>
                     <property name="invisible_char_set">True</property>
@@ -116,6 +120,8 @@ for the file upload</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">False</property>
+                <property name="has_tooltip">True</property>
+                <property name="tooltip" translatable="yes">Remember the Google Account password in the Gnome keychain.</property>
                 <property name="draw_indicator">True</property>
               </widget>
               <packing>
@@ -140,6 +146,8 @@ for the file upload</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
+                <property name="has_tooltip">True</property>
+                <property name="tooltip" translatable="yes">Configure Gnome Gmail for use with a Google App account.</property>
                 <property name="relief">none</property>
                 <property name="use_underline">True</property>
               </widget>
