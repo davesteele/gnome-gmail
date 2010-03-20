@@ -195,6 +195,7 @@ class ConfigInfo():
 	def writeConfig( self ):
 		self.client.set_string( self.basedir + 'user', self.user )
 		self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
+		self.client.set_bool( self.basedir + 'appsdomain', self.appsdomain )
 		self.client.set_bool( self.basedir + 'hideconfirmation', self.hideconfirmation )
 
 		if self.savepassword:
@@ -462,6 +463,7 @@ def main( ):
 	else:
 		webbrowser.open_new_tab( gmailurl )
 
+	cfg.hideconfirmation = 1
 	if not cfg.hideconfirmation:
 		notificationId = interface.Notify( "gnome-gmail", 0, '', 
 			"Gnome Gmail",
