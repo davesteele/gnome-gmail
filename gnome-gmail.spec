@@ -9,7 +9,7 @@ Summary: Make Gmail an option for the default Gnome mail handler
 Source: %{name}-%{version}.tgz
 Buildroot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: control-center
-Requires: python
+Requires: python >= 2.6
 Requires: pygobject2
 Requires: gconf-editor
 
