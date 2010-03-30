@@ -195,7 +195,7 @@ class ConfigInfo():
 	def writeConfig( self ):
 		self.client.set_string( self.basedir + 'user', self.user )
 		self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
-		self.client.set_bool( self.basedir + 'appsdomain', self.appsdomain )
+		self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
 		self.client.set_bool( self.basedir + 'hideconfirmation', self.hideconfirmation )
 
 		if self.savepassword:
