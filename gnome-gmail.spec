@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.5
+Version: 1.5.1
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -9,7 +9,7 @@ Summary: Make Gmail an option for the default Gnome mail handler
 Source: %{name}-%{version}.tgz
 Buildroot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: control-center
-Requires: python
+Requires: python >= 2.6
 Requires: pygobject2
 Requires: gconf-editor
 
@@ -30,6 +30,9 @@ make prefix=%{buildroot} install
 rm -Rf %{buildroot}
 
 %post
+export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
+gconftool-2 --makefile-install-rule /etc/gconf/schemas/gnome-gmail.schemas > /dev/null
+
 
 
 %files
