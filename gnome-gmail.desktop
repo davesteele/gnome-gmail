@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Gnome Gmail
+GenericName=GMail Web Integration
+Comment=Integrate GMail with your desktop
+Exec=gnome-gmail %U
+Icon=gmail
+Terminal=false
+Type=Application
+Categories=GNOME;GTK;Email;ContactManagement
+StartupNotify=true

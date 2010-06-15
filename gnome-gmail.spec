@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.5.1
+Version: 1.6.0
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -45,6 +45,7 @@ gconftool-2 --makefile-install-rule /etc/gconf/schemas/gnome-gmail.schemas > /de
 %attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gmail.png
 %attr( 0644, root, root) /etc/gconf/schemas/gnome-gmail.schemas
+%attr( 0644, root, root) /usr/share/applications/gnome-gmail.desktop
 
 %changelog
 * Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.4-1
