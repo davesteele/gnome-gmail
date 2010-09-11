@@ -404,34 +404,8 @@ class GMailURL( ):
 
 		return( gmailurl )
 
-loop = None
-notificationId = None
-
-def notificationSignal( id, actionKey ):
-	global notificationId
-
-	if id == notificationId:
-
-		if actionKey == "configuregg":
-			os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
-
-		if actionKey == "hidegg":
-			cfg = ConfigInfo()
-			cfg.readConfig()
-			cfg.hideconfirmation = True
-			cfg.writeConfig()
-
-def notificationClosed( id, bar ):
-	global loop
-	global notificationId
-
-	if id == notificationId:
-		if loop:
-			loop.quit()
 
 def main( ):
-	global loop
-	global notificationId
 
 	if( len( sys.argv ) > 1 ):
 		mailto = sys.argv[1]
@@ -443,17 +417,15 @@ def main( ):
 	cfg.writeConfig()
 
 	import dbus.glib
-	loop = dbus.mainloop.glib.DBusGMainLoop()
-	sessionbus = dbus.SessionBus( mainloop = loop )
+	#loop = dbus.mainloop.glib.DBusGMainLoop()
+	#sessionbus = dbus.SessionBus( mainloop = loop )
+	sessionbus = dbus.SessionBus( )
 	notifications_object = sessionbus.get_object(
 		'org.freedesktop.Notifications',
 		'/org/freedesktop/Notifications')
 	interface = dbus.Interface(
 		notifications_object,
 		'org.freedesktop.Notifications')
-
-	sessionbus.add_signal_receiver( notificationSignal, "ActionInvoked" )
-	sessionbus.add_signal_receiver( notificationClosed, "NotificationClosed" )
 
 	try:
 		gm = GMailURL( mailto, cfg )
@@ -462,19 +434,6 @@ def main( ):
 		interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", gerr.value, [], {}, 3000 )
 	else:
 		webbrowser.open_new_tab( gmailurl )
-
-	cfg.hideconfirmation = 1
-	if not cfg.hideconfirmation:
-		notificationId = interface.Notify( "gnome-gmail", 0, '', 
-			"Gnome Gmail",
-			 "Email message created by <a href=\"http://gnome-gmail.sourceforge.net\">Gnome Gmail</a>", 
-			[ "configuregg", "Configure Google Apps support",
-			  "hidegg", "Don't show this again" ],
-			{ "urgency":0, "category":"email"}, 7000 )
-
-		import gobject
-		loop = gobject.MainLoop()
-		loop.run()
 
 if __name__ == "__main__":
 	main()
