@@ -45,34 +45,40 @@ class OOMailerCfg( object ):
     def _del_external_mailer ( self, root_node ):
         """ Delete the XML key for the existing OO mailer """
         for node in root_node:
-            if( node.attrib[self.registry_prefix + 'name'] == "ExternalMailer" ):
+            if( node.attrib[self.registry_prefix + 'name'] == \
+                "ExternalMailer" ):
                 root_node.remove( node )
 
     def _add_external_mailer( self, root_node, cmd ):
         """ add the key for the compatibility mailer """
         external_mailer = ET.SubElement( root_node, "node" )
-        external_mailer.attrib[ self.registry_prefix + 'name'] = "ExternalMailer"
+        external_mailer.attrib[ self.registry_prefix + 'name'] = \
+            "ExternalMailer"
 
         external_mailer_prop = ET.SubElement( external_mailer, "prop" )
-        external_mailer_prop.attrib[ self.registry_prefix + 'name'] = "Program"
-        external_mailer_prop.attrib[ self.registry_prefix + 'type'] = "xs:string"
+        external_mailer_prop.attrib[ self.registry_prefix + 'name'] = \
+            "Program"
+        external_mailer_prop.attrib[ self.registry_prefix + 'type'] = \
+            "xs:string"
 
         external_mailer_value = ET.SubElement( external_mailer_prop, "value" )
         external_mailer_value.text = cmd
 
     def get_external_mailer( self ):
+        """ what is the external mailer, if any, currently configured in
+        Open Office? """
+
         return_value = ""
 
         try:
             for node in self.root:
-                if( node.attrib[self.registry_prefix + 'name'] == "ExternalMailer" ):
+                if( node.attrib[self.registry_prefix + 'name'] == \
+                        "ExternalMailer" ):
                     prop_node = node.find( "prop" )
                     value_node = prop_node.find( "value" )
                     return_value = value_node.text
         except:
             pass
-
-        print return_value
 
         return( return_value )
 
@@ -99,7 +105,9 @@ class OOMailerCfg( object ):
 
             tree.write( self.ooxmlfile )
 
-def should_set_OO_mailer( basedir = "/apps/gnome-gmail/" ):
+def should_set_oo_mailer( basedir = "/apps/gnome-gmail/" ):
+    """ is the current OO mail handler different than what we want? """
+
     client = gconf.client_get_default()
 
     the_bool = client.get_bool( basedir + "OOfix" )
@@ -111,10 +119,10 @@ if __name__ == "__main__":
 
     # this is best effort
     try:
-        if( should_set_OO_mailer() ):
-            oom = OOMailerCfg()
+        if( should_set_oo_mailer() ):
+            Oom = OOMailerCfg()
 
-            oom.set_external_mailer( "/usr/lib/gnome-gmail/evolution" )        
+            Oom.set_external_mailer( "/usr/lib/gnome-gmail/evolution" )        
     except:
         pass
 

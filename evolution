@@ -1,5 +1,8 @@
 #!/usr/bin/python
 
+""" pretend to be the evolution mail client, so that Open Office will deign
+to call. Pass the mailto URL to the preferred gnome mail handler. """
+
 import os
 import sys
 

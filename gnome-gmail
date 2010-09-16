@@ -1,24 +1,25 @@
 #!/usr/bin/python -tt
+""" gnome-gmail
+This script accepts an argument of a mailto url, and calls up an appropriate
+GMail web page to handle the directive. It is intended to support GMail as a
+Gnome Preferred Email application """
 
 import sys
 import urlparse
 import urllib
 import webbrowser
-import string
 import imaplib
 import os
 import re
 
 from email import encoders
-from email.message import Message
+#from email.message import Message
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import mimetypes
-
-import imaplib
 
 import gconf
 
@@ -30,413 +31,460 @@ import gnomekeyring as gkey
 import dbus
 
 class GGError( Exception ):
-	def __init__(self, value ):
-		self.value = value
+    """ Gnome Gmail exception """
+    def __init__(self, value ):
+        self.value = value
+        super( GGError, self).__init__()
 
-	def __str__( self ):
-		return repr( self.value )
+    def __str__( self ):
+        return repr( self.value )
 
 
 class GMailIMAP( ):
-	""" Handle mailto URLs that include 'attach' fields by uploading the messages using IMAP """
+    """ Handle mailto URLs that include 'attach' fields by uploading the 
+    messages using IMAP """
 
-	def __init__( self, mailDict  ):
-		self.mailDict = mailDict
+    def __init__( self, mail_dict  ):
+        self.mail_dict = mail_dict
 
-		self.messageText = self.formMessage()
+        self.message_text = self.form_message()
 
-	def formMessage( self ):
+    def form_message( self ):
+        """ Form an RFC822 message, with an appropriate MIME attachment """
 
+        msg = MIMEMultipart()
 
-		msg = MIMEMultipart()
+        for header in ( "To", "Cc", "Bcc", "Subject" ):
+            if header.lower() in self.mail_dict:
+                msg[ header ] = self.mail_dict[ header.lower() ][0]
 
-		for header in ( "To", "Cc", "Bcc", "Subject" ):
-			if header.lower() in self.mailDict:
-				#print "Adding ", header, self.mailDict[ header.lower() ][0]
-				msg[ header ] = self.mailDict[ header.lower() ][0]
+        if "subject" not in self.mail_dict:
+            msg[ "Subject" ] = "Sending %s" % self.mail_dict[ "attach" ][0]
 
-		if "subject" not in self.mailDict:
-			msg[ "Subject" ] = "Sending %s" % self.mailDict[ "attach" ][0]
-
-		msg.preamble = "Mime message attached"
-
-
-		" loop is superfluous - mailDict will have only one path"
-		for filename in self.mailDict[ 'attach' ]:
-
-			filepath = urlparse.urlsplit( filename ).path
-
-			if not os.path.isfile( filepath ):
-				raise GGError( "File not found - %s" % filepath )
-
-			ctype, encoding = mimetypes.guess_type( filepath )
-
-			if ctype is None or encoding is not None:
-				ctype = 'application/octet-stream'
-
-			maintype, subtype = ctype.split( '/', 1 )
-
-			fp = open( filepath, 'rb' )
-
-			if maintype == 'text':
-				attachment = MIMEText( fp.read(), _subtype = subtype )
-			elif maintype == 'image':
-				attachment = MIMEImage( fp.read(), _subtype = subtype )
-			elif maintype == 'audio':
-				attachment = MIMEAudio( fp.read(), _subtype = subtype )
-			else:
-				attachment = MIMEBase( maintype, subtype )
-				attachment.set_payload( fp.read() )
-				encoders.encode_base64( attachment )
-
-			fp.close()
-
-			attachment.add_header( 'Content-Disposition', 'attachment', filename=filepath)
-
-			msg.attach( attachment )
+        msg.preamble = "Mime message attached"
 
 
-		return( msg.as_string() )
+        # loop is superfluous - mail_dict will have only one path
+        for filename in self.mail_dict[ 'attach' ]:
+
+            filepath = urlparse.urlsplit( filename ).path
+
+            if not os.path.isfile( filepath ):
+                raise GGError( "File not found - %s" % filepath )
+
+            ctype, encoding = mimetypes.guess_type( filepath )
+
+            if ctype is None or encoding is not None:
+                ctype = 'application/octet-stream'
+
+            maintype, subtype = ctype.split( '/', 1 )
+
+            attach_file = open( filepath, 'rb' )
+
+            if maintype == 'text':
+                attachment = MIMEText( attach_file.read(), _subtype = subtype )
+            elif maintype == 'image':
+                attachment = MIMEImage( attach_file.read(), _subtype = subtype )
+            elif maintype == 'audio':
+                attachment = MIMEAudio( attach_file.read(), _subtype = subtype )
+            else:
+                attachment = MIMEBase( maintype, subtype )
+                attachment.set_payload( attach_file.read() )
+                encoders.encode_base64( attachment )
+
+            attach_file.close()
+
+            attachment.add_header( 'Content-Disposition', 'attachment', 
+                filename=filepath)
+
+            msg.attach( attachment )
 
 
-	def sendMail( self, user, password ):
-		imapObj = imaplib.IMAP4_SSL( "imap.gmail.com" )
+        return( msg.as_string() )
 
-		imapObj.login( user, password )
 
-		try:
-			draftFolder = imapObj.lsub( "/", "*]/Drafts" )[1][0]
+    def send_mail( self, user, password ):
+        """ transfer the message to GMail Drafts folder, using IMAP """
 
-			draftFolder = re.search( '[^\"]+\]/Drafts', draftFolder ).group(0)
+        imap_obj = imaplib.IMAP4_SSL( "imap.gmail.com" )
 
-		except:
-			raise GGError( "Unable to determine IMAP Drafts folder location" )
+        imap_obj.login( user, password )
 
-		result = imapObj.append( draftFolder, None, None, self.messageText )
+        try:
+            draft_folder = imap_obj.lsub( "/", "*]/Drafts" )[1][0]
 
-		imapObj.logout()
+            draft_folder = re.search( '[^\"]+\]/Drafts', draft_folder ).group(0)
+
+        except:
+            raise GGError( "Unable to determine IMAP Drafts folder location" )
+
+        # todo - this should be in a try
+        imap_obj.append( draft_folder, None, None, self.message_text )
+
+        imap_obj.logout()
 
 
 
 class Keyring(object):
-	def __init__(self, name, server, protocol, port):
-		self._name = name
-		self._server = server
-		self._protocol = protocol
-		self._port = port
+    """ Access the GMail password in the Gnome keyring.
+    Used for IMAP attachment uploads """
+    def __init__(self, name, server, protocol, port):
+        self._name = name
+        self._server = server
+        self._protocol = protocol
+        self._port = port
 
-	def has_credentials(self):
-		try:
-			attrs = {"server": self._server, 
-				"protocol": self._protocol}
-			items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
-			return len(items) > 0
-		except gkey.DeniedError:
-			return False
+    def has_credentials(self):
+        """ Does the keyring have the password for this user? """
+        try:
+            attrs = {"server": self._server, 
+                "protocol": self._protocol}
+            items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
+            return len(items) > 0
+        except gkey.DeniedError:
+            return False
 
-	def get_credentials(self, user):
-		attrs = {"server": self._server, 
-			"protocol": self._protocol,
-			"user": user }
-		items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
+    def get_credentials(self, user):
+        """ Get the GMail password for this user """
+        attrs = {"server": self._server, 
+            "protocol": self._protocol,
+            "user": user }
+        items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
 
-		return (items[0].attributes["user"], items[0].secret)
+        return (items[0].attributes["user"], items[0].secret)
 
-	def set_credentials(self, (user, pw)):
-		attrs = {
-			"user": user,
-			"server": self._server,
-			"protocol": self._protocol,
-			}
-		gkey.item_create_sync(None,
-		gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, pw, True)
+    def set_credentials(self, (user, password)):
+        """ Store the GMail password in the Gnome keyring """
+        attrs = {
+            "user": user,
+            "server": self._server,
+            "protocol": self._protocol,
+            }
+        gkey.item_create_sync(None,
+        gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, password, True)
 
-class ConfigInfo():
-	def __init__( self, basedir = '/apps/gnome-gmail/' ):
-		self.client = gconf.client_get_default()
-		self.basedir = basedir
+class ConfigInfo( object ):
+    """ Manage configuration information in gconf and the gnome keyring """
+    def __init__( self, basedir = '/apps/gnome-gmail/' ):
+        self.client = gconf.client_get_default()
+        self.basedir = basedir
 
-		self.keyring = Keyring( "GMail", "imap.google.com", "imap", "143" )
+        self.keyring = Keyring( "GMail", "imap.google.com", "imap", "143" )
 
-		self.user = ""
-		self.password = ""
-		self.savepassword = False
-		self.appsdomain = ""
-		self.hideconfirmation = False
+        self.user = ""
+        self.password = ""
+        self.savepassword = False
+        self.appsdomain = ""
+        self.hideconfirmation = False
 
-		#self.keyring.set_credentials( (self.user, "") )
+        self.xml = None
 
-	def readConfig( self ):
-		self.user = self.client.get_string( self.basedir + 'user' )
-		if self.user == None:
-			self.user = ""
+        #self.keyring.set_credentials( (self.user, "") )
 
-		self.savepassword = self.client.get_bool( self.basedir + 'savepassword' )
-		if self.savepassword == None:
-			self.savepassword = False
+    def read_config( self ):
+        """ read in all configuration information """
 
-		self.appsdomain = self.client.get_string( self.basedir + 'appsdomain' )
-		if self.appsdomain == None:
-			self.appsdomain = ""
+        self.user = self.client.get_string( self.basedir + 'user' )
+        if self.user == None:
+            self.user = ""
 
-		self.hideconfirmation = self.client.get_bool( self.basedir + 'hideconfirmation' )
-		if self.hideconfirmation == None:
-			self.hideconfirmation = False
+        self.savepassword = self.client.get_bool( 
+            self.basedir + 'savepassword' )
 
-		try:
-			if self.savepassword:
-				(luser, self.password ) = self.keyring.get_credentials(self.user)
+        if self.savepassword == None:
+            self.savepassword = False
 
-			if self.password == None:
-				self.password = ""
-		except:
-			pass
+        self.appsdomain = self.client.get_string( self.basedir + 'appsdomain' )
+        if self.appsdomain == None:
+            self.appsdomain = ""
 
-	def writeConfig( self ):
-		self.client.set_string( self.basedir + 'user', self.user )
-		self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
-		self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
-		self.client.set_bool( self.basedir + 'hideconfirmation', self.hideconfirmation )
+        self.hideconfirmation = self.client.get_bool( 
+            self.basedir + 'hideconfirmation' )
 
-		if self.savepassword:
-			self.keyring.set_credentials( (self.user, self.password) )
+        if self.hideconfirmation == None:
+            self.hideconfirmation = False
 
-	def infoComplete( self ):
-		return( len( self.password) > 0 and len( self.user) > 0  )
+        try:
+            if self.savepassword:
+                (luser, self.password ) = \
+                    self.keyring.get_credentials(self.user)
 
-	def gconfToDialog( self, foo = 0, bar=0 ):
+            if self.password == None:
+                self.password = ""
+        except:
+            pass
 
-		self.readConfig()
+    def write_config( self ):
+        """ write out all configuration information """
+        self.client.set_string( self.basedir + 'user', self.user )
+        self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
+        self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
+        self.client.set_bool( self.basedir + 'hideconfirmation', \
+            self.hideconfirmation )
 
-		user_field = self.xml.get_widget( 'entryUserName' )
-		user_field.set_text( self.user )
+        if self.savepassword:
+            self.keyring.set_credentials( (self.user, self.password) )
 
-		password_field = self.xml.get_widget( 'entryPW' )
-		password_field.set_text( self.password )
+    def info_complete( self ):
+        """ is there enough information to work with IMAP? """
+        return( len( self.password) > 0 and len( self.user) > 0  )
 
-		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-		savepassword_field.set_active( self.savepassword )
-		
-	def dialogToGconf( self ):
-		user_field = self.xml.get_widget( 'entryUserName' )
-		self.user = user_field.get_text()
+    #def gconftodialog( self, foo = 0, bar=0 ):
+    def gconftodialog( self ):
+        """ transfer existing config information to the dialog """
 
-		password_field = self.xml.get_widget( 'entryPW' )
-		self.password = password_field.get_text()
+        self.read_config()
 
-		savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-		self.savepassword = savepassword_field.get_active()
+        user_field = self.xml.get_widget( 'entryUserName' )
+        user_field.set_text( self.user )
 
-		self.writeConfig()
-		
-	def callConfigure( self, foo, bar = 1 ):
+        password_field = self.xml.get_widget( 'entryPW' )
+        password_field.set_text( self.password )
 
-		self.dialogToGconf()
+        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+        savepassword_field.set_active( self.savepassword )
+        
+    def dialogtogconf( self ):
+        """ collect configuration info from the dialog """
 
-		os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
+        user_field = self.xml.get_widget( 'entryUserName' )
+        self.user = user_field.get_text()
 
-		return( True )
+        password_field = self.xml.get_widget( 'entryPW' )
+        self.password = password_field.get_text()
+
+        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
+        self.savepassword = savepassword_field.get_active()
+
+        self.write_config()
+        
+    def call_configure( self, foo, bar = 1 ):
+        """ the user has asked to edit configuration parameters """
+
+        self.dialogtogconf()
+
+        os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
+
+        return( True )
 
 
-	def queryConfigInfo( self ):
+    def query_config_info( self ):
+        """ Query the user for IMAP configuration information """
 
-		self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", domain="gnome-gmail" )
+        self.xml = gtk.glade.XML( "/usr/lib/gnome-gmail/gnomegmail.glade", \
+            domain="gnome-gmail" )
 
-		configButton = self.xml.get_widget( "buttonConfigure") 
-		hid = configButton.connect( "button-press-event", self.callConfigure )
+        config_button = self.xml.get_widget( "buttonConfigure") 
+        config_button.connect( "button-press-event", self.call_configure )
 
-		wind = self.xml.get_widget( "dialog1" )
-		# todo - should map window focus event to gconfToDialog(), but it isn't working
+        # todo - should map window focus event to gconftodialog(), 
+        # but it isn't working
 
-		self.gconfToDialog()
+        self.gconftodialog()
 
-		self.window = self.xml.get_widget( "dialog1" )
-		response = self.window.run()
+        window = self.xml.get_widget( "dialog1" )
+        response = window.run()
 
-		if response == 1:
-			self.dialogToGconf()
-		else:
-			raise GGError( "User cancelled \"Send To...\"" )
+        if response == 1:
+            self.dialogtogconf()
+        else:
+            raise GGError( "User cancelled \"Send To...\"" )
 
-		self.window.destroy()
+        window.destroy()
 
-		
-		return( self.infoComplete() )
+        
+        return( self.info_complete() )
 
 class GMailURL( ):
-	""" Logic to convert a mailto link to an appropriate GMail URL, by
-	any means necessary, including IMAP uploads, if necessary """
+    """ Logic to convert a mailto link to an appropriate GMail URL, by
+    any means necessary, including IMAP uploads, if necessary """
 
-	def __init__( self, mailtoURL, cfg, enableNetAccess = True ):
-		self.mailtoURL = mailtoURL
-		self.enableNetAccess = enableNetAccess
-		self.configInfo = cfg
+    def __init__( self, mailto_url, cfg, enable_net_access = True ):
+        self.mailto_url = mailto_url
+        self.enable_net_access = enable_net_access
+        self.config_info = cfg
 
-		self.configInfo.readConfig()
+        self.config_info.read_config()
 
-		self.appsdomainstr = self.configInfo.appsdomain
-		if( len( self.appsdomainstr ) > 0 ):
-			self.appsdomainstr = "a/" + self.appsdomainstr + "/"
+        self.appsdomainstr = self.config_info.appsdomain
+        if( len( self.appsdomainstr ) > 0 ):
+            self.appsdomainstr = "a/" + self.appsdomainstr + "/"
 
-		self.mailDict = self.mailto2dict( )
-
-
-	def appendUrl( self, tourl, urltag, dict, dicttag ):
-		""" Given a GMail URL underconstruction and the URL tag for the
-		current	mailto dicttag, add the parameter to the URL """
-
-		if dicttag in dict:
-			tourl = tourl + "&" + urltag + "=" + urllib.quote_plus( dict[dicttag][0] )
-
-		return( tourl )
+        self.mail_dict = self.mailto2dict( )
 
 
-	def mailto2dict( self ):
-		""" Convert a mailto: reference to a dictionary containing the 
-		message parts """
-		# get the path string from the 'possible' mailto url
-		usplit = urlparse.urlsplit( self.mailtoURL, "mailto" )
+    def append_url( self, tourl, urltag, maildict, dicttag ):
+        """ Given a GMail URL underconstruction and the URL tag for the
+        current mailto dicttag, add the parameter to the URL """
 
-		path = usplit.path
+        if dicttag in maildict:
+            tourl = tourl + "&" + urltag + "=" + \
+                urllib.quote_plus( maildict[dicttag][0] )
 
-		try:
-			# for some reason, urlsplit is not splitting off the 
-			# query string.
-			# do it here
-			( address, qs ) = string.split( path, "?", 1 )
-		except ValueError:
-			address = path
-
-			qs = usplit.query
-
-		qsdict = urlparse.parse_qs( qs )
-
-		qsdict['to'] = [ address ]
-
-		outdict = {}
-		for (key, value) in qsdict.iteritems():
-			for i in range(0, len(value)):
-				value[i] = urllib.unquote_plus( value[i]  )
-
-			outdict[ key.lower() ] = value
-
-		return( outdict )
-
-	def standardGMailURL( self ):
-		""" If there is no attachment reference, create a direct GMail 
-		URL which will create the message """
-
-		dct = self.mailDict
-
-		tourl = "https://mail.google.com/%smail?view=cm&tf=0&fs=1" % self.appsdomainstr
-
-		tourl = self.appendUrl( tourl, "to", dct, "to" )
-		tourl = self.appendUrl( tourl, "su", dct, "subject" )
-		tourl = self.appendUrl( tourl, "body", dct, "body" )
-		tourl = self.appendUrl( tourl, "cc", dct, "cc" )
-		tourl = self.appendUrl( tourl, "bcc", dct, "bcc" )
-
-		return( tourl )
-
-	def simpleGMailURL( self ):
-		return( "https://mail.google.com/%s" % self.appsdomainstr )
+        return( tourl )
 
 
-	def hasAttachment( self ):
-		return( 'attach' in self.mailDict )
+    def mailto2dict( self ):
+        """ Convert a mailto: reference to a dictionary containing the 
+        message parts """
+        # get the path string from the 'possible' mailto url
+        usplit = urlparse.urlsplit( self.mailto_url, "mailto" )
 
-	def imapGMailURL( self ):
-		""" if the mailto refers to an attachment, use IMAP to upload the file """
+        path = usplit.path
 
-		imap_url = "https://mail.google.com/%smail/#drafts" % self.appsdomainstr
+        try:
+            # for some reason, urlsplit is not splitting off the 
+            # query string.
+            # do it here
+            # ( address, qs ) = string.split( path, "?", 1 )
+            ( address, query_string ) = path.split( "?", 1 )
+        except ValueError:
+            address = path
 
-		if not self.enableNetAccess:
-			return( imap_url )
+            query_string = usplit.query
 
-		try:
-			gmImap = GMailIMAP( self.mailDict )
-		except:
-			GGError( "Error creating message with attachment" )
+        qsdict = urlparse.parse_qs( query_string )
 
-		# get the configuration information from GConf
-		self.configInfo.readConfig()
+        qsdict['to'] = [ address ]
 
-		# if we have a full set of configuration information, go ahead and try the transfer
-		if( self.configInfo.infoComplete() ):
-			try:
-				gmImap.sendMail( self.configInfo.user, self.configInfo.password )
-			except imaplib.IMAP4.error as inst:
-				# don't report this failure. We'll try again with prompted parameters
-				pass
-			else:
-				return( imap_url )
+        outdict = {}
+        for (key, value) in qsdict.iteritems():
+            for i in range(0, len(value)):
+                value[i] = urllib.unquote_plus( value[i]  )
 
-		# query for needed information
-		if( self.configInfo.queryConfigInfo() ):
-			# do the IMAP upload
-			try:
-				gmImap.sendMail( self.configInfo.user, self.configInfo.password )
-			except imaplib.IMAP4.error as inst:
-				errorStr = None
-				if string.find( inst.args[0], "nvalid credentials" ) > 0:
-					errorStr = "Invalid GMail User Name or Password"
-				elif string.find( inst.args[0], "not enabled for IMAP" ) > 0:
-					errorStr = "You must 'Enable IMAP' in Gmail in order to send attachments"
-				else:
-					errorStr = inst.args[0]
+            outdict[ key.lower() ] = value
 
-				raise GGError( errorStr )
+        return( outdict )
 
-			#self.configInfo.writeConfig()
-		else:
-			raise GGError( "GMail credentials incomplete" )
+    def standard_gmail_url( self ):
+        """ If there is no attachment reference, create a direct GMail 
+        URL which will create the message """
 
-		return( imap_url )
+        dct = self.mail_dict
 
-	def gmailURL( self ):
-		""" Return a GMail URL appropriate for the mailto handled by this instance """
-		if( len( self.mailtoURL ) == 0 ):
-			gmailurl = self.simpleGMailURL() 
-		elif self.hasAttachment():
-			gmailurl = self.imapGMailURL()
-		else:
-			gmailurl = self.standardGMailURL( )
+        tourl = "https://mail.google.com/%smail?view=cm&tf=0&fs=1" % \
+            self.appsdomainstr
 
-		return( gmailurl )
+        tourl = self.append_url( tourl, "to", dct, "to" )
+        tourl = self.append_url( tourl, "su", dct, "subject" )
+        tourl = self.append_url( tourl, "body", dct, "body" )
+        tourl = self.append_url( tourl, "cc", dct, "cc" )
+        tourl = self.append_url( tourl, "bcc", dct, "bcc" )
+
+        return( tourl )
+
+    def simple_gmail_url( self ):
+        """ url to use if there is no mailto url """
+
+        return( "https://mail.google.com/%s" % self.appsdomainstr )
+
+    def has_attachment( self ):
+        """ does the mailto specify a file to be attached? """
+
+        return( 'attach' in self.mail_dict )
+
+    def imap_gmail_url( self ):
+        """ if the mailto refers to an attachment, 
+        use IMAP to upload the file """
+
+        imap_url = "https://mail.google.com/%smail/#drafts" % self.appsdomainstr
+
+        if not self.enable_net_access:
+            return( imap_url )
+
+        try:
+            gm_imap = GMailIMAP( self.mail_dict )
+        except:
+            GGError( "Error creating message with attachment" )
+
+        # get the configuration information from GConf
+        self.config_info.read_config()
+
+        # if we have a full set of configuration information, 
+        # go ahead and try the transfer
+        if( self.config_info.info_complete() ):
+            try:
+                gm_imap.send_mail( self.config_info.user, \
+                    self.config_info.password )
+            except imaplib.IMAP4.error as inst:
+                # don't report this failure. 
+                # We'll try again with prompted parameters
+                pass
+            else:
+                return( imap_url )
+
+        # query for needed information
+        if( self.config_info.query_config_info() ):
+            # do the IMAP upload
+            try:
+                gm_imap.send_mail( self.config_info.user, \
+                    self.config_info.password )
+            except imaplib.IMAP4.error as inst:
+                error_str = None
+                #if string.find( inst.args[0], "nvalid credentials" ) > 0:
+                if inst.args[0].find( "nvalid credentials" ) > 0:
+                    error_str = "Invalid GMail User Name or Password"
+                elif inst.args[0].find( "not enabled for IMAP" ) > 0:
+                    error_str = "You must 'Enable IMAP' in Gmail in order to send attachments"
+                else:
+                    error_str = inst.args[0]
+
+                raise GGError( error_str )
+
+            #self.config_info.write_config()
+        else:
+            raise GGError( "GMail credentials incomplete" )
+
+        return( imap_url )
+
+    def gmail_url( self ):
+        """ Return a GMail URL appropriate for the mailto handled 
+        by this instance """
+        if( len( self.mailto_url ) == 0 ):
+            gmailurl = self.simple_gmail_url() 
+        elif self.has_attachment():
+            gmailurl = self.imap_gmail_url()
+        else:
+            gmailurl = self.standard_gmail_url( )
+
+        return( gmailurl )
 
 
 def main( ):
+    """ given an optional parameter of a valid mailto url, open an appropriate
+    gmail web page """
 
-	if( len( sys.argv ) > 1 ):
-		mailto = sys.argv[1]
-	else:
-		mailto = ""
+    if( len( sys.argv ) > 1 ):
+        mailto = sys.argv[1]
+    else:
+        mailto = ""
 
-	cfg = ConfigInfo()
-	cfg.readConfig()
-	cfg.writeConfig()
+    cfg = ConfigInfo()
+    cfg.read_config()
+    cfg.write_config()
 
-	import dbus.glib
-	#loop = dbus.mainloop.glib.DBusGMainLoop()
-	#sessionbus = dbus.SessionBus( mainloop = loop )
-	sessionbus = dbus.SessionBus( )
-	notifications_object = sessionbus.get_object(
-		'org.freedesktop.Notifications',
-		'/org/freedesktop/Notifications')
-	interface = dbus.Interface(
-		notifications_object,
-		'org.freedesktop.Notifications')
+    #import dbus.glib
+    #loop = dbus.mainloop.glib.DBusGMainLoop()
+    #sessionbus = dbus.SessionBus( mainloop = loop )
+    sessionbus = dbus.SessionBus( )
+    notifications_object = sessionbus.get_object(
+        'org.freedesktop.Notifications',
+        '/org/freedesktop/Notifications')
+    interface = dbus.Interface(
+        notifications_object,
+        'org.freedesktop.Notifications')
 
-	try:
-		gm = GMailURL( mailto, cfg )
-		gmailurl = gm.gmailURL()
-	except GGError as gerr:
-		interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", gerr.value, [], {}, 3000 )
-	else:
-		webbrowser.open_new_tab( gmailurl )
+    try:
+        gm_url = GMailURL( mailto, cfg )
+        gmailurl = gm_url.gmail_url()
+    except GGError as gerr:
+        interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
+            gerr.value, [], {}, 3000 )
+    else:
+        webbrowser.open_new_tab( gmailurl )
 
 if __name__ == "__main__":
-	main()
+    main()
 
 
 
