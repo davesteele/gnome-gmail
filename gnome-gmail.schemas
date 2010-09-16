@@ -50,6 +50,19 @@ notification that appears with each message created. The notification includes
 a link to allow Gnome Gmail to be configured for Google Apps support.</long>
    </locale>
 </schema>
+<schema>
+   <key>/schemas/apps/gnome-gmail/OOfix</key>
+   <applyto>/apps/gnome-gmail/OOfix</applyto>
+   <owner>gnome-gmail</owner>
+   <type>bool</type>
+   <default>TRUE</default>
+   <locale name="C">
+      <short>Set Open Office to use the Gnome Preferred Email Application</short>
+      <long>When checked, Gnome Gmail will attempt to configure Open Office
+to use the currently selected Gnome Preferred Email Application with each
+login, using a Gnome Gmail compatibility application.</long>
+   </locale>
+</schema>
 </schemalist>
 </gconfschemafile>
 

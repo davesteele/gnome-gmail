@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Gnome Gmail Open Office Configurator
+Comment=Configure Open Office to use the Gnome Preferred Email application
+Exec=/usr/bin/setOOmailer
+OnlyShowIn=GNOME;
+X-GNOME-Autostart-Phase=Application
