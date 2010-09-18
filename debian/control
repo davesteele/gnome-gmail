@@ -1,0 +1,15 @@
+Source: gnome-gmail
+Section: gnome
+Priority: optional
+Maintainer: David Steele <daves@users.sourceforge.net>
+Build-Depends: debhelper (>= 7)
+Standards-Version: 3.8.0
+Homepage: http://gnome-gmail.sourceforge.net
+
+Package: gnome-gmail
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python (>=2.6), gnome-control-center, gconf2, gtk2
+Description: Add GMail support to GNOME
+ Add GMail to the list of preferred mail readers for GNOME
+
+
