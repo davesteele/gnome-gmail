@@ -66,7 +66,6 @@ install-indep:
 	# Add here commands to install the indep part of the package into
 	# debian/<package>-doc.
 	#INSTALLDOC#
-	$(MAKE) prefix=$(CURDIR)/debian/gnome-gmail install
 
 	dh_install -i
 
@@ -78,6 +77,7 @@ install-arch:
 
 	# Add here commands to install the arch part of the package into
 	# debian/tmp.
+	$(MAKE) prefix=$(CURDIR)/debian/gnome-gmail install
 
 	dh_install -s
 # Must not depend on anything. This is to be called by

@@ -1,9 +1,11 @@
 prefix = 
 package = gnome-gmail
-version = 1.7.0
+version = 1.6
 release = 1
 
 arch = noarch
+
+DISTRO := $(lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
 
 shortname = ${package}-${version}
 fullyqualifiedname = ${shortname}-${release}
@@ -19,12 +21,23 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	gnome-gmail.schemas gnome-gmail.desktop 50_gnome-gmail \
 	${foreach i, ${iconsizes}, icons/gmail-${i}.png } \
 	setOOmailer setOOmailer.desktop evolution \
-	control postinst prerm
+	debian/changelog \
+	debian/compat \
+	debian/control \
+	debian/copyright \
+	debian/docs \
+	debian/postinst \
+	debian/rules \
+	debian/watch
 
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
 libdir = ${prefix}/usr/lib/gnome-gmail
-schemadir = ${prefix}/etc/gconf/schemas
+ifeq (${DISTRO},Ubuntu)
+   schemadir = ${prefix}/usr/share/gconf/schemas
+else
+   schemadir = ${prefix}/etc/gconf/schemas
+endif
 gconfdefdir = ${prefix}/usr/share/gconf/defaults
 desktopdir = ${prefix}/usr/share/applications
 autostartdir = ${prefix}/usr/share/gnome/autostart
@@ -64,9 +77,8 @@ clean:
 	${RM} -r ${shortname}
 	${RM} *.1.gz
 	${RM} -r doc
-	${RM} debian/changelog
-	-rm -rf debian
-	${RM} *.deb
+	${RM} *.deb *.orig.tar.gz *.diff.gz *.dsc *.changes *.build
+
 
 rpm: ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm
 
@@ -95,19 +107,4 @@ install:
 		then \
 			gtk-update-icon-cache -f ${iconbasedir}; \
 	fi
-
-debinstall:
-	-rm -rf debian
-	mkdir debian
-	mkdir debian/DEBIAN
-	make prefix=./debian install
-
-debian/changelog: debian/changelog.in Makefile
-
-deb: debinstall
-	cp control debian/DEBIAN
-	cp postinst debian/DEBIAN
-	cp prerm debian/DEBIAN
-	dpkg-deb --build debian
-	mv debian.deb gnome-gmail_${version}-1_all.deb
 
