@@ -21,14 +21,6 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	gnome-gmail.schemas gnome-gmail.desktop 50_gnome-gmail \
 	${foreach i, ${iconsizes}, icons/gnome-gmail-${i}.png } \
 	setOOmailer setOOmailer.desktop evolution \
-	debian/changelog \
-	debian/compat \
-	debian/control \
-	debian/copyright \
-	debian/docs \
-	debian/postinst \
-	debian/rules \
-	debian/watch \
 	setOOmailer.1 gnome-gmail.1
 
 bindir = ${prefix}/usr/bin

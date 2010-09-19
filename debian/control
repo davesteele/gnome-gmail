@@ -3,7 +3,7 @@ Section: gnome
 Priority: optional
 Maintainer: David Steele <daves@users.sourceforge.net>
 Build-Depends: debhelper (>= 7)
-Standards-Version: 3.8.0
+Standards-Version: 3.8.3
 Homepage: http://gnome-gmail.sourceforge.net
 
 Package: gnome-gmail

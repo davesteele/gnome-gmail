@@ -1,5 +1,6 @@
-gnome-gmail (1.6-0ubuntu1) jaunty; urgency=low
+gnome-gmail (1.6-1) unstable; urgency=low
 
+  * Initial Debian Release ()
   * Support for Open Office Send -> Document as Email
   - Small bug fixes
   - pylint cleanup
