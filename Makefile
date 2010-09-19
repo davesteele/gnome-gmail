@@ -5,7 +5,7 @@ release = 1
 
 arch = noarch
 
-DISTRO := $(lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
+DISTRO :=$(shell lsb_release -i | cut -d: -f2 | sed s/'^\t'//)
 
 shortname = ${package}-${version}
 fullyqualifiedname = ${shortname}-${release}
@@ -19,7 +19,7 @@ iconclass = apps
 tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	README COPYING gnome-gmail.xml gnomegmail.glade test \
 	gnome-gmail.schemas gnome-gmail.desktop 50_gnome-gmail \
-	${foreach i, ${iconsizes}, icons/gmail-${i}.png } \
+	${foreach i, ${iconsizes}, icons/gnome-gmail-${i}.png } \
 	setOOmailer setOOmailer.desktop evolution \
 	debian/changelog \
 	debian/compat \
@@ -28,11 +28,13 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	debian/docs \
 	debian/postinst \
 	debian/rules \
-	debian/watch
+	debian/watch \
+	setOOmailer.1 gnome-gmail.1
 
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
 libdir = ${prefix}/usr/lib/gnome-gmail
+sharedir = ${prefix}/usr/share/gnome-gmail
 ifeq (${DISTRO},Ubuntu)
    schemadir = ${prefix}/usr/share/gconf/schemas
 else
@@ -41,6 +43,7 @@ endif
 gconfdefdir = ${prefix}/usr/share/gconf/defaults
 desktopdir = ${prefix}/usr/share/applications
 autostartdir = ${prefix}/usr/share/gnome/autostart
+mandir = ${prefix}/usr/share/man/man1
 
 signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
 signopt := $(if $(signopt), --sign, )
@@ -78,6 +81,7 @@ clean:
 	${RM} *.1.gz
 	${RM} -r doc
 	${RM} *.deb *.orig.tar.gz *.diff.gz *.dsc *.changes *.build
+	${RM} *~ debian/*~
 
 
 rpm: ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm
@@ -88,23 +92,25 @@ ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm: ${shortname}.tg
 	${RMDIR} ${arch}
 
 installdirs = ${bindir} ${xmldir} ${libdir} ${iconbasedir} ${schemadir} \
-	${gconfdefdir} ${desktopdir} ${autostartdir} \
+	${gconfdefdir} ${desktopdir} ${autostartdir} ${mandir} ${sharedir} \
 	${foreach i, ${iconsizes}, ${iconbasedir}/${i}/${iconclass}}
 
 install:
 	install -d ${installdirs}
 	install gnome-gmail ${bindir}
 	install setOOmailer ${bindir}
-	install gnome-gmail.xml ${xmldir}
-	install gnomegmail.glade ${libdir}
-	install gnome-gmail.schemas ${schemadir}
+	install --mode=0644 gnome-gmail.xml ${xmldir}
+	install --mode=0644 gnomegmail.glade ${sharedir}
+	install --mode=0644 gnome-gmail.schemas ${schemadir}
 	install gnome-gmail.desktop ${desktopdir}
 	install evolution ${libdir}
-	install setOOmailer.desktop ${autostartdir}
+	install --mode=0644 setOOmailer.desktop ${autostartdir}
 	#install 50_gnome-gmail ${gconfdefdir}
-	${foreach i, ${iconsizes}, install -m 0644 icons/gmail-${i}.png ${iconbasedir}/${i}/${iconclass}/gmail.png; }
+	${foreach i, ${iconsizes}, install -m 0644 icons/gnome-gmail-${i}.png ${iconbasedir}/${i}/${iconclass}/gnome-gmail.png; }
 	if [ -f ${iconbasedir}/icon-theme.cache ]; \
 		then \
 			gtk-update-icon-cache -f ${iconbasedir}; \
 	fi
+	gzip -c gnome-gmail.1 > ${mandir}/gnome-gmail.1.gz
+	gzip -c setOOmailer.1 > ${mandir}/setOOmailer.1.gz
 

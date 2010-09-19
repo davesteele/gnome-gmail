@@ -1,4 +1,11 @@
 
-Once installed, Gmail will appear as a choice for the default mail reader in
-the gnome Preferred Applications dialog.
+This is part of the GNOME Gmail project.
 
+	http://gnome-gmail.sourceforge.net
+
+Once installed, Gmail will appear as a choice for the default mail reader in
+the GNOME Preferred Applications dialog.
+
+Run 'make install', as root, to install.
+
+David Steele <daves@users.sourceforge.net>

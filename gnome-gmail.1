@@ -1,0 +1,18 @@
+
+.TH man 1 “18 September 2010″ “.1″ “Gnome GMail”
+.SH NAME
+gnome-gmail \- Integrate GMail into the GNOME desktop
+.SH SYNOPSIS
+\fBgnome-gmail\fP [\fI<mailto-URL>\fP]
+.SH DESCRIPTION
+The \fBgnome-gmail\fP script opens a GMail page on the default web browser, with a message composed according
+to the supplied RFC2368 \fImailto:\fP URL. This script is used to support GMail as a GNOME Preferred Application for email.
+.SH OPTIONS
+A \fImailto:\fP URL. The 'To', 'CC', 'BCC', 'Subject', and 'Body' fields are supported. If the argument is
+not well formed, it is assumed to be the recipient. If no argument is supplied, a default GMail page is opened.
+.SH SEE ALSO
+setOOmailer(1)
+.SH BUGS
+No known bugs.
+.SH AUTHOR
+David Steele (daves@users.sourceforge.net)
