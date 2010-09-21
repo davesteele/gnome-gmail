@@ -21,14 +21,6 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 	gnome-gmail.schemas gnome-gmail.desktop 50_gnome-gmail \
 	${foreach i, ${iconsizes}, icons/gnome-gmail-${i}.png } \
 	setOOmailer setOOmailer.desktop evolution \
-	debian/changelog \
-	debian/compat \
-	debian/control \
-	debian/copyright \
-	debian/docs \
-	debian/postinst \
-	debian/rules \
-	debian/watch \
 	setOOmailer.1 gnome-gmail.1
 
 bindir = ${prefix}/usr/bin
@@ -40,7 +32,6 @@ ifeq (${DISTRO},Ubuntu)
 else
    schemadir = ${prefix}/etc/gconf/schemas
 endif
-gconfdefdir = ${prefix}/usr/share/gconf/defaults
 desktopdir = ${prefix}/usr/share/applications
 autostartdir = ${prefix}/usr/share/gnome/autostart
 mandir = ${prefix}/usr/share/man/man1
@@ -92,7 +83,7 @@ ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm: ${shortname}.tg
 	${RMDIR} ${arch}
 
 installdirs = ${bindir} ${xmldir} ${libdir} ${iconbasedir} ${schemadir} \
-	${gconfdefdir} ${desktopdir} ${autostartdir} ${mandir} ${sharedir} \
+	${desktopdir} ${autostartdir} ${mandir} ${sharedir} \
 	${foreach i, ${iconsizes}, ${iconbasedir}/${i}/${iconclass}}
 
 install:
