@@ -50,17 +50,17 @@ fi
 
 %files
 %doc README COPYING
+%attr( 0644, root, root) /etc/gconf/schemas/gnome-gmail.schemas
 %attr( 0755, root, root) /usr/bin/gnome-gmail
+%attr( 0755, root, root) /usr/bin/setOOmailer
 %attr( 0644, root, root) /usr/share/gnome-control-center/default-apps/gnome-gmail.xml
 %attr( 0644, root, root) /usr/share/gnome-gmail/gnomegmail.glade
+%attr( 0755, root, root) /usr/share/gnome-gmail/evolution
 %attr( 0755, root, root) /usr/share/icons/hicolor/16x16/apps/gnome-gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gnome-gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gnome-gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gnome-gmail.png
-%attr( 0644, root, root) /etc/gconf/schemas/gnome-gmail.schemas
 %attr( 0644, root, root) /usr/share/applications/gnome-gmail.desktop
-%attr( 0755, root, root) /usr/lib/gnome-gmail/evolution
-%attr( 0755, root, root) /usr/bin/setOOmailer
 %attr( 0644, root, root) /usr/share/gnome/autostart/setOOmailer.desktop
 %attr( 0644, root, root) /usr/share/man/man1/gnome-gmail.1.gz
 %attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
