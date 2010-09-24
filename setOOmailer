@@ -122,7 +122,7 @@ if __name__ == "__main__":
         if( should_set_oo_mailer() ):
             Oom = OOMailerCfg()
 
-            Oom.set_external_mailer( "/usr/lib/gnome-gmail/evolution" )        
+            Oom.set_external_mailer( "/usr/share/gnome-gmail/evolution" )        
     except:
         pass
 
