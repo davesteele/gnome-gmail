@@ -271,7 +271,7 @@ class ConfigInfo( object ):
     def query_config_info( self ):
         """ Query the user for IMAP configuration information """
 
-	glade_file = sys.prefix + "share/gnome-gmail/gnomegmail.glade"
+        glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
         self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
 
         config_button = self.xml.get_widget( "buttonConfigure") 

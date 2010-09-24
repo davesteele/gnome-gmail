@@ -1,56 +1,10 @@
 gnome-gmail (1.6-1) unstable; urgency=low
 
-  * Initial Debian Release ()
+  * Initial Debian Release (closes: Bug#597903)
   * Support for Open Office Send -> Document as Email
   - Small bug fixes
   - pylint cleanup
-  - Ubuntu packaging
 
  -- David Steele <daves@users.sourceforge.net>  Fri, 17 Sep 2010 21:33:47 -0400
-
-gnome-gmail (1.5.1-1) unstable; urgency=medium
-
-  * Bug fix for configuration maintenance bug related to IMAP uploads
-  - Add python version restriction to package
-
- -- David Steele <daves@users.sourceforge.net>  Tue, 05 Apr 2010 15:15:56 -0400
-
-gnome-gmail (1.5-0ubuntu1) unstable; urgency=low
-
-  * Google Apps support
-  - GMail icon added for the task bar
-
- -- David Steele <daves@users.sourceforge.net>  Sun, 06 Mar 2010 15:15:56 -0400
-
-gnome-gmail (1.4-1) unstable; urgency=low
-
-  * "Send File" support added, by handline the mailto "attach", and IMAP upload
-
- -- David Steele <daves@users.sourceforge.net>  Sat, 22 Jan 2010 15:15:56 -0400
-
-gnome-gmail (1.3-1) unstable; urgency=low
-
-  * User the Gnome default web browser, instead of the HTML handler (editor)
-  - Better handle mailto mixed upper and lower case fields
-
- -- David Steele <daves@users.sourceforge.net>  Fri, 05 Nov 2009 15:15:56 -0400
-
-gnome-gmail (1.2-1) unstable; urgency=low
-
-  * Improved GMail URL
-
- -- David Steele <daves@users.sourceforge.net>  Thu, 10 Sep 2009 15:15:56 -0400
-
-gnome-gmail (1.1-2) unstable; urgency=low
-
-  * Debian package was calling too many Gnome dependencies
-
- -- David Steele <daves@users.sourceforge.net>  Wed, 09 Sep 2009 15:15:56 -0400
-
-gnome-gmail (1.1-1) unstable; urgency=low
-
-  * Initial release
-
- -- David Steele <daves@users.sourceforge.net>  Tue, 08 Sep 2009 15:15:56 -0400
 
 

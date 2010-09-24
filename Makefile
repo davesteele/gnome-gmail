@@ -25,12 +25,15 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
-libdir = ${prefix}/usr/lib/gnome-gmail
 sharedir = ${prefix}/usr/share/gnome-gmail
 ifeq (${DISTRO},Ubuntu)
    schemadir = ${prefix}/usr/share/gconf/schemas
-else
+else ifeq (${DISTRO},Debian)
+   schemadir = ${prefix}/usr/share/gconf/schemas
+else ifeq($(DISTRO,Fedora)
    schemadir = ${prefix}/etc/gconf/schemas
+else
+   schemadir = ${prefix}/usr/share/gconf/schemas
 endif
 desktopdir = ${prefix}/usr/share/applications
 autostartdir = ${prefix}/usr/share/gnome/autostart
@@ -82,7 +85,7 @@ ${fullyqualifiedname}.${arch}.rpm ${fullyqualifiedname}.src.rpm: ${shortname}.tg
 	${MV} ${arch}/${fullyqualifiedname}.${arch}.rpm .
 	${RMDIR} ${arch}
 
-installdirs = ${bindir} ${xmldir} ${libdir} ${iconbasedir} ${schemadir} \
+installdirs = ${bindir} ${xmldir} ${iconbasedir} ${schemadir} \
 	${desktopdir} ${autostartdir} ${mandir} ${sharedir} \
 	${foreach i, ${iconsizes}, ${iconbasedir}/${i}/${iconclass}}
 
@@ -94,7 +97,7 @@ install:
 	install --mode=0644 gnomegmail.glade ${sharedir}
 	install --mode=0644 gnome-gmail.schemas ${schemadir}
 	install gnome-gmail.desktop ${desktopdir}
-	install evolution ${libdir}
+	install evolution ${sharedir}
 	install --mode=0644 setOOmailer.desktop ${autostartdir}
 	#install 50_gnome-gmail ${gconfdefdir}
 	${foreach i, ${iconsizes}, install -m 0644 icons/gnome-gmail-${i}.png ${iconbasedir}/${i}/${iconclass}/gnome-gmail.png; }
