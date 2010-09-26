@@ -31,7 +31,20 @@ rm -Rf %{buildroot}
 
 %post
 export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
-gconftool-2 --makefile-install-rule /etc/gconf/schemas/gnome-gmail.schemas > /dev/null
+gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/%{name}.schemas > /dev/null
+
+touch --no-create %{_datadir}/icons/hicolor
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+%{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
+fi
+
+
+%postun
+touch --no-create %{_datadir}/icons/hicolor
+if [ -x %{_bindir}/gtk-update-icon-cache ]; then
+  %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
+fi
+
 
 
 
@@ -39,19 +52,34 @@ gconftool-2 --makefile-install-rule /etc/gconf/schemas/gnome-gmail.schemas > /de
 %doc README COPYING
 %attr( 0755, root, root) /usr/bin/gnome-gmail
 %attr( 0644, root, root) /usr/share/gnome-control-center/default-apps/gnome-gmail.xml
-%attr( 0644, root, root) /usr/lib/gnome-gmail/gnomegmail.glade
-%attr( 0755, root, root) /usr/share/icons/hicolor/16x16/apps/gmail.png
-%attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gmail.png
-%attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gmail.png
-%attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gmail.png
+%attr( 0644, root, root) /usr/share/gnome-gmail/gnomegmail.glade
+%attr( 0755, root, root) /usr/share/icons/hicolor/16x16/apps/gnome-gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gnome-gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gnome-gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gnome-gmail.png
 %attr( 0644, root, root) /etc/gconf/schemas/gnome-gmail.schemas
 %attr( 0644, root, root) /usr/share/applications/gnome-gmail.desktop
 %attr( 0755, root, root) /usr/lib/gnome-gmail/evolution
 %attr( 0755, root, root) /usr/bin/setOOmailer
 %attr( 0644, root, root) /usr/share/gnome/autostart/setOOmailer.desktop
+%attr( 0644, root, root) /usr/share/man/man1/gnome-gmail.1.gz
+%attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
 
 
 %changelog
+* Fri Sep 17 2010 David Steele <daves@users.sourceforge.net> - 1.6-1
+- Support for Open Office Send -> Document as Email
+- Small bug fixes
+- pylint cleanup
+- Ubuntu packaging
+
+* Tue Apr 05 2010 David Steele <daves@users.sourceforge.net> - 1.5.1-1
+- Add python version restriction to package
+
+* Sun Mar 06 2010 David Steele <daves@users.sourceforge.net> - 1.5-1
+- Google Apps support
+- GMail icon added for the task bar
+
 * Sun Jan 17 2010 Dave Steele <daves@users.sourceforge.net> - 1.4-1
 - Support for Nautilus - Send files via GMail
 - Added mailto test cases - improved mailto handling
