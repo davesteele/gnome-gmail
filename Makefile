@@ -1,6 +1,6 @@
 prefix = 
 package = gnome-gmail
-version = 1.6
+version = 1.6.1
 release = 1
 
 arch = noarch
@@ -26,21 +26,26 @@ tarfiles = Makefile ${package}.spec $(scriptfiles)\
 bindir = ${prefix}/usr/bin
 xmldir = ${prefix}/usr/share/gnome-control-center/default-apps
 sharedir = ${prefix}/usr/share/gnome-gmail
-ifeq (${DISTRO},Ubuntu)
-   schemadir = ${prefix}/usr/share/gconf/schemas
-else ifeq (${DISTRO},Debian)
-   schemadir = ${prefix}/usr/share/gconf/schemas
-else ifeq($(DISTRO,Fedora)
-   schemadir = ${prefix}/etc/gconf/schemas
-else
-   schemadir = ${prefix}/usr/share/gconf/schemas
-endif
+#ifeq (${DISTRO},Ubuntu)
+#   schemadir = ${prefix}/usr/share/gconf/schemas
+#else ifeq (${DISTRO},Debian)
+#   schemadir = ${prefix}/usr/share/gconf/schemas
+#else ifeq($(DISTRO,Fedora)
+#   schemadir = ${prefix}/etc/gconf/schemas
+#else
+#   schemadir = ${prefix}/usr/share/gconf/schemas
+#endif
+schemadir := ${prefix}/usr/share/gconf/schemas
+schemadir := $(if $(findstring Ubuntu,${DISTRO}), ${prefix}/usr/share/gconf/schemas, $(schemadir) )
+schemadir := $(if $(findstring Debian,${DISTRO}), ${prefix}/usr/share/gconf/schemas, $(schemadir) )
+schemadir := $(if $(findstring Fedora,${DISTRO}), ${prefix}/etc/gconf/schemas, $(schemadir) )
+
 desktopdir = ${prefix}/usr/share/applications
 autostartdir = ${prefix}/usr/share/gnome/autostart
 mandir = ${prefix}/usr/share/man/man1
 
-signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
-signopt := $(if $(signopt), --sign, )
+#signopt := $(shell rpmbuild --showrc | grep -v "{" | grep "gpg_name" )
+#signopt := $(if $(signopt), --sign, )
 
 RM := /bin/rm -f 
 MKDIR := /bin/mkdir

@@ -1,24 +1,7 @@
-gnome-gmail (1.6-3) unstable; urgency=low
-
-  * Switch to dpkg-source 3.0 (quilt) format
-  * Inital Debian Release (closes: Bug#597903)
-
- -- David Steele <daves@users.sourceforge.net>  Sat, 25 Sep 2010 08:30:04 -0400
-
-gnome-gmail (1.6-2) unstable; urgency=low
+gnome-gmail (1.6.1-1) unstable; urgency=low
 
   * Inital Debian Release (closes: Bug#597903)
-  - debuild -sa
 
- -- David Steele <daves@users.sourceforge.net>  Sat, 25 Sep 2010 01:08:40 -0400
-
-gnome-gmail (1.6-1) unstable; urgency=low
-
-  * Initial Debian Release (closes: Bug#597903)
-  * Support for Open Office Send -> Document as Email
-  - Small bug fixes
-  - pylint cleanup
-
- -- David Steele <daves@users.sourceforge.net>  Fri, 17 Sep 2010 21:33:47 -0400
+ -- David Steele <daves@users.sourceforge.net>  Tue, 05 Oct 2010 23:22:37 -0400
 
 

@@ -1,21 +1,9 @@
-This package was debianized by David Steele <daves@users.sourceforge.net> on
-Fri, 17 Sep 2010 15:15:56 -0400.
+Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
+Name: gnome-gmail
+Source: http://gnome-gmail.sourceforge.net/
 
-It was downloaded from http://downloads.sourceforge.net/gnome-gmail/
-
-Upstream Author:
-
-    David Steele <daves@users.sourceforge.net>
-
-Copyright:
-
-    Copyright (C) 2009 David Steele
-
-
-License: GPL-2
- Gnome Gmail - Integrate GMail into the Gnome desktop environment
- Copyright (C) 2009 David Steele
- .
+Copyright: 2010, David Steele <daves@users.sourceforge.net>
+License: GPL-2+
  This program is free software; you can redistribute it and/or modify
  it under the terms of the GNU General Public License as published by
  the Free Software Foundation; either version 2 of the License, or
@@ -29,6 +17,26 @@ License: GPL-2
  You should have received a copy of the GNU General Public License
  along with this program; if not, write to the Free Software
  Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
-
-X-Comment: On Debian GNU/Linux systems, the complete text of the GNU General
+ .
+ On Debian GNU/Linux systems, the complete text of the GNU General
  Public License can be found in the /usr/share/common-licenses/GPL-2 file.
+
+Files: icons/*
+Copyright: 2008, http://iconexpo.com/2008/12/free-gmail-icons/
+License: GPL-3
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+ .
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU General Public License for more details.
+ .
+ You should have received a copy of the GNU General Public License
+ along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian GNU/Linux systems, the complete text of the GNU General
+ Public License can be found in the /usr/share/common-licenses/GPL-3 file.
+
