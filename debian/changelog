@@ -1,10 +1,7 @@
-gnome-gmail (1.6-1) unstable; urgency=low
+gnome-gmail (1.6.1-1) unstable; urgency=low
 
-  * Initial Debian Release (closes: Bug#597903)
-  * Support for Open Office Send -> Document as Email
-  - Small bug fixes
-  - pylint cleanup
+  * Inital Debian Release (closes: Bug#597903)
 
- -- David Steele <daves@users.sourceforge.net>  Fri, 17 Sep 2010 21:33:47 -0400
+ -- David Steele <daves@users.sourceforge.net>  Tue, 05 Oct 2010 23:22:37 -0400
 
 
