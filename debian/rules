@@ -20,6 +20,7 @@ clean:
 	dh_testroot
 
 	$(MAKE) clean
+	rm -f config.log config.status
 
 	dh_clean 
 
@@ -31,7 +32,8 @@ install-indep:
 	dh_installdirs -i
 
 	dh_install -i
-	$(MAKE) prefix=$(CURDIR)/debian/gnome-gmail install
+	./configure --with-gconf-schema-file-dir=/usr/share/gconf/schemas
+	$(MAKE) DESTDIR=$(CURDIR)/debian/gnome-gmail install
 
 # Must not depend on anything. This is to be called by
 # binary-arch/binary-indep

@@ -30,6 +30,9 @@ import gnomekeyring as gkey
 
 import dbus
 
+import gettext
+gettext.install('gnome-gmail')
+
 class GGError( Exception ):
     """ Gnome Gmail exception """
     def __init__(self, value ):
@@ -59,9 +62,9 @@ class GMailIMAP( ):
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
         if "subject" not in self.mail_dict:
-            msg[ "Subject" ] = "Sending %s" % self.mail_dict[ "attach" ][0]
+            msg[ "Subject" ] = _("Sending %s") % self.mail_dict[ "attach" ][0]
 
-        msg.preamble = "Mime message attached"
+        msg.preamble = _("Mime message attached")
 
 
         # loop is superfluous - mail_dict will have only one path
@@ -106,17 +109,21 @@ class GMailIMAP( ):
     def send_mail( self, user, password ):
         """ transfer the message to GMail Drafts folder, using IMAP """
 
-        imap_obj = imaplib.IMAP4_SSL( "imap.gmail.com" )
+        imap_obj = imaplib.IMAP4_SSL( _("imap.gmail.com") )
 
         imap_obj.login( user, password )
 
         try:
-            draft_folder = imap_obj.lsub( "/", "*]/Drafts" )[1][0]
+            folder_name = _("Drafts")
 
-            draft_folder = re.search( '[^\"]+\]/Drafts', draft_folder ).group(0)
+            imap_sub_folder_string = "*]/" + folder_name
+            draft_folder = imap_obj.lsub( "/", imap_sub_folder_string )[1][0]
+
+            imap_folder_search_str = '[^\"]+\]/' + folder_name
+            draft_folder = re.search( imap_folder_search_str, draft_folder ).group(0)
 
         except:
-            raise GGError( "Unable to determine IMAP Drafts folder location" )
+            raise GGError( _("Unable to determine IMAP Drafts folder location") )
 
         # todo - this should be in a try
         imap_obj.append( draft_folder, None, None, self.message_text )
@@ -134,11 +141,16 @@ class Keyring(object):
         self._protocol = protocol
         self._port = port
 
+        self.server_tag = _("server")
+        self.protocol_tag = _("protocol")
+        self.user_tag = _("user")
+        
+
     def has_credentials(self):
         """ Does the keyring have the password for this user? """
         try:
-            attrs = {"server": self._server, 
-                "protocol": self._protocol}
+            attrs = {self.server_tag: self._server, 
+                self.protocol_tag: self._protocol}
             items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
             return len(items) > 0
         except gkey.DeniedError:
@@ -146,19 +158,19 @@ class Keyring(object):
 
     def get_credentials(self, user):
         """ Get the GMail password for this user """
-        attrs = {"server": self._server, 
-            "protocol": self._protocol,
-            "user": user }
+        attrs = {self.server_tag: self._server, 
+            self.protocol_tag: self._protocol,
+            self.user_tag: user }
         items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
 
-        return (items[0].attributes["user"], items[0].secret)
+        return (items[0].attributes[self.user_tag], items[0].secret)
 
     def set_credentials(self, (user, password)):
         """ Store the GMail password in the Gnome keyring """
         attrs = {
-            "user": user,
-            "server": self._server,
-            "protocol": self._protocol,
+            self.user_tag: user,
+            self.server_tag: self._server,
+            self.protocol_tag: self._protocol,
             }
         gkey.item_create_sync(None,
         gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, password, True)
@@ -169,7 +181,8 @@ class ConfigInfo( object ):
         self.client = gconf.client_get_default()
         self.basedir = basedir
 
-        self.keyring = Keyring( "GMail", "imap.google.com", "imap", "143" )
+        self.keyring = Keyring( _("GMail"), _("imap.google.com"), _("imap"),
+             "143" )
 
         self.user = ""
         self.password = ""
@@ -288,7 +301,7 @@ class ConfigInfo( object ):
         if response == 1:
             self.dialogtogconf()
         else:
-            raise GGError( "User cancelled \"Send To...\"" )
+            raise GGError( _("User cancelled \"Send To...\"") )
 
         window.destroy()
 
@@ -395,7 +408,7 @@ class GMailURL( ):
         try:
             gm_imap = GMailIMAP( self.mail_dict )
         except:
-            GGError( "Error creating message with attachment" )
+            GGError( _("Error creating message with attachment") )
 
         # get the configuration information from GConf
         self.config_info.read_config()
@@ -421,11 +434,10 @@ class GMailURL( ):
                     self.config_info.password )
             except imaplib.IMAP4.error as inst:
                 error_str = None
-                #if string.find( inst.args[0], "nvalid credentials" ) > 0:
-                if inst.args[0].find( "nvalid credentials" ) > 0:
-                    error_str = "Invalid GMail User Name or Password"
-                elif inst.args[0].find( "not enabled for IMAP" ) > 0:
-                    error_str = "You must 'Enable IMAP' in Gmail in order to send attachments"
+                if inst.args[0].find( _("nvalid credentials") ) > 0:
+                    error_str = _("Invalid GMail User Name or Password")
+                elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
+                    error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
                 else:
                     error_str = inst.args[0]
 
@@ -433,7 +445,7 @@ class GMailURL( ):
 
             #self.config_info.write_config()
         else:
-            raise GGError( "GMail credentials incomplete" )
+            raise GGError( _("GMail credentials incomplete") )
 
         return( imap_url )
 
