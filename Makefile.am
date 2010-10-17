@@ -34,7 +34,7 @@ CLEANFILES = $(PACKAGE)_$(VERSION).orig.tar.gz \
    $(PACKAGE)_$(VERSION)_$(RELEASE).debian.tar.gz \
    $(PACKAGE)_$(VERSION)_$(RELEASE).dsc
 
-DISTCLEANFILES = config.status config.log
+DISTCLEANFILES = config.status config.log Makefile.in
 
 clean-local: clean-local-deb
 PHONY: clean-local-deb
@@ -42,6 +42,9 @@ clean-local-deb:
 	-rm -f $(PACKAGE)_$(VERSION)-*_*.changes $(PACKAGE)_$(VERSION)-*_*.build
 	-rm -f $(PACKAGE)_$(VERSION)-*_all.deb $(PACKAGE)_$(VERSION)-*.debian.tar.gz
 	-rm -f $(PACKAGE)_$(VERSION)-*.dsc
+
+distclean-local:
+	-rm -rf $(PACKAGE)_$(VERSION) $(PACKAGE)-$(VERSION).tar.gz
 
 deb: $(DIST_ARCHIVES)
 	cp $(DIST_ARCHIVES) $(PACKAGE)_$(VERSION).orig.tar.gz

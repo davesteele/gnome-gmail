@@ -19,6 +19,7 @@ clean:
 	dh_testdir
 	dh_testroot
 
+	./configure
 	$(MAKE) clean
 	rm -f config.log config.status
 
