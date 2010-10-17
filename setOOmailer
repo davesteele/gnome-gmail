@@ -1,4 +1,9 @@
 #!/usr/bin/python
+#
+# Copyright 2010 David Steele <daves@users.sourceforge.net>
+# This file is part of gnome-gmail
+# Available under the terms of the GNU General Public License version 3 or later
+#
 """ This script attempts to edit the open officeconfiguration XML file for
 the current user so that the Gnome Preferred Email Application is used for the
 "Send Document as Email" command.

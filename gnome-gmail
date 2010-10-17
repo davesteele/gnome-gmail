@@ -1,4 +1,9 @@
 #!/usr/bin/python -tt
+#
+# Copyright 2010 David Steele <daves@users.sourceforge.net>
+# This file is part of gnome-gmail
+# Available under the terms of the GNU General Public License version 3 or later
+#
 """ gnome-gmail
 This script accepts an argument of a mailto url, and calls up an appropriate
 GMail web page to handle the directive. It is intended to support GMail as a
