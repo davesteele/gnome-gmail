@@ -7,8 +7,9 @@ Available under the terms of the GNU General Public License version 2 or later
 * Version announcement for Version 1.7
 
 GNOME Gmail version 1.7 has been released. It now supports internationalization, 
-making it possible to customize the application for foreign languages, and to upload files to 
-international Gmail sites.
+making it possible to customize the application for foreign languages, and to upload file attachments to 
+international Gmail sites. Support for the Open Office "Send Document As Email" command has been added 
+as well.
 
 GNOME Gmail adds support for Gmail to the GNOME desktop. Once installed, the user can select Gmail as the preferred mail application for the desktop.
 
