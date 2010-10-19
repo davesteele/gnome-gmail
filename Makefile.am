@@ -39,7 +39,11 @@ dist_icon48x48_DATA = icons/48x48/gnome-gmail.png
 CLEANFILES = $(PACKAGE)_$(VERSION).orig.tar.gz \
    $(PACKAGE)_$(VERSION)_$(RELEASE)_all.deb \
    $(PACKAGE)_$(VERSION)_$(RELEASE).debian.tar.gz \
-   $(PACKAGE)_$(VERSION)_$(RELEASE).dsc
+   $(PACKAGE)_$(VERSION)_$(RELEASE).dsc \
+   setOOmailer.desktop \
+   gnome-gmail.desktop \
+   gnome-gmail.schemas \
+   gnome-gmail.xml
 
 DISTCLEANFILES = config.status config.log
 
