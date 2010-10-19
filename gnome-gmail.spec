@@ -1,12 +1,12 @@
 Name: gnome-gmail
-Version: 1.6.1
+Version: 1.7
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
 URL: http://sourceforge.net/projects/%{name}
 License: GPLv2
 Summary: Make Gmail an option for the default Gnome mail handler
-Source: %{name}-%{version}.tgz
+Source: %{name}-%{version}.tar.gz
 Buildroot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 Requires: control-center
 Requires: python >= 2.6
@@ -21,10 +21,12 @@ mail handler. It opens in the default web browser.
 %setup -q
 
 %build
+./configure --with-gconf-schema-file-dir=/etc/gconf/schemas
+make
 
 %install
 rm -Rf %{buildroot}
-make prefix=%{buildroot} install
+make DESTDIR=%{buildroot} install
 
 %clean
 rm -Rf %{buildroot}
@@ -64,9 +66,15 @@ fi
 %attr( 0644, root, root) /usr/share/gnome/autostart/setOOmailer.desktop
 %attr( 0644, root, root) /usr/share/man/man1/gnome-gmail.1.gz
 %attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
+%attr( 0644, root, root) /usr/share/locale/es/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/de/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/it/LC_MESSAGES/gnome-gmail.mo
 
 
 %changelog
+* Mon Oct 18 2010 David Steele <daves@users.sourceforge.net> - 1.7-1
+- Internationalization support
+- Automake support
 * Fri Sep 17 2010 David Steele <daves@users.sourceforge.net> - 1.6-1
 - Support for Open Office Send -> Document as Email
 - Small bug fixes

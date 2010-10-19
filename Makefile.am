@@ -69,6 +69,17 @@ PHONY: sourceforge-release-deb
 sourceforge-release-deb:
 	rsync -e ssh $(PACKAGE)_$(VERSION)-*_all.deb $(PACKAGE)-$(VERSION).tar.gz daves,gnome-gmail@frs.sourceforge.net:/home/frs/project/g/gn/gnome-gmail/Version_$(VERSION)/
 
+PHONY: rpm
+rpm: dist
+	rpmbuild -ba --clean --target noarch --define "_srcrpmdir ${PWD}" --define "_rpmdir ${PWD}" --define "_sourcedir ${PWD}" gnome-gmail.spec
+	mv noarch/$(PACKAGE)-$(VERSION)-*.noarch.rpm .
+	rm -rf noarch
+
+PHONY: sourceforge-release-rpm
+sourceforge-release-rpm:
+	rsync -e ssh $(PACKAGE)-$(VERSION)-*.noarch.rpm $(PACKAGE)-$(VERSION)-*.src.rpm $(PACKAGE).spec daves,gnome-gmail@frs.sourceforge.net:/home/frs/project/g/gn/gnome-gmail/Version_$(VERSION)/
+
+
 SUBDIRS = po
 
 ACLOCAL_AMFLAGS = -I m4
