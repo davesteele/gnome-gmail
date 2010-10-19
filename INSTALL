@@ -1,0 +1,5 @@
+install with:
+
+./configure
+make
+sudo make install

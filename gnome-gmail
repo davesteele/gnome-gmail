@@ -2,7 +2,7 @@
 #
 # Copyright 2010 David Steele <daves@users.sourceforge.net>
 # This file is part of gnome-gmail
-# Available under the terms of the GNU General Public License version 3 or later
+# Available under the terms of the GNU General Public License version 2 or later
 #
 """ gnome-gmail
 This script accepts an argument of a mailto url, and calls up an appropriate
@@ -114,7 +114,7 @@ class GMailIMAP( ):
     def send_mail( self, user, password ):
         """ transfer the message to GMail Drafts folder, using IMAP """
 
-        imap_obj = imaplib.IMAP4_SSL( _("imap.gmail.com") )
+        imap_obj = imaplib.IMAP4_SSL( "imap.gmail.com" )
 
         imap_obj.login( user, password )
 
@@ -146,9 +146,9 @@ class Keyring(object):
         self._protocol = protocol
         self._port = port
 
-        self.server_tag = _("server")
-        self.protocol_tag = _("protocol")
-        self.user_tag = _("user")
+        self.server_tag = "server"
+        self.protocol_tag = "protocol"
+        self.user_tag = "user"
         
 
     def has_credentials(self):
@@ -186,7 +186,7 @@ class ConfigInfo( object ):
         self.client = gconf.client_get_default()
         self.basedir = basedir
 
-        self.keyring = Keyring( _("GMail"), _("imap.google.com"), _("imap"),
+        self.keyring = Keyring( "GMail", "imap.google.com", "imap",
              "143" )
 
         self.user = ""

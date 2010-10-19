@@ -2,13 +2,22 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.67])
-AC_INIT([gnome-gmail], [1.6.1], [BUG-REPORT-ADDRESS])
+AC_INIT([gnome-gmail], [1.7], [https://sourceforge.net/tracker/?group_id=277145&atid=1176979])
 AM_INIT_AUTOMAKE
 AC_COPYRIGHT([Copyright 2010 David Steele <daves@users.sourceforge.net>])
 
 GNOME_INIT
 
-AM_GNU_GETTEXT([external])
+AC_PROG_INTLTOOL([0.23])
+GETTEXT_PACKAGE=gnome-gmail
+AC_SUBST(GETTEXT_PACKAGE)
+AC_DEFINE_UNQUOTED(GETTEXT_PACKAGE, "$GETTEXT_PACKAGE")
+
+ALL_LINGUAS="es"
+AM_GLIB_GNU_GETTEXT
+
+gnomegmaillocaledir='${prefix}/$(DATADIRNAME}/locale'
+AC_SUBST(gnomegmaillocaledir)
 
 AM_GCONF_SOURCE_2
 AC_PATH_PROG(GCONFTOOL,gconftool-2)

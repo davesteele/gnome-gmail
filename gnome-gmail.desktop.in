@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Gnome Gmail
+_Name=Gnome Gmail
 GenericName=GMail Web Integration
-Comment=Integrate GMail with your desktop
+_Comment=Integrate GMail with your desktop
 Exec=gnome-gmail %U
 Icon=gnome-gmail
 Terminal=false

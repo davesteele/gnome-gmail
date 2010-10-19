@@ -21,7 +21,7 @@ clean:
 
 	./configure
 	$(MAKE) clean
-	rm -f config.log config.status
+	rm -f config.log config.status Makefile po/Makefile po/POTFILES po/Makefile.in
 
 	dh_clean 
 

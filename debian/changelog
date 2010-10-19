@@ -1,7 +1,10 @@
-gnome-gmail (1.6.1-1) unstable; urgency=low
+gnome-gmail (1.7-1) unstable; urgency=low
 
-  * Inital Debian Release (closes: Bug#597903)
+  * Internationalization support
+  * Initial Debian Release (closes: Bug#597903)
+  * Automake build
+  * Minor bug fixes
 
- -- David Steele <daves@users.sourceforge.net>  Tue, 05 Oct 2010 23:22:37 -0400
+ -- David Steele <daves@users.sourceforge.net>  Sun, 17 Oct 2010 21:53:12 -0400
 
 

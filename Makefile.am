@@ -7,16 +7,23 @@ dist_pkgshare_DATA = gnomegmail.glade
 dist_pkgshare_SCRIPTS = evolution
 
 schemadir = @GCONF_SCHEMA_FILE_DIR@
-dist_schema_DATA = gnome-gmail.schemas
+schema_in_files = gnome-gmail.schemas.in
+schema_DATA = $(schema_in_files:.schemas.in=.schemas)
+@INTLTOOL_SCHEMAS_RULE@
 
 defaultappdir = $(datarootdir)/gnome-control-center/default-apps
-dist_defaultapp_DATA = gnome-gmail.xml
+defaultapp_in_files = gnome-gmail.xml.in
+defaultapp_DATA = $(defaultapp_in_files:.xml.in=.xml)
+@INTLTOOL_XML_RULE@
 
 autostartdir = $(datarootdir)/gnome/autostart
-dist_autostart_DATA = setOOmailer.desktop
+autostart_in_files = setOOmailer.desktop.in
+autostart_DATA = $(autostart_in_files:.desktop.in=.desktop)
 
 desktopdir = $(datarootdir)/applications
-dist_desktop_DATA = gnome-gmail.desktop
+desktop_in_files = gnome-gmail.desktop.in
+desktop_DATA = $(desktop_in_files:.desktop.in=.desktop)
+@INTLTOOL_DESKTOP_RULE@
 
 iconbasedir = $(datarootdir)/icons/hicolor
 icon16x16dir = $(iconbasedir)/16x16/apps
@@ -46,6 +53,7 @@ clean-local-deb:
 distclean-local:
 	-rm -rf $(PACKAGE)_$(VERSION) $(PACKAGE)-$(VERSION).tar.gz
 
+PHONY: deb
 deb: dist
 	cp $(DIST_ARCHIVES) $(PACKAGE)_$(VERSION).orig.tar.gz
 	tar -xzf $(PACKAGE)_$(VERSION).orig.tar.gz
@@ -53,8 +61,13 @@ deb: dist
 	cd $(distdir) && ./configure
 	cd $(distdir) && debuild
 
+PHONY: sourceforge-release-deb
+sourceforge-release-deb:
+	rsync -e ssh $(PACKAGE)_$(VERSION)-*_all.deb $(PACKAGE)-$(VERSION).tar.gz daves,gnome-gmail@frs.sourceforge.net:/home/frs/project/g/gn/gnome-gmail/Version_$(VERSION)/
+
 SUBDIRS = po
 
 ACLOCAL_AMFLAGS = -I m4
 
-EXTRA_DIST = config.rpath m4/ChangeLog
+EXTRA_DIST = config.rpath m4/ChangeLog gnome-gmail.desktop.in \
+    setOOmailer.desktop.in gnome-gmail.schemas.in gnome-gmail.xml.in
