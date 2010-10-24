@@ -6,5 +6,5 @@ Exec=gnome-gmail %U
 Icon=gnome-gmail
 Terminal=false
 Type=Application
-Categories=System;GNOME;GTK;Email;ContactManagement
+Categories=GNOME;GTK;Email;ContactManagement
 StartupNotify=true
