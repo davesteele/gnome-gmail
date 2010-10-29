@@ -68,6 +68,7 @@ fi
 %attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
 %attr( 0644, root, root) /usr/share/locale/es/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/de/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/fr/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/it/LC_MESSAGES/gnome-gmail.mo
 
 
