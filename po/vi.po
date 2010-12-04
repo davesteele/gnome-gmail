@@ -1,0 +1,199 @@
+# Vietnamese translation for gnome-gmail
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-11-14 02:35+0000\n"
+"PO-Revision-Date: 2010-11-25 12:03+0000\n"
+"Last-Translator: Lê Trường An <Unknown>\n"
+"Language-Team: Vietnamese <vi@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-12-04 04:24+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../gnome-gmail:70
+#, c-format
+msgid "Sending %s"
+msgstr "Đang gửi %s"
+
+#: ../gnome-gmail:72
+msgid "Mime message attached"
+msgstr "Định dạng tập tin đính kèm"
+
+#: ../gnome-gmail:122
+msgid "Drafts"
+msgstr "Thư nháp"
+
+#: ../gnome-gmail:131
+msgid "Unable to determine IMAP Drafts folder location"
+msgstr "Không thể để xác định vị trí thư mục Thư nháp IMAP"
+
+#: ../gnome-gmail:309
+msgid "User cancelled \"Send To...\""
+msgstr "Đã hủy bỏ \"Gửi đến...\""
+
+#: ../gnome-gmail:416
+msgid "Error creating message with attachment"
+msgstr "Lỗi khi tạo tin nhắn với tập tin đính kèm"
+
+#: ../gnome-gmail:442
+msgid "nvalid credentials"
+msgstr "thông tin không hợp lệ"
+
+#: ../gnome-gmail:443
+msgid "Invalid GMail User Name or Password"
+msgstr "Tên người dùng và mật khẩu GMail không hợp lệ"
+
+#: ../gnome-gmail:444
+msgid "not enabled for IMAP"
+msgstr "không bật IMAP"
+
+#: ../gnome-gmail:445
+msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+msgstr "Bạn phải 'Bật IMAP' trong GMail"
+
+#: ../gnome-gmail:453
+msgid "GMail credentials incomplete"
+msgstr "Thông tin GMail chưa đầy đủ"
+
+#: ../gnomegmail.glade.h:1
+msgid "Configure"
+msgstr "Cấu hình"
+
+#: ../gnomegmail.glade.h:2
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr "Cấu hình Gnome Gmail để dùng với một tài khoản Google App"
+
+#: ../gnomegmail.glade.h:3
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Copyright 2010 - Dave Steele"
+
+#: ../gnomegmail.glade.h:4
+msgid "Enter the password for the mail account"
+msgstr "Nhập mật khẩu cho tài khoản thư"
+
+#: ../gnomegmail.glade.h:5
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+"Nhập thông tin tài khoản Gmail\n"
+"của bạn cho tập tin tải lên"
+
+#: ../gnomegmail.glade.h:7 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gnome Gmail"
+
+#: ../gnomegmail.glade.h:8
+msgid "Password"
+msgstr "Mật khẩu"
+
+#: ../gnomegmail.glade.h:9
+msgid "Remember Password"
+msgstr "Ghi nhớ mật khẩu"
+
+#: ../gnomegmail.glade.h:10
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr "Nhớ mật khẩu của tài khoản Google trong Gnome keychain."
+
+#: ../gnomegmail.glade.h:11
+msgid ""
+"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgstr "Tên tài khoản thư (ví dụ 'yuyu', cho tài khoản thư 'yuyu@gmail.com')"
+
+#: ../gnomegmail.glade.h:12
+msgid "User Name"
+msgstr "Tên đăng nhập"
+
+#: ../gnomegmail.glade.h:13
+msgid "Your Gmail password"
+msgstr "Mật khẩu Gmail của bạn"
+
+#: ../gnomegmail.glade.h:14
+msgid "Your Gmail user name, without the '@gmail.com' part"
+msgstr "Tên tài khoản Gmail của bạn, bao gồm cả '@gmail.com'"
+
+#: ../gnomegmail.glade.h:15
+msgid "comment"
+msgstr "ghi chú"
+
+#: ../gnome-gmail.schemas.in.h:1
+msgid ""
+"Gnome Gmail will save the last user name for file attachment uploads here."
+msgstr ""
+"Gnome Gmail sẽ lưu tên tài khoản cuối cùng cho việc tải lên các tập tin đính "
+"kèm ở đây."
+
+#: ../gnome-gmail.schemas.in.h:2
+msgid "Google Apps domain"
+msgstr "Tên miền của Google Apps"
+
+#: ../gnome-gmail.schemas.in.h:3
+msgid "Hide confirmation dialog"
+msgstr "Ẩn hộp thoại xác nhận"
+
+#: ../gnome-gmail.schemas.in.h:4
+msgid "Save IMAP password?"
+msgstr "Lưu mật khẩu IMAP?"
+
+#: ../gnome-gmail.schemas.in.h:5
+msgid "Saved IMAP user name"
+msgstr "Đã lưu tên tài khoản IMAP"
+
+#: ../gnome-gmail.schemas.in.h:6
+msgid "Set Open Office to use the Gnome Preferred Email Application"
+msgstr "Thiết lập OpenOffice để sử dụng Ứng dụng Email Gnome"
+
+#: ../gnome-gmail.schemas.in.h:7
+msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+msgstr "Để sử dụng Gnome Gmail với Google Apps, nhập tên miền ở đây"
+
+#: ../gnome-gmail.schemas.in.h:8
+msgid ""
+"When checked, Gnome Gmail will attempt to configure Open Office to use the "
+"currently selected Gnome Preferred Email Application with each login, using "
+"a Gnome Gmail compatibility application."
+msgstr ""
+"Khi chọn, Gnome Gmail sẽ cố gắng kiểm tra cấu hình OpenOffice để sử dụng sự "
+"lựa chọn Ứng dụng Email Gnome với mỗi lần đăng nhập, sử dụng Gnome Gmail ứng "
+"dụng để tương thích."
+
+#: ../gnome-gmail.schemas.in.h:9
+msgid ""
+"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
+"IMAP is used to upload file attachments to GMail."
+msgstr ""
+"Khi chọn, Gnome Gmail sẽ lưu mật khẩu IMAP trong Gnome keyring. IMAP được "
+"dùng để tải lên các tập tin đính kèm lên GMail."
+
+#: ../gnome-gmail.schemas.in.h:10
+msgid ""
+"When checked, Gnome Gmail will suppress the confirmation notification that "
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
+msgstr ""
+"Khi chọn, Gnome Gmail sẽ chặn các yêu cầu xác nhận sẽ xuất hiện với mỗi tin "
+"nhắn được tạo. Thông báo bao gồm một liên kết cho phép Gnome Gmail cấu hình "
+"cho hỗ trợ Google Apps."
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr "Tích hợp GMail với máy tính của bạn"
+
+#: ../setOOmailer.desktop.in.h:1
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr "Cấu hình OpenOffice để sử dụng Ứng dụng Email Gnome"
+
+#: ../setOOmailer.desktop.in.h:2
+msgid "Gnome Gmail Open Office Configurator"
+msgstr "Cấu hình Gnome Gmail cho OpenOffice"
+
+#: ../gnome-gmail.xml.in.h:1
+msgid "Gmail"
+msgstr "Gmail"
