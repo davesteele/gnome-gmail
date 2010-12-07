@@ -2,21 +2,19 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"Report-Msgid-Bugs-To: https://sourceforge.net/tracker/?"
-"group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2010-11-13 18:52-0500\n"
+"Report-Msgid-Bugs-To: https://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2010-11-12 22:55-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 
 #: ../gnome-gmail:70
 #, c-format
@@ -90,8 +88,9 @@ msgid "Gnome Gmail"
 msgstr ""
 
 #: ../gnomegmail.glade.h:8
+#, fuzzy
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: ../gnomegmail.glade.h:9
 msgid "Remember Password"
@@ -102,17 +101,18 @@ msgid "Remember the Google Account password in the Gnome keychain."
 msgstr ""
 
 #: ../gnomegmail.glade.h:11
-msgid ""
-"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgid "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
 msgstr ""
 
 #: ../gnomegmail.glade.h:12
+#, fuzzy
 msgid "User Name"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: ../gnomegmail.glade.h:13
+#, fuzzy
 msgid "Your Gmail password"
-msgstr ""
+msgstr "Ваш пароль Gmail"
 
 #: ../gnomegmail.glade.h:14
 msgid "Your Gmail user name, without the '@gmail.com' part"
@@ -123,8 +123,7 @@ msgid "comment"
 msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:1
-msgid ""
-"Gnome Gmail will save the last user name for file attachment uploads here."
+msgid "Gnome Gmail will save the last user name for file attachment uploads here."
 msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:2
@@ -152,28 +151,20 @@ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
 msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:8
-msgid ""
-"When checked, Gnome Gmail will attempt to configure Open Office to use the "
-"currently selected Gnome Preferred Email Application with each login, using "
-"a Gnome Gmail compatibility application."
+msgid "When checked, Gnome Gmail will attempt to configure Open Office to use the currently selected Gnome Preferred Email Application with each login, using a Gnome Gmail compatibility application."
 msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:9
-msgid ""
-"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
-"IMAP is used to upload file attachments to GMail."
+msgid "When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. IMAP is used to upload file attachments to GMail."
 msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:10
-msgid ""
-"When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow "
-"Gnome Gmail to be configured for Google Apps support."
+msgid "When checked, Gnome Gmail will suppress the confirmation notification that appears with each message created. The notification includes a link to allow Gnome Gmail to be configured for Google Apps support."
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr ""
+msgstr "Интегрировать GMail с вашим рабочи столом"
 
 #: ../setOOmailer.desktop.in.h:1
 msgid "Configure Open Office to use the Gnome Preferred Email application"
