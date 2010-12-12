@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: https://sourceforge.net/tracker/?"
 "group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2010-11-12 22:55-0500\n"
+"POT-Creation-Date: 2010-12-06 20:21-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,35 +31,35 @@ msgstr ""
 msgid "Drafts"
 msgstr ""
 
-#: ../gnome-gmail:131
+#: ../gnome-gmail:134
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr ""
 
-#: ../gnome-gmail:309
+#: ../gnome-gmail:312
 msgid "User cancelled \"Send To...\""
 msgstr ""
 
-#: ../gnome-gmail:416
+#: ../gnome-gmail:419
 msgid "Error creating message with attachment"
 msgstr ""
 
-#: ../gnome-gmail:442
+#: ../gnome-gmail:445
 msgid "nvalid credentials"
 msgstr ""
 
-#: ../gnome-gmail:443
+#: ../gnome-gmail:446
 msgid "Invalid GMail User Name or Password"
 msgstr ""
 
-#: ../gnome-gmail:444
+#: ../gnome-gmail:447
 msgid "not enabled for IMAP"
 msgstr ""
 
-#: ../gnome-gmail:445
+#: ../gnome-gmail:448
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnome-gmail:456
 msgid "GMail credentials incomplete"
 msgstr ""
 
