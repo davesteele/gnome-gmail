@@ -1,0 +1,204 @@
+# Turkish translation for gnome-gmail
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2010-12-06 20:21-0500\n"
+"PO-Revision-Date: 2010-12-14 16:00+0000\n"
+"Last-Translator: Can Kaya <Unknown>\n"
+"Language-Team: Turkish <tr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2010-12-15 00:36+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: ../gnome-gmail:70
+#, c-format
+msgid "Sending %s"
+msgstr "%s gönderiliyor"
+
+#: ../gnome-gmail:72
+msgid "Mime message attached"
+msgstr "Mime mesajı eklendi"
+
+#: ../gnome-gmail:122
+msgid "Drafts"
+msgstr "Taslaklar"
+
+#: ../gnome-gmail:134
+msgid "Unable to determine IMAP Drafts folder location"
+msgstr "IMAP Taslaklar klasörünün yeri belirlenemedi"
+
+#: ../gnome-gmail:312
+msgid "User cancelled \"Send To...\""
+msgstr "Kullanıcı \"Gönder...\" işlemini iptal etti"
+
+#: ../gnome-gmail:419
+msgid "Error creating message with attachment"
+msgstr "Eklenti içeren mesaj oluşturulamadı"
+
+#: ../gnome-gmail:445
+msgid "nvalid credentials"
+msgstr "Geçersiz giriş bilgileri"
+
+#: ../gnome-gmail:446
+msgid "Invalid GMail User Name or Password"
+msgstr "Geçersiz Gmail kullanıcı adı veya şifresi"
+
+#: ../gnome-gmail:447
+msgid "not enabled for IMAP"
+msgstr "IMAP etkin değil"
+
+#: ../gnome-gmail:448
+msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+msgstr ""
+"Eklenti gönderebilmek için  Gmail ayarlarından IMAP'i etkinleştirmelisiniz"
+
+#: ../gnome-gmail:456
+msgid "GMail credentials incomplete"
+msgstr "Gmail giriş bilgileri eksik"
+
+#: ../gnomegmail.glade.h:1
+msgid "Configure"
+msgstr "Yapılandır"
+
+#: ../gnomegmail.glade.h:2
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr "Gnome Gmail'i bir Google Apps hesabı ile kullanın."
+
+#: ../gnomegmail.glade.h:3
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Telif Hakkı 2010 -  Dave Steele"
+
+#: ../gnomegmail.glade.h:4
+msgid "Enter the password for the mail account"
+msgstr "E-posta hesabının şifresini giriniz"
+
+#: ../gnomegmail.glade.h:5
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+"Dosya yükleme için\n"
+"Gmail giriş bilgilerinizi giriniz"
+
+#: ../gnomegmail.glade.h:7 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gnome Gmail"
+
+#: ../gnomegmail.glade.h:8
+msgid "Password"
+msgstr "Şifre"
+
+#: ../gnomegmail.glade.h:9
+msgid "Remember Password"
+msgstr "Şifremi Hatırla"
+
+#: ../gnomegmail.glade.h:10
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr "Google hesabının şifresini Gnome Şifre Yöneticisinde hatırla."
+
+#: ../gnomegmail.glade.h:11
+msgid ""
+"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgstr ""
+"E-posta hesabının adı (Örneğin; 'joe@gmail.com' e-posta hesabı için 'joe')"
+
+#: ../gnomegmail.glade.h:12
+msgid "User Name"
+msgstr "Kullanıcı Adı"
+
+#: ../gnomegmail.glade.h:13
+msgid "Your Gmail password"
+msgstr "Gmail şifreniz"
+
+#: ../gnomegmail.glade.h:14
+msgid "Your Gmail user name, without the '@gmail.com' part"
+msgstr "Gmail kullanıcı adınız, '@gmail.com' kısmı olmadan"
+
+#: ../gnomegmail.glade.h:15
+msgid "comment"
+msgstr "açıklama"
+
+#: ../gnome-gmail.schemas.in.h:1
+msgid ""
+"Gnome Gmail will save the last user name for file attachment uploads here."
+msgstr ""
+"Gnome Gmail dosya eklenti yüklemeleri için en son kullanıcı adını "
+"kaydedecektir."
+
+#: ../gnome-gmail.schemas.in.h:2
+msgid "Google Apps domain"
+msgstr "Google Apps alanadı"
+
+#: ../gnome-gmail.schemas.in.h:3
+msgid "Hide confirmation dialog"
+msgstr "Onay kutucuğunu gizle"
+
+#: ../gnome-gmail.schemas.in.h:4
+msgid "Save IMAP password?"
+msgstr "IMAP şifresini kaydet?"
+
+#: ../gnome-gmail.schemas.in.h:5
+msgid "Saved IMAP user name"
+msgstr "Kaydedilmiş IMAP kullanıcı adı"
+
+#: ../gnome-gmail.schemas.in.h:6
+msgid "Set Open Office to use the Gnome Preferred Email Application"
+msgstr "Open Office, Gnome Tercih Edilen E-posta Uygulamasını kullansın"
+
+#: ../gnome-gmail.schemas.in.h:7
+msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+msgstr ""
+"Gnome Gmail'i Google Apps ile kullanmak için alanadını buraya giriniz"
+
+#: ../gnome-gmail.schemas.in.h:8
+msgid ""
+"When checked, Gnome Gmail will attempt to configure Open Office to use the "
+"currently selected Gnome Preferred Email Application with each login, using "
+"a Gnome Gmail compatibility application."
+msgstr ""
+"Seçili olduğunda; Gnome Gmail, her oturum açılışında bir uyumluluk "
+"uygulaması kullanarak Open Office'in seçili Gnome Tercih Edilen E-posta "
+"Uygulamasını kullanmasını sağlamaya çalışacaktır."
+
+#: ../gnome-gmail.schemas.in.h:9
+msgid ""
+"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
+"IMAP is used to upload file attachments to GMail."
+msgstr ""
+"Seçili olduğunda, Gnome Gmail IMAP şifresini Gnome Şifre Yöneticisine "
+"kaydedecektir. IMAP dosya eklentilerini Gmail'e yüklemek amacıyla "
+"kullanılmaktadır."
+
+#: ../gnome-gmail.schemas.in.h:10
+msgid ""
+"When checked, Gnome Gmail will suppress the confirmation notification that "
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
+msgstr ""
+"Seçili olduğunda, Gnome Gmail her mesaj yaratıldıktan sonra gözüken onay "
+"sorusunu gizleyecektir. Onay kutucuğunda, Gnome Gmail'i Google Apps hesabı "
+"ile kullanabilmek için gerekli ayarlara bir bağlantı bulunmaktadır."
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr "Gmail'i masaüstünüz ile entegre edin"
+
+#: ../setOOmailer.desktop.in.h:1
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr ""
+"Open Office'in, Gnome Tercih Edilen E-posta Uygulamasını kullanmasını sağlar"
+
+#: ../setOOmailer.desktop.in.h:2
+msgid "Gnome Gmail Open Office Configurator"
+msgstr "Gnome Gmail Open Office Yapılandırıcısı"
+
+#: ../gnome-gmail.xml.in.h:1
+msgid "Gmail"
+msgstr "Gmail"
