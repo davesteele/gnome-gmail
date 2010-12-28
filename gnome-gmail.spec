@@ -66,10 +66,18 @@ fi
 %attr( 0644, root, root) /usr/share/gnome/autostart/setOOmailer.desktop
 %attr( 0644, root, root) /usr/share/man/man1/gnome-gmail.1.gz
 %attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
-%attr( 0644, root, root) /usr/share/locale/es/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/da/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/de/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/es/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/fi/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/fr/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/it/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/pl/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/pt/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/ru/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/sv/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/tr/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/vi/LC_MESSAGES/gnome-gmail.mo
 
 
 %changelog
