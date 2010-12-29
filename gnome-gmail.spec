@@ -76,6 +76,7 @@ fi
 %attr( 0644, root, root) /usr/share/locale/pt/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/ru/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/sv/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/ta/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/tr/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/vi/LC_MESSAGES/gnome-gmail.mo
 
