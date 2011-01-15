@@ -4,15 +4,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: pl\n"
-"Report-Msgid-Bugs-To: https://sourceforge.net/tracker/?"
-"group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2010-11-12 22:55-0500\n"
-"PO-Revision-Date: 2010-11-15 10:11+0100\n"
+"Report-Msgid-Bugs-To: "
+"https://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2010-12-06 20:21-0500\n"
+"PO-Revision-Date: 2010-12-07 10:11+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-01-15 03:36+0000\n"
+"X-Generator: Launchpad (build 12200)\n"
 "Language: pl\n"
 
 #: ../gnome-gmail:70
@@ -28,35 +30,35 @@ msgstr "Załączono wiadomość MIME"
 msgid "Drafts"
 msgstr "Szkice"
 
-#: ../gnome-gmail:131
+#: ../gnome-gmail:134
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Nie można ustalić położenia katalogu Szkice protokołu IMAP"
 
-#: ../gnome-gmail:309
+#: ../gnome-gmail:312
 msgid "User cancelled \"Send To...\""
 msgstr "Użytkownik anulował \"Wyślij do...\""
 
-#: ../gnome-gmail:416
+#: ../gnome-gmail:419
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
 
-#: ../gnome-gmail:442
+#: ../gnome-gmail:445
 msgid "nvalid credentials"
 msgstr "nieprawidłowe dane uwierzytelniające"
 
-#: ../gnome-gmail:443
+#: ../gnome-gmail:446
 msgid "Invalid GMail User Name or Password"
 msgstr "Nieprawidłowa nazwa użytkownika lub hasło usługi Gmail"
 
-#: ../gnome-gmail:444
+#: ../gnome-gmail:447
 msgid "not enabled for IMAP"
 msgstr "nie włączono dla protokołu IMAP"
 
-#: ../gnome-gmail:445
+#: ../gnome-gmail:448
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "Należy włączyć protokół IMAP w usłudze Gmail, aby wysyłać załączniki"
 
-#: ../gnome-gmail:453
+#: ../gnome-gmail:456
 msgid "GMail credentials incomplete"
 msgstr "Dane uwierzytelniające usługi Gmail nie są pełne"
 
@@ -153,7 +155,8 @@ msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-msgstr "Aby użyć programu GNOME Gmail z Google Apps, należy tutaj podać domenę"
+msgstr ""
+"Aby użyć programu GNOME Gmail z Google Apps, należy tutaj podać domenę"
 
 #: ../gnome-gmail.schemas.in.h:8
 msgid ""

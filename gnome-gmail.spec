@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.7
+Version: 1.7.1
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -72,11 +72,14 @@ fi
 %attr( 0644, root, root) /usr/share/locale/fi/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/fr/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/it/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/ja/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/pl/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/pt/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/ro/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/ru/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/sv/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/ta/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/ta_LK/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/tr/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/vi/LC_MESSAGES/gnome-gmail.mo
 

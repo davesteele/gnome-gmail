@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2010-11-14 02:35+0000\n"
-"PO-Revision-Date: 2010-11-25 12:03+0000\n"
-"Last-Translator: Lê Trường An <Unknown>\n"
+"POT-Creation-Date: 2010-12-06 20:21-0500\n"
+"PO-Revision-Date: 2010-12-07 10:05+0000\n"
+"Last-Translator: David Steele <Unknown>\n"
 "Language-Team: Vietnamese <vi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-04 04:24+0000\n"
-"X-Generator: Launchpad (build Unknown)\n"
+"X-Launchpad-Export-Date: 2011-01-15 03:40+0000\n"
+"X-Generator: Launchpad (build 12200)\n"
 
 #: ../gnome-gmail:70
 #, c-format
@@ -30,35 +30,35 @@ msgstr "Định dạng tập tin đính kèm"
 msgid "Drafts"
 msgstr "Thư nháp"
 
-#: ../gnome-gmail:131
+#: ../gnome-gmail:134
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Không thể để xác định vị trí thư mục Thư nháp IMAP"
 
-#: ../gnome-gmail:309
+#: ../gnome-gmail:312
 msgid "User cancelled \"Send To...\""
 msgstr "Đã hủy bỏ \"Gửi đến...\""
 
-#: ../gnome-gmail:416
+#: ../gnome-gmail:419
 msgid "Error creating message with attachment"
 msgstr "Lỗi khi tạo tin nhắn với tập tin đính kèm"
 
-#: ../gnome-gmail:442
+#: ../gnome-gmail:445
 msgid "nvalid credentials"
 msgstr "thông tin không hợp lệ"
 
-#: ../gnome-gmail:443
+#: ../gnome-gmail:446
 msgid "Invalid GMail User Name or Password"
 msgstr "Tên người dùng và mật khẩu GMail không hợp lệ"
 
-#: ../gnome-gmail:444
+#: ../gnome-gmail:447
 msgid "not enabled for IMAP"
 msgstr "không bật IMAP"
 
-#: ../gnome-gmail:445
+#: ../gnome-gmail:448
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "Bạn phải 'Bật IMAP' trong GMail"
 
-#: ../gnome-gmail:453
+#: ../gnome-gmail:456
 msgid "GMail credentials incomplete"
 msgstr "Thông tin GMail chưa đầy đủ"
 

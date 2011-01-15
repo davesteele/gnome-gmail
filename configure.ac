@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.65])
-AC_INIT([gnome-gmail], [1.7], [https://sourceforge.net/tracker/?group_id=277145&atid=1176979])
+AC_INIT([gnome-gmail], [1.7.1], [https://sourceforge.net/tracker/?group_id=277145&atid=1176979])
 AM_INIT_AUTOMAKE
 AC_COPYRIGHT([Copyright 2010 David Steele <daves@users.sourceforge.net>])
 

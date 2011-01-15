@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2010-12-06 20:21-0500\n"
-"PO-Revision-Date: 2010-12-19 19:35+0000\n"
-"Last-Translator: Jackseen Jeyaluck <Unknown>\n"
+"PO-Revision-Date: 2010-12-30 04:48+0000\n"
+"Last-Translator: David Steele <Unknown>\n"
 "Language-Team: Tamil (Sri-Lanka) <ta_LK@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2010-12-27 20:32+0000\n"
-"X-Generator: Launchpad (build 12138)\n"
+"X-Launchpad-Export-Date: 2011-01-15 03:36+0000\n"
+"X-Generator: Launchpad (build 12200)\n"
 
 #: ../gnome-gmail:70
 #, c-format
