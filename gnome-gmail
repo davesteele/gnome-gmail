@@ -66,8 +66,10 @@ class GMailIMAP( ):
             if header.lower() in self.mail_dict:
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
+        fname = os.path.split( self.mail_dict[ "attach" ][0] )[1]
+        
         if "subject" not in self.mail_dict:
-            msg[ "Subject" ] = _("Sending %s") % self.mail_dict[ "attach" ][0]
+            msg[ "Subject" ] = _("Sending %s") % fname
 
         msg.preamble = _("Mime message attached")
 
@@ -103,7 +105,7 @@ class GMailIMAP( ):
             attach_file.close()
 
             attachment.add_header( 'Content-Disposition', 'attachment', 
-                filename=filepath)
+                filename=fname)
 
             msg.attach( attachment )
 
