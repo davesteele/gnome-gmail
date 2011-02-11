@@ -16,6 +16,7 @@ import os
 import xml.etree.ElementTree as ET
 import shutil
 import gconf
+import sys
 
 
 class OOMailerCfg( object ):
@@ -44,6 +45,7 @@ class OOMailerCfg( object ):
 
         register_namespace( self.registry_ns, self.registry_uri )
         
+    def _parse_tree( self ):
         self.tree = ET.parse( self.ooxmlfile )
         self.root = self.tree.getroot()
 
@@ -90,6 +92,7 @@ class OOMailerCfg( object ):
     def _set_external_mailer_xml( self, cmd_path ):
         """ given a path to the OO XML file, set the external mailer """
 
+
         self._del_external_mailer( self.root )
 
         self._add_external_mailer( self.root, cmd_path )
@@ -98,6 +101,9 @@ class OOMailerCfg( object ):
 
     def set_external_mailer( self, cmd_path ):
         """ cleanly set the external mailer, with a backup """
+
+        self._parse_tree()
+
         if( self.get_external_mailer() != cmd_path ):
             tree = self._set_external_mailer_xml( cmd_path )
 
@@ -110,8 +116,77 @@ class OOMailerCfg( object ):
 
             tree.write( self.ooxmlfile )
 
+class LibreMailerCfg( OOMailerCfg):
+    def __init__( self, xml_path="/.openoffice.org/3/user/registrymodifications.xcu" ):
+        super( LibreMailerCfg, self).__init__()
+
+        self.oo_xml_path = xml_path
+        self.ooxmlfile = self.homedir + self.oo_xml_path
+
+        register_namespace = None
+
+
+    def _del_external_mailer ( self, root_node ):
+        """ Delete the XML key for the existing OO mailer """
+        for node in root_node:
+            if( node.attrib[self.registry_prefix + 'path' ] == \
+                "/org.openoffice.Office.Common/ExternalMailer" ):
+                root_node.remove( node )
+
+
+    def _add_external_mailer( self, root_node, cmd ):
+        """ add the key for the compatibility mailer """
+        external_mailer = ET.SubElement( root_node, "item" )
+        external_mailer.attrib[ self.registry_prefix + 'path'] = \
+            "/org.openoffice.Office.Common/ExternalMailer"
+
+        external_mailer_prop = ET.SubElement( external_mailer, "prop" )
+        external_mailer_prop.attrib[ self.registry_prefix + 'name'] = \
+            "Program"
+        external_mailer_prop.attrib[ self.registry_prefix + 'op'] = \
+            "fuse"
+
+        external_mailer_value = ET.SubElement( external_mailer_prop, "value" )
+        external_mailer_value.text = cmd
+
+
+    def get_external_mailer( self ):
+        return_value = ""
+
+        try:
+            for node in self.root:
+                if( node.attrib[self.registry_prefix + 'path'] == \
+                        "/org.openoffice.Office.Common/ExternalMailer" ):
+                    prop_node = node.find( "prop" )
+                    value_node = prop_node.find( "value" )
+                    return_value = value_node.text
+        except:
+            pass
+
+        return( return_value )
+
+    def set_external_mailer( self, cmd_path ):
+        """ cleanly set the external mailer, with a backup """
+
+        self._parse_tree()
+
+        self.root.set( "xmlns:xs", "http://www.w3.org/2001/XMLSchema" )
+
+        if( self.get_external_mailer() != cmd_path ):
+            tree = self._set_external_mailer_xml( cmd_path )
+
+            try:
+                os.unlink( self.ooxmlfile + self.backup_ext )
+            except:
+                pass
+
+            shutil.move( self.ooxmlfile, self.ooxmlfile + self.backup_ext )
+
+            tree.write( self.ooxmlfile, encoding="UTF-8", \
+                xml_declaration=True, method='xml' )
+
 def should_set_oo_mailer( basedir = "/apps/gnome-gmail/" ):
-    """ is the current OO mail handler different than what we want? """
+    """ Check gconf. Should I update the mailer? """
 
     client = gconf.client_get_default()
 
@@ -121,13 +196,30 @@ def should_set_oo_mailer( basedir = "/apps/gnome-gmail/" ):
 
 
 if __name__ == "__main__":
+    external_mailer = "/usr/share/gnome-gmail/evolution"
+
+    if( not should_set_oo_mailer() ):
+        sys.exit( 0 )
 
     # this is best effort
     try:
-        if( should_set_oo_mailer() ):
-            Oom = OOMailerCfg()
+        Oom = OOMailerCfg()
 
-            Oom.set_external_mailer( "/usr/share/gnome-gmail/evolution" )        
+        Oom.set_external_mailer( external_mailer )
+    except:
+        pass
+
+    try:
+        Lbm = LibreMailerCfg( xml_path="/.libreoffice/3/user/registrymodifications.xcu" )
+
+        Lbm.set_external_mailer( external_mailer )
+    except:
+        pass
+
+    try:
+        Obm = LibreMailerCfg( xml_path="/.openoffice.org/3/user/registrymodifications.xcu" )
+
+        Obm.set_external_mailer( external_mailer )
     except:
         pass
 
