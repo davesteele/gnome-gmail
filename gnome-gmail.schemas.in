@@ -63,6 +63,19 @@ to use the currently selected Gnome Preferred Email Application with each
 login, using a Gnome Gmail compatibility application.</long>
    </locale>
 </schema>
+<schema>
+   <key>/schemas/apps/gnome-gmail/suppresspreferred</key>
+   <applyto>/apps/gnome-gmail/suppresspreferred</applyto>
+   <owner>gnome-gmail</owner>
+   <type>bool</type>
+   <default>FALSE</default>
+   <locale name="C">
+      <short>Suppress the GNOME Gmail Preferred Application Dialog</short>
+      <long>When checked, GNOME Gmail will not offer to set itself as the 
+GNOME Preferred Mail application. Otherwise, the program will ask if you want
+it to be the mail application, if it isn't already.</long>
+   </locale>
+</schema>
 </schemalist>
 </gconfschemafile>
 

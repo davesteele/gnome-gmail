@@ -196,6 +196,7 @@ class ConfigInfo( object ):
         self.savepassword = False
         self.appsdomain = ""
         self.hideconfirmation = False
+        self.suppresspreferred = False
 
         self.xml = None
 
@@ -220,9 +221,13 @@ class ConfigInfo( object ):
 
         self.hideconfirmation = self.client.get_bool( 
             self.basedir + 'hideconfirmation' )
-
         if self.hideconfirmation == None:
             self.hideconfirmation = False
+
+        self.suppresspreferred = self.client.get_bool( 
+            self.basedir + 'suppresspreferred' )
+        if self.suppresspreferred == None:
+            self.suppresspreferred = False
 
         try:
             if self.savepassword:
@@ -241,6 +246,8 @@ class ConfigInfo( object ):
         self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
         self.client.set_bool( self.basedir + 'hideconfirmation', \
             self.hideconfirmation )
+        self.client.set_bool( self.basedir + 'suppresspreferred', \
+            self.suppresspreferred )
 
         if self.savepassword:
             self.keyring.set_credentials( (self.user, self.password) )
@@ -312,8 +319,37 @@ class ConfigInfo( object ):
 
         window.destroy()
 
-        
         return( self.info_complete() )
+
+    def query_set_preferred( self ):
+
+        if( not self.suppresspreferred ):
+
+            handler_path_base = "/desktop/gnome/url-handlers/mailto/"
+            handler_path = handler_path_base + "command"
+
+            our_handler = "gnome-gmail %s"
+
+            current_handler = self.client.get_string( handler_path )
+
+            if( our_handler != current_handler ):
+                glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
+                self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
+
+                window = self.xml.get_widget( "preferred_app_dialog" )
+                response = window.run()
+
+                if( response == 1 ):
+                    self.client.set_string( handler_path, our_handler )
+                    self.client.set_bool( handler_path_base + "enabled", True )
+                    self.client.set_bool( handler_path_base + "needs_terminal",\
+                        False )
+
+                ask_check_button = self.xml.get_widget( "check_dont_ask_again" )
+                self.suppresspreferred = ask_check_button.get_active()
+
+                self.write_config()
+
 
 class GMailURL( ):
     """ Logic to convert a mailto link to an appropriate GMail URL, by
@@ -492,6 +528,8 @@ def main( ):
     interface = dbus.Interface(
         notifications_object,
         'org.freedesktop.Notifications')
+
+    cfg.query_set_preferred()
 
     try:
         gm_url = GMailURL( mailto, cfg )
