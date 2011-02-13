@@ -3,3 +3,5 @@ install with:
 ./configure
 make
 sudo make install
+
+Note that there are distribution-specific steps for adding gconf schemas.

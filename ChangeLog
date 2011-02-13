@@ -1,6 +1,18 @@
+
+
+2011-02-12 David Steele <daves@users.sourceforge.net>
+
+	* Manage the Preferred Mail setting from inside the application (for Fedora15)
+	* Now configures LibreOffice and newer OpenOffice installs to use GNOME email
+	* Translations (de, es, fr, it, ja, pl, ro, ru, ta, tr, vi)
+	* Refer to attached files by name instead of path
+
+
+
 2010-10-18 David Steele <daves@users.sourceforge.net>
 
 	* debian/rules - debian build cleanup
+
 
 
 2010-10-14  gettextize  <bug-gnu-gettext@gnu.org>

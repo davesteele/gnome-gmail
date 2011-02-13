@@ -1,8 +1,17 @@
 GNOME Gmail NEWS
 
-Copyright 2010 David Steele <daves@users.sourceforge.net>
+Copyright 2011 David Steele <daves@users.sourceforge.net>
 This file is part of gnome-gmail
 Available under the terms of the GNU General Public License version 2 or later
+
+* Version announcement for Version 1.7.1
+
+GNOME Gmail version 1.7.1 has been released, featuring internal support for
+managing the Preferred Mail setting, and compatibility with LibreOffice.
+
+The application now includes eleven full or partial tranlations.
+
+GNOME Gmail adds support for Gmail to the GNOME desktop. Once installed, the user can select Gmail as the preferred mail application for the desktop.
 
 * Version announcement for Version 1.7
 
