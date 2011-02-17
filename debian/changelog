@@ -1,9 +1,10 @@
-gnome-gmail (1.7-1.1) unstable; urgency=low
+gnome-gmail (1.7.1-1) unstable; urgency=low
 
   * Manage the Preferred Mail setting from inside the application (for Fedora15)
   * Configures LibreOffice to use the preferred email application
   * Translations (de, es, fr, it, ja, pl, ro, ru, ta, tr, vi)
   * Refer to attached files by name instead of path
+  * Minor bug fixes
 
  -- David Steele <daves@users.sourceforge.net>  Sat, 12 Feb 2011 19:34:36 -0500
 

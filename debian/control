@@ -6,6 +6,8 @@ Dm-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7), intltool
 Standards-Version: 3.9.1
 Homepage: http://gnome-gmail.sourceforge.net
+Vcs-Browser: http://gnome-gmail.git.sourceforge.net/git/gitweb.cgi?p=gnome-gmail/gnome-gmail;a=tree
+Vcs-Git: git://gnome-gmail.git.sourceforge.net/gitroot/gnome-gmail/gnome-gmail
 
 Package: gnome-gmail
 Architecture: all
