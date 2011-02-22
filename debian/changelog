@@ -1,3 +1,9 @@
+gnome-gmail (1.7.2-1) unstable; urgency=low
+
+  * Fix automake problem present in v1.7.1 tar
+
+ -- David Steele <daves@users.sourceforge.net>  Mon, 21 Feb 2011 22:14:54 -0500
+
 gnome-gmail (1.7.1-1) unstable; urgency=low
 
   * Manage the Preferred Mail setting from inside the application (for Fedora15)
