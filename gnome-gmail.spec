@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.7.1
+Version: 1.7.2
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -86,6 +86,9 @@ fi
 
 
 %changelog
+* Mon Feb 21 2010 David Steele <daves@users.sourceforge.net> - 1.7.2-1
+- Fix autotools bug in 1.7.1 (autoconf withoug debian libgconf2-dev installed)
+
 * Sat Feb 12 2010 David Steele <daves@users.sourceforge.net> - 1.7.1-1
 - Translations - de, es, fr, it, ja, pl, ro, ru, ta, tr, vi
 - Manage the preferred mail setting from within the application (for Fedora 15)
