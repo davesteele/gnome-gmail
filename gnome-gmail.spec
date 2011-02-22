@@ -86,10 +86,10 @@ fi
 
 
 %changelog
-* Mon Feb 21 2010 David Steele <daves@users.sourceforge.net> - 1.7.2-1
+* Mon Feb 21 2011 David Steele <daves@users.sourceforge.net> - 1.7.2-1
 - Fix autotools bug in 1.7.1 (autoconf withoug debian libgconf2-dev installed)
 
-* Sat Feb 12 2010 David Steele <daves@users.sourceforge.net> - 1.7.1-1
+* Sat Feb 12 2011 David Steele <daves@users.sourceforge.net> - 1.7.1-1
 - Translations - de, es, fr, it, ja, pl, ro, ru, ta, tr, vi
 - Manage the preferred mail setting from within the application (for Fedora 15)
 - Now configures LibreOffice (and newer OpenOffice) for GNOME emailer use
