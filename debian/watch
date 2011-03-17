@@ -1,5 +1,5 @@
 # Compulsory line, this is a version 3 file
 version=3
 
-http://sf.net/gnome-gmail/gnome-gmail-(.*)\.tgz
+http://sf.net/gnome-gmail/gnome-gmail-(.*)\.tar\.gz
 
