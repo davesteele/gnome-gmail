@@ -1,4 +1,9 @@
+2011-03-20 Michael R. Crusoe <michael.crusoe@gmail.com>
 
+  * Switch to native package as debian/ is maintained upstream
+  * Add libgconf2-dev, autotools-dev, and dh-autoreconf to Build-Depends
+  * Migrate to simplified dh based debian/rules (these last two changes fixes a FTBFS)
+  * Include the non-Debian changelog in the package
 
 2011-02-12 David Steele <daves@users.sourceforge.net>
 

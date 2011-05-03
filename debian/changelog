@@ -1,3 +1,12 @@
+gnome-gmail (1.7.3) unstable; urgency=low
+
+  * Switch to native package as debian/ is maintained upstream
+  * Add libgconf2-dev, autotools-dev, and dh-autoreconf to Build-Depends
+  * Migrate to simplified dh based debian/rules (these last two changes fixes a FTBFS)
+  * Include the non-Debian changelog in the package
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Tue, 29 Mar 2011 13:40:36 -0700
+
 gnome-gmail (1.7.2-1) unstable; urgency=low
 
   * Fix automake problem present in v1.7.1 tar
