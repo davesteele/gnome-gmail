@@ -63,6 +63,7 @@ fi
 %attr( 0755, root, root) /usr/share/icons/hicolor/24x24/apps/gnome-gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/32x32/apps/gnome-gmail.png
 %attr( 0755, root, root) /usr/share/icons/hicolor/48x48/apps/gnome-gmail.png
+%attr( 0755, root, root) /usr/share/icons/hicolor/256x256/apps/gnome-gmail.png
 %attr( 0644, root, root) /usr/share/applications/gnome-gmail.desktop
 %attr( 0644, root, root) /usr/share/gnome/autostart/setOOmailer.desktop
 %attr( 0644, root, root) /usr/share/man/man1/gnome-gmail.1.gz

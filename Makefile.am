@@ -30,11 +30,13 @@ icon16x16dir = $(iconbasedir)/16x16/apps
 icon24x24dir = $(iconbasedir)/24x24/apps
 icon32x32dir = $(iconbasedir)/32x32/apps
 icon48x48dir = $(iconbasedir)/48x48/apps
+icon256x256dir = $(iconbasedir)/256x256/apps
 
 dist_icon16x16_DATA = icons/16x16/gnome-gmail.png
 dist_icon24x24_DATA = icons/24x24/gnome-gmail.png
 dist_icon32x32_DATA = icons/32x32/gnome-gmail.png
 dist_icon48x48_DATA = icons/48x48/gnome-gmail.png
+dist_icon256x256_DATA = icons/256x256/gnome-gmail.png
 
 CLEANFILES = $(PACKAGE)_$(VERSION).orig.tar.gz \
    $(PACKAGE)_$(VERSION)_$(RELEASE)_all.deb \
