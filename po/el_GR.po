@@ -8,27 +8,27 @@ msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
 "POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-05-13 15:11+0000\n"
+"PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: daves <dsteele@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1))\n"
+"Language: el_GR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: ../gnome-gmail:71
 #, c-format
 msgid "Sending %s"
-msgstr "Se trimite %s"
+msgstr "Γίνεται αποστολή %s"
 
 #: ../gnome-gmail:73
 msgid "Mime message attached"
-msgstr "Mesajul Mime a fost ataşat"
+msgstr ""
 
 #: ../gnome-gmail:133
 msgid "Drafts"
-msgstr ""
+msgstr "Πρόχειρα"
 
 #: ../gnome-gmail:143
 msgid "Unable to determine IMAP Drafts folder location"
@@ -44,11 +44,11 @@ msgstr ""
 
 #: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
-msgstr "Utilizatorul a anulat \"Trimiteţi la ...\""
+msgstr ""
 
 #: ../gnome-gmail:487
 msgid "Error creating message with attachment"
-msgstr ""
+msgstr "Σφάλμα δημιουργείας μηνύματος με επισυναπτόμενο"
 
 #: ../gnome-gmail:513
 msgid "nvalid credentials"
@@ -56,15 +56,15 @@ msgstr ""
 
 #: ../gnome-gmail:514
 msgid "Invalid GMail User Name or Password"
-msgstr "Utilizatorul sau parola pentru GMail este nevalida"
+msgstr ""
 
 #: ../gnome-gmail:515
 msgid "not enabled for IMAP"
-msgstr "Nu este activat pentru IMAP"
+msgstr ""
 
 #: ../gnome-gmail:516
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Trebuie să „Activați IMAP” în Gmail pentru a trimite atașamente"
+msgstr ""
 
 #: ../gnome-gmail:524
 msgid "GMail credentials incomplete"
@@ -72,11 +72,11 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:1
 msgid "Configure"
-msgstr "Configurează"
+msgstr "Διαμόρφωση"
 
 #: ../gnomegmail.glade.h:2
 msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Configuraţi Gnome Gmail pentru a fi utilizat cu un cont Google App."
+msgstr ""
 
 #: ../gnomegmail.glade.h:3
 msgid "Copyright 2010 - Dave Steele"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
-msgstr "Introduceţi parola pentru contul de email"
+msgstr "Εισάγετε τον κωδικό πρόσβασης για το λογαριασμό αλληλογραφίας"
 
 #: ../gnomegmail.glade.h:7
 msgid ""
@@ -112,11 +112,11 @@ msgstr "Gnome Gmail"
 
 #: ../gnomegmail.glade.h:11
 msgid "Password"
-msgstr "Parolă"
+msgstr "Κωδικός πρόσβασης"
 
 #: ../gnomegmail.glade.h:12
 msgid "Remember Password"
-msgstr "Reține parola"
+msgstr "Να θυμάστε τον κωδικό σας"
 
 #: ../gnomegmail.glade.h:13
 msgid "Remember the Google Account password in the Gnome keychain."
@@ -133,19 +133,19 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:16
 msgid "User Name"
-msgstr "Nume utilizator"
+msgstr "Όνομα χρήστη"
 
 #: ../gnomegmail.glade.h:17
 msgid "Your Gmail password"
-msgstr ""
+msgstr "Ο κωδικός πρόσβασής σας στο Gmail"
 
 #: ../gnomegmail.glade.h:18
 msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Numele de utilizator Gmail, fără partea „@gmail.com”"
+msgstr "Το Gmail όνομα χρήστη, χωρίς το μέρος του «@ gmail.com»"
 
 #: ../gnomegmail.glade.h:19
 msgid "comment"
-msgstr "comentariu"
+msgstr "σχόλιο"
 
 #: ../gnome-gmail.schemas.in.h:1
 msgid ""
@@ -154,19 +154,19 @@ msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:2
 msgid "Google Apps domain"
-msgstr ""
+msgstr "Google Apps domain"
 
 #: ../gnome-gmail.schemas.in.h:3
 msgid "Hide confirmation dialog"
-msgstr "Ascunde dialogul de confirmare."
+msgstr "Απόκρυψη διαλόγου επιβεβαίωσης"
 
 #: ../gnome-gmail.schemas.in.h:4
 msgid "Save IMAP password?"
-msgstr "Salvaţi parola IMAP?"
+msgstr "Αποθήκευση κωδικό πρόσβασης IMAP;"
 
 #: ../gnome-gmail.schemas.in.h:5
 msgid "Saved IMAP user name"
-msgstr ""
+msgstr "Αποθηκευμένο όνομα χρήστη IMAP"
 
 #: ../gnome-gmail.schemas.in.h:6
 msgid "Set Open Office to use the Gnome Preferred Email Application"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr ""
+msgstr "Ενσωματώστε το Gmail με την επιφάνεια εργασίας σας"
 
 #: ../setOOmailer.desktop.in.h:1
 msgid "Configure Open Office to use the Gnome Preferred Email application"

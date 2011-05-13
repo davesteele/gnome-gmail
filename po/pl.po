@@ -1,64 +1,72 @@
-# translation of pl.po to Polish
-# Piotr Drąg <piotrdrag@gmail.com>, 2010.
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: pl\n"
-"Report-Msgid-Bugs-To: "
-"https://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2010-12-06 20:21-0500\n"
-"PO-Revision-Date: 2010-12-07 10:11+0000\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <trans-pl@lists.fedoraproject.org>\n"
+"Project-Id-Version: GNOME Gmail\n"
+"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2011-05-13 10:46-0400\n"
+"PO-Revision-Date: 2011-05-13 15:10+0000\n"
+"Last-Translator: daves <dsteele@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-01-15 03:36+0000\n"
-"X-Generator: Launchpad (build 12200)\n"
 "Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: ../gnome-gmail:70
+#: ../gnome-gmail:71
 #, c-format
 msgid "Sending %s"
 msgstr "Wysyłanie %s"
 
-#: ../gnome-gmail:72
+#: ../gnome-gmail:73
 msgid "Mime message attached"
 msgstr "Załączono wiadomość MIME"
 
-#: ../gnome-gmail:122
+#: ../gnome-gmail:133
 msgid "Drafts"
 msgstr "Szkice"
 
-#: ../gnome-gmail:134
+#: ../gnome-gmail:143
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Nie można ustalić położenia katalogu Szkice protokołu IMAP"
 
-#: ../gnome-gmail:312
+#: ../gnome-gmail:150
+msgid "Error encountered while uploading the message"
+msgstr ""
+
+#: ../gnome-gmail:168
+msgid "Error accessing message. Check the Drafts folder"
+msgstr ""
+
+#: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
 msgstr "Użytkownik anulował \"Wyślij do...\""
 
-#: ../gnome-gmail:419
+#: ../gnome-gmail:487
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
 
-#: ../gnome-gmail:445
+#: ../gnome-gmail:513
 msgid "nvalid credentials"
 msgstr "nieprawidłowe dane uwierzytelniające"
 
-#: ../gnome-gmail:446
+#: ../gnome-gmail:514
 msgid "Invalid GMail User Name or Password"
 msgstr "Nieprawidłowa nazwa użytkownika lub hasło usługi Gmail"
 
-#: ../gnome-gmail:447
+#: ../gnome-gmail:515
 msgid "not enabled for IMAP"
 msgstr "nie włączono dla protokołu IMAP"
 
-#: ../gnome-gmail:448
+#: ../gnome-gmail:516
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "Należy włączyć protokół IMAP w usłudze Gmail, aby wysyłać załączniki"
 
-#: ../gnome-gmail:456
+#: ../gnome-gmail:524
 msgid "GMail credentials incomplete"
 msgstr "Dane uwierzytelniające usługi Gmail nie są pełne"
 
@@ -75,10 +83,18 @@ msgid "Copyright 2010 - Dave Steele"
 msgstr "Copyright 2010 Dave Steele"
 
 #: ../gnomegmail.glade.h:4
+msgid "Don't ask again"
+msgstr ""
+
+#: ../gnomegmail.glade.h:5
+msgid "Don't change the Preferred Email Application"
+msgstr ""
+
+#: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
 msgstr "Proszę podać hasło do konta pocztowego"
 
-#: ../gnomegmail.glade.h:5
+#: ../gnomegmail.glade.h:7
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
@@ -86,41 +102,50 @@ msgstr ""
 "Proszę podać dane uwierzytelniające usługi Gmail,\n"
 "aby wysłać plik"
 
-#: ../gnomegmail.glade.h:7 ../gnome-gmail.desktop.in.h:1
+#: ../gnomegmail.glade.h:9
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+
+#: ../gnomegmail.glade.h:10 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
 msgstr "GNOME Gmail"
 
-#: ../gnomegmail.glade.h:8
+#: ../gnomegmail.glade.h:11
 msgid "Password"
 msgstr "Hasło"
 
-#: ../gnomegmail.glade.h:9
+#: ../gnomegmail.glade.h:12
 msgid "Remember Password"
 msgstr "Zapamiętanie hasła"
 
-#: ../gnomegmail.glade.h:10
+#: ../gnomegmail.glade.h:13
 msgid "Remember the Google Account password in the Gnome keychain."
 msgstr "Zapamiętuje hasło konta Google w bazie kluczy środowiska GNOME."
 
-#: ../gnomegmail.glade.h:11
+#: ../gnomegmail.glade.h:14
 msgid ""
 "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr ""
-"Nazwa konta pocztowego (np. \"jan\" dla konta pocztowego \"jan@gmail.com\")"
+msgstr "Nazwa konta pocztowego (np. \"jan\" dla konta pocztowego \"jan@gmail.com\")"
 
-#: ../gnomegmail.glade.h:12
+#: ../gnomegmail.glade.h:15
+msgid "Use GNOME Gmail for sending mail"
+msgstr ""
+
+#: ../gnomegmail.glade.h:16
 msgid "User Name"
 msgstr "Nazwa użytkownika"
 
-#: ../gnomegmail.glade.h:13
+#: ../gnomegmail.glade.h:17
 msgid "Your Gmail password"
 msgstr "Hasło usługi Gmail"
 
-#: ../gnomegmail.glade.h:14
+#: ../gnomegmail.glade.h:18
 msgid "Your Gmail user name, without the '@gmail.com' part"
 msgstr "Nazwa użytkownika usługi Gmail, bez części \"@gmail.com\""
 
-#: ../gnomegmail.glade.h:15
+#: ../gnomegmail.glade.h:19
 msgid "comment"
 msgstr "komentarz"
 
@@ -154,11 +179,22 @@ msgstr ""
 "OpenOffice.org"
 
 #: ../gnome-gmail.schemas.in.h:7
+msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:8
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
 msgstr ""
 "Aby użyć programu GNOME Gmail z Google Apps, należy tutaj podać domenę"
 
-#: ../gnome-gmail.schemas.in.h:8
+#: ../gnome-gmail.schemas.in.h:9
+msgid ""
+"When checked, GNOME Gmail will not offer to set itself as the GNOME "
+"Preferred Mail application. Otherwise, the program will ask if you want it "
+"to be the mail application, if it isn't already."
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:10
 msgid ""
 "When checked, Gnome Gmail will attempt to configure Open Office to use the "
 "currently selected Gnome Preferred Email Application with each login, using "
@@ -168,20 +204,20 @@ msgstr ""
 "OpenOffice.org do użycia obecnie wybranego programu pocztowego środowiska "
 "GNOME za każdym logowaniem, używając programu zgodności GNOME Gmail."
 
-#: ../gnome-gmail.schemas.in.h:9
+#: ../gnome-gmail.schemas.in.h:11
 msgid ""
 "When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
 "IMAP is used to upload file attachments to GMail."
 msgstr ""
-"Jeśli jest wybrane, program GNOME Gmail zapisze hasło protokołu IMAP w bazie "
-"kluczy środowiska GNOME. Protokół IMAP jest używany do wysyłania załączników "
-"do usługi Gmail."
+"Jeśli jest wybrane, program GNOME Gmail zapisze hasło protokołu IMAP w bazie"
+" kluczy środowiska GNOME. Protokół IMAP jest używany do wysyłania "
+"załączników do usługi Gmail."
 
-#: ../gnome-gmail.schemas.in.h:10
+#: ../gnome-gmail.schemas.in.h:12
 msgid ""
 "When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow "
-"Gnome Gmail to be configured for Google Apps support."
+"appears with each message created. The notification includes a link to allow"
+" Gnome Gmail to be configured for Google Apps support."
 msgstr ""
 "Jeśli jest wybrane, program GNOME Gmail nie wyświetli powiadomienia "
 "potwierdzającego, które pojawia się po utworzeniu każdej wiadomości. "
