@@ -7,7 +7,7 @@
 """ gnome-gmail
 This script accepts an argument of a mailto url, and calls up an appropriate
 GMail web page to handle the directive. It is intended to support GMail as a
-Gnome Preferred Email application """
+GNOME Preferred Email application """
 
 import sys
 import urlparse
@@ -18,7 +18,6 @@ import os
 import re
 
 from email import encoders
-#from email.message import Message
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
@@ -114,13 +113,23 @@ class GMailIMAP( ):
 
 
     def send_mail( self, user, password ):
-        """ transfer the message to GMail Drafts folder, using IMAP """
+        """ transfer the message to GMail Drafts folder, using IMAP.
+        Return a message ID that can be used to reference the mail via URL"""
 
         imap_obj = imaplib.IMAP4_SSL( "imap.gmail.com" )
 
         imap_obj.login( user, password )
 
+        # to do - identify the client per http://code.google.com/apis/gmail/imap/#capability
+        #resp = imap_obj._simple_command( 'ID', 
+        #                        'name', 'gnome-gmail', 
+        #                        'address', 'daves@users.sourceforge.net',
+        #                        'support-url', 'http://sourceforge.net/projects/gnome-gmail/support',
+        #                        )
+
         try:
+            # the uploaded message is going into the Drafts folder.
+            # find the Drafts folder in an i18n-friendly way
             folder_name = _("Drafts")
 
             imap_sub_folder_string = "*]/" + folder_name
@@ -130,13 +139,37 @@ class GMailIMAP( ):
             draft_folder = re.search( imap_folder_search_str, draft_folder ).group(0)
 
         except:
+            imap_obj.logout()
             raise GGError( _("Unable to determine IMAP Drafts folder location") )
 
-        # todo - this should be in a try
-        imap_obj.append( draft_folder, None, None, self.message_text )
+        try:
+            # upload the message to the Drafts folder
+            append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
+        except:
+            imap_obj.logout()
+            raise GGError( _("Error encountered while uploading the message") )
+
+        try:
+            # get the Google Message Id for the message, and convert to a hex string
+            # http://code.google.com/apis/gmail/imap/#x-gm-msgid
+            # nods to https://gist.github.com/964461
+
+            # the append returns something like ('OK', ['[APPENDUID 9 3113] (Success)'])
+            msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
+
+            imap_obj.select( draft_folder )
+            typ, data = imap_obj.uid( r'fetch', msg_uid, r'(X-GM-MSGID)')
+
+            msgid_dec = re.search( r'X-GM-MSGID ([0-9]+)', data[0] ).group(1)
+            msgid_hex = hex( int( msgid_dec ) )
+            msgid_hex_strp = re.search( r'0x(.+)', msgid_hex ).group(1)
+        except:
+            imap_obj.logout()
+            raise GGError( _("Error accessing message. Check the Drafts folder") )
 
         imap_obj.logout()
 
+        return( msgid_hex_strp )
 
 
 class Keyring(object):
@@ -443,7 +476,7 @@ class GMailURL( ):
         """ if the mailto refers to an attachment, 
         use IMAP to upload the file """
 
-        imap_url = "https://mail.google.com/%smail/#drafts" % self.appsdomainstr
+        imap_url = "https://mail.google.com/%smail/#drafts/" % self.appsdomainstr
 
         if not self.enable_net_access:
             return( imap_url )
@@ -460,20 +493,20 @@ class GMailURL( ):
         # go ahead and try the transfer
         if( self.config_info.info_complete() ):
             try:
-                gm_imap.send_mail( self.config_info.user, \
+                msg_id = gm_imap.send_mail( self.config_info.user, \
                     self.config_info.password )
             except imaplib.IMAP4.error as inst:
                 # don't report this failure. 
                 # We'll try again with prompted parameters
                 pass
             else:
-                return( imap_url )
+                return( imap_url + msg_id )
 
         # query for needed information
         if( self.config_info.query_config_info() ):
             # do the IMAP upload
             try:
-                gm_imap.send_mail( self.config_info.user, \
+                msg_id = gm_imap.send_mail( self.config_info.user, \
                     self.config_info.password )
             except imaplib.IMAP4.error as inst:
                 error_str = None
@@ -490,7 +523,7 @@ class GMailURL( ):
         else:
             raise GGError( _("GMail credentials incomplete") )
 
-        return( imap_url )
+        return( imap_url + msg_id )
 
     def gmail_url( self ):
         """ Return a GMail URL appropriate for the mailto handled 
