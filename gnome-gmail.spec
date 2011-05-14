@@ -28,6 +28,13 @@ make
 %install
 rm -Rf %{buildroot}
 make DESTDIR=%{buildroot} install
+desktop-file-install \
+    --dir=%{buildroot}%{_datadir}/applications \
+    --add-category Network \
+    --remove-category System \
+    --remove-category ContactManagement \
+    %{name}.desktop
+
 
 %clean
 rm -Rf %{buildroot}
@@ -35,7 +42,7 @@ rm -Rf %{buildroot}
 %post
 export GCONF_CONFIG_SOURCE=`gconftool-2 --get-default-source`
 gconftool-2 --makefile-install-rule %{_sysconfdir}/gconf/schemas/%{name}.schemas > /dev/null
-
+update-desktop-database &> /dev/null || :
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
 %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
@@ -43,6 +50,7 @@ fi
 
 
 %postun
+update-desktop-database &> /dev/null || :
 touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
   %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
@@ -70,6 +78,7 @@ fi
 %attr( 0644, root, root) /usr/share/man/man1/setOOmailer.1.gz
 %attr( 0644, root, root) /usr/share/locale/da/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/de/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/el_GR/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/es/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/fi/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/fr/LC_MESSAGES/gnome-gmail.mo
@@ -83,6 +92,7 @@ fi
 %attr( 0644, root, root) /usr/share/locale/ta/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/ta_LK/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/tr/LC_MESSAGES/gnome-gmail.mo
+%attr( 0644, root, root) /usr/share/locale/uk/LC_MESSAGES/gnome-gmail.mo
 %attr( 0644, root, root) /usr/share/locale/vi/LC_MESSAGES/gnome-gmail.mo
 
 
