@@ -6,7 +6,7 @@ AC_INIT([gnome-gmail], [1.7.2], [https://sourceforge.net/tracker/?group_id=27714
 AM_INIT_AUTOMAKE
 AC_COPYRIGHT([Copyright 2010 David Steele <daves@users.sourceforge.net>])
 
-GNOME_INIT
+GNOME_COMMON_INIT
 
 AC_PROG_INTLTOOL([0.23])
 GETTEXT_PACKAGE=gnome-gmail
