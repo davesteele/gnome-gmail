@@ -27,15 +27,21 @@ import mimetypes
 
 import gconf
 
+import locale
+import gettext
+
+#gettext.bindtextdomain( "gnome-gmail", "/usr/share/locale" )
+locale.setlocale( locale.LC_ALL, '' )
+gettext.textdomain( "gnome-gmail" )
+_ = gettext.gettext
+
+
 import gtk
 import gtk.glade
 
 import gnomekeyring as gkey
 
 import dbus
-
-import gettext
-gettext.install('gnome-gmail')
 
 class GGError( Exception ):
     """ Gnome Gmail exception """
