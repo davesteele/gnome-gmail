@@ -28,7 +28,7 @@ msgstr "Załączono wiadomość MIME"
 
 #: ../gnome-gmail:133
 msgid "Drafts"
-msgstr "Szkice"
+msgstr "Wersje robocze"
 
 #: ../gnome-gmail:143
 msgid "Unable to determine IMAP Drafts folder location"
