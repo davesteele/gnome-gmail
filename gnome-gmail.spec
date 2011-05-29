@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.7.2
+Version: 1.8
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
