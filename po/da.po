@@ -1,14 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
 "POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-05-13 15:15+0000\n"
+"PO-Revision-Date: 2011-06-23 01:18+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -222,3 +221,5 @@ msgstr ""
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"
 msgstr ""
+
+
