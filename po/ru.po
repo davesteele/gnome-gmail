@@ -2,20 +2,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
+"Report-Msgid-Bugs-To: "
+"http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
 "POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-05-13 15:11+0000\n"
-"Last-Translator: daves <dsteele@gmail.com>\n"
+"PO-Revision-Date: 2011-07-30 10:38+0000\n"
+"Last-Translator: Andrey Medvedev <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-08-14 15:08+0000\n"
+"X-Generator: Launchpad (build 13674)\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: ../gnome-gmail:71
 #, c-format
@@ -36,11 +38,11 @@ msgstr "Невозможно определить расположение па�
 
 #: ../gnome-gmail:150
 msgid "Error encountered while uploading the message"
-msgstr ""
+msgstr "Произошла ошибка при отправке сообщение"
 
 #: ../gnome-gmail:168
 msgid "Error accessing message. Check the Drafts folder"
-msgstr ""
+msgstr "Ошибка доступа к сообщению. Проверьте папку Черновики"
 
 #: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
@@ -48,7 +50,7 @@ msgstr "Пользователь отменил \"Отправить в...\""
 
 #: ../gnome-gmail:487
 msgid "Error creating message with attachment"
-msgstr "Ошибка при создании сообщения с вложенным файлов"
+msgstr "Ошибка при создании сообщения с вложением"
 
 #: ../gnome-gmail:513
 msgid "nvalid credentials"
@@ -88,7 +90,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:5
 msgid "Don't change the Preferred Email Application"
-msgstr ""
+msgstr "Не заменять предпочтительную почтовую программу"
 
 #: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
@@ -107,6 +109,8 @@ msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
+"GNOME Gmail не является вашей предпочитаемой почтовой программой. Хотите "
+"посылать ваши электронные сообщения, используя веб-страницу Gmail?"
 
 #: ../gnomegmail.glade.h:10 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
@@ -133,7 +137,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:15
 msgid "Use GNOME Gmail for sending mail"
-msgstr ""
+msgstr "Использование GNOME Gmail для отправки почты"
 
 #: ../gnomegmail.glade.h:16
 msgid "User Name"
@@ -176,6 +180,8 @@ msgstr "Сохранить имя пользователя IMAP"
 #: ../gnome-gmail.schemas.in.h:6
 msgid "Set Open Office to use the Gnome Preferred Email Application"
 msgstr ""
+"Использовать Open Office в качестве предпочитаемого приложения для работы с "
+"электронной почтой GNOME"
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "Suppress the GNOME Gmail Preferred Application Dialog"
@@ -214,12 +220,12 @@ msgstr ""
 #: ../gnome-gmail.schemas.in.h:12
 msgid ""
 "When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow"
-" Gnome Gmail to be configured for Google Apps support."
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
 msgstr ""
-"Если выбрано, Gnome Gmail будет скрывать подтверждающие уведомления, который"
-" появляется с каждым созданным сообщением. Уведомление содержит ссылку, "
-"чтобы настроить Gnome Gmail для поддержки Google Apps."
+"Если выбрано, Gnome Gmail будет скрывать подтверждающие уведомления, который "
+"появляется с каждым созданным сообщением. Уведомление содержит ссылку, чтобы "
+"настроить Gnome Gmail для поддержки Google Apps."
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
