@@ -10,4 +10,4 @@ to call. Pass the mailto URL to the preferred gnome mail handler. """
 import os
 import sys
 
-os.system( 'gnome-open %s' % sys.argv[1] )
+os.system( 'gnome-open "%s"' % sys.argv[1] )

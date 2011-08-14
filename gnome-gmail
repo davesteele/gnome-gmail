@@ -82,6 +82,9 @@ class GMailIMAP( ):
         # loop is superfluous - mail_dict will have only one path
         for filename in self.mail_dict[ 'attach' ]:
 
+            if( filename.find( "file://" ) == 0 ):
+                filename = filename[7:]
+
             filepath = urlparse.urlsplit( filename ).path
 
             if not os.path.isfile( filepath ):
