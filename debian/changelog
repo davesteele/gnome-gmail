@@ -1,4 +1,4 @@
-gnome-gmail (1.8) unstable; urgency=low
+gnome-gmail (1.8-1) unstable; urgency=low
 
   * GNOME 3 compatibility
   * Messages with attachments open directly, instead of the Drafts folder
