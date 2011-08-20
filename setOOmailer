@@ -182,8 +182,11 @@ class LibreMailerCfg( OOMailerCfg):
 
             shutil.move( self.ooxmlfile, self.ooxmlfile + self.backup_ext )
 
-            tree.write( self.ooxmlfile, encoding="UTF-8", \
-                xml_declaration=True, method='xml' )
+            try:
+                tree.write( self.ooxmlfile, encoding="UTF-8", \
+                    xml_declaration=True, method='xml' )
+            except TypeError:
+                tree.write( self.ooxmlfile, encoding="UTF-8" )
 
 def should_set_oo_mailer( basedir = "/apps/gnome-gmail/" ):
     """ Check gconf. Should I update the mailer? """
