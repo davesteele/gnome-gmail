@@ -3,8 +3,8 @@ Section: gnome
 Priority: optional
 Maintainer: David Steele <daves@users.sourceforge.net>
 Dm-Upload-Allowed: yes
-Build-Depends: debhelper (>= 7), intltool, libgconf2-dev, autotools-dev, dh-autoreconf
-Standards-Version: 3.9.1
+Build-Depends: debhelper (>= 7.0.50), intltool, libgconf2-dev, autotools-dev, dh-autoreconf
+Standards-Version: 3.9.2
 Homepage: http://gnome-gmail.sourceforge.net
 Vcs-Browser: http://gnome-gmail.git.sourceforge.net/git/gitweb.cgi?p=gnome-gmail/gnome-gmail;a=tree
 Vcs-Git: git://gnome-gmail.git.sourceforge.net/gitroot/gnome-gmail/gnome-gmail

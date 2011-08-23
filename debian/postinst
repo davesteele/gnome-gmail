@@ -22,7 +22,7 @@ case "$1" in
     configure)
 
         gconf-schemas --register /usr/share/gconf/schemas/gnome-gmail.schemas
-        update-desktop-database &> /dev/null  || :
+        update-desktop-database -q || :
 
         if [ -f /usr/share/icons/hicolor/icon-theme.cache ]; then \
           gtk-update-icon-cache -f /usr/share/icons/hicolor >/dev/null 2>&1; \
@@ -32,7 +32,7 @@ case "$1" in
            echo "/usr/share/applications/gnome-gmail.desktop" \
                > /usr/share/indicators/messages/applications/gnome-gmail;
         fi
-        update-desktop-database &> /dev/null  || :
+        update-desktop-database -q   || :
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)
