@@ -1,3 +1,13 @@
+
+2011-08-25 David Steele <daves@users.sourceforge.net>
+
+  * GNOME 3 compatibility (LP: #729357)
+  * Messages with attachments open directly, instead of the Drafts folder
+  * Fixed "Send Document as Email" in LibreOffice (LP: #774055)
+  * Added python-glade2 dependency for Oneiric (LP: #833355)
+  * Translation improvementsa(LP: #783005)
+  * Unity message indicator (LP: #773765)
+
 2011-03-20 Michael R. Crusoe <michael.crusoe@gmail.com>
 
   * Switch to native package as debian/ is maintained upstream
