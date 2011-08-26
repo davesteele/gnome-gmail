@@ -13,6 +13,7 @@ Requires: python >= 2.6
 Requires: pygobject2
 Requires: gconf-editor
 Requires: gnome-python2-gnomekeyring
+Requires: pygtk2-libglade
 
 %description
 This package makes Gmail a choice in the Gnome control panel for the default

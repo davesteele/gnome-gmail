@@ -17,3 +17,8 @@ override_dh_auto_configure:
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
+
+# for lintian
+build-arch: build
+
+build-indep: build
