@@ -105,6 +105,20 @@ fi
 
 
 %changelog
+* Thu Aug 25 2011 David Steele <daves@users.sourceforge.net> - 1.8-1
+- GNOME 3 compatibility (LP: #729357)
+- Messages with attachments open directly, instead of the Drafts folder
+- Fixed "Send Document as Email" in LibreOffice (LP: #774055)
+- Added python-glade2 dependency for Oneiric (LP: #833355)
+- Translation improvementsa(LP: #783005)
+- Unity message indicator (LP: #773765)
+
+* Tue Mar 29 2011 Michael R. Crusoe <michael.crusoe@gmail.com> - 1.7.3-1
+- Switch to native package as debian/ is maintained upstream
+- Add libgconf2-dev, autotools-dev, and dh-autoreconf to Build-Depends
+- Migrate to simplified dh based debian/rules (these last two changes fixes a FTBFS)
+- Include the non-Debian changelog in the package
+
 * Mon Feb 21 2011 David Steele <daves@users.sourceforge.net> - 1.7.2-1
 - Fix autotools bug in 1.7.1 (autoconf withoug debian libgconf2-dev installed)
 
