@@ -26,6 +26,7 @@ from email.mime.text import MIMEText
 import mimetypes
 
 import gconf
+import gio
 
 import locale
 import gettext
@@ -556,6 +557,15 @@ def main( ):
     else:
         mailto = ""
 
+    # set this app as the GNOME mailto handler, new-style
+    [ app.set_as_default_for_type( "x-scheme-handler/mailto" ) 
+      for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
+      if app.get_name() == "Gnome Gmail" ]
+
+    # quiet mode, to set preferred app in postinstall
+    if( sys.argv[1] == "-q" ):
+        sys.exit(0)
+
     cfg = ConfigInfo()
     cfg.read_config()
     cfg.write_config()
@@ -571,6 +581,7 @@ def main( ):
         notifications_object,
         'org.freedesktop.Notifications')
 
+    # for reverse compatibility, also set the preferred app the old way
     cfg.query_set_preferred()
 
     try:

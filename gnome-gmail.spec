@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.8
+Version: 1.8.1
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -48,6 +48,8 @@ touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
 %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
 fi
+
+/usr/bin/gnome-gmail -q
 
 
 %postun
@@ -105,6 +107,9 @@ fi
 
 
 %changelog
+* Mon Aug 29 2011 David Steele <daves@users.sourceforge.net> - 1.8.1-1
+- Fix setting gnome-gmail as default mailer, using dconf
+
 * Thu Aug 25 2011 David Steele <daves@users.sourceforge.net> - 1.8-1
 - GNOME 3 compatibility (LP: #729357)
 - Messages with attachments open directly, instead of the Drafts folder
