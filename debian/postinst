@@ -34,7 +34,7 @@ case "$1" in
         fi
         update-desktop-database -q   || :
 
-        /usr/bin/gnome-gmail -q
+        gnome-gmail -q
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

@@ -563,7 +563,7 @@ def main( ):
       if app.get_name() == "Gnome Gmail" ]
 
     # quiet mode, to set preferred app in postinstall
-    if( sys.argv[1] == "-q" ):
+    if( len( sys.argv ) > 1 and sys.argv[1] == "-q" ):
         sys.exit(0)
 
     cfg = ConfigInfo()

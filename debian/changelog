@@ -1,4 +1,4 @@
-gnome-gmail (1.8-2) unstable; urgency=low
+gnome-gmail (1.8.1-1) unstable; urgency=low
 
   * Fix setting gnome-gmail as default mailer, using dconf
 
