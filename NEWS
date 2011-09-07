@@ -4,6 +4,16 @@ Copyright 2011 David Steele <daves@users.sourceforge.net>
 This file is part of gnome-gmail
 Available under the terms of the GNU General Public License version 2 or later
 
+* Version announcement for Version 1.8.1
+
+GNOME Gmail version 1.8.1 has been released, with support for automatic
+setting of the preferred email application on GNOME 3 distributions. It builds
+on version 1.8, featuring support for GNOME 3, including a message indicator
+for Ubuntu Unity. Also, messages with attachments now open directly.
+
+GNOME Gmail adds support for Gmail to the GNOME desktop. Once installed,
+the user can select Gmail as the preferred mail application for the desktop.
+
 * Version announcement for Version 1.7.2
 
 This maintenance release fixes a build error in v1.7.1.
