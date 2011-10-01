@@ -1,7 +1,8 @@
-Format-Specification: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=135
-Name: gnome-gmail
+Format: http://svn.debian.org/wsvn/dep/web/deps/dep5.mdwn?op=file&rev=174
+Upstream-Name: gnome-gmail
 Source: http://gnome-gmail.sourceforge.net/
 
+Files: *
 Copyright: 2010, David Steele <daves@users.sourceforge.net>
 License: GPL-2+
  This program is free software; you can redistribute it and/or modify

@@ -1,5 +1,7 @@
 #!/bin/sh -e
 
+set -e
+
 if [ -f /usr/share/indicators/messages/applications/gnome-gmail ]; then
    rm -f /usr/share/indicators/messages/applications/gnome-gmail 
    update-desktop-database -q
