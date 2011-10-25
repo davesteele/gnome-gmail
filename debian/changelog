@@ -1,3 +1,13 @@
+gnome-gmail (1.8.2-1) natty; urgency=low
+
+  * Added Dependencies needed by GNOME 3 (python-glade2 and python-gconf)
+  * Set as Default mailer on installation
+  * Fix postinstall crash on upgrade (LP: #878494)
+  * Lintian fixes
+  * Fix setOOmailer XML write failure
+
+ -- David Steele <daves@users.sourceforge.net>  Mon, 24 Oct 2011 22:31:22 -0400
+
 gnome-gmail (1.8.1-1) unstable; urgency=low
 
   * Fix setting gnome-gmail as default mailer, using dconf

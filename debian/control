@@ -11,7 +11,7 @@ Vcs-Git: git://gnome-gmail.git.sourceforge.net/gitroot/gnome-gmail/gnome-gmail
 
 Package: gnome-gmail
 Architecture: all
-Depends: ${misc:Depends}, python (>=2.6), gnome-control-center, gconf2, gconf-editor, libgtk2.0-bin, python-gnomekeyring, python-glade2
+Depends: ${misc:Depends}, python (>=2.6), gnome-control-center, gconf2, gconf-editor, libgtk2.0-bin, python-gnomekeyring, python-glade2, python-gconf
 Description: support for Gmail as the preferred email application in GNOME
  GNOME Gmail integrates the Gmail web interface into the GNOME environment. 
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME

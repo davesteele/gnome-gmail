@@ -4,7 +4,7 @@ dist_man1_MANS = gnome-gmail.1 setOOmailer.1
 
 pkgsharedir = $(datarootdir)/gnome-gmail
 dist_pkgshare_DATA = gnomegmail.glade
-dist_pkgshare_SCRIPTS = evolution
+dist_pkgshare_SCRIPTS = evolution setgg
 
 schemadir = @GCONF_SCHEMA_FILE_DIR@
 schema_in_files = gnome-gmail.schemas.in
