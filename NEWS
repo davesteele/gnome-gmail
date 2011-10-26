@@ -4,6 +4,14 @@ Copyright 2011 David Steele <daves@users.sourceforge.net>
 This file is part of gnome-gmail
 Available under the terms of the GNU General Public License version 2 or later
 
+* Version announcement for Version 1.8.2
+
+GNOME Gmail version 1.8.2 has been released, fixing a number of installation
+problems, and setting itself as the Default mailer on installation.
+
+GNOME Gmail adds support for Gmail to the GNOME desktop. Once installed,
+the user can select Gmail as the preferred mail application for the desktop.
+
 * Version announcement for Version 1.8.1
 
 GNOME Gmail version 1.8.1 has been released, with support for automatic
