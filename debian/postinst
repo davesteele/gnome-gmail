@@ -33,8 +33,6 @@ case "$1" in
                > /usr/share/indicators/messages/applications/gnome-gmail;
         fi
         update-desktop-database -q   || :
-
-        /usr/share/gnome-gmail/setgg || :
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

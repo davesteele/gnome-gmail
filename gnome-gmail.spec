@@ -1,5 +1,5 @@
 Name: gnome-gmail
-Version: 1.8.1
+Version: 1.8.2
 Release: 1
 Group: Applications/Communications
 Vendor: David Steele
@@ -18,6 +18,8 @@ Requires: pygtk2-libglade
 %description
 This package makes Gmail a choice in the Gnome control panel for the default
 mail handler. It opens in the default web browser.
+
+Logout to complete the configuration.
 
 %prep
 %setup -q
@@ -48,8 +50,6 @@ touch --no-create %{_datadir}/icons/hicolor
 if [ -x %{_bindir}/gtk-update-icon-cache ]; then
 %{_bindir}/gtk-update-icon-cache -q %{_datadir}/icons/hicolor;
 fi
-
-/usr/bin/gnome-gmail -q
 
 
 %postun
