@@ -17,5 +17,5 @@ Description: support for Gmail as the preferred email application in GNOME
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
  Preferred Applications administration application. When selected, a Gmail web
  page will be used whenever an email service is requested.
- 
+ .
  Logout to complete the configuration.
