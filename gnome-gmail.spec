@@ -116,6 +116,10 @@ fi
 - Fix postinstall crash on upgrade (LP: #878494)
 - Lintian fixes
 - Fix setOOmailer XML write failure
+- Updates to 6 languages
+- Determine Drafts folder, for attachments, using Google IMAP Extentions
+- Remove dependency on libgnome2
+
 
 * Mon Aug 29 2011 David Steele <daves@users.sourceforge.net> - 1.8.1-1
 - Fix setting gnome-gmail as default mailer, using dconf

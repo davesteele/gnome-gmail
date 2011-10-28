@@ -5,6 +5,9 @@ gnome-gmail (1.8.2-1) natty; urgency=low
   * Fix postinstall crash on upgrade (LP: #878494)
   * Lintian fixes
   * Fix setOOmailer XML write failure
+  * Updates to 6 languages
+  * Determine Drafts folder using Google IMAP Extentions (LP: #882337)
+  * Remove dependency on libgnome2
 
  -- David Steele <daves@users.sourceforge.net>  Mon, 24 Oct 2011 22:31:22 -0400
 
