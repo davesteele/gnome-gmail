@@ -54,6 +54,34 @@ class GGError( Exception ):
         return repr( self.value )
 
 
+class myIMAP4_SSL( imaplib.IMAP4_SSL ):
+    def __init__( self, host = '', port = imaplib.IMAP4_SSL_PORT, keyfile = None, certfile = None):
+        imaplib.IMAP4_SSL.__init__( self, host, port, keyfile, certfile )
+
+        imaplib.Commands['XLIST'] = ('AUTH', 'SELECTED')
+        imaplib.Commands['ID'] = ('AUTH')
+
+    def xlist(self, directory='""', pattern='*'):
+        """List mailbox names in directory matching pattern.
+
+        (typ, [data]) = <instance>.xlist(directory='""', pattern='*')
+
+        'data' is list of XLIST responses.
+        """
+        name = 'XLIST'
+        typ, dat = self._simple_command(name, directory, pattern)
+        return self._untagged_response(typ, dat, name)
+
+    def id( self, *args ):
+
+        name = 'ID'
+        typ, dat = self._simple_command( name, *args )
+        return self._untagged_response(typ, dat, name)
+
+
+
+
+
 class GMailIMAP( ):
     """ Handle mailto URLs that include 'attach' fields by uploading the 
     messages using IMAP """
@@ -126,27 +154,31 @@ class GMailIMAP( ):
         """ transfer the message to GMail Drafts folder, using IMAP.
         Return a message ID that can be used to reference the mail via URL"""
 
-        imap_obj = imaplib.IMAP4_SSL( "imap.gmail.com" )
+        imap_obj = myIMAP4_SSL( "imap.gmail.com" )
 
         imap_obj.login( user, password )
 
-        # to do - identify the client per http://code.google.com/apis/gmail/imap/#capability
-        #resp = imap_obj._simple_command( 'ID', 
-        #                        'name', 'gnome-gmail', 
-        #                        'address', 'daves@users.sourceforge.net',
-        #                        'support-url', 'http://sourceforge.net/projects/gnome-gmail/support',
-        #                        )
+        # identify the client per http://code.google.com/apis/gmail/imap/
+        imap_obj.id( '('
+              + '"name" "gnome-gmail"'
+              + ' "version" "1.8.2"'
+              + ' "os" "Linux"'
+              + ' "contact" "daves@users.sourceforge.net"'
+              + ' "support-url" "http://sourceforge.net/tracker/?group_id=277145"'
+              + ')' 
+              )
 
         try:
-            # the uploaded message is going into the Drafts folder.
-            # find the Drafts folder in an i18n-friendly way
+            # I may need this again someday
             folder_name = _("Drafts")
 
-            imap_sub_folder_string = "*]/" + folder_name
-            draft_folder = imap_obj.lsub( "/", imap_sub_folder_string )[1][0]
+            # xlist returns directories e.g. 
+            #    (\HasNoChildren \Drafts) "/" "[Gmail]/Drafts"
+            # where the first "Drafts" is a flag, and the second is localized
+            drafts_ln = [ x for x in imap_obj.xlist()[1]
+                                     if re.search( ' .Drafts\)', x ) ][0]
 
-            imap_folder_search_str = '[^\"]+\]/' + folder_name
-            draft_folder = re.search( imap_folder_search_str, draft_folder ).group(0)
+            draft_folder = re.search( '\"([^\"]+)\"$', drafts_ln ).group(1)
 
         except:
             imap_obj.logout()
