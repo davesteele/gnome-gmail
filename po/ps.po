@@ -1,16 +1,16 @@
-# Czech translation for gnome-gmail
-# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
+# Pashto translation for gnome-gmail
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
 # This file is distributed under the same license as the gnome-gmail package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-08-29 16:14+0000\n"
-"Last-Translator: Kuvaly [LCT] <kuvaly@seznam.cz>\n"
-"Language-Team: Czech <cs@li.org>\n"
+"PO-Revision-Date: 2011-10-26 00:29+0000\n"
+"Last-Translator: Said Marjan Zazai <saidsemail@gmail.com>\n"
+"Language-Team: Pashto <ps@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,19 +20,19 @@ msgstr ""
 #: ../gnome-gmail:71
 #, c-format
 msgid "Sending %s"
-msgstr "Odesílá se %s"
+msgstr "ورځي %s"
 
 #: ../gnome-gmail:73
 msgid "Mime message attached"
-msgstr "Byla přiložena zpráva mime"
+msgstr ""
 
 #: ../gnome-gmail:133
 msgid "Drafts"
-msgstr "Koncepty"
+msgstr "ګارليک"
 
 #: ../gnome-gmail:143
 msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Nelze určit umístění složky konceptů IMAP"
+msgstr ""
 
 #: ../gnome-gmail:150
 msgid "Error encountered while uploading the message"
@@ -44,27 +44,27 @@ msgstr ""
 
 #: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
-msgstr "Uživatel zrušil \"Odeslat...\""
+msgstr ""
 
 #: ../gnome-gmail:487
 msgid "Error creating message with attachment"
-msgstr "Během zpracovávání zprávy s přílohou došlo k chybě"
+msgstr ""
 
 #: ../gnome-gmail:513
 msgid "nvalid credentials"
-msgstr "neplatné pověření"
+msgstr ""
 
 #: ../gnome-gmail:514
 msgid "Invalid GMail User Name or Password"
-msgstr "Neplatné heslo nebo uživatelské jméno"
+msgstr ""
 
 #: ../gnome-gmail:515
 msgid "not enabled for IMAP"
-msgstr "není povoleno pro IMAP"
+msgstr ""
 
 #: ../gnome-gmail:516
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Musíte 'Povolit IMAP' v Gmailu, aby bylo možné odesílat přílohy"
+msgstr ""
 
 #: ../gnome-gmail:524
 msgid "GMail credentials incomplete"
@@ -72,7 +72,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:1
 msgid "Configure"
-msgstr "Konfigurovat"
+msgstr ""
 
 #: ../gnomegmail.glade.h:2
 msgid "Configure Gnome Gmail for use with a Google App account."
@@ -84,7 +84,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:4
 msgid "Don't ask again"
-msgstr "Neptat se znovu"
+msgstr "بيا مه پوخته"
 
 #: ../gnomegmail.glade.h:5
 msgid "Don't change the Preferred Email Application"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
-msgstr "Vložte heslo pro poštovní účet"
+msgstr ""
 
 #: ../gnomegmail.glade.h:7
 msgid ""
@@ -108,15 +108,15 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:10 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
-msgstr "Gnome Gmail"
+msgstr ""
 
 #: ../gnomegmail.glade.h:11
 msgid "Password"
-msgstr "Heslo"
+msgstr ""
 
 #: ../gnomegmail.glade.h:12
 msgid "Remember Password"
-msgstr "Pamatovat si heslo"
+msgstr ""
 
 #: ../gnomegmail.glade.h:13
 msgid "Remember the Google Account password in the Gnome keychain."
@@ -126,7 +126,6 @@ msgstr ""
 msgid ""
 "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
 msgstr ""
-"Název poštovního účtu (např.  ‚pepa‘ pro e-mailový účet  ‚pepa@gmail.com‘)"
 
 #: ../gnomegmail.glade.h:15
 msgid "Use GNOME Gmail for sending mail"
@@ -134,19 +133,19 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:16
 msgid "User Name"
-msgstr "Uživatelské jméno"
+msgstr ""
 
 #: ../gnomegmail.glade.h:17
 msgid "Your Gmail password"
-msgstr "Vaše heslo"
+msgstr ""
 
 #: ../gnomegmail.glade.h:18
 msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Vaše uživatelské jméno (bez „@gmail.com“)"
+msgstr ""
 
 #: ../gnomegmail.glade.h:19
 msgid "comment"
-msgstr "komentář"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:1
 msgid ""
@@ -155,23 +154,23 @@ msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:2
 msgid "Google Apps domain"
-msgstr "Google Apps doména"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:3
 msgid "Hide confirmation dialog"
-msgstr "Skrýt dialog o potvrzení"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:4
 msgid "Save IMAP password?"
-msgstr "Uložit heslo protokolu IMAP?"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:5
 msgid "Saved IMAP user name"
-msgstr "Uložit uživatelské jméno protokolu IMAP"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:6
 msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Použít Open Office pro použití jako výchozí e-mailovou aplikaci"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "Suppress the GNOME Gmail Preferred Application Dialog"
@@ -210,7 +209,7 @@ msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr "Začlenit GMail do vašeho pracovního prostředí"
+msgstr ""
 
 #: ../setOOmailer.desktop.in.h:1
 msgid "Configure Open Office to use the Gnome Preferred Email application"
@@ -222,4 +221,4 @@ msgstr ""
 
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"
-msgstr "Gmail"
+msgstr ""

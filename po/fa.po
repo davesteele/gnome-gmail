@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-04-09 07:26+0000\n"
-"Last-Translator: Shahverdy <shahverdy.m@gmail.com>\n"
+"PO-Revision-Date: 2011-09-03 23:21+0000\n"
+"Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
 "Language-Team: Persian <fa@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-13 16:40+0000\n"
-"X-Generator: Launchpad (build 13037)\n"
+"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
+"X-Generator: Launchpad (build 14197)\n"
 
 #: ../gnome-gmail:71
 #, c-format
@@ -24,7 +24,7 @@ msgstr "درحال فرستادن %s"
 
 #: ../gnome-gmail:73
 msgid "Mime message attached"
-msgstr ""
+msgstr "پیام MIME پیوست شد"
 
 #: ../gnome-gmail:133
 msgid "Drafts"
@@ -60,11 +60,11 @@ msgstr "نام کاربری یا گذرواژه‌ی نامعتبر"
 
 #: ../gnome-gmail:515
 msgid "not enabled for IMAP"
-msgstr ""
+msgstr "برای IMAP فعال نیست"
 
 #: ../gnome-gmail:516
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr ""
+msgstr "به منظور ارسال فایل پیوست شما باید در جی میل 'IMAP را فعال کنید'"
 
 #: ../gnome-gmail:524
 msgid "GMail credentials incomplete"
@@ -80,7 +80,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:3
 msgid "Copyright 2010 - Dave Steele"
-msgstr ""
+msgstr "Copyright 2010 - Dave Steele"
 
 #: ../gnomegmail.glade.h:4
 msgid "Don't ask again"
@@ -92,7 +92,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
-msgstr ""
+msgstr "گذرواژه برای حساب پست الکترونیکی‌ را وارد کنید"
 
 #: ../gnomegmail.glade.h:7
 msgid ""
@@ -129,7 +129,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:15
 msgid "Use GNOME Gmail for sending mail"
-msgstr ""
+msgstr "از GNOME Gmail برای ارسال پست الکترونیکی‌ استفاده کنید"
 
 #: ../gnomegmail.glade.h:16
 msgid "User Name"
@@ -137,11 +137,11 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:17
 msgid "Your Gmail password"
-msgstr ""
+msgstr "گذرواژه‌ی جی‌میل شما"
 
 #: ../gnomegmail.glade.h:18
 msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr ""
+msgstr "نام کاربری جی‌میل شما ، بدون بخش '@gmail.com'"
 
 #: ../gnomegmail.glade.h:19
 msgid "comment"
@@ -154,19 +154,19 @@ msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:2
 msgid "Google Apps domain"
-msgstr ""
+msgstr "دامنه‌ی Google Apps"
 
 #: ../gnome-gmail.schemas.in.h:3
 msgid "Hide confirmation dialog"
-msgstr ""
+msgstr "مخفی‌ کردن پنجره تایید"
 
 #: ../gnome-gmail.schemas.in.h:4
 msgid "Save IMAP password?"
-msgstr ""
+msgstr "گذرواژه‌ی IMAP ذخیره شود؟"
 
 #: ../gnome-gmail.schemas.in.h:5
 msgid "Saved IMAP user name"
-msgstr ""
+msgstr "نام کاربری ذخیره شده‌ی IMAP"
 
 #: ../gnome-gmail.schemas.in.h:6
 msgid "Set Open Office to use the Gnome Preferred Email Application"
@@ -221,4 +221,4 @@ msgstr ""
 
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"
-msgstr ""
+msgstr "جی میل"
