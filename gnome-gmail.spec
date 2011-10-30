@@ -112,7 +112,7 @@ fi
 
 * Mon Oct 24 2011 David Steele <daves@users.sourceforge.net> - 1.8.2-1
 - Added Dependencies needed by GNOME 3 (python-glade2 and python-gconf)
-- Set as Default mailer on installation
+- Set as Default mailer on installation, using setOOmailer
 - Fix postinstall crash on upgrade (LP: #878494)
 - Lintian fixes
 - Fix setOOmailer XML write failure
