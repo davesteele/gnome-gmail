@@ -1,15 +1,17 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 # 
+# Translators:
+# daves <dsteele@gmail.com>, 2011.
+# Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-05-13 15:11+0000\n"
-"Last-Translator: Mathieu Lefebvre aka Mathdabomb <mathdabomb@gmail.com>\n"
+"POT-Creation-Date: 2011-10-27 23:08-0400\n"
+"PO-Revision-Date: 2012-01-06 22:38+0000\n"
+"Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -17,57 +19,57 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: ../gnome-gmail:71
+#: ../gnome-gmail:106
 #, c-format
 msgid "Sending %s"
 msgstr "Envoi de %s"
 
-#: ../gnome-gmail:73
+#: ../gnome-gmail:108
 msgid "Mime message attached"
 msgstr "Message Mime attaché"
 
-#: ../gnome-gmail:133
+#: ../gnome-gmail:173
 msgid "Drafts"
 msgstr "Brouillons"
 
-#: ../gnome-gmail:143
+#: ../gnome-gmail:185
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Impossible de déterminer l'emplacement IMAP du dossier Brouillons"
 
-#: ../gnome-gmail:150
+#: ../gnome-gmail:192
 msgid "Error encountered while uploading the message"
-msgstr ""
+msgstr "Une erreur s'est produite lors du chargement le message"
 
-#: ../gnome-gmail:168
+#: ../gnome-gmail:210
 msgid "Error accessing message. Check the Drafts folder"
-msgstr ""
+msgstr "Erreur d'accès aux messages. Vérifiez le dossier Brouillons"
 
-#: ../gnome-gmail:351
+#: ../gnome-gmail:393
 msgid "User cancelled \"Send To...\""
 msgstr "L'utilisateur a annulé \"Envoyer vers...\""
 
-#: ../gnome-gmail:487
+#: ../gnome-gmail:529
 msgid "Error creating message with attachment"
 msgstr "Erreur de création du message avec pièce jointe"
 
-#: ../gnome-gmail:513
+#: ../gnome-gmail:555
 msgid "nvalid credentials"
 msgstr "Identifiants invalides"
 
-#: ../gnome-gmail:514
+#: ../gnome-gmail:556
 msgid "Invalid GMail User Name or Password"
 msgstr "Nom d'utilisateur ou mot de passe GMail invalide"
 
-#: ../gnome-gmail:515
+#: ../gnome-gmail:557
 msgid "not enabled for IMAP"
 msgstr "pas activé pour IMAP"
 
-#: ../gnome-gmail:516
+#: ../gnome-gmail:558
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr ""
 "Vous devez cocher 'Activer IMAP' dans Gmail pour envoyer des pièces jointes"
 
-#: ../gnome-gmail:524
+#: ../gnome-gmail:566
 msgid "GMail credentials incomplete"
 msgstr "Identifiants GMail incomplets"
 
@@ -85,11 +87,11 @@ msgstr "Copyright 2010 - Dave Steele"
 
 #: ../gnomegmail.glade.h:4
 msgid "Don't ask again"
-msgstr ""
+msgstr "Ne pas redemander"
 
 #: ../gnomegmail.glade.h:5
 msgid "Don't change the Preferred Email Application"
-msgstr ""
+msgstr "Ne pas modifier l'application Email préférés"
 
 #: ../gnomegmail.glade.h:6
 msgid "Enter the password for the mail account"
@@ -108,6 +110,8 @@ msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
+"GNOME Gmail n'est actuellement pas votre application de messagerie préférée."
+" Aimeriez-vous que vos mails soit envoyé en utilisant la page Web de Gmail?"
 
 #: ../gnomegmail.glade.h:10 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
@@ -134,7 +138,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:15
 msgid "Use GNOME Gmail for sending mail"
-msgstr ""
+msgstr "Utilisez GNOME Gmail pour envoyer des mails"
 
 #: ../gnomegmail.glade.h:16
 msgid "User Name"
@@ -182,7 +186,7 @@ msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-msgstr ""
+msgstr "Supprimer la boîte de dialogue application préférée de GNOME Gmail"
 
 #: ../gnome-gmail.schemas.in.h:8
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
@@ -195,6 +199,9 @@ msgid ""
 "Preferred Mail application. Otherwise, the program will ask if you want it "
 "to be the mail application, if it isn't already."
 msgstr ""
+"Si cochée, GNOME Gmail ne propose pas de se définir comme l'application "
+"GNOME de messagerie préféré. Sinon, le programme vous demandera si vous "
+"voulez qu'il soit l'application de messagerie, si il ne l'a pas déjà fait."
 
 #: ../gnome-gmail.schemas.in.h:10
 msgid ""
@@ -240,3 +247,5 @@ msgstr "Configurateur de Gnome Gmail pour Open Office"
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"
 msgstr "Gmail"
+
+
