@@ -29,6 +29,9 @@ testCaseStrings = [
 ( "mailto:joe?SUBJECT=test email", "*&to=joe&su=test+email" ),
 ( "mailto:joe?Subject=test email", "*&to=joe&su=test+email" ),
 
+# allow pluses in user name
+( "mailto:joe+2?Subject=test email", "*&to=joe%2B2&su=test+email" ),
+
 ( "mailto:joe?cc=sue@example.com", "*&to=joe&cc=sue%40example.com" ),
 ( "mailto:joe?cc=sue@example.com,fred", "*&to=joe&cc=sue%40example.com%2Cfred" ),
 

@@ -4,6 +4,7 @@
   * Change email addresses
   * Switch from autotools to setup.py
   * Accept either 'attach' or 'attachment' in mailtos
+  * Allow pluses in email names
 
 2011-10-24 David Steele <daves@users.sourceforge.net>
 

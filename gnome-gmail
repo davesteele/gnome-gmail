@@ -484,7 +484,11 @@ class GMailURL( ):
         outdict = {}
         for (key, value) in qsdict.iteritems():
             for i in range(0, len(value)):
-                value[i] = urllib.unquote_plus( value[i]  )
+                if key.lower() in [ 'to', 'cc', 'bcc' ]:
+                    value[i] = urllib.unquote( value[i]  )
+                else:
+                    value[i] = urllib.unquote_plus( value[i]  )
+
 
             outdict[ key.lower() ] = value
 
