@@ -44,11 +44,10 @@ testCaseStrings = [
 ( "mailto:joe?cc=sue&bcc=fred&body=the body&subject=the subject", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 ( "mailto:joe?bcc=fred&body=the body&subject=the subject&cc=sue", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 
-( "mailto:joe?", "*&to=joe" ),
 
 ( "", "https://mail.google.com/" ),
 
-( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/#drafts" ),
+( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/#drafts/" ),
 
 ( "mailto:joe", "*&to=joe" ),
 ( "mailto:joe", "*&to=joe" ),
@@ -65,7 +64,7 @@ class TestURLCase( unittest.TestCase ):
 	def testRun( self ):
 		cfg = gnomegmail.ConfigInfo()
 		gm = gnomegmail.GMailURL( self.mailtoURL, cfg, False )
-		GmUrl = gm.gmailURL( )
+		GmUrl = gm.gmail_url( )
 		#GmDict = gnomegmail.mailto2dict( self.mailtoURL )
 		#GmUrl = gnomegmail.simpledict2url( GmDict )
 		self.assertEqual( GmUrl, self.gmailURL )
