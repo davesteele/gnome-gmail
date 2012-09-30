@@ -71,6 +71,18 @@ class myIMAP4_SSL( imaplib.IMAP4_SSL ):
         typ, dat = self._simple_command(name, directory, pattern)
         return self._untagged_response(typ, dat, name)
 
+    def special_folders( self ):
+        """ return a dictionary of localized Gmail special folders """
+        path = {}
+
+        for entry in self.xlist()[1]:
+            for name in ("Inbox", "Starred", "Sent", "Drafts",
+                         "Spam", "AllMail"):
+                if re.search( ' .%s\)' % name, entry ):
+                    path[ name ] = re.search( '\"([^\"]+)\"$', entry).group(1)
+
+        return path
+
     def id( self, *args ):
         """ Provide app information to the server, 
             and get information in return (RFC2971)"""
@@ -169,13 +181,7 @@ class GMailIMAP( ):
             # I may need this again someday
             folder_name = _("Drafts")
 
-            # xlist returns directories e.g. 
-            #    (\HasNoChildren \Drafts) "/" "[Gmail]/Drafts"
-            # where the first "Drafts" is a flag, and the second is localized
-            drafts_ln = [ x for x in imap_obj.xlist()[1]
-                                     if re.search( ' .Drafts\)', x ) ][0]
-
-            draft_folder = re.search( '\"([^\"]+)\"$', drafts_ln ).group(1)
+            draft_folder = imap_obj.special_folders()['Drafts']
 
         except:
             imap_obj.logout()
