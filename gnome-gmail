@@ -91,6 +91,18 @@ class myIMAP4_SSL( imaplib.IMAP4_SSL ):
         typ, dat = self._simple_command( name, arg )
         return self._untagged_response(typ, dat, name)
 
+    def uid2msgid( self, uid ):
+        """ Convert an IMAP UID to a Gmail MSGID
+        http://code.google.com/apis/gmail/imap/#x-gm-msgid
+        nods to https://gist.github.com/964461"""
+
+        typ, data = self.uid( r'fetch', uid, r'(X-GM-MSGID)')
+
+        msgid_dec = re.search( r'X-GM-MSGID ([0-9]+)', data[0] ).group(1)
+        msgid_hex = hex( int( msgid_dec ) )
+
+        return msgid_hex[2:]
+
 
 class GMailIMAP( ):
     """ Handle mailto URLs that include 'attach' fields by uploading the 
@@ -195,26 +207,20 @@ class GMailIMAP( ):
             raise GGError( _("Error encountered while uploading the message") )
 
         try:
-            # get the Google Message Id for the message, and convert to a hex string
-            # http://code.google.com/apis/gmail/imap/#x-gm-msgid
-            # nods to https://gist.github.com/964461
-
             # the append returns something like ('OK', ['[APPENDUID 9 3113] (Success)'])
             msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
 
             imap_obj.select( draft_folder )
-            typ, data = imap_obj.uid( r'fetch', msg_uid, r'(X-GM-MSGID)')
 
-            msgid_dec = re.search( r'X-GM-MSGID ([0-9]+)', data[0] ).group(1)
-            msgid_hex = hex( int( msgid_dec ) )
-            msgid_hex_strp = re.search( r'0x(.+)', msgid_hex ).group(1)
+            msgid = imap_obj.uid2msgid( msg_uid )
+
         except:
             imap_obj.logout()
             raise GGError( _("Error accessing message. Check the Drafts folder") )
 
         imap_obj.logout()
 
-        return( msgid_hex_strp )
+        return( msgid )
 
 
 class Keyring(object):
