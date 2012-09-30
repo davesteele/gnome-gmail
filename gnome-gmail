@@ -129,47 +129,47 @@ class GMailIMAP( ):
 
         msg.preamble = _("Mime message attached")
 
-
-        # loop is superfluous - mail_dict will have only one path
         for filename in self.mail_dict[ 'attach' ]:
-
-            if( filename.find( "file://" ) == 0 ):
-                filename = filename[7:]
-
-            filepath = urlparse.urlsplit( filename ).path
-
-            if not os.path.isfile( filepath ):
-                raise GGError( "File not found - %s" % filepath )
-
-            ctype, encoding = mimetypes.guess_type( filepath )
-
-            if ctype is None or encoding is not None:
-                ctype = 'application/octet-stream'
-
-            maintype, subtype = ctype.split( '/', 1 )
-
-            attach_file = open( filepath, 'rb' )
-
-            if maintype == 'text':
-                attachment = MIMEText( attach_file.read(), _subtype = subtype )
-            elif maintype == 'image':
-                attachment = MIMEImage( attach_file.read(), _subtype = subtype )
-            elif maintype == 'audio':
-                attachment = MIMEAudio( attach_file.read(), _subtype = subtype )
-            else:
-                attachment = MIMEBase( maintype, subtype )
-                attachment.set_payload( attach_file.read() )
-                encoders.encode_base64( attachment )
-
-            attach_file.close()
-
-            attachment.add_header( 'Content-Disposition', 'attachment', 
-                filename=fname)
-
+            attachment = self.file2mime( filename )
             msg.attach( attachment )
 
-
         return( msg.as_string() )
+
+    def file2mime( self, filename ):
+        if( filename.find( "file://" ) == 0 ):
+            filename = filename[7:]
+
+        filepath = urlparse.urlsplit( filename ).path
+
+        if not os.path.isfile( filepath ):
+            raise GGError( "File not found - %s" % filepath )
+
+        ctype, encoding = mimetypes.guess_type( filepath )
+
+        if ctype is None or encoding is not None:
+            ctype = 'application/octet-stream'
+
+        maintype, subtype = ctype.split( '/', 1 )
+
+        attach_file = open( filepath, 'rb' )
+
+        if maintype == 'text':
+            attachment = MIMEText( attach_file.read(), _subtype = subtype )
+        elif maintype == 'image':
+            attachment = MIMEImage( attach_file.read(), _subtype = subtype )
+        elif maintype == 'audio':
+            attachment = MIMEAudio( attach_file.read(), _subtype = subtype )
+        else:
+            attachment = MIMEBase( maintype, subtype )
+            attachment.set_payload( attach_file.read() )
+            encoders.encode_base64( attachment )
+
+        attach_file.close()
+
+        attachment.add_header( 'Content-Disposition', 'attachment',
+            filename=os.path.split( filename )[1] )
+
+        return( attachment )
 
 
     def send_mail( self, user, password ):
