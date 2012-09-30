@@ -178,6 +178,13 @@ class GMailIMAP( ):
 
         return( attachment )
 
+    def _has_attachment( self ):
+
+        return( 'attach' in self.mail_dict )
+
+    def needs_imap( self ):
+
+        return( self._has_attachment() )
 
     def send_mail( self, user, password ):
         """ transfer the message to GMail Drafts folder, using IMAP.
@@ -527,11 +534,6 @@ class GMailURL( ):
 
         return( "https://mail.google.com/%s" % self.appsdomainstr )
 
-    def has_attachment( self ):
-        """ does the mailto specify a file to be attached? """
-
-        return( 'attach' in self.mail_dict )
-
     def imap_gmail_url( self ):
         """ if the mailto refers to an attachment, 
         use IMAP to upload the file """
@@ -591,7 +593,7 @@ class GMailURL( ):
         by this instance """
         if( len( self.mailto_url ) == 0 ):
             gmailurl = self.simple_gmail_url() 
-        elif self.has_attachment():
+        elif GMailIMAP(self.mail_dict).needs_imap():
             gmailurl = self.imap_gmail_url()
         else:
             gmailurl = self.standard_gmail_url( )
