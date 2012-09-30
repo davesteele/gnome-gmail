@@ -53,8 +53,12 @@ class GGError( Exception ):
         return repr( self.value )
 
 
-class myIMAP4_SSL( imaplib.IMAP4_SSL ):
-    def __init__( self, host = '', port = imaplib.IMAP4_SSL_PORT, keyfile = None, certfile = None):
+class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
+    def __init__( self, host = 'imap.gmail.com',
+                        port = imaplib.IMAP4_SSL_PORT,
+                        keyfile = None,
+                        certfile = None):
+
         imaplib.IMAP4_SSL.__init__( self, host, port, keyfile, certfile )
 
         imaplib.Commands['XLIST'] = ('AUTH', 'SELECTED')
@@ -66,6 +70,9 @@ class myIMAP4_SSL( imaplib.IMAP4_SSL ):
         (typ, [data]) = <instance>.xlist(directory='""', pattern='*')
 
         'data' is list of XLIST responses.
+
+        https://developers.google.com/google-apps/gmail/imap_extensions
+        #extension_of_the_list_command_xlist
         """
         name = 'XLIST'
         typ, dat = self._simple_command(name, directory, pattern)
@@ -93,8 +100,9 @@ class myIMAP4_SSL( imaplib.IMAP4_SSL ):
 
     def uid2msgid( self, uid ):
         """ Convert an IMAP UID to a Gmail MSGID
-        http://code.google.com/apis/gmail/imap/#x-gm-msgid
-        nods to https://gist.github.com/964461"""
+
+        http://code.google.com/apis/gmail/imap/#
+        #access_to_the_gmail_unique_message_id_x-gm-msgid"""
 
         typ, data = self.uid( r'fetch', uid, r'(X-GM-MSGID)')
 
@@ -176,7 +184,7 @@ class GMailIMAP( ):
         """ transfer the message to GMail Drafts folder, using IMAP.
         Return a message ID that can be used to reference the mail via URL"""
 
-        imap_obj = myIMAP4_SSL( "imap.gmail.com" )
+        imap_obj = GmailIMAP4_SSL( )
 
         imap_obj.login( user, password )
 
