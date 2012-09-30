@@ -72,13 +72,12 @@ class myIMAP4_SSL( imaplib.IMAP4_SSL ):
         return self._untagged_response(typ, dat, name)
 
     def id( self, *args ):
-
+        """ Provide app information to the server, 
+            and get information in return (RFC2971)"""
+        arg = '("' + '" "'.join( args ) + '")'
         name = 'ID'
-        typ, dat = self._simple_command( name, *args )
+        typ, dat = self._simple_command( name, arg )
         return self._untagged_response(typ, dat, name)
-
-
-
 
 
 class GMailIMAP( ):
@@ -158,13 +157,12 @@ class GMailIMAP( ):
         imap_obj.login( user, password )
 
         # identify the client per http://code.google.com/apis/gmail/imap/
-        imap_obj.id( '('
-              + '"name" "gnome-gmail"'
-              + ' "version" "1.8.2"'
-              + ' "os" "Linux"'
-              + ' "contact" "dsteele@gmail.com"'
-              + ' "support-url" "http://sourceforge.net/tracker/?group_id=277145"'
-              + ')' 
+        imap_obj.id(
+              "name", "gnome-gmail",
+              "version", "1.8.2",
+              "os", "Linux",
+              "contact", "dsteele@gmail.com",
+              "support-url", "http://sourceforge.net/tracker/?group_id=277145",
               )
 
         try:
