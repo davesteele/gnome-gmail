@@ -119,7 +119,6 @@ class GMailIMAP( ):
     def __init__( self, mail_dict  ):
         self.mail_dict = mail_dict
 
-        self.message_text = self.form_message()
 
     def form_message( self ):
         """ Form an RFC822 message, with an appropriate MIME attachment """
@@ -141,7 +140,7 @@ class GMailIMAP( ):
             attachment = self.file2mime( filename )
             msg.attach( attachment )
 
-        return( msg.as_string() )
+        self.message_text = msg.as_string()
 
     def file2mime( self, filename ):
         if( filename.find( "file://" ) == 0 ):
@@ -209,6 +208,8 @@ class GMailIMAP( ):
             error_exp = _("Error encountered while uploading the message")
             append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
             # the append returns e.g. ('OK', ['[APPENDUID 9 3113] (Success)'])
+            # get the uid (e.g. 3113), and convert to Gmail ID to return
+
             error_exp = _("Error accessing message. Check the Drafts folder")
             msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
 
@@ -542,6 +543,7 @@ class GMailURL( ):
 
         try:
             gm_imap = GMailIMAP( self.mail_dict )
+            gm_imap.form_message()
         except:
             GGError( _("Error creating message with attachment") )
 
