@@ -193,30 +193,23 @@ class GMailIMAP( ):
             # I may need this again someday
             folder_name = _("Drafts")
 
+            # Find the localized Drafts folder
+            error_exp = _("Unable to determine IMAP Drafts folder location")
             draft_folder = imap_obj.special_folders()['Drafts']
 
-        except:
-            imap_obj.logout()
-            raise GGError( _("Unable to determine IMAP Drafts folder location") )
-
-        try:
             # upload the message to the Drafts folder
+            error_exp = _("Error encountered while uploading the message")
             append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
-        except:
-            imap_obj.logout()
-            raise GGError( _("Error encountered while uploading the message") )
-
-        try:
-            # the append returns something like ('OK', ['[APPENDUID 9 3113] (Success)'])
+            # the append returns e.g. ('OK', ['[APPENDUID 9 3113] (Success)'])
+            error_exp = _("Error accessing message. Check the Drafts folder")
             msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
 
             imap_obj.select( draft_folder )
-
             msgid = imap_obj.uid2msgid( msg_uid )
 
         except:
             imap_obj.logout()
-            raise GGError( _("Error accessing message. Check the Drafts folder") )
+            raise GGError( error_exp )
 
         imap_obj.logout()
 
