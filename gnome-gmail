@@ -223,7 +223,7 @@ class GMailIMAP( ):
             imap_obj.select( draft_folder )
             msgid = imap_obj.uid2msgid( msg_uid )
 
-        except:
+        except (imap_obj.error, OSError):
             imap_obj.logout()
             raise GGError( error_exp )
 
@@ -546,7 +546,7 @@ class GMailURL( ):
         try:
             gm_imap = GMailIMAP( self.mail_dict )
             gm_imap.form_message()
-        except:
+        except (imaplib.IMAP4.error, OSError):
             GGError( _("Error creating message with attachment") )
 
         # get the configuration information from GConf
@@ -558,7 +558,7 @@ class GMailURL( ):
             try:
                 msg_id = gm_imap.send_mail( self.config_info.user, \
                     self.config_info.password )
-            except imaplib.IMAP4.error as inst:
+            except (imaplib.IMAP4.error, OSError) as inst:
                 # don't report this failure. 
                 # We'll try again with prompted parameters
                 pass
@@ -571,7 +571,7 @@ class GMailURL( ):
             try:
                 msg_id = gm_imap.send_mail( self.config_info.user, \
                     self.config_info.password )
-            except imaplib.IMAP4.error as inst:
+            except (OSError, imaplib.IMAP4.error) as inst:
                 error_str = None
                 if inst.args[0].find( _("nvalid credentials") ) > 0:
                     error_str = _("Invalid GMail User Name or Password")
