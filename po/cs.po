@@ -6,16 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-08-29 16:14+0000\n"
-"Last-Translator: Kuvaly [LCT] <kuvaly@seznam.cz>\n"
+"Report-Msgid-Bugs-To: https://github.com/davesteele/gnome-gmail/issues"
+"group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2012-10-04 19:53-0400\n"
+"PO-Revision-Date: 2012-04-19 11:02+0000\n"
+"Last-Translator: milzou <Unknown>\n"
 "Language-Team: Czech <cs@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2012-10-04 23:40+0000\n"
+"X-Generator: Launchpad (build 16061)\n"
 
 #: ../gnome-gmail:71
 #, c-format
@@ -36,15 +37,15 @@ msgstr "Nelze určit umístění složky konceptů IMAP"
 
 #: ../gnome-gmail:150
 msgid "Error encountered while uploading the message"
-msgstr ""
+msgstr "Při odesílání zprávy se vyskytla chyba"
 
 #: ../gnome-gmail:168
 msgid "Error accessing message. Check the Drafts folder"
-msgstr ""
+msgstr "Chyba přístupu ke zprávě. Zkontrolujte složku s koncepty"
 
 #: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
-msgstr "Uživatel zrušil \"Odeslat...\""
+msgstr "Uživatel zrušil odesílání."
 
 #: ../gnome-gmail:487
 msgid "Error creating message with attachment"
@@ -68,7 +69,7 @@ msgstr "Musíte 'Povolit IMAP' v Gmailu, aby bylo možné odesílat přílohy"
 
 #: ../gnome-gmail:524
 msgid "GMail credentials incomplete"
-msgstr ""
+msgstr "Neúplné přihlašovací údaje pro GMail"
 
 #: ../gnomegmail.glade.h:1
 msgid "Configure"
@@ -81,6 +82,8 @@ msgstr ""
 #: ../gnomegmail.glade.h:3
 msgid "Copyright 2010 - Dave Steele"
 msgstr ""
+"Zadejte své přihlašovací údaje pro Gmail\n"
+"pro odeslání souboru"
 
 #: ../gnomegmail.glade.h:4
 msgid "Don't ask again"
@@ -111,16 +114,16 @@ msgid "Gnome Gmail"
 msgstr "Gnome Gmail"
 
 #: ../gnomegmail.glade.h:11
-msgid "Password"
-msgstr "Heslo"
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr "Uložit heslo k účtu Google v klíčence Gnome."
 
 #: ../gnomegmail.glade.h:12
 msgid "Remember Password"
 msgstr "Pamatovat si heslo"
 
 #: ../gnomegmail.glade.h:13
-msgid "Remember the Google Account password in the Gnome keychain."
-msgstr ""
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr "Nastavit Gnome Gmail pro použití s účtem Google App."
 
 #: ../gnomegmail.glade.h:14
 msgid ""
@@ -133,20 +136,22 @@ msgid "Use GNOME Gmail for sending mail"
 msgstr ""
 
 #: ../gnomegmail.glade.h:16
-msgid "User Name"
-msgstr "Uživatelské jméno"
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr "GNOME Gmail není v této chvíli Váš preferovaný poštovní klient."
 
 #: ../gnomegmail.glade.h:17
 msgid "Your Gmail password"
 msgstr "Vaše heslo"
 
 #: ../gnomegmail.glade.h:18
-msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Vaše uživatelské jméno (bez „@gmail.com“)"
+msgid "Don't change the Preferred Email Application"
+msgstr "Neměňte preferovaného poštovního klienta"
 
 #: ../gnomegmail.glade.h:19
-msgid "comment"
-msgstr "komentář"
+msgid "Use GNOME Gmail for sending mail"
+msgstr "Použít GNOME Gmail k odeslání pošty"
 
 #: ../gnome-gmail.schemas.in.h:1
 msgid ""
@@ -170,8 +175,8 @@ msgid "Saved IMAP user name"
 msgstr "Uložit uživatelské jméno protokolu IMAP"
 
 #: ../gnome-gmail.schemas.in.h:6
-msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Použít Open Office pro použití jako výchozí e-mailovou aplikaci"
+msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+msgstr "K použití Gnome Gmail s Google Apps zadejte název domény"
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "Suppress the GNOME Gmail Preferred Application Dialog"
@@ -180,6 +185,9 @@ msgstr ""
 #: ../gnome-gmail.schemas.in.h:8
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
 msgstr ""
+"Pokud je zaškrtnuto, Gnome Gmail nezobrazí upozornění, které se zobrazuje s "
+"každou vytvořenou zprávou. Toto upozornění obsahuje odkaz k povolení "
+"nastavení podpory Google Apps."
 
 #: ../gnome-gmail.schemas.in.h:9
 msgid ""
