@@ -6,18 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
-"Report-Msgid-Bugs-To: "
-"http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-08-20 22:47+0000\n"
-"Last-Translator: Kirill Babeev <Unknown>\n"
+"Report-Msgid-Bugs-To: https://github.com/davesteele/gnome-gmail/issues"
+"group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2012-10-04 19:53-0400\n"
+"PO-Revision-Date: 2012-01-16 11:36+0000\n"
+"Last-Translator: Sergey Basalaev <SBasalaev@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
-"Language: ru\n"
+"X-Launchpad-Export-Date: 2012-10-04 23:52+0000\n"
+"X-Generator: Launchpad (build 16061)\n"
 
 #: ../gnome-gmail:71
 #, c-format
@@ -26,7 +25,7 @@ msgstr "Отправка %s"
 
 #: ../gnome-gmail:73
 msgid "Mime message attached"
-msgstr "Mime сообщение вложено"
+msgstr "Сообщение Mime вложено"
 
 #: ../gnome-gmail:133
 msgid "Drafts"
@@ -38,7 +37,7 @@ msgstr "Невозможно определить расположение па�
 
 #: ../gnome-gmail:150
 msgid "Error encountered while uploading the message"
-msgstr "Произошла ошибка при отправке сообщение"
+msgstr "Произошла ошибка при отправке сообщения"
 
 #: ../gnome-gmail:168
 msgid "Error accessing message. Check the Drafts folder"
@@ -46,7 +45,7 @@ msgstr "Ошибка доступа к сообщению. Проверьте п
 
 #: ../gnome-gmail:351
 msgid "User cancelled \"Send To...\""
-msgstr "Пользователь отменил \"Отправить в...\""
+msgstr "Пользователь отменил «Отправить...»"
 
 #: ../gnome-gmail:487
 msgid "Error creating message with attachment"
@@ -77,12 +76,12 @@ msgid "Configure"
 msgstr "Настройка"
 
 #: ../gnomegmail.glade.h:2
-msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Настройка Gnome Gmail для работы с учетной записью Google App."
-
-#: ../gnomegmail.glade.h:3
-msgid "Copyright 2010 - Dave Steele"
-msgstr "Авторское право 2010 - Dave Steele"
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+"Введите учётные данные Gmail\n"
+"для загрузки файла"
 
 #: ../gnomegmail.glade.h:4
 msgid "Don't ask again"
