@@ -6,16 +6,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2011-05-13 10:46-0400\n"
-"PO-Revision-Date: 2011-04-14 15:10+0000\n"
-"Last-Translator: kvaju <jukvamo@gmail.com>\n"
+"Report-Msgid-Bugs-To: https://github.com/davesteele/gnome-gmail/issues"
+"group_id=277145&atid=1176979\n"
+"POT-Creation-Date: 2012-10-04 19:53-0400\n"
+"PO-Revision-Date: 2012-03-23 13:39+0000\n"
+"Last-Translator: gogo <trebelnik2@gmail.com>\n"
 "Language-Team: Croatian <hr@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-05-13 16:40+0000\n"
-"X-Generator: Launchpad (build 13037)\n"
+"X-Launchpad-Export-Date: 2012-10-04 23:52+0000\n"
+"X-Generator: Launchpad (build 16061)\n"
 
 #: ../gnome-gmail:71
 #, c-format
@@ -95,6 +96,10 @@ msgid "Enter the password for the mail account"
 msgstr "Unesi šifru za e-mail račun"
 
 #: ../gnomegmail.glade.h:7
+msgid "Password"
+msgstr "Lozinka"
+
+#: ../gnomegmail.glade.h:8
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
