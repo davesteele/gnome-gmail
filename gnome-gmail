@@ -599,7 +599,7 @@ def main( ):
     # set this app as the GNOME mailto handler, new-style
     [ app.set_as_default_for_type( "x-scheme-handler/mailto" ) 
       for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
-      if app.get_name() == "Gnome Gmail" ]
+      if app.get_id() == "gnome-gmail.desktop" ]
 
     # quiet mode, to set preferred app in postinstall
     if( len( sys.argv ) > 1 and sys.argv[1] == "-q" ):
