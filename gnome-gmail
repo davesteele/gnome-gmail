@@ -30,6 +30,8 @@ from gi.repository import Gtk
 
 import locale
 import gettext
+import string
+import json
 
 from ConfigParser import SafeConfigParser
 import os
@@ -42,6 +44,11 @@ _ = gettext.gettext
 
 import dbus
 
+import webkit
+import gobject
+import random
+
+
 class GGError( Exception ):
     """ Gnome Gmail exception """
     def __init__(self, value ):
@@ -50,6 +57,117 @@ class GGError( Exception ):
 
     def __str__( self ):
         return repr( self.value )
+
+class GMOauth():
+    """oauth mechanism per
+          https://developers.google.com/accounts/docs/OAuth2InstalledApp
+        example at
+          http://google-mail-oauth2-tools.googlecode.com/svn/trunk/python/oauth2.py
+        Eg:
+          (access, refresh) = GMOauth().generate_tokens( "user@gmail.com" )
+    """
+
+    def __init__(self):
+        self.auth_endpoint = "https://accounts.google.com/o/oauth2/auth"
+        self.token_endpoint = "https://accounts.google.com/o/oauth2/token"
+        self.client_id = "284739582412.apps.googleusercontent.com"
+        self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
+        self.win_valid = None
+
+
+    def get_code(self, login_hint):
+        s=string.lowercase + string.uppercase + string.digits
+        state = ''.join(random.sample(s,10))
+
+        gobject.threads_init()
+        win = gtk.Window()
+        win.set_title("")
+        bro = webkit.WebView()
+
+        args = { "response_type": "code",
+             "client_id": self.client_id,
+             "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+             "prompt": "consent",
+             #"scope": "openid email https://mail.google.com/",
+             "scope": "https://mail.google.com/",
+             "state": state,
+             "login_hint": login_hint }
+
+        code_url= "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+
+        bro.open(code_url)
+        win.add(bro)
+        win.resize(600,600)
+
+        self.win_valid=True
+        def win_closed(window, self):
+           self.win_valid = False
+        win.connect("destroy", win_closed, self)
+
+        win.show_all()
+
+        code = None
+        while self.win_valid:
+            gtk.main_iteration_do(False)
+            bro_title = bro.get_title()
+            if bro_title and state in bro_title:
+                code = bro_title.split("=")[-1]
+                if not win.emit("delete-event", gtk.gdk.Event(gtk.gdk.DELETE)):
+                    win.destroy()
+
+        return code
+
+    def get_token_dict(self, code):
+
+        args = { "code": code,
+             "client_id": self.client_id,
+             "client_secret": self.client_secret,
+             "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+             "grant_type": "authorization_code",
+           }
+
+        token_page = urllib.urlopen( self.token_endpoint, urllib.urlencode(args))
+
+        return(json.loads(token_page.read()))
+
+    def get_access_from_refresh(self, refresh_token):
+
+        args = { "refresh_token": refresh_token,
+             "client_id": self.client_id,
+             "client_secret": self.client_secret,
+             "grant_type": "refresh_token",
+          }
+
+        token_page = urllib.urlopen( self.token_endpoint, urllib.urlencode(args))
+        token_dict = json.loads(token_page.read())
+
+        if "access_token" in token_dict:
+            return(token_dict["access_token"])
+        else:
+            return(None)
+
+    def generate_tokens(self, login, refresh_token=None):
+        """Generate an access token/refresh token pair for 'login' email
+           account, using an optional refresh token.
+           If refresh is not possible, the caller will be prompted for
+           authentication via an internal browser window."""
+
+        if refresh_token:
+           access_token = self.get_access_from_refresh(refresh_token)
+           if access_token:
+               return( (access_token, refresh_token) )
+
+        code = self.get_code(login)
+
+        token_dict = self.get_token_dict(code)
+
+        try:
+            return( (token_dict["access_token"], token_dict["refresh_token"]) )
+        except:
+            # todo - replace with a GG exception
+            return( (None, None) )
+
+
 
 
 class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
