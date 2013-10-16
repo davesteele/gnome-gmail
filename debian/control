@@ -5,15 +5,15 @@ Maintainer: David Steele <daves@users.sourceforge.net>
 Dm-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7.0.50), intltool, libgconf2-dev, autotools-dev, dh-autoreconf
 Standards-Version: 3.9.2
-Homepage: http://gnome-gmail.sourceforge.net
-Vcs-Browser: http://gnome-gmail.git.sourceforge.net/git/gitweb.cgi?p=gnome-gmail/gnome-gmail;a=tree
-Vcs-Git: git://gnome-gmail.git.sourceforge.net/gitroot/gnome-gmail/gnome-gmail
+Homepage: https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about
+Vcs-Browser: https://github.com/davesteele/gnome-gmail
+Vcs-Git: https://github.com/davesteele/gnome-gmail.git
 
 Package: gnome-gmail
 Architecture: all
 Depends: ${misc:Depends}, python (>=2.6), gnome-control-center, gconf2, gconf-editor, libgtk2.0-bin, python-gnomekeyring, python-glade2, python-gconf, xdg-utils
 Description: support for Gmail as the preferred email application in GNOME
- GNOME Gmail integrates the Gmail web interface into the GNOME environment. 
+ GNOME Gmail integrates the Gmail web interface into the GNOME environment.
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
  Preferred Applications administration application. When selected, a Gmail web
  page will be used whenever an email service is requested.
