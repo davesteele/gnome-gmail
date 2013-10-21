@@ -1,0 +1,244 @@
+# Indonesian translation for gnome-gmail
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-01-13 03:00+0000\n"
+"PO-Revision-Date: 2013-04-26 07:41+0000\n"
+"Last-Translator: dhardiputra <dhardiputra@gmail.com>\n"
+"Language-Team: Indonesian <id@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2013-10-21 23:16+0000\n"
+"X-Generator: Launchpad (build 16807)\n"
+
+#: ../gnome-gmail:106
+#, c-format
+msgid "Sending %s"
+msgstr "Mengirim %s"
+
+#: ../gnome-gmail:108
+msgid "Mime message attached"
+msgstr "Pesan Mime disertakan"
+
+#: ../gnome-gmail:173
+msgid "Drafts"
+msgstr "Drafts"
+
+#: ../gnome-gmail:185
+msgid "Unable to determine IMAP Drafts folder location"
+msgstr "Tidak dapat menemukan lokasi map Drafts IMAP"
+
+#: ../gnome-gmail:192
+msgid "Error encountered while uploading the message"
+msgstr "Ditemukan gangguan saat mengunggah pesan"
+
+#: ../gnome-gmail:210
+msgid "Error accessing message. Check the Drafts folder"
+msgstr "Gangguan saat mengakses pesan. Cek map Drafts"
+
+#: ../gnome-gmail:393
+msgid "User cancelled \"Send To...\""
+msgstr "Dibatalkan oleh pengguna \"Dikirim kepada...\""
+
+#: ../gnome-gmail:529
+msgid "Error creating message with attachment"
+msgstr "Gangguan saat mengolah pesan dengan lampiran"
+
+#: ../gnome-gmail:555
+msgid "nvalid credentials"
+msgstr "Salah mandat"
+
+#: ../gnome-gmail:556
+msgid "Invalid GMail User Name or Password"
+msgstr "Nama User Gmail atau Password yang salah"
+
+#: ../gnome-gmail:557
+msgid "not enabled for IMAP"
+msgstr "tidak diaktifkan untuk IMAP"
+
+#: ../gnome-gmail:558
+msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+msgstr "Anda harus 'Mengaktifkan IMAP' di GMAIL agar bisa mengirim lampiran"
+
+#: ../gnome-gmail:566
+msgid "GMail credentials incomplete"
+msgstr "GMail kredensial tidak lengkap"
+
+#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gmail Gnome"
+
+#: ../gnomegmail.glade.h:2
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+"Masukkan mandat Gmail anda\n"
+"untuk mengupload berkas"
+
+#: ../gnomegmail.glade.h:4
+msgid "Your Gmail user name, without the '@gmail.com' part"
+msgstr "Nama user Gmail anda, tanpa '@gmail.com'"
+
+#: ../gnomegmail.glade.h:5
+msgid "User Name"
+msgstr "Nama User"
+
+#: ../gnomegmail.glade.h:6
+msgid "Your Gmail password"
+msgstr "Password Gmail anda"
+
+#: ../gnomegmail.glade.h:7
+msgid "Password"
+msgstr "Password"
+
+#: ../gnomegmail.glade.h:8
+msgid ""
+"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgstr "Nama akun email (e.g. 'joe', untuk email akun 'joe@gmail.com')"
+
+#: ../gnomegmail.glade.h:9
+msgid "Enter the password for the mail account"
+msgstr "Masukkan password untuk akun email"
+
+#: ../gnomegmail.glade.h:10
+msgid "Remember Password"
+msgstr "Ingat Password"
+
+#: ../gnomegmail.glade.h:11
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr "Ingat sandi Akun Google di Gnome keychain."
+
+#: ../gnomegmail.glade.h:12
+msgid "Configure"
+msgstr "Konfigurasi"
+
+#: ../gnomegmail.glade.h:13
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr "Mengkonfigurasi Gmail Gnome untuk digunakan bersama akun Google App."
+
+#: ../gnomegmail.glade.h:14
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Dave Steele - Copyright 2010"
+
+#: ../gnomegmail.glade.h:15
+msgid "comment"
+msgstr "komentar"
+
+#: ../gnomegmail.glade.h:16
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+"GNOME Gmail saat ini tidak anda pilih sebagai Aplikasi Email. Apakah anda "
+"ingin email dikirim menggunakan halaman web Gmail?"
+
+#: ../gnomegmail.glade.h:17
+msgid "Don't ask again"
+msgstr "Jangan tanya lagi"
+
+#: ../gnomegmail.glade.h:18
+msgid "Don't change the Preferred Email Application"
+msgstr "Jangan ganti Aplikasi Email yang Diinginkan"
+
+#: ../gnomegmail.glade.h:19
+msgid "Use GNOME Gmail for sending mail"
+msgstr "Gunakan Gmail GNOME untuk mengirim email"
+
+#: ../gnome-gmail.schemas.in.h:1
+msgid "Save IMAP password?"
+msgstr "Simpan password IMAP?"
+
+#: ../gnome-gmail.schemas.in.h:2
+msgid ""
+"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
+"IMAP is used to upload file attachments to GMail."
+msgstr ""
+"Saat diperiksa, Gnome Gmail akan menyimpan sandi IMAP di Gnome keyring. IMAP "
+"digunakan untuk mengunggah file lampiran ke GMail."
+
+#: ../gnome-gmail.schemas.in.h:3
+msgid "Saved IMAP user name"
+msgstr "Simpan nama user IMAP"
+
+#: ../gnome-gmail.schemas.in.h:4
+msgid ""
+"Gnome Gmail will save the last user name for file attachment uploads here."
+msgstr ""
+"Gnome Gmail akan menyimpan nama pengguna terakhir untuk lampiran file upload "
+"di sini."
+
+#: ../gnome-gmail.schemas.in.h:5
+msgid "Google Apps domain"
+msgstr "Domain Google Apps"
+
+#: ../gnome-gmail.schemas.in.h:6
+msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+msgstr ""
+"Untuk menggunakan Gnome Gmail dengan Google Apps, masukkan nama domain di "
+"sini"
+
+#: ../gnome-gmail.schemas.in.h:7
+msgid "Hide confirmation dialog"
+msgstr "Sembunyikan dialog konfirmasi"
+
+#: ../gnome-gmail.schemas.in.h:8
+msgid ""
+"When checked, Gnome Gmail will suppress the confirmation notification that "
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
+msgstr ""
+"Saat diperiksa, Gnome Gmail akan menekan pemberitahuan konfirmasi yang "
+"muncul dengan setiap pesan yang dibuat. Pemberitahuan berisi link Gnome "
+"Gmail untuk dikonfigurasikan untuk mendukung Google Apps."
+
+#: ../gnome-gmail.schemas.in.h:9
+msgid "Set Open Office to use the Gnome Preferred Email Application"
+msgstr "Set Open Office untuk menggunakan Gnome Preferred Application Email"
+
+#: ../gnome-gmail.schemas.in.h:10
+msgid ""
+"When checked, Gnome Gmail will attempt to configure Open Office to use the "
+"currently selected Gnome Preferred Email Application with each login, using "
+"a Gnome Gmail compatibility application."
+msgstr ""
+"Saat diperiksa, Gnome Gmail akan mencoba untuk mengkonfigurasi Open Office "
+"untuk menggunakan dipilih Gnome Preferred Aplikasi Email dengan setiap "
+"login, menggunakan aplikasi kompatibilitas Gnome Gmail."
+
+#: ../gnome-gmail.schemas.in.h:11
+msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+msgstr "Menekan GNOME Gmail Preferred Dialog Aplikasi"
+
+#: ../gnome-gmail.schemas.in.h:12
+msgid ""
+"When checked, GNOME Gmail will not offer to set itself as the GNOME "
+"Preferred Mail application. Otherwise, the program will ask if you want it "
+"to be the mail application, if it isn't already."
+msgstr ""
+"Saat diperiksa, GNOME Gmail tidak akan menawarkan untuk mengatur dirinya "
+"sebagai GNOME aplikasi Mail Preferred. Jika tidak, program akan menanyakan "
+"apakah Anda ingin menjadi aplikasi e-mail, jika belum."
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr "Mengintegrasikan GMail dengan desktop Anda"
+
+#: ../setOOmailer.desktop.in.h:1
+msgid "Gnome Gmail Open Office Configurator"
+msgstr "Konfigurator Open Office Gmail Gnome"
+
+#: ../setOOmailer.desktop.in.h:2
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr ""
+"Konfigurasi Open Office untuk menggunakan Gnome aplikasi Email Preferred"
+
+#: ../gnome-gmail.xml.in.h:1
+msgid "Gmail"
+msgstr "Gmail"
