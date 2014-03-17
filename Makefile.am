@@ -1,7 +1,5 @@
 dist_bin_SCRIPTS = gnome-gmail setOOmailer
 
-dist_man1_MANS = gnome-gmail.1 setOOmailer.1
-
 pkgsharedir = $(datarootdir)/gnome-gmail
 dist_pkgshare_DATA = gnomegmail.glade
 dist_pkgshare_SCRIPTS = evolution
