@@ -1,8 +1,0 @@
-[main]
-host = https://www.transifex.net
-
-[gnome-gmail.gnome-gmailpot]
-file_filter = po/<lang>.po
-source_file = po/gnome-gmail.pot
-source_lang = en
-

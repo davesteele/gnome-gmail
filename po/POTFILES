@@ -1,8 +1,0 @@
-	../gnome-gmail \
-	../setOOmailer \
-	../evolution \
-	../gnomegmail.glade \
-	../gnome-gmail.schemas.in \
-	../gnome-gmail.desktop.in \
-	../setOOmailer.desktop.in \
-	../gnome-gmail.xml.in
