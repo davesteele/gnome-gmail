@@ -10,15 +10,8 @@
 export DH_VERBOSE=1
 
 %:
-	dh --with autotools-dev --with autoreconf $@ 
-
-override_dh_auto_configure:
-	dh_auto_configure -- --with-gconf-schema-file-dir=/usr/share/gconf/schemas
+	dh $@ --with python2
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
 
-# for lintian
-build-arch: build
-
-build-indep: build

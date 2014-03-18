@@ -3,7 +3,11 @@ Section: gnome
 Priority: optional
 Maintainer: David Steele <daves@users.sourceforge.net>
 Dm-Upload-Allowed: yes
-Build-Depends: debhelper (>= 7.0.50), intltool, libgconf2-dev, autotools-dev, dh-autoreconf
+Build-Depends: debhelper (>= 7.4.3),
+               intltool,
+               libgconf2-dev,
+               python-distutils-extra,
+               python (>= 2.6.6-3),
 Standards-Version: 3.9.2
 Homepage: https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about
 Vcs-Browser: https://github.com/davesteele/gnome-gmail
