@@ -1,0 +1,5 @@
+prune debian
+include *
+recursive-include po *
+recursive-include test *
+
