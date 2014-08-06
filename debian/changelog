@@ -2,7 +2,8 @@ gnome-gmail (1.8.3-1) UNRELEASED; urgency=low
 
   * Change the Home Page and CM links off of Sourceforge.
   * Convert from autotools build to setup.py.
-  * Change email to dsteele@gmail.com
+  * Rework repository for git-buildpackage.
+  * Change email to dsteele@gmail.com.
   * Update Debian Policy to 3.9.5.
 
  -- David Steele <dsteele@gmail.com>  Wed, 16 Oct 2013 15:07:26 -0400
