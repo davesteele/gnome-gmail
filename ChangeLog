@@ -1,8 +1,8 @@
 2013-10-15 David Steele <daves@users.sourceforge.net>
 
   * v1.8.3
-
-
+  * Change email addresses
+  * Switch from autotools to setup.py
 
 2011-10-24 David Steele <daves@users.sourceforge.net>
 
