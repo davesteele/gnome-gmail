@@ -6,7 +6,7 @@ This is part of the GNOME Gmail project.
 Once installed, Gmail will appear as a choice for the default mail reader in
 the GNOME Preferred Applications dialog.
 
-Run './configure; sudo make install', to install.
+Run 'python setup.py install', to install.
 
 Copyright 2011-2014 David Steele <dsteele@gmail.com>
 
