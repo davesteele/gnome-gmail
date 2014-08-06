@@ -1,7 +1,7 @@
 Source: gnome-gmail
 Section: gnome
 Priority: optional
-Maintainer: David Steele <daves@users.sourceforge.net>
+Maintainer: David Steele <dsteele@gmail.com>
 Dm-Upload-Allowed: yes
 Build-Depends: debhelper (>= 7.4.3),
                intltool,

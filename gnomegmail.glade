@@ -203,7 +203,7 @@ for the file upload</property>
     <property name="copyright" translatable="yes">Copyright 2010 - Dave Steele</property>
     <property name="comments" translatable="yes">comment</property>
     <property name="website">http://gnome-gmail.sourceforge.net/</property>
-    <property name="authors">Dave Steele &lt;daves@users.sourceforge.net&gt;</property>
+    <property name="authors">Dave Steele &lt;dsteele@gmail.com&gt;</property>
     <child internal-child="vbox">
       <widget class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>

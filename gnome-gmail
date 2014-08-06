@@ -1,6 +1,6 @@
 #!/usr/bin/python -tt
 #
-# Copyright 2011 David Steele <daves@users.sourceforge.net>
+# Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
 # Available under the terms of the GNU General Public License version 2 or later
 #
@@ -163,7 +163,7 @@ class GMailIMAP( ):
               + '"name" "gnome-gmail"'
               + ' "version" "1.8.2"'
               + ' "os" "Linux"'
-              + ' "contact" "daves@users.sourceforge.net"'
+              + ' "contact" "dsteele@gmail.com"'
               + ' "support-url" "http://sourceforge.net/tracker/?group_id=277145"'
               + ')' 
               )
