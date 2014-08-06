@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 7.4.3),
                libgconf2-dev,
                python-distutils-extra,
                python (>= 2.6.6-3),
-Standards-Version: 3.9.2
+Standards-Version: 3.9.5
 Homepage: https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about
 Vcs-Browser: https://github.com/davesteele/gnome-gmail
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git
