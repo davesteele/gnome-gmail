@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for repo in gnome-gmailppa ; do
+    for pkg in gnome-gmail ; do
+        reprepro -Vb . --ignore=wrongdistribution includedeb $repo ../../$pkg\_*_all.deb
+    done
+done
+
+rm -rf db/
+

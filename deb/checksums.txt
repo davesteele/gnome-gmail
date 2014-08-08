@@ -1,0 +1,7 @@
+MD5Sum
+b0a7b4702b0ed1f4aafe7be3535e0490  gnome-gmail_1.8.3-1_all.deb
+\nSHA1
+aca542402a18fdece4d981eb2fe8584014b52c7c  gnome-gmail_1.8.3-1_all.deb
+\nSHA256
+5b759e66b28b641212e56b8ad24c1b694ecc1a444e48544b924f49a4a09bac35  gnome-gmail_1.8.3-1_all.deb
+

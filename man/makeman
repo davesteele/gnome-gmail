@@ -1,0 +1,8 @@
+#!/bin/sh
+
+
+
+for manpg in gnome-gmail setOOmailer ; do
+    (man -t $manpg|ps2pdf - $manpg.pdf);
+    man -Thtml $manpg >$manpg.html;
+done

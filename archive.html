@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>GNOME Gmail Archive</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="javascripts/jquery-1.7.1.min.js"></script>
+    <script src="javascripts/jquery.mustache.js"></script>
+    <script src="javascripts/mustache.js"></script>
+
+    <script type="text/javascript">
+
+    function dotemplate(data, textstatus, jqXHR ) {
+        $.Mustache.addFromDom('debtmpl');
+        $('#deblist').mustache('debtmpl', data);
+    }
+
+    $(document).ready(function() {
+        $.getJSON('pkgs.json', dotemplate);
+    })
+
+    </script>
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>GNOME Gmail</h1>
+        <p>Integrate Gmail into the Linux desktop</p>
+
+        <p class="view"><a href="https://github.com/davesteele/gnome-gmail">View the Project on GitHub <small>davesteele/gnome-gmail</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/davesteele/gnome-gmail/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/davesteele/gnome-gmail/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/davesteele/gnome-gmail">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+      <a href="index.html">back</a>
+        <h3>Archived packages.</h3>
+<ul>
+<script type='text/template' id="debtmpl">
+{{#all_pkgs}}
+<li><a href="deb/{{.}}">{{.}}</a></li>
+{{/all_pkgs}}
+</script>
+<div id="deblist"></div>
+<li><a href="deb/checksums.txt">checksums.txt</a></li>
+</ul>
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/davesteele">davesteele</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+
+  </body>
+</html>
