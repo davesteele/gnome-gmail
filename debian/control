@@ -8,7 +8,7 @@ Build-Depends: debhelper (>= 7.4.3),
                python-distutils-extra,
                python (>= 2.6.6-3),
 Standards-Version: 3.9.5
-X-Python-Version >= 2.7
+X-Python-Version: >= 2.7
 Homepage: https://davesteele.github.io/gnome-gmail/
 Vcs-Browser: https://github.com/davesteele/gnome-gmail
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b master
