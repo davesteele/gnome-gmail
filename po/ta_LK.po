@@ -2,99 +2,79 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
-"Report-Msgid-Bugs-To: http://sourceforge.net/tracker/?group_id=277145&atid=1176979\n"
-"POT-Creation-Date: 2011-05-13 10:46-0400\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-11 20:06-0400\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: daves <dsteele@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ta_LK\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ta_LK\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnome-gmail:71
+#: ../gnome-gmail:105
 #, c-format
 msgid "Sending %s"
 msgstr "அனுப்புக %s"
 
-#: ../gnome-gmail:73
+#: ../gnome-gmail:107
 msgid "Mime message attached"
 msgstr "தகவல் இணைக்கப்பட்டுள்ளது"
 
-#: ../gnome-gmail:133
+#: ../gnome-gmail:172
 msgid "Drafts"
 msgstr "எழுதபட்டவை"
 
-#: ../gnome-gmail:143
+#: ../gnome-gmail:184
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "IMAP கோப்பு பாதையை தெரிவு செய்ய முடியாதுள்ளது"
 
-#: ../gnome-gmail:150
+#: ../gnome-gmail:191
 msgid "Error encountered while uploading the message"
 msgstr ""
 
-#: ../gnome-gmail:168
+#: ../gnome-gmail:209
 msgid "Error accessing message. Check the Drafts folder"
 msgstr ""
 
-#: ../gnome-gmail:351
+#: ../gnome-gmail:392
 msgid "User cancelled \"Send To...\""
 msgstr "பயனர் அனுப்புவதை ரத்து செய்துள்ளார்"
 
-#: ../gnome-gmail:487
+#: ../gnome-gmail:535
 msgid "Error creating message with attachment"
 msgstr "கோப்பு இணைக்கப்பட்ட தகவலில் பிழை ஏற்பட்டுள்ளது"
 
-#: ../gnome-gmail:513
+#: ../gnome-gmail:561
 msgid "nvalid credentials"
 msgstr "செல்லுபடியாகாத உரிமம்"
 
-#: ../gnome-gmail:514
+#: ../gnome-gmail:562
 msgid "Invalid GMail User Name or Password"
 msgstr "செல்லுபடியாகாத ஜிமெயில் பயனர் பெயர், கடவுச்சொல்லும்"
 
-#: ../gnome-gmail:515
+#: ../gnome-gmail:563
 msgid "not enabled for IMAP"
 msgstr "IMAP செயற்படுத்த முடியாதுள்ளது"
 
-#: ../gnome-gmail:516
+#: ../gnome-gmail:564
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "ஜிமெயில் இல் கோப்புகளை இணைக்க  IMAP செயற்படுத்த வேண்டும்"
 
-#: ../gnome-gmail:524
+#: ../gnome-gmail:572
 msgid "GMail credentials incomplete"
 msgstr "ஜிமெயில் லின் நம்பிக்கை சான்று முடிவடையவில்லை"
 
-#: ../gnomegmail.glade.h:1
-msgid "Configure"
-msgstr "உள்ளமைப்பு"
+#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "க்னோம் ஜிமெயில்"
 
 #: ../gnomegmail.glade.h:2
-msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "க்னோம் ஜிமெயில் உட்கட்டமைப்பை இனக்க கூகிள் கணக்கை பயன்படுத்தவும்"
-
-#: ../gnomegmail.glade.h:3
-msgid "Copyright 2010 - Dave Steele"
-msgstr "பதிப்புரிமை 2010 - டேவே  ச்டீலே"
-
-#: ../gnomegmail.glade.h:4
-msgid "Don't ask again"
-msgstr ""
-
-#: ../gnomegmail.glade.h:5
-msgid "Don't change the Preferred Email Application"
-msgstr ""
-
-#: ../gnomegmail.glade.h:6
-msgid "Enter the password for the mail account"
-msgstr "மின்னஞ்சல் கணக்கின் கடவுசொல்லை தரவும்"
-
-#: ../gnomegmail.glade.h:7
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
@@ -102,92 +82,119 @@ msgstr ""
 "ஜிமெயில் சான்றை தரவும் \n"
 "கோப்பை தரவேற்ற"
 
+#: ../gnomegmail.glade.h:4
+msgid "Your Gmail user name, without the '@gmail.com' part"
+msgstr "உங்கள் ஜிமெயில் பயனர் '@gmail.com' பெயர் இல்லாமல் வரும் பெயராகும்"
+
+#: ../gnomegmail.glade.h:5
+msgid "User Name"
+msgstr "பயனாளர் பெயர்"
+
+#: ../gnomegmail.glade.h:6
+msgid "Your Gmail password"
+msgstr "உங்கள் ஜிமெயில் கடவுச்சொல்"
+
+#: ../gnomegmail.glade.h:7
+msgid "Password"
+msgstr "கடவுசொல்"
+
+#: ../gnomegmail.glade.h:8
+msgid ""
+"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgstr "மின்னஞ்சல் கணக்கின் பெயர் (உ + ம் , கவி -'kavi@gmail.com' )"
+
 #: ../gnomegmail.glade.h:9
+msgid "Enter the password for the mail account"
+msgstr "மின்னஞ்சல் கணக்கின் கடவுசொல்லை தரவும்"
+
+#: ../gnomegmail.glade.h:10
+msgid "Remember Password"
+msgstr "கடவுசொல்லை ஞாபகடுத்தவும்"
+
+#: ../gnomegmail.glade.h:11
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr "க்னோம் சாவியாக ஞாபகடுத்தவும் கூகிள் கணக்கின் கடவுசொல்லை"
+
+#: ../gnomegmail.glade.h:12
+msgid "Configure"
+msgstr "உள்ளமைப்பு"
+
+#: ../gnomegmail.glade.h:13
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr "க்னோம் ஜிமெயில் உட்கட்டமைப்பை இனக்க கூகிள் கணக்கை பயன்படுத்தவும்"
+
+#: ../gnomegmail.glade.h:14
+msgid "Copyright 2010 - Dave Steele"
+msgstr "பதிப்புரிமை 2010 - டேவே  ச்டீலே"
+
+#: ../gnomegmail.glade.h:15
+msgid "comment"
+msgstr "கருத்து"
+
+#: ../gnomegmail.glade.h:16
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
 
-#: ../gnomegmail.glade.h:10 ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
-msgstr "க்னோம் ஜிமெயில்"
+#: ../gnomegmail.glade.h:17
+msgid "Don't ask again"
+msgstr ""
 
-#: ../gnomegmail.glade.h:11
-msgid "Password"
-msgstr "கடவுசொல்"
+#: ../gnomegmail.glade.h:18
+msgid "Don't change the Preferred Email Application"
+msgstr ""
 
-#: ../gnomegmail.glade.h:12
-msgid "Remember Password"
-msgstr "கடவுசொல்லை ஞாபகடுத்தவும்"
-
-#: ../gnomegmail.glade.h:13
-msgid "Remember the Google Account password in the Gnome keychain."
-msgstr "க்னோம் சாவியாக ஞாபகடுத்தவும் கூகிள் கணக்கின் கடவுசொல்லை"
-
-#: ../gnomegmail.glade.h:14
-msgid ""
-"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr "மின்னஞ்சல் கணக்கின் பெயர் (உ + ம் , கவி -'kavi@gmail.com' )"
-
-#: ../gnomegmail.glade.h:15
+#: ../gnomegmail.glade.h:19
 msgid "Use GNOME Gmail for sending mail"
 msgstr ""
 
-#: ../gnomegmail.glade.h:16
-msgid "User Name"
-msgstr "பயனாளர் பெயர்"
-
-#: ../gnomegmail.glade.h:17
-msgid "Your Gmail password"
-msgstr "உங்கள் ஜிமெயில் கடவுச்சொல்"
-
-#: ../gnomegmail.glade.h:18
-msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "உங்கள் ஜிமெயில் பயனர் '@gmail.com' பெயர் இல்லாமல் வரும் பெயராகும்"
-
-#: ../gnomegmail.glade.h:19
-msgid "comment"
-msgstr "கருத்து"
-
 #: ../gnome-gmail.schemas.in.h:1
+msgid "Save IMAP password?"
+msgstr "IMAP கடவுச்சொல்லை சேமி"
+
+#: ../gnome-gmail.schemas.in.h:2
+msgid ""
+"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
+"IMAP is used to upload file attachments to GMail."
+msgstr ""
+"தெரியும் போது, க்னோம் ஜிமெயில் IMAP கடவுச்சொல்லை க்னோம் சாவியில் சேமிக்கும்,IMAP "
+"கோப்புகளை ஜிமெயில் லில் தரவேற்ற பயன்படுகிறது"
+
+#: ../gnome-gmail.schemas.in.h:3
+msgid "Saved IMAP user name"
+msgstr "IMAP பயனர் பெயர் சேமிக்கப்பட்டது"
+
+#: ../gnome-gmail.schemas.in.h:4
 msgid ""
 "Gnome Gmail will save the last user name for file attachment uploads here."
 msgstr "க்னோம் ஜிமெயில் கடைசி பயனர் பெயரை கோப்பு இணைப்பு பெயராக பயன்படுத்தும்"
 
-#: ../gnome-gmail.schemas.in.h:2
+#: ../gnome-gmail.schemas.in.h:5
 msgid "Google Apps domain"
 msgstr "கூகிள் செயலி களம்"
 
-#: ../gnome-gmail.schemas.in.h:3
-msgid "Hide confirmation dialog"
-msgstr "உறுதிபடுத்தல் பெட்டியை மறை"
-
-#: ../gnome-gmail.schemas.in.h:4
-msgid "Save IMAP password?"
-msgstr "IMAP கடவுச்சொல்லை சேமி"
-
-#: ../gnome-gmail.schemas.in.h:5
-msgid "Saved IMAP user name"
-msgstr "IMAP பயனர் பெயர் சேமிக்கப்பட்டது"
-
 #: ../gnome-gmail.schemas.in.h:6
-msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "ஓபன் ஆபீஸ் ஐ க்னோம் ஜிமெயில் லில் நிறுவுக"
-
-#: ../gnome-gmail.schemas.in.h:7
-msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-msgstr ""
-
-#: ../gnome-gmail.schemas.in.h:8
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
 msgstr "கூகிள் செயலியை க்னோம் ஜிமெயில் லில் பயன்படுத்த கள பெயரை தருக"
 
-#: ../gnome-gmail.schemas.in.h:9
+#: ../gnome-gmail.schemas.in.h:7
+msgid "Hide confirmation dialog"
+msgstr "உறுதிபடுத்தல் பெட்டியை மறை"
+
+#: ../gnome-gmail.schemas.in.h:8
 msgid ""
-"When checked, GNOME Gmail will not offer to set itself as the GNOME "
-"Preferred Mail application. Otherwise, the program will ask if you want it "
-"to be the mail application, if it isn't already."
+"When checked, Gnome Gmail will suppress the confirmation notification that "
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
 msgstr ""
+"தெரியும் போது ,க்னோம் ஜிமெயில் உறுதிபடுத்தும் அறிவிப்புகளை தெரியபடுத்தும் தகவல் "
+"உருவாக்கத்தில்.அறிவிப்பில் கூகிள் செயளிலியை உபயோகிக்க உறுதிபடுத்தும் தொடுப்பு "
+"இணைகபடிருகும்."
+
+#: ../gnome-gmail.schemas.in.h:9
+msgid "Set Open Office to use the Gnome Preferred Email Application"
+msgstr "ஓபன் ஆபீஸ் ஐ க்னோம் ஜிமெயில் லில் நிறுவுக"
 
 #: ../gnome-gmail.schemas.in.h:10
 msgid ""
@@ -195,38 +202,31 @@ msgid ""
 "currently selected Gnome Preferred Email Application with each login, using "
 "a Gnome Gmail compatibility application."
 msgstr ""
-"தெரியும் போது ,க்னோம் ஜிமெயில் உடன் ஓபன் ஆபீஸ் ஐ பயன்படுத்தும் வாய்ப்பு "
-"ஜிமெயில் செயலி ஊடக கிடைக்கும்"
+"தெரியும் போது ,க்னோம் ஜிமெயில் உடன் ஓபன் ஆபீஸ் ஐ பயன்படுத்தும் வாய்ப்பு ஜிமெயில் செயலி ஊடக "
+"கிடைக்கும்"
 
 #: ../gnome-gmail.schemas.in.h:11
-msgid ""
-"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
-"IMAP is used to upload file attachments to GMail."
+msgid "Suppress the GNOME Gmail Preferred Application Dialog"
 msgstr ""
-"தெரியும் போது, க்னோம் ஜிமெயில் IMAP கடவுச்சொல்லை க்னோம் சாவியில் "
-"சேமிக்கும்,IMAP கோப்புகளை ஜிமெயில் லில் தரவேற்ற பயன்படுகிறது"
 
 #: ../gnome-gmail.schemas.in.h:12
 msgid ""
-"When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow"
-" Gnome Gmail to be configured for Google Apps support."
+"When checked, GNOME Gmail will not offer to set itself as the GNOME "
+"Preferred Mail application. Otherwise, the program will ask if you want it "
+"to be the mail application, if it isn't already."
 msgstr ""
-"தெரியும் போது ,க்னோம் ஜிமெயில் உறுதிபடுத்தும் அறிவிப்புகளை தெரியபடுத்தும் "
-"தகவல் உருவாக்கத்தில்.அறிவிப்பில் கூகிள் செயளிலியை உபயோகிக்க உறுதிபடுத்தும் "
-"தொடுப்பு இணைகபடிருகும்."
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "உங்கள் திரைபலகையுடன் இணைந்த ஜிமெயில்"
 
 #: ../setOOmailer.desktop.in.h:1
-msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr "க்னோம் மெயில் லில் ஓபன் ஆபீஸ் ஐ பயன்படுத்த உறுதி செய்க"
-
-#: ../setOOmailer.desktop.in.h:2
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "க்னோம் ஜிமெயில் ஓபன் ஆபீஸ் உறுதிபடுத்தி"
+
+#: ../setOOmailer.desktop.in.h:2
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr "க்னோம் மெயில் லில் ஓபன் ஆபீஸ் ஐ பயன்படுத்த உறுதி செய்க"
 
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"

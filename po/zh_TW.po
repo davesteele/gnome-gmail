@@ -6,67 +6,68 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
-"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
-"POT-Creation-Date: 2012-01-13 03:00+0000\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-11 20:06-0400\n"
 "PO-Revision-Date: 2013-06-15 03:46+0000\n"
 "Last-Translator: Po-Chun Huang <Unknown>\n"
 "Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2013-10-21 23:16+0000\n"
 "X-Generator: Launchpad (build 16807)\n"
 
-#: ../gnome-gmail:106
+#: ../gnome-gmail:105
 #, c-format
 msgid "Sending %s"
 msgstr "正在傳送 %s"
 
-#: ../gnome-gmail:108
+#: ../gnome-gmail:107
 msgid "Mime message attached"
 msgstr ""
 
-#: ../gnome-gmail:173
+#: ../gnome-gmail:172
 msgid "Drafts"
 msgstr "草稿"
 
-#: ../gnome-gmail:185
+#: ../gnome-gmail:184
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr ""
 
-#: ../gnome-gmail:192
+#: ../gnome-gmail:191
 msgid "Error encountered while uploading the message"
 msgstr ""
 
-#: ../gnome-gmail:210
+#: ../gnome-gmail:209
 msgid "Error accessing message. Check the Drafts folder"
 msgstr ""
 
-#: ../gnome-gmail:393
+#: ../gnome-gmail:392
 msgid "User cancelled \"Send To...\""
 msgstr "使用者已取消 \"傳送到...\""
 
-#: ../gnome-gmail:529
+#: ../gnome-gmail:535
 msgid "Error creating message with attachment"
 msgstr ""
 
-#: ../gnome-gmail:555
+#: ../gnome-gmail:561
 msgid "nvalid credentials"
 msgstr ""
 
-#: ../gnome-gmail:556
+#: ../gnome-gmail:562
 msgid "Invalid GMail User Name or Password"
 msgstr "無效的 GMail 使用者名稱或密碼"
 
-#: ../gnome-gmail:557
+#: ../gnome-gmail:563
 msgid "not enabled for IMAP"
 msgstr ""
 
-#: ../gnome-gmail:558
+#: ../gnome-gmail:564
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "為了傳送附加檔案，您必需在 Gmail '啟用 IMAP'"
 
-#: ../gnome-gmail:566
+#: ../gnome-gmail:572
 msgid "GMail credentials incomplete"
 msgstr ""
 
@@ -133,7 +134,9 @@ msgstr "評論"
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
-msgstr "GNOME Gmail 目前不是您預設慣用的郵件應用程式。您想要使用 Gmail 網頁發送電子郵件?"
+msgstr ""
+"GNOME Gmail 目前不是您預設慣用的郵件應用程式。您想要使用 Gmail 網頁發送電子郵"
+"件?"
 
 #: ../gnomegmail.glade.h:17
 msgid "Don't ask again"
