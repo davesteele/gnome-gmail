@@ -3,6 +3,7 @@ Section: gnome
 Priority: optional
 Maintainer: David Steele <dsteele@gmail.com>
 Build-Depends: debhelper (>= 7.4.3),
+               python-setuptools (>= 0.6b3),
                intltool,
                libgconf2-dev,
                python-distutils-extra,
@@ -15,7 +16,7 @@ Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b master
 
 Package: gnome-gmail
 Architecture: all
-Depends: ${misc:Depends}, python (>=2.6), gnome-control-center, gconf2, gconf-editor, libgtk2.0-bin, python-gnomekeyring, python-glade2, python-gconf, xdg-utils
+Depends: ${misc:Depends}, python (>=2.7), gnome-control-center, gconf2, gconf-editor, libgtk2.0-bin, python-gnomekeyring, python-glade2, python-gconf, xdg-utils
 Description: support for Gmail as the preferred email application in GNOME
  GNOME Gmail integrates the Gmail web interface into the GNOME environment.
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
