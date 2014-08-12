@@ -1,39 +1,39 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# Chinese (Traditional) translation for gnome-gmail
+# Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME Gmail\n"
+"Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-11 20:06-0400\n"
-"PO-Revision-Date: 2011-05-13 15:10+0000\n"
-"Last-Translator: daves <dsteele@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: uk\n"
+"PO-Revision-Date: 2013-06-15 03:46+0000\n"
+"Last-Translator: Po-Chun Huang <Unknown>\n"
+"Language-Team: Chinese (Traditional) <zh_TW@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"X-Launchpad-Export-Date: 2013-10-21 23:16+0000\n"
+"X-Generator: Launchpad (build 16807)\n"
 
 #: ../gnome-gmail:105
 #, c-format
 msgid "Sending %s"
-msgstr "Надсилання %s"
+msgstr "正在傳送 %s"
 
 #: ../gnome-gmail:107
 msgid "Mime message attached"
-msgstr "Повідомлення mime приєднано"
+msgstr ""
 
 #: ../gnome-gmail:172
 msgid "Drafts"
-msgstr "Чернетки"
+msgstr "草稿"
 
 #: ../gnome-gmail:184
 msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Не вдалось визначити адресу теки чернеток IMAP"
+msgstr ""
 
 #: ../gnome-gmail:191
 msgid "Error encountered while uploading the message"
@@ -45,31 +45,31 @@ msgstr ""
 
 #: ../gnome-gmail:392
 msgid "User cancelled \"Send To...\""
-msgstr "«Надіслати до...» скасовано користувачем"
+msgstr "使用者已取消 \"傳送到...\""
 
 #: ../gnome-gmail:535
 msgid "Error creating message with attachment"
-msgstr "Помилка створення повідомлення з вкладенням"
+msgstr ""
 
 #: ../gnome-gmail:561
 msgid "nvalid credentials"
-msgstr "Помилкові реєстраційні дані"
+msgstr ""
 
 #: ../gnome-gmail:562
 msgid "Invalid GMail User Name or Password"
-msgstr "Помилкове ім'я або пароль GMail"
+msgstr "無效的 GMail 使用者名稱或密碼"
 
 #: ../gnome-gmail:563
 msgid "not enabled for IMAP"
-msgstr "не увімкнений протокол IMAP"
+msgstr ""
 
 #: ../gnome-gmail:564
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Щоб надсилати вкладення, увімкніть протокол IMAP в Gmail"
+msgstr "為了傳送附加檔案，您必需在 Gmail '啟用 IMAP'"
 
 #: ../gnome-gmail:572
 msgid "GMail credentials incomplete"
-msgstr "Реєстраційні дані GMail неповні"
+msgstr ""
 
 #: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
@@ -80,108 +80,106 @@ msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
 msgstr ""
-"Введіть реєстраційні дані Gmail,\n"
-"щоб вивантажити файл"
 
 #: ../gnomegmail.glade.h:4
 msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Ваше ім'я користувача в Gmail, без частки «@gmail.com»"
+msgstr "您的 Gmail 使用者名稱，不包含'@gmail.com'"
 
 #: ../gnomegmail.glade.h:5
 msgid "User Name"
-msgstr "Ім'я користувача"
+msgstr "使用者名稱"
 
 #: ../gnomegmail.glade.h:6
 msgid "Your Gmail password"
-msgstr "Пароль Gmail"
+msgstr "您的 Gmail 密碼"
 
 #: ../gnomegmail.glade.h:7
 msgid "Password"
-msgstr "Пароль"
+msgstr "密碼"
 
 #: ../gnomegmail.glade.h:8
 msgid ""
 "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr "Ім'я в поштовій адресі (наприклад: «petro» в адресі «petro@gmail.com»)"
+msgstr "郵件帳號名稱 (例如：'joe'，相對於'joe@gmail.com')"
 
 #: ../gnomegmail.glade.h:9
 msgid "Enter the password for the mail account"
-msgstr "Введіть пароль для облікового запису"
+msgstr "輸入郵件帳號的密碼"
 
 #: ../gnomegmail.glade.h:10
 msgid "Remember Password"
-msgstr "Пам'ятати пароль"
+msgstr "記住密碼"
 
 #: ../gnomegmail.glade.h:11
 msgid "Remember the Google Account password in the Gnome keychain."
-msgstr "В'язка ключів Gnome пам'ятатиме пароль облікового запису в Google."
+msgstr "使用 Gnome 鑰匙圈記住 Google 帳號密碼"
 
 #: ../gnomegmail.glade.h:12
 msgid "Configure"
-msgstr "Налаштування"
+msgstr "配置"
 
 #: ../gnomegmail.glade.h:13
 msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Налаштування Gnome Gmail для роботи з обліковим записом Google App."
+msgstr "配置 Gnome Gmail 搭配 Google App 帳號。"
 
 #: ../gnomegmail.glade.h:14
 msgid "Copyright 2010 - Dave Steele"
-msgstr "Авторське право 2010 - Dave Steele"
+msgstr "Copyright 2010 - Dave Steele"
 
 #: ../gnomegmail.glade.h:15
 msgid "comment"
-msgstr "коментар"
+msgstr "評論"
 
 #: ../gnomegmail.glade.h:16
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
+"GNOME Gmail 目前不是您預設慣用的郵件應用程式。您想要使用 Gmail 網頁發送電子郵"
+"件?"
 
 #: ../gnomegmail.glade.h:17
 msgid "Don't ask again"
-msgstr ""
+msgstr "不再詢問"
 
 #: ../gnomegmail.glade.h:18
 msgid "Don't change the Preferred Email Application"
-msgstr ""
+msgstr "不更改預設慣用的電子郵件應用程式"
 
 #: ../gnomegmail.glade.h:19
 msgid "Use GNOME Gmail for sending mail"
-msgstr ""
+msgstr "使用 GNOME Gmail 傳送電子郵件"
 
 #: ../gnome-gmail.schemas.in.h:1
 msgid "Save IMAP password?"
-msgstr "Зберегти пароль IMAP?"
+msgstr "儲存 IMAP 密碼?"
 
 #: ../gnome-gmail.schemas.in.h:2
 msgid ""
 "When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
 "IMAP is used to upload file attachments to GMail."
 msgstr ""
-"Якщо позначено, Gnome Gmail збереже пароль IMAP у в'язці ключів Gnome. IMAP "
-"використовується для вивантаження приєднаних файлів до GMail."
 
 #: ../gnome-gmail.schemas.in.h:3
 msgid "Saved IMAP user name"
-msgstr "Збережене ім'я користувача IMAP"
+msgstr "IMAP 使用者名稱以儲存"
 
 #: ../gnome-gmail.schemas.in.h:4
 msgid ""
 "Gnome Gmail will save the last user name for file attachment uploads here."
-msgstr "Gnome Gmail зберігатиме тут це ім'я для вивантажень вкладених файлів."
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:5
 msgid "Google Apps domain"
-msgstr "Домен Google Apps"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:6
 msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-msgstr "Щоб користуватись Gnome Gmail з Google Apps, введіть тут назву домену"
+msgstr "為了使用 Gnome Gmail 搭配 Google Apps，請在這裡輸入域名"
 
 #: ../gnome-gmail.schemas.in.h:7
 msgid "Hide confirmation dialog"
-msgstr "Приховати діалог підтвердження"
+msgstr "隱藏確認對話方塊"
 
 #: ../gnome-gmail.schemas.in.h:8
 msgid ""
@@ -189,13 +187,10 @@ msgid ""
 "appears with each message created. The notification includes a link to allow "
 "Gnome Gmail to be configured for Google Apps support."
 msgstr ""
-"Якщо позначено, Gnome Gmail блокуватиме повідомлення підтвердження, що "
-"з'являються після створення кожного листа. Повідомлення містить посилання, "
-"що дає змогу налаштувати Gnome Gmail для підтримки Google Apps."
 
 #: ../gnome-gmail.schemas.in.h:9
 msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Використовувати Open Office як основну поштову програму в Gnome"
+msgstr ""
 
 #: ../gnome-gmail.schemas.in.h:10
 msgid ""
@@ -203,9 +198,6 @@ msgid ""
 "currently selected Gnome Preferred Email Application with each login, using "
 "a Gnome Gmail compatibility application."
 msgstr ""
-"Якщо позначено, Gnome Gmail намагатиметься налаштувати Open Office основною "
-"поштовою програмою в Gnome з кожним ім'ям користувача, що використовується з "
-"сумісною з Gnome Gmail програмою."
 
 #: ../gnome-gmail.schemas.in.h:11
 msgid "Suppress the GNOME Gmail Preferred Application Dialog"
@@ -220,15 +212,15 @@ msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr "Інтегрувати GMail в робоче середовище"
+msgstr "將 GMail 整合至您的桌面"
 
 #: ../setOOmailer.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
-msgstr "Конфігуратор Open Office в Gnome Gmail"
+msgstr ""
 
 #: ../setOOmailer.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr "Встановити Open Office основною поштовою програмою в Gnome"
+msgstr ""
 
 #: ../gnome-gmail.xml.in.h:1
 msgid "Gmail"

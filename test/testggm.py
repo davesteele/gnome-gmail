@@ -29,6 +29,9 @@ testCaseStrings = [
 ( "mailto:joe?SUBJECT=test email", "*&to=joe&su=test+email" ),
 ( "mailto:joe?Subject=test email", "*&to=joe&su=test+email" ),
 
+# allow pluses in user name
+( "mailto:joe+2?Subject=test email", "*&to=joe%2B2&su=test+email" ),
+
 ( "mailto:joe?cc=sue@example.com", "*&to=joe&cc=sue%40example.com" ),
 ( "mailto:joe?cc=sue@example.com,fred", "*&to=joe&cc=sue%40example.com%2Cfred" ),
 
@@ -44,11 +47,10 @@ testCaseStrings = [
 ( "mailto:joe?cc=sue&bcc=fred&body=the body&subject=the subject", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 ( "mailto:joe?bcc=fred&body=the body&subject=the subject&cc=sue", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 
-( "mailto:joe?", "*&to=joe" ),
 
 ( "", "https://mail.google.com/" ),
 
-( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/#drafts" ),
+( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/#drafts/" ),
 
 ( "mailto:joe", "*&to=joe" ),
 ( "mailto:joe", "*&to=joe" ),
@@ -65,7 +67,7 @@ class TestURLCase( unittest.TestCase ):
 	def testRun( self ):
 		cfg = gnomegmail.ConfigInfo()
 		gm = gnomegmail.GMailURL( self.mailtoURL, cfg, False )
-		GmUrl = gm.gmailURL( )
+		GmUrl = gm.gmail_url( )
 		#GmDict = gnomegmail.mailto2dict( self.mailtoURL )
 		#GmUrl = gnomegmail.simpledict2url( GmDict )
 		self.assertEqual( GmUrl, self.gmailURL )

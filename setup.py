@@ -4,6 +4,7 @@ import DistUtilsExtra.auto
 import DistUtilsExtra.command
 import distutils.command
 import os
+import shutil
 
 class my_build_i18n(DistUtilsExtra.command.build_i18n.build_i18n):
     def run(self):
@@ -31,9 +32,14 @@ class my_clean(distutils.command.clean.clean):
 
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
+        filelist += ['po/gnome-gmail.pot']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
+
+        for dir in ['build/mo', 'build/scripts-2.7']:
+            if os.path.exists(dir):
+                shutil.rmtree(dir)
 
 
 DistUtilsExtra.auto.setup(

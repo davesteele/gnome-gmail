@@ -209,7 +209,7 @@ if __name__ == "__main__":
         # set this app as the GNOME mailto handler, new-style
         [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
           for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
-          if app.get_name() == "Gnome Gmail" ]
+          if app.get_id() == "gnome-gmail.desktop" ]
 
     if( not should_set_oo_mailer() ):
         sys.exit( 0 )
