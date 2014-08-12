@@ -1,6 +1,6 @@
 #!/bin/sh
 
-cp ../gnome-gmail*deb deb/
+cp ../build-area/gnome-gmail*deb deb/
 
 cd deb
 echo MD5Sum >checksums.txt
