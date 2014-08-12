@@ -1,0 +1,5 @@
+Component: main
+Origin: gnome-gmail
+Label: gnome-gmail
+Architecture: armel
+Description: Apt repository for project cloudprint

@@ -1,0 +1,66 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Origin: gnome-gmail
+Label: gnome-gmail
+Codename: gnome-gmailppa
+Date: Tue, 12 Aug 2014 03:31:44 UTC
+Architectures: amd64 i386 armhf armel
+Components: main
+Description: Apt repository for project cloudprint
+MD5Sum:
+ 4f889b4b89dec52b9962d7474bf0ee08 1013 main/binary-amd64/Packages
+ 1a6cf450f93df3ddab4d605e635a5fe7 631 main/binary-amd64/Packages.gz
+ 7f39eada901fa7defba9f65eb365d71c 126 main/binary-amd64/Release
+ 4f889b4b89dec52b9962d7474bf0ee08 1013 main/binary-i386/Packages
+ 1a6cf450f93df3ddab4d605e635a5fe7 631 main/binary-i386/Packages.gz
+ 1fb90827102ad384ca4e4a627f793ada 125 main/binary-i386/Release
+ 4f889b4b89dec52b9962d7474bf0ee08 1013 main/binary-armhf/Packages
+ 1a6cf450f93df3ddab4d605e635a5fe7 631 main/binary-armhf/Packages.gz
+ 73433ff490c80d591efc252c492beafc 126 main/binary-armhf/Release
+ 4f889b4b89dec52b9962d7474bf0ee08 1013 main/binary-armel/Packages
+ 1a6cf450f93df3ddab4d605e635a5fe7 631 main/binary-armel/Packages.gz
+ 0e3c8f7b58f0c612c6418859727533b0 126 main/binary-armel/Release
+SHA1:
+ 7e5832824c43b5023dd5a94c624821ce86a5db4a 1013 main/binary-amd64/Packages
+ 364486452a96a1873378fc0f7151b4c9b5cf429c 631 main/binary-amd64/Packages.gz
+ ef0b389f659e4f4cf30ca2a3cc940654641111e4 126 main/binary-amd64/Release
+ 7e5832824c43b5023dd5a94c624821ce86a5db4a 1013 main/binary-i386/Packages
+ 364486452a96a1873378fc0f7151b4c9b5cf429c 631 main/binary-i386/Packages.gz
+ 12abc522a1f5721051b5eb94330fe3ddf26f7862 125 main/binary-i386/Release
+ 7e5832824c43b5023dd5a94c624821ce86a5db4a 1013 main/binary-armhf/Packages
+ 364486452a96a1873378fc0f7151b4c9b5cf429c 631 main/binary-armhf/Packages.gz
+ 937f3012d930b10aaa4979add9eed3bc8b9cda82 126 main/binary-armhf/Release
+ 7e5832824c43b5023dd5a94c624821ce86a5db4a 1013 main/binary-armel/Packages
+ 364486452a96a1873378fc0f7151b4c9b5cf429c 631 main/binary-armel/Packages.gz
+ d10fd42b5ab5de7c6cdd9ecf838890c4d90dfab7 126 main/binary-armel/Release
+SHA256:
+ 1eebb941fdf15e798a8db96db57ca0912bd6a86d38b1e90400c1113d8aaab234 1013 main/binary-amd64/Packages
+ 18bf3b6484ea502201413a522dce567ea234036c69e2492e9616779706254e9d 631 main/binary-amd64/Packages.gz
+ a54fd225ed292b484260485dd142afc9fbdf70b809dc8434e03b0130ed9d7a0b 126 main/binary-amd64/Release
+ 1eebb941fdf15e798a8db96db57ca0912bd6a86d38b1e90400c1113d8aaab234 1013 main/binary-i386/Packages
+ 18bf3b6484ea502201413a522dce567ea234036c69e2492e9616779706254e9d 631 main/binary-i386/Packages.gz
+ 402cf1b9565053ea2744124c18193a29325767328bb36cb3677f86a662aa7b6a 125 main/binary-i386/Release
+ 1eebb941fdf15e798a8db96db57ca0912bd6a86d38b1e90400c1113d8aaab234 1013 main/binary-armhf/Packages
+ 18bf3b6484ea502201413a522dce567ea234036c69e2492e9616779706254e9d 631 main/binary-armhf/Packages.gz
+ eecb890b3b427718e107cf6d611f82fe9b67220a3e7e5febd22a45d219bc9e7d 126 main/binary-armhf/Release
+ 1eebb941fdf15e798a8db96db57ca0912bd6a86d38b1e90400c1113d8aaab234 1013 main/binary-armel/Packages
+ 18bf3b6484ea502201413a522dce567ea234036c69e2492e9616779706254e9d 631 main/binary-armel/Packages.gz
+ 57ff3e0f2c13811263aef1ff7ab55d60acdf9d29782319fdd438fa53bc262f2f 126 main/binary-armel/Release
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v2
+
+iQIcBAEBAgAGBQJT6YqtAAoJEIoxce82YVDOsMUP/jwNDf20HcGSVsXq++I9uAQr
+CsTLCftWlSDRGngjXoBhgiSLYlz6+lUcIuwxvETWsSs1Xw3c+TfuLolCSKS0eW0V
+e90nzRg8NEbQjgPp7G/ZpInFVueqD7OuYPXwVnyuajF2+faNsxMp2zNlRedRSiNw
+ipGWFUVuyKfoAKKGWbSIxMF/piAhGYPqKQiqubTJr6RGENH/R2AdoG2oX6YZX6vf
+gi5n25GO1JTztXc+T4tGOo235HZc+ioch/70Oqg24JxIzH1vXuRB4PoHvx2Vr0Hd
+nKcavcmB8l/6ol9/9i1R0JELuMQYgFbC+cwiSwtwp4OsAwsSRaew/lP1BO4r7ECM
+QV5xdG6pTmATCmJ1YqMVgh69iJaQcTbw2U2o7dAGQRYuK1LnL80epTaZRpD2ouPN
+N7ics5Wym4TstYPhoA4dqkiekjXLfj0numpCyi79Wkve406Iir12MPaxwACWvIBL
+m6PZl/WcnYxolwuJTJ38+iXL8Fs/G+gldcavMhna9dEvaLXvvY7nYttkCIY9F3W8
++L4j7ehjiQZNO+Biahm/vLxIlzhQmKfLVSy/fxcX/xwuuFa60Jvi2XSq5UAMqDZ0
+qstYvpIw+85ep2zGKox7BuOCYD0Glojsl9jbznymtBswRczt1NNQhnnuL9gysaSh
+j77oIthSxskZBWkEUj+w
+=lJVI
+-----END PGP SIGNATURE-----
