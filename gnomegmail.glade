@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
-<glade-interface>
+<interface>
   <!-- interface-requires gtk+ 2.16 -->
   <!-- interface-naming-policy project-wide -->
-  <widget class="GtkDialog" id="dialog1">
+  <object class="GtkDialog" id="dialog1">
     <property name="border_width">5</property>
     <property name="title" translatable="yes">Gnome Gmail</property>
     <property name="resizable">False</property>
@@ -10,30 +10,30 @@
     <property name="window_position">center</property>
     <property name="type_hint">dialog</property>
     <child internal-child="vbox">
-      <widget class="GtkVBox" id="dialog-vbox1">
+      <object class="GtkVBox" id="dialog-vbox1">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <widget class="GtkLabel" id="label1">
+          <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="ypad">10</property>
             <property name="label" translatable="yes">Enter your Gmail credentials
 for the file upload</property>
-          </widget>
+          </object>
           <packing>
             <property name="position">1</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox1">
+          <object class="GtkHBox" id="hbox1">
             <property name="visible">True</property>
             <child>
-              <widget class="GtkVBox" id="vbox1">
+              <object class="GtkVBox" id="vbox1">
                 <property name="visible">True</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <widget class="GtkLabel" id="label2">
+                  <object class="GtkLabel" id="label2">
                     <property name="visible">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip" translatable="yes">Your Gmail user name, without the '@gmail.com' part</property>
@@ -42,13 +42,13 @@ for the file upload</property>
                     <property name="ypad">10</property>
                     <property name="label" translatable="yes">User Name</property>
                     <property name="justify">right</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkLabel" id="label3">
+                  <object class="GtkLabel" id="label3">
                     <property name="visible">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip" translatable="yes">Your Gmail password</property>
@@ -57,34 +57,34 @@ for the file upload</property>
                     <property name="ypad">10</property>
                     <property name="label" translatable="yes">Password</property>
                     <property name="justify">right</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="position">1</property>
                   </packing>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">0</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkVBox" id="vbox2">
+              <object class="GtkVBox" id="vbox2">
                 <property name="visible">True</property>
                 <property name="orientation">vertical</property>
                 <child>
-                  <widget class="GtkEntry" id="entryUserName">
+                  <object class="GtkEntry" id="entryUserName">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_tooltip">True</property>
                     <property name="tooltip" translatable="yes">The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')</property>
                     <property name="invisible_char">&#x25CF;</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="position">0</property>
                   </packing>
                 </child>
                 <child>
-                  <widget class="GtkEntry" id="entryPW">
+                  <object class="GtkEntry" id="entryPW">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="has_tooltip">True</property>
@@ -92,29 +92,29 @@ for the file upload</property>
                     <property name="visibility">False</property>
                     <property name="invisible_char">&#x25CF;</property>
                     <property name="invisible_char_set">True</property>
-                  </widget>
+                  </object>
                   <packing>
                     <property name="position">1</property>
                   </packing>
                 </child>
-              </widget>
+              </object>
               <packing>
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="position">2</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkHBox" id="hbox2">
+          <object class="GtkHBox" id="hbox2">
             <property name="visible">True</property>
             <child>
               <placeholder/>
             </child>
             <child>
-              <widget class="GtkCheckButton" id="checkbuttonPW">
+              <object class="GtkCheckButton" id="checkbuttonPW">
                 <property name="label" translatable="yes">Remember Password</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -122,7 +122,7 @@ for the file upload</property>
                 <property name="has_tooltip">True</property>
                 <property name="tooltip" translatable="yes">Remember the Google Account password in the Gnome keychain.</property>
                 <property name="draw_indicator">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="position">1</property>
               </packing>
@@ -130,17 +130,17 @@ for the file upload</property>
             <child>
               <placeholder/>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="position">3</property>
           </packing>
         </child>
         <child internal-child="action_area">
-          <widget class="GtkHButtonBox" id="dialog-action_area1">
+          <object class="GtkHButtonBox" id="dialog-action_area1">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="buttonConfigure">
+              <object class="GtkButton" id="buttonConfigure">
                 <property name="label" translatable="yes">Configure</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -149,7 +149,7 @@ for the file upload</property>
                 <property name="tooltip" translatable="yes">Configure Gnome Gmail for use with a Google App account.</property>
                 <property name="relief">none</property>
                 <property name="use_underline">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -157,13 +157,13 @@ for the file upload</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="buttonCancel">
+              <object class="GtkButton" id="buttonCancel">
                 <property name="label">gtk-cancel</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -171,31 +171,31 @@ for the file upload</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="buttonOK">
+              <object class="GtkButton" id="buttonOK">
                 <property name="label">gtk-ok</property>
                 <property name="response_id">1</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
                 <property name="use_stock">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">2</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-  <widget class="GtkAboutDialog" id="aboutdialog1">
+  </object>
+  <object class="GtkAboutDialog" id="aboutdialog1">
     <property name="border_width">5</property>
     <property name="type_hint">normal</property>
     <property name="program_name">Gnome Gmail</property>
@@ -205,7 +205,7 @@ for the file upload</property>
     <property name="website">http://gnome-gmail.sourceforge.net/</property>
     <property name="authors">Dave Steele &lt;dsteele@gmail.com&gt;</property>
     <child internal-child="vbox">
-      <widget class="GtkVBox" id="dialog-vbox2">
+      <object class="GtkVBox" id="dialog-vbox2">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
@@ -213,59 +213,59 @@ for the file upload</property>
           <placeholder/>
         </child>
         <child internal-child="action_area">
-          <widget class="GtkHButtonBox" id="dialog-action_area2">
+          <object class="GtkHButtonBox" id="dialog-action_area2">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="button1">
+              <object class="GtkButton" id="button1">
                 <property name="label" translatable="yes">Configure</property>
                 <property name="response_id">21</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="receives_default">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">0</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-  <widget class="GtkDialog" id="preferred_app_dialog">
+  </object>
+  <object class="GtkDialog" id="preferred_app_dialog">
     <property name="border_width">5</property>
     <property name="type_hint">normal</property>
     <child internal-child="vbox">
-      <widget class="GtkVBox" id="dialog-vbox3">
+      <object class="GtkVBox" id="dialog-vbox3">
         <property name="visible">True</property>
         <property name="orientation">vertical</property>
         <property name="spacing">2</property>
         <child>
-          <widget class="GtkLabel" id="label4">
+          <object class="GtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="label" translatable="yes">GNOME Gmail is not currently your Preferred Email Application. Would you like your emails to be sent using the Gmail web page?</property>
             <property name="wrap">True</property>
-          </widget>
+          </object>
           <packing>
             <property name="position">1</property>
           </packing>
         </child>
         <child>
-          <widget class="GtkCheckButton" id="check_dont_ask_again">
+          <object class="GtkCheckButton" id="check_dont_ask_again">
             <property name="label" translatable="yes">Don't ask again</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">False</property>
             <property name="draw_indicator">True</property>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">False</property>
@@ -273,11 +273,11 @@ for the file upload</property>
           </packing>
         </child>
         <child internal-child="action_area">
-          <widget class="GtkHButtonBox" id="dialog-action_area3">
+          <object class="GtkHButtonBox" id="dialog-action_area3">
             <property name="visible">True</property>
             <property name="layout_style">end</property>
             <child>
-              <widget class="GtkButton" id="button_preferred_app_no">
+              <object class="GtkButton" id="button_preferred_app_no">
                 <property name="label">gtk-no</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
@@ -285,7 +285,7 @@ for the file upload</property>
                 <property name="has_tooltip">True</property>
                 <property name="tooltip" translatable="yes">Don't change the Preferred Email Application</property>
                 <property name="use_stock">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
@@ -293,7 +293,7 @@ for the file upload</property>
               </packing>
             </child>
             <child>
-              <widget class="GtkButton" id="button_preferred_app_yes">
+              <object class="GtkButton" id="button_preferred_app_yes">
                 <property name="label">gtk-yes</property>
                 <property name="response_id">1</property>
                 <property name="visible">True</property>
@@ -306,21 +306,21 @@ for the file upload</property>
                 <property name="has_tooltip">True</property>
                 <property name="tooltip" translatable="yes">Use GNOME Gmail for sending mail</property>
                 <property name="use_stock">True</property>
-              </widget>
+              </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">False</property>
                 <property name="position">1</property>
               </packing>
             </child>
-          </widget>
+          </object>
           <packing>
             <property name="expand">False</property>
             <property name="pack_type">end</property>
             <property name="position">0</property>
           </packing>
         </child>
-      </widget>
+      </object>
     </child>
-  </widget>
-</glade-interface>
+  </object>
+</interface>
