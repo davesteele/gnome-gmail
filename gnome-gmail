@@ -203,7 +203,7 @@ class GMailIMAP( ):
               "version", "1.8.2",
               "os", "Linux",
               "contact", "dsteele@gmail.com",
-              "support-url", "http://sourceforge.net/tracker/?group_id=277145",
+              "support-url", "https://github.com/davesteele/gnome-gmail/issues",
               )
 
         try:
