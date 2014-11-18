@@ -17,6 +17,7 @@ import imaplib
 import os
 import re
 
+
 from email import encoders
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
@@ -27,6 +28,8 @@ import mimetypes
 
 import gconf
 import gio
+
+from gi.repository import Gtk
 
 import locale
 import gettext
@@ -448,7 +451,7 @@ class GMailURL( ):
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including IMAP uploads, if necessary """
 
-    def __init__( self, mailto_url, cfg, enable_net_access = True ):
+    def __init__( self, mailto_url, from_address, cfg, enable_net_access = True ):
         self.mailto_url = mailto_url
         self.enable_net_access = enable_net_access
         self.config_info = cfg
@@ -601,6 +604,50 @@ class GMailURL( ):
         return( gmailurl )
 
 
+def getFromAddress(last_address, gladefile):
+    class Handler:
+        def __init__(self, fromInit):
+            self.txtbox = builder.get_object("entryFrom")
+            self.txtbox.set_activates_default(True)
+
+            self.txtbox.set_property("text", fromInit)
+
+            self.txt = None
+
+        def onOkClicked(self, button ):
+            self.txt = self.txtbox.get_property("text")
+            Gtk.main_quit()
+
+        def onCancelClicked(self, button):
+            self.txt = None
+            Gtk.main_quit()
+
+        def onUserSelClose(self, foo):
+            self.onCancelClicked(foo)
+
+    builder = Gtk.Builder()
+    builder.add_from_file(gladefile)
+
+    hdlr = Handler(last_address)
+    builder.connect_signals(hdlr)
+
+    builder.get_object("user_select_dialog").show_all()
+
+    Gtk.main()
+
+    return hdlr.txt
+
+def getGoogleFromAddress(last_address, gladefile):
+    retval = getFromAddress(last_address, gladefile)
+
+    if retval and not re.search('@', retval):
+        retval += "@gmail.com"
+
+    return retval
+
+
+
+
 def main( ):
     """ given an optional parameter of a valid mailto url, open an appropriate
     gmail web page """
@@ -637,8 +684,14 @@ def main( ):
     # for reverse compatibility, also set the preferred app the old way
     cfg.query_set_preferred()
 
+    from_address = getGoogleFromAddress(last_address, gladefile)
+    if ! from_address:
+        interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
+            _("User cancelled"), [], {}, 3000 )
+        sys.exit(0)
+
     try:
-        gm_url = GMailURL( mailto, cfg )
+        gm_url = GMailURL( mailto, from_address, cfg )
         gmailurl = gm_url.gmail_url()
     except GGError as gerr:
         interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
