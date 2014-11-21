@@ -26,9 +26,6 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import mimetypes
 
-import gconf
-import gio
-
 from gi.repository import Gtk
 
 import locale
@@ -38,11 +35,6 @@ locale.setlocale( locale.LC_ALL, '' )
 gettext.textdomain( "gnome-gmail" )
 _ = gettext.gettext
 
-
-import gtk
-import gtk.glade
-
-import gnomekeyring as gkey
 
 import dbus
 
@@ -235,232 +227,14 @@ class GMailIMAP( ):
         return( msgid )
 
 
-class Keyring(object):
-    """ Access the GMail password in the Gnome keyring.
-    Used for IMAP attachment uploads """
-    def __init__(self, name, server, protocol, port):
-        self._name = name
-        self._server = server
-        self._protocol = protocol
-        self._port = port
-
-        self.server_tag = "server"
-        self.protocol_tag = "protocol"
-        self.user_tag = "user"
-        
-
-    def has_credentials(self):
-        """ Does the keyring have the password for this user? """
-        try:
-            attrs = {self.server_tag: self._server, 
-                self.protocol_tag: self._protocol}
-            items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
-            return len(items) > 0
-        except gkey.DeniedError:
-            return False
-
-    def get_credentials(self, user):
-        """ Get the GMail password for this user """
-        attrs = {self.server_tag: self._server, 
-            self.protocol_tag: self._protocol,
-            self.user_tag: user }
-        items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
-
-        return (items[0].attributes[self.user_tag], items[0].secret)
-
-    def set_credentials(self, (user, password)):
-        """ Store the GMail password in the Gnome keyring """
-        attrs = {
-            self.user_tag: user,
-            self.server_tag: self._server,
-            self.protocol_tag: self._protocol,
-            }
-        gkey.item_create_sync(None,
-        gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, password, True)
-
-class ConfigInfo( object ):
-    """ Manage configuration information in gconf and the gnome keyring """
-    def __init__( self, basedir = '/apps/gnome-gmail/' ):
-        self.client = gconf.client_get_default()
-        self.basedir = basedir
-
-        self.keyring = Keyring( "GMail", "imap.google.com", "imap",
-             "143" )
-
-        self.user = ""
-        self.password = ""
-        self.savepassword = False
-        self.appsdomain = ""
-        self.hideconfirmation = False
-        self.suppresspreferred = False
-
-        self.xml = None
-
-        #self.keyring.set_credentials( (self.user, "") )
-
-    def read_config( self ):
-        """ read in all configuration information """
-
-        self.user = self.client.get_string( self.basedir + 'user' )
-        if self.user == None:
-            self.user = ""
-
-        self.savepassword = self.client.get_bool( 
-            self.basedir + 'savepassword' )
-
-        if self.savepassword == None:
-            self.savepassword = False
-
-        self.appsdomain = self.client.get_string( self.basedir + 'appsdomain' )
-        if self.appsdomain == None:
-            self.appsdomain = ""
-
-        self.hideconfirmation = self.client.get_bool( 
-            self.basedir + 'hideconfirmation' )
-        if self.hideconfirmation == None:
-            self.hideconfirmation = False
-
-        self.suppresspreferred = self.client.get_bool( 
-            self.basedir + 'suppresspreferred' )
-        if self.suppresspreferred == None:
-            self.suppresspreferred = False
-
-        try:
-            if self.savepassword:
-                (luser, self.password ) = \
-                    self.keyring.get_credentials(self.user)
-
-            if self.password == None:
-                self.password = ""
-        except:
-            pass
-
-    def write_config( self ):
-        """ write out all configuration information """
-        self.client.set_string( self.basedir + 'user', self.user )
-        self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
-        self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
-        self.client.set_bool( self.basedir + 'hideconfirmation', \
-            self.hideconfirmation )
-        self.client.set_bool( self.basedir + 'suppresspreferred', \
-            self.suppresspreferred )
-
-        if self.savepassword:
-            self.keyring.set_credentials( (self.user, self.password) )
-
-    def info_complete( self ):
-        """ is there enough information to work with IMAP? """
-        return( len( self.password) > 0 and len( self.user) > 0  )
-
-    #def gconftodialog( self, foo = 0, bar=0 ):
-    def gconftodialog( self ):
-        """ transfer existing config information to the dialog """
-
-        self.read_config()
-
-        user_field = self.xml.get_widget( 'entryUserName' )
-        user_field.set_text( self.user )
-
-        password_field = self.xml.get_widget( 'entryPW' )
-        password_field.set_text( self.password )
-
-        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-        savepassword_field.set_active( self.savepassword )
-        
-    def dialogtogconf( self ):
-        """ collect configuration info from the dialog """
-
-        user_field = self.xml.get_widget( 'entryUserName' )
-        self.user = user_field.get_text()
-
-        password_field = self.xml.get_widget( 'entryPW' )
-        self.password = password_field.get_text()
-
-        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-        self.savepassword = savepassword_field.get_active()
-
-        self.write_config()
-        
-    def call_configure( self, foo, bar = 1 ):
-        """ the user has asked to edit configuration parameters """
-
-        self.dialogtogconf()
-
-        os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
-
-        return( True )
-
-
-    def query_config_info( self ):
-        """ Query the user for IMAP configuration information """
-
-        glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
-        self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
-
-        config_button = self.xml.get_widget( "buttonConfigure") 
-        config_button.connect( "button-press-event", self.call_configure )
-
-        # todo - should map window focus event to gconftodialog(), 
-        # but it isn't working
-
-        self.gconftodialog()
-
-        window = self.xml.get_widget( "dialog1" )
-        response = window.run()
-
-        if response == 1:
-            self.dialogtogconf()
-        else:
-            raise GGError( _("User cancelled \"Send To...\"") )
-
-        window.destroy()
-
-        return( self.info_complete() )
-
-    def query_set_preferred( self ):
-
-        if( not self.suppresspreferred ):
-
-            handler_path_base = "/desktop/gnome/url-handlers/mailto/"
-            handler_path = handler_path_base + "command"
-
-            our_handler = "gnome-gmail %s"
-
-            current_handler = self.client.get_string( handler_path )
-
-            if( our_handler != current_handler ):
-                glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
-                self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
-
-                window = self.xml.get_widget( "preferred_app_dialog" )
-                response = window.run()
-
-                if( response == 1 ):
-                    self.client.set_string( handler_path, our_handler )
-                    self.client.set_bool( handler_path_base + "enabled", True )
-                    self.client.set_bool( handler_path_base + "needs_terminal",\
-                        False )
-
-                ask_check_button = self.xml.get_widget( "check_dont_ask_again" )
-                self.suppresspreferred = ask_check_button.get_active()
-
-                self.write_config()
-
-
 class GMailURL( ):
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including IMAP uploads, if necessary """
 
-    def __init__( self, mailto_url, from_address, cfg, enable_net_access = True ):
+    def __init__( self, mailto_url, from_address, enable_net_access = True ):
         self.mailto_url = mailto_url
         self.enable_net_access = enable_net_access
-        self.config_info = cfg
-
-        self.config_info.read_config()
-
-        self.appsdomainstr = self.config_info.appsdomain
-        if( len( self.appsdomainstr ) > 0 ):
-            self.appsdomainstr = "a/" + self.appsdomainstr + "/"
+        self.from_address = from_address
 
         self.mail_dict = self.mailto2dict( )
 
@@ -521,8 +295,7 @@ class GMailURL( ):
 
         dct = self.mail_dict
 
-        tourl = "https://mail.google.com/%smail?view=cm&tf=0&fs=1" % \
-            self.appsdomainstr
+        tourl = "https://mail.google.com/mail?view=cm&tf=0&fs=1"
 
         tourl = self.append_url( tourl, "to", dct, "to" )
         tourl = self.append_url( tourl, "su", dct, "subject" )
@@ -552,15 +325,15 @@ class GMailURL( ):
         except (imaplib.IMAP4.error, OSError):
             GGError( _("Error creating message with attachment") )
 
-        # get the configuration information from GConf
-        self.config_info.read_config()
-
         # if we have a full set of configuration information, 
         # go ahead and try the transfer
-        if( self.config_info.info_complete() ):
+        if True:
+#        if( self.config_info.info_complete() ):
             try:
-                msg_id = gm_imap.send_mail( self.config_info.user, \
-                    self.config_info.password )
+#                msg_id = gm_imap.send_mail( self.config_info.user, \
+                msg_id = gm_imap.send_mail( self.from_address, \
+#                    self.config_info.password )
+                    "dummypassword" )
             except (imaplib.IMAP4.error, OSError) as inst:
                 # don't report this failure. 
                 # We'll try again with prompted parameters
@@ -572,8 +345,9 @@ class GMailURL( ):
         if( self.config_info.query_config_info() ):
             # do the IMAP upload
             try:
-                msg_id = gm_imap.send_mail( self.config_info.user, \
-                    self.config_info.password )
+#                msg_id = gm_imap.send_mail( self.config_info.user, \
+                msg_id = gm_imap.send_mail( self.from_address, \
+                    "dummy poassword" )
             except (OSError, imaplib.IMAP4.error) as inst:
                 error_str = None
                 if inst.args[0].find( _("nvalid credentials") ) > 0:
@@ -658,21 +432,14 @@ def main( ):
         mailto = ""
 
     # set this app as the GNOME mailto handler, new-style
-    [ app.set_as_default_for_type( "x-scheme-handler/mailto" ) 
-      for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
-      if app.get_id() == "gnome-gmail.desktop" ]
+#    [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
+#      for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
+#      if app.get_id() == "gnome-gmail.desktop" ]
 
     # quiet mode, to set preferred app in postinstall
     if( len( sys.argv ) > 1 and sys.argv[1] == "-q" ):
         sys.exit(0)
 
-    cfg = ConfigInfo()
-    cfg.read_config()
-    cfg.write_config()
-
-    #import dbus.glib
-    #loop = dbus.mainloop.glib.DBusGMainLoop()
-    #sessionbus = dbus.SessionBus( mainloop = loop )
     sessionbus = dbus.SessionBus( )
     notifications_object = sessionbus.get_object(
         'org.freedesktop.Notifications',
@@ -682,16 +449,17 @@ def main( ):
         'org.freedesktop.Notifications')
 
     # for reverse compatibility, also set the preferred app the old way
-    cfg.query_set_preferred()
+#    cfg.query_set_preferred()
 
-    from_address = getGoogleFromAddress(last_address, gladefile)
-    if ! from_address:
+    glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
+    from_address = getGoogleFromAddress("", glade_file)
+    if not from_address:
         interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
             _("User cancelled"), [], {}, 3000 )
         sys.exit(0)
 
     try:
-        gm_url = GMailURL( mailto, from_address, cfg )
+        gm_url = GMailURL( mailto, from_address )
         gmailurl = gm_url.gmail_url()
     except GGError as gerr:
         interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
