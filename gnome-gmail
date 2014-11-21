@@ -31,6 +31,10 @@ from gi.repository import Gtk
 import locale
 import gettext
 
+from ConfigParser import SafeConfigParser
+import os
+import os.path
+
 locale.setlocale( locale.LC_ALL, '' )
 gettext.textdomain( "gnome-gmail" )
 _ = gettext.gettext
@@ -419,6 +423,60 @@ def getGoogleFromAddress(last_address, gladefile):
 
     return retval
 
+class GgConfig(SafeConfigParser):
+    def __init__(self, *args, **kwargs):
+
+        self.fpath = os.path.expanduser(kwargs['fpath'])
+        kwargs.pop('fpath', None)
+
+        self.section = kwargs['section']
+        kwargs.pop('section', None)
+
+        initvals = kwargs['initvals']
+        kwargs.pop('initvals')
+
+        SafeConfigParser.__init__(self, *args, **kwargs)
+
+        self.add_section(self.section)
+
+        for option in initvals:
+            self.set(self.section, option, initvals[option])
+
+        self.read(self.fpath)
+        self.save()
+
+    def save(self):
+        dir = os.path.dirname(self.fpath)
+
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
+        with open(self.fpath, 'w') as fp:
+            fp.write("# Automatically updated file - comments stripped\n")
+            self.write(fp)
+
+    def _saveit(fp):
+        def wrapper(inst, *args, **kwargs):
+            retval = fp(inst, *args, **kwargs)
+            inst.save()
+            return retval
+        return wrapper
+
+    def get_str(self, option):
+        return self.get(self.section, option)
+
+    @_saveit
+    def set_str(self, option, value):
+        return self.set(self.section, option, value)
+
+    def get_bool(self, option):
+        return self.getboolean(self.section, option)
+
+    @_saveit
+    def set_bool(self, param, val):
+        if isinstance(val, bool):
+            val = '1' if val else '0'
+        return self.set(self.section, param, val)
 
 
 
@@ -430,6 +488,14 @@ def main( ):
         mailto = sys.argv[1]
     else:
         mailto = ""
+
+    config = GgConfig(fpath = "~/.config/gnome-gmail/gnome-gmail.conf",
+                      section = 'gnome-gmail',
+                      initvals = {
+                                     'suppress_preferred': '0',
+                                     'last_email': '',
+                                 }
+                      )
 
     # set this app as the GNOME mailto handler, new-style
 #    [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
@@ -452,8 +518,11 @@ def main( ):
 #    cfg.query_set_preferred()
 
     glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
-    from_address = getGoogleFromAddress("", glade_file)
-    if not from_address:
+    last_from = config.get_str('last_email')
+    from_address = getGoogleFromAddress(last_from, glade_file)
+    if from_address:
+        config.set_str('last_email', from_address)
+    else:
         interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
             _("User cancelled"), [], {}, 3000 )
         sys.exit(0)
