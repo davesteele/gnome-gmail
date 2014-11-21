@@ -299,7 +299,8 @@ class GMailURL( ):
 
         dct = self.mail_dict
 
-        tourl = "https://mail.google.com/mail?view=cm&tf=0&fs=1"
+        tourl = "https://mail.google.com/mail/b/%s?view=cm&tf=0&fs=1" % \
+                self.from_address
 
         tourl = self.append_url( tourl, "to", dct, "to" )
         tourl = self.append_url( tourl, "su", dct, "subject" )
@@ -312,7 +313,7 @@ class GMailURL( ):
     def simple_gmail_url( self ):
         """ url to use if there is no mailto url """
 
-        return( "https://mail.google.com/%s" % self.appsdomainstr )
+        return( "https://mail.google.com/mail/b/%s" % self.from_address )
 
     def imap_gmail_url( self ):
         """ if the mailto refers to an attachment, 
