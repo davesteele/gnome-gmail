@@ -36,6 +36,7 @@ from email.mime.text import MIMEText
 
 from gi.repository import Gtk
 from gi.repository import Gdk
+from gi.repository import Gio
 from gi.repository import GLib
 from gi.repository import WebKit
 from gi.repository import Secret
@@ -644,6 +645,28 @@ class Oauth2Keyring( ):
                           None
                      )
 
+def do_preferred(glade_file, config):
+
+    class Handler:
+        def onCancelClicked(self, button):
+            Gtk.main_quit()
+
+    builder = Gtk.Builder()
+    builder.add_from_file(glade_file)
+
+    hdlr = Handler()
+    builder.connect_signals(hdlr)
+
+    response = builder.get_object("preferred_app_dialog").run()
+
+    preferred_setting = builder.get_object("check_dont_ask_again").get_active()
+    config.set_bool('suppress_preferred', preferred_setting)
+
+    if response == 1:
+        [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
+          for app in Gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
+          if app.get_id() == "gnome-gmail.desktop" ]
+
 
 def main( ):
     """ given an optional parameter of a valid mailto url, open an appropriate
@@ -674,10 +697,12 @@ def main( ):
                       header = header,
                      )
 
-    # set this app as the GNOME mailto handler, new-style
-#    [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
-#      for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
-#      if app.get_id() == "gnome-gmail.desktop" ]
+    glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
+
+    emailer = Gio.app_info_get_default_for_type("x-scheme-handler/mailto", True)
+    if emailer.get_id() != "gnome-gmail.desktop" \
+        and not config.get_bool('suppress_preferred'):
+        do_preferred(glade_file, config)
 
     # quiet mode, to set preferred app in postinstall
     if( len( sys.argv ) > 1 and sys.argv[1] == "-q" ):
@@ -685,10 +710,6 @@ def main( ):
 
     Notify.init("GNOME Gmail")
 
-    # for reverse compatibility, also set the preferred app the old way
-#    cfg.query_set_preferred()
-
-    glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
     last_from = config.get_str('last_email')
     from_address = getGoogleFromAddress(last_from, glade_file)
     if from_address:

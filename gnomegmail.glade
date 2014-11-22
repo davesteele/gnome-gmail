@@ -294,9 +294,14 @@ for the file upload</property>
                 <property name="label">gtk-no</property>
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
+                <property name="has_focus">True</property>
+                <property name="is_focus">True</property>
+                <property name="can_default">True</property>
+                <property name="has_default">True</property>
                 <property name="receives_default">True</property>
                 <property name="has_tooltip">True</property>
                 <property name="use_stock">True</property>
+                <signal name="clicked" handler="onCancelClicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -362,6 +367,7 @@ for the file upload</property>
       </object>
     </child>
     <action-widgets>
+      <action-widget response="0">button_preferred_app_no</action-widget>
       <action-widget response="1">button_preferred_app_yes</action-widget>
     </action-widgets>
   </object>
@@ -386,7 +392,6 @@ for the file upload</property>
                 <property name="can_default">True</property>
                 <property name="has_default">True</property>
                 <property name="receives_default">True</property>
-                <property name="relief">none</property>
                 <property name="use_stock">True</property>
                 <signal name="clicked" handler="onCancelClicked" swapped="no"/>
               </object>
@@ -476,5 +481,9 @@ for the file upload</property>
         </child>
       </object>
     </child>
+    <action-widgets>
+      <action-widget response="0">buttonCance</action-widget>
+      <action-widget response="1">userSelButtonOk</action-widget>
+    </action-widgets>
   </object>
 </interface>
