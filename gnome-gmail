@@ -191,31 +191,14 @@ class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
         imaplib.Commands['XLIST'] = ('AUTH', 'SELECTED')
         imaplib.Commands['ID'] = ('AUTH')
 
-    def xlist(self, directory='""', pattern='*'):
-        """List mailbox names in directory matching pattern.
+    def get_special_folder(self, folder):
+        # to retrieve the local name of e.g. '\Drafts' (rfc6154)
+        for entry in self.list()[1]:
+            match = re.search("\(.*%s .*\).+\"([^\"]+)\"$" % folder, entry)
+            if match:
+                return match.group(1)
 
-        (typ, [data]) = <instance>.xlist(directory='""', pattern='*')
-
-        'data' is list of XLIST responses.
-
-        https://developers.google.com/google-apps/gmail/imap_extensions
-        #extension_of_the_list_command_xlist
-        """
-        name = 'XLIST'
-        typ, dat = self._simple_command(name, directory, pattern)
-        return self._untagged_response(typ, dat, name)
-
-    def special_folders( self ):
-        """ return a dictionary of localized Gmail special folders """
-        path = {}
-
-        for entry in self.xlist()[1]:
-            for name in ("Inbox", "Starred", "Sent", "Drafts",
-                         "Spam", "AllMail"):
-                if re.search( ' .%s\)' % name, entry ):
-                    path[ name ] = re.search( '\"([^\"]+)\"$', entry).group(1)
-
-        return path
+        return None
 
     def id( self, *args ):
         """ Provide app information to the server,
@@ -347,11 +330,12 @@ class GMailIMAP( ):
 
             # Find the localized Drafts folder
             error_exp = _("Unable to determine IMAP Drafts folder location")
-            draft_folder = imap_obj.special_folders()['Drafts']
+            draft_folder = imap_obj.get_special_folder('\Drafts')
 
             # upload the message to the Drafts folder
             error_exp = _("Error encountered while uploading the message")
             append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
+
             # the append returns e.g. ('OK', ['[APPENDUID 9 3113] (Success)'])
             # get the uid (e.g. 3113), and convert to Gmail ID to return
 
