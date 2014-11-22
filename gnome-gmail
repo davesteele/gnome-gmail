@@ -16,9 +16,15 @@ import webbrowser
 import imaplib
 import base64
 import os
+import os.path
 import re
 import textwrap
-
+import locale
+import gettext
+import string
+import json
+import mimetypes
+import random
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -26,7 +32,6 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import mimetypes
 
 from gi.repository import Gtk
 from gi.repository import Gdk
@@ -34,15 +39,7 @@ from gi.repository import GLib
 from gi.repository import WebKit
 from gi.repository import Secret
 
-
-import locale
-import gettext
-import string
-import json
-
 from ConfigParser import SafeConfigParser
-import os
-import os.path
 
 locale.setlocale( locale.LC_ALL, '' )
 gettext.textdomain( "gnome-gmail" )
@@ -51,7 +48,6 @@ _ = gettext.gettext
 
 import dbus
 
-import random
 
 
 class GGError( Exception ):
