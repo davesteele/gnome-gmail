@@ -50,8 +50,7 @@ DistUtilsExtra.auto.setup(
       author='David Steele',
       author_email='dsteele@gmail.com',
       url='https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about',
-      scripts=['gnome-gmail', 'setOOmailer'],
-#      xml_files=['gnome-gmail.xml'],
+      scripts=['gnome-gmail'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
@@ -59,9 +58,7 @@ DistUtilsExtra.auto.setup(
           ('/usr/share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
           ('/usr/share/applications', ['gnome-gmail.desktop']),
-          ('/usr/share/gnome/autostart', ['setOOmailer.desktop']),
-          ('/usr/share/gnome-control-center/default-apps', ['gnome-gmail.xml']),
-          ('/usr/share/gconf/schemas', ['gnome-gmail.schemas']),
+          ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
                  ],
       classifiers=[
           'Operating System :: POSIX :: Linux',

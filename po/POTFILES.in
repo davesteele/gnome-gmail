@@ -1,11 +1,7 @@
 # List of source files which contain translatable strings.
 
 gnome-gmail
-setOOmailer
-evolution
 gnomegmail.glade
-gnome-gmail.schemas.in
 gnome-gmail.desktop.in
-setOOmailer.desktop.in
-gnome-gmail.xml.in
+gnome-gmail-startup.desktop.in
 
