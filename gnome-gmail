@@ -14,6 +14,7 @@ import urlparse
 import urllib
 import webbrowser
 import imaplib
+import base64
 import os
 import re
 
@@ -27,6 +28,9 @@ from email.mime.text import MIMEText
 import mimetypes
 
 from gi.repository import Gtk
+from gi.repository import Gdk
+from gi.repository import GLib
+from gi.repository import WebKit
 
 import locale
 import gettext
@@ -44,8 +48,6 @@ _ = gettext.gettext
 
 import dbus
 
-import webkit
-import gobject
 import random
 
 
@@ -79,10 +81,10 @@ class GMOauth():
         s=string.lowercase + string.uppercase + string.digits
         state = ''.join(random.sample(s,10))
 
-        gobject.threads_init()
-        win = gtk.Window()
+        GLib.threads_init()
+        win = Gtk.Window()
         win.set_title("")
-        bro = webkit.WebView()
+        bro = WebKit.WebView()
 
         args = { "response_type": "code",
              "client_id": self.client_id,
@@ -108,11 +110,11 @@ class GMOauth():
 
         code = None
         while self.win_valid:
-            gtk.main_iteration_do(False)
+            Gtk.main_iteration_do(False)
             bro_title = bro.get_title()
             if bro_title and state in bro_title:
                 code = bro_title.split("=")[-1]
-                if not win.emit("delete-event", gtk.gdk.Event(gtk.gdk.DELETE)):
+                if not win.emit("delete-event", Gdk.Event(Gdk.EventType.DELETE)):
                     win.destroy()
 
         return code
@@ -167,7 +169,14 @@ class GMOauth():
             # todo - replace with a GG exception
             return( (None, None) )
 
+    def access_iter(self, access, refresh, login):
+        if access:
+            yield (access, refresh)
 
+        if refresh:
+            yield (self.get_access_from_refresh(refresh), refresh)
+
+        yield self.generate_tokens(login)
 
 
 class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
@@ -208,7 +217,7 @@ class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
         return path
 
     def id( self, *args ):
-        """ Provide app information to the server, 
+        """ Provide app information to the server,
             and get information in return (RFC2971)"""
         arg = '("' + '" "'.join( args ) + '")'
         name = 'ID'
@@ -228,9 +237,20 @@ class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
 
         return msgid_hex[2:]
 
+    def generateOAuth2String(self, access, user):
+        """IMAP login string, per
+            https://developers.google.com/gmail/xoauth2_libraries"""
+
+        auth_string = 'user=%s\1auth=Bearer %s\1\1' % (user, access)
+        return auth_string
+
+    def login_oauth(self, user, access):
+        auth_string = self.generateOAuth2String(access, user)
+        self.authenticate('XOAUTH2', lambda x: auth_string)
+
 
 class GMailIMAP( ):
-    """ Handle mailto URLs that include 'attach' fields by uploading the 
+    """ Handle mailto URLs that include 'attach' fields by uploading the
     messages using IMAP """
 
     def __init__( self, mail_dict  ):
@@ -247,7 +267,7 @@ class GMailIMAP( ):
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
         fname = os.path.split( self.mail_dict[ "attach" ][0] )[1]
-        
+
         if "subject" not in self.mail_dict:
             msg[ "Subject" ] = _("Sending %s") % fname
 
@@ -303,13 +323,13 @@ class GMailIMAP( ):
 
         return( self._has_attachment() )
 
-    def send_mail( self, user, password ):
+    def send_mail( self, user, access ):
         """ transfer the message to GMail Drafts folder, using IMAP.
         Return a message ID that can be used to reference the mail via URL"""
 
         imap_obj = GmailIMAP4_SSL( )
 
-        imap_obj.login( user, password )
+        imap_obj.login_oauth( user, access )
 
         # identify the client per http://code.google.com/apis/gmail/imap/
         imap_obj.id(
@@ -373,7 +393,7 @@ class GMailURL( ):
 
 
     def mailto2dict( self ):
-        """ Convert a mailto: reference to a dictionary containing the 
+        """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
         usplit = urlparse.urlsplit( self.mailto_url, "mailto" )
@@ -381,7 +401,7 @@ class GMailURL( ):
         path = usplit.path
 
         try:
-            # for some reason, urlsplit is not splitting off the 
+            # for some reason, urlsplit is not splitting off the
             # query string.
             # do it here
             # ( address, qs ) = string.split( path, "?", 1 )
@@ -412,7 +432,7 @@ class GMailURL( ):
         return( outdict )
 
     def standard_gmail_url( self ):
-        """ If there is no attachment reference, create a direct GMail 
+        """ If there is no attachment reference, create a direct GMail
         URL which will create the message """
 
         dct = self.mail_dict
@@ -434,10 +454,11 @@ class GMailURL( ):
         return( "https://mail.google.com/mail/b/%s" % self.from_address )
 
     def imap_gmail_url( self ):
-        """ if the mailto refers to an attachment, 
+        """ if the mailto refers to an attachment,
         use IMAP to upload the file """
 
-        imap_url = "https://mail.google.com/%smail/#drafts/" % self.appsdomainstr
+        imap_url = "https://mail.google.com/mail/b/%s#drafts/" % \
+                   self.from_address
 
         if not self.enable_net_access:
             return( imap_url )
@@ -448,51 +469,39 @@ class GMailURL( ):
         except (imaplib.IMAP4.error, OSError):
             GGError( _("Error creating message with attachment") )
 
-        # if we have a full set of configuration information, 
-        # go ahead and try the transfer
-        if True:
-#        if( self.config_info.info_complete() ):
+
+        msg_id = None
+        auth = GMOauth()
+        for access, refresh in auth.access_iter(None, None, self.from_address):
             try:
-#                msg_id = gm_imap.send_mail( self.config_info.user, \
                 msg_id = gm_imap.send_mail( self.from_address, \
-#                    self.config_info.password )
-                    "dummypassword" )
+                                            access)
+                break
             except (imaplib.IMAP4.error, OSError) as inst:
-                # don't report this failure. 
-                # We'll try again with prompted parameters
+                # do nothing for a particular instance of this failure
                 pass
-            else:
-                return( imap_url + msg_id )
 
-        # query for needed information
-        if( self.config_info.query_config_info() ):
-            # do the IMAP upload
-            try:
-#                msg_id = gm_imap.send_mail( self.config_info.user, \
-                msg_id = gm_imap.send_mail( self.from_address, \
-                    "dummy poassword" )
-            except (OSError, imaplib.IMAP4.error) as inst:
-                error_str = None
-                if inst.args[0].find( _("nvalid credentials") ) > 0:
-                    error_str = _("Invalid GMail User Name or Password")
-                elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
-                    error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
-                else:
-                    error_str = inst.args[0]
-
-                raise GGError( error_str )
-
-            #self.config_info.write_config()
+        if msg_id:
+            # save the access and refresh tokens
+            pass
         else:
-            raise GGError( _("GMail credentials incomplete") )
+            error_str = None
+            if inst.args[0].find( _("nvalid credentials") ) > 0:
+                error_str = _("Invalid GMail User Name or Password")
+            elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
+                error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
+            else:
+                error_str = inst.args[0]
+
+            raise GGError( error_str )
 
         return( imap_url + msg_id )
 
     def gmail_url( self ):
-        """ Return a GMail URL appropriate for the mailto handled 
+        """ Return a GMail URL appropriate for the mailto handled
         by this instance """
         if( len( self.mailto_url ) == 0 ):
-            gmailurl = self.simple_gmail_url() 
+            gmailurl = self.simple_gmail_url()
         elif GMailIMAP(self.mail_dict).needs_imap():
             gmailurl = self.imap_gmail_url()
         else:
