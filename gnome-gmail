@@ -32,6 +32,8 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import GLib
 from gi.repository import WebKit
+from gi.repository import Secret
+
 
 import locale
 import gettext
@@ -73,6 +75,7 @@ class GMOauth():
     def __init__(self):
         self.auth_endpoint = "https://accounts.google.com/o/oauth2/auth"
         self.token_endpoint = "https://accounts.google.com/o/oauth2/token"
+        self.scope = "https://mail.google.com/"
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
         self.win_valid = None
@@ -92,7 +95,7 @@ class GMOauth():
              "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
              "prompt": "consent",
              #"scope": "openid email https://mail.google.com/",
-             "scope": "https://mail.google.com/",
+             "scope": self.scope,
              "state": state,
              "login_hint": login_hint }
 
@@ -457,7 +460,10 @@ class GMailURL( ):
 
         msg_id = None
         auth = GMOauth()
-        for access, refresh in auth.access_iter(None, None, self.from_address):
+        keys = Oauth2Keyring(auth.scope)
+        old_access, old_refresh = keys.getTokens(self.from_address)
+
+        for access, refresh in auth.access_iter(old_access, old_refresh, self.from_address):
             try:
                 msg_id = gm_imap.send_mail( self.from_address, \
                                             access)
@@ -467,10 +473,9 @@ class GMailURL( ):
                 pass
 
         if msg_id:
-            # save the access and refresh tokens
-            pass
+            keys.setTokens(self.from_address, access, refresh)
         else:
-            error_str = None
+            error_str = ""
             if inst.args[0].find( _("nvalid credentials") ) > 0:
                 error_str = _("Invalid GMail User Name or Password")
             elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
@@ -593,6 +598,57 @@ class GgConfig(SafeConfigParser):
             val = '1' if val else '0'
         return self.set(self.section, param, val)
 
+
+class Oauth2Keyring( ):
+    # per https://people.gnome.org/~stefw/libsecret-docs/py-examples.html#py-schema-example
+    TOKEN_SCHEMA = Secret.Schema.new('com.github.davesteele.oauth2',
+        Secret.SchemaFlags.NONE,
+        {
+            "user"         : Secret.SchemaAttributeType.STRING,
+            "scope"        : Secret.SchemaAttributeType.STRING,
+        }
+    )
+
+    def __init__(self, scope):
+        self.scope = scope
+
+    def encodeTokens(self, access_token, refresh_token):
+        return "access:%s;refresh:%s" % (access_token, refresh_token)
+
+    def decodeTokens(self, encode_str):
+        match = re.search("^access:(.+);refresh:(.+)$", encode_str)
+
+        if match:
+            return match.group(1, 2)
+        else:
+            return (None, None)
+
+    def getTokens(self, user):
+        attributes = {
+                         "user": user,
+                         "scope": self.scope,
+                     }
+
+        password = Secret.password_lookup_sync(self.TOKEN_SCHEMA,
+                                               attributes, None)
+
+        if password:
+            return self.decodeTokens(password)
+        else:
+            return (None, None)
+
+    def setTokens(self, user, access_token, refresh_token):
+        attributes = {
+                         "user": user,
+                         "scope": self.scope,
+                     }
+
+        Secret.password_store_sync(self.TOKEN_SCHEMA, attributes,
+                          Secret.COLLECTION_DEFAULT,
+                          "Mail access to %s for %s" % (self.scope, user),
+                          self.encodeTokens(access_token, refresh_token),
+                          None
+                     )
 
 
 def main( ):
