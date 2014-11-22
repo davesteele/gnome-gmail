@@ -33,6 +33,7 @@ class my_clean(distutils.command.clean.clean):
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
         filelist += ['po/gnome-gmail.pot']
+        filelist += ['gnomegmail.glade~']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
