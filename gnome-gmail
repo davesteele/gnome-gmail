@@ -17,6 +17,7 @@ import imaplib
 import base64
 import os
 import re
+import textwrap
 
 
 from email import encoders
@@ -554,14 +555,10 @@ def getGoogleFromAddress(last_address, gladefile):
 class GgConfig(SafeConfigParser):
     def __init__(self, *args, **kwargs):
 
-        self.fpath = os.path.expanduser(kwargs['fpath'])
-        kwargs.pop('fpath', None)
-
-        self.section = kwargs['section']
-        kwargs.pop('section', None)
-
-        initvals = kwargs['initvals']
-        kwargs.pop('initvals')
+        self.fpath = os.path.expanduser(self.strip_kwarg(kwargs, 'fpath'))
+        self.section = self.strip_kwarg(kwargs, 'section')
+        initvals = self.strip_kwarg(kwargs, 'initvals')
+        self.header = self.strip_kwarg(kwargs, 'header')
 
         SafeConfigParser.__init__(self, *args, **kwargs)
 
@@ -573,6 +570,11 @@ class GgConfig(SafeConfigParser):
         self.read(self.fpath)
         self.save()
 
+    def strip_kwarg(self, kwargs, option):
+        val = kwargs[option]
+        kwargs.pop(option, None)
+        return val
+
     def save(self):
         dir = os.path.dirname(self.fpath)
 
@@ -580,6 +582,7 @@ class GgConfig(SafeConfigParser):
             os.makedirs(dir)
 
         with open(self.fpath, 'w') as fp:
+            fp.write(self.header)
             fp.write("# Automatically updated file - comments stripped\n")
             self.write(fp)
 
@@ -617,13 +620,25 @@ def main( ):
     else:
         mailto = ""
 
+    header = textwrap.dedent("""\
+        # GNOME Gmail Configuration
+        #
+        # suppress_preferred
+        #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
+        #     the default mail program.
+        # last_email
+        #     The email account used for the last run. It is used to populate
+        #     the account selection dialog. This is updated automatically.
+        #
+        """)
     config = GgConfig(fpath = "~/.config/gnome-gmail/gnome-gmail.conf",
                       section = 'gnome-gmail',
                       initvals = {
                                      'suppress_preferred': '0',
                                      'last_email': '',
-                                 }
-                      )
+                                 },
+                      header = header,
+                     )
 
     # set this app as the GNOME mailto handler, new-style
 #    [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
