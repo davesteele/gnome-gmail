@@ -647,14 +647,6 @@ def main( ):
     from_address = getGoogleFromAddress(last_from, glade_file)
     if from_address:
         config.set_str('last_email', from_address)
-    else:
-        notice = Notify.Notification.new("GNOME GMail",
-                                          _("User cancelled"),
-                                          "dialog-information"
-                                         )
-        notice.show()
-        time.sleep(5)
-        sys.exit(0)
 
     try:
         gm_url = GMailURL( mailto, from_address )
