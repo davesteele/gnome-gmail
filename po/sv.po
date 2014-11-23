@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-11 20:06-0400\n"
+"POT-Creation-Date: 2014-11-22 20:41-0500\n"
 "PO-Revision-Date: 2011-06-19 21:55+0000\n"
 "Last-Translator: __a <skog.albert@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,119 +17,91 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnome-gmail:105
+#: ../gnome-gmail:254
 #, c-format
 msgid "Sending %s"
 msgstr "Skickar %s"
 
-#: ../gnome-gmail:107
+#: ../gnome-gmail:256
 msgid "Mime message attached"
 msgstr "Mime-meddelande bifogat"
 
-#: ../gnome-gmail:172
+#: ../gnome-gmail:327
 msgid "Drafts"
 msgstr "Utkast"
 
-#: ../gnome-gmail:184
+#: ../gnome-gmail:330
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Kunde inte hitta Utkast-mappen via IMAP"
 
-#: ../gnome-gmail:191
+#: ../gnome-gmail:334
 msgid "Error encountered while uploading the message"
 msgstr "Fel inträffade när meddelandet laddades upp"
 
-#: ../gnome-gmail:209
+#: ../gnome-gmail:340
 msgid "Error accessing message. Check the Drafts folder"
 msgstr "Fel när meddelandet laddades. Titta i Utkast-mappen"
 
-#: ../gnome-gmail:392
-msgid "User cancelled \"Send To...\""
-msgstr "\"Skicka till...\" avbröts av användaren"
-
-#: ../gnome-gmail:535
+#: ../gnome-gmail:453
 msgid "Error creating message with attachment"
 msgstr "Ett fel inträffade när meddelande med bifogad fil skapades"
 
-#: ../gnome-gmail:561
+#: ../gnome-gmail:474
 msgid "nvalid credentials"
 msgstr "ogiltiga uppgifter"
 
-#: ../gnome-gmail:562
+#: ../gnome-gmail:475
 msgid "Invalid GMail User Name or Password"
 msgstr "Felaktigt användarnamn eller lösenord"
 
-#: ../gnome-gmail:563
+#: ../gnome-gmail:476
 msgid "not enabled for IMAP"
 msgstr "IMAP ej aktiverat"
 
-#: ../gnome-gmail:564
+#: ../gnome-gmail:477
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr "Du måste \"Aktivera IMAP\" i Gmail för att kunna skicka filer"
 
-#: ../gnome-gmail:572
-msgid "GMail credentials incomplete"
-msgstr "icke kompletta Gmailuppgifter"
+#: ../gnome-gmail:722
+#, fuzzy
+msgid "User cancelled"
+msgstr "\"Skicka till...\" avbröts av användaren"
 
-#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Copyright 2010 - Dave Steele"
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr "kommentar"
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr "Inställningar"
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
 msgstr "Gnome Gmail"
 
-#: ../gnomegmail.glade.h:2
+#: ../gnomegmail.glade.h:5
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
 msgstr "Fyll i dina Gmailuppgifter för filuppladdningen"
 
-#: ../gnomegmail.glade.h:4
-msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Ditt gmail-användarnamn, utan \"@gmail.com\""
-
-#: ../gnomegmail.glade.h:5
+#: ../gnomegmail.glade.h:7
 msgid "User Name"
 msgstr "Användarnamn"
 
-#: ../gnomegmail.glade.h:6
-msgid "Your Gmail password"
-msgstr "Ditt gmail-lösenord"
-
-#: ../gnomegmail.glade.h:7
+#: ../gnomegmail.glade.h:8
 msgid "Password"
 msgstr "Lösenord"
 
-#: ../gnomegmail.glade.h:8
-msgid ""
-"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr "Mailkontots namn (tex \"kalle\" för kontot \"kalle@gmail.com\")"
-
 #: ../gnomegmail.glade.h:9
-msgid "Enter the password for the mail account"
-msgstr "Lösenord för mailkontot"
-
-#: ../gnomegmail.glade.h:10
 msgid "Remember Password"
 msgstr "Kom ihåg lösenordet"
 
-#: ../gnomegmail.glade.h:11
-msgid "Remember the Google Account password in the Gnome keychain."
-msgstr "Spara googlekontots lösenord i Gnomes nyckelring"
-
-#: ../gnomegmail.glade.h:12
-msgid "Configure"
-msgstr "Inställningar"
-
-#: ../gnomegmail.glade.h:13
-msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Använd Gnome Gmail med ett Google Apps-konto"
-
-#: ../gnomegmail.glade.h:14
-msgid "Copyright 2010 - Dave Steele"
-msgstr "Copyright 2010 - Dave Steele"
-
-#: ../gnomegmail.glade.h:15
-msgid "comment"
-msgstr "kommentar"
-
-#: ../gnomegmail.glade.h:16
+#: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
@@ -137,101 +109,112 @@ msgstr ""
 "Gnome Gmail är för närvarande inte ditt föredragna epostprogram. Vill du "
 "skicka mail via Gmails hemsida?"
 
-#: ../gnomegmail.glade.h:17
+#: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
 msgstr "Fråga inte igen"
 
-#: ../gnomegmail.glade.h:18
-msgid "Don't change the Preferred Email Application"
-msgstr "Byt inte föredraget epostprogram"
-
-#: ../gnomegmail.glade.h:19
-msgid "Use GNOME Gmail for sending mail"
-msgstr "Använd Gnome Gmail för att skicka mail"
-
-#: ../gnome-gmail.schemas.in.h:1
-msgid "Save IMAP password?"
-msgstr "Spara IMAP-lösenord?"
-
-#: ../gnome-gmail.schemas.in.h:2
-msgid ""
-"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
-"IMAP is used to upload file attachments to GMail."
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
 msgstr ""
-"När denna ruta är ikrysasad kommer Gnome Gmail spara IMAP-lösenordet i Gnome-"
-"nyckelringen. IMAP används för att ladda upp bilagor till Gmail."
-
-#: ../gnome-gmail.schemas.in.h:3
-msgid "Saved IMAP user name"
-msgstr "Sparade IMAP-användarnamn"
-
-#: ../gnome-gmail.schemas.in.h:4
-msgid ""
-"Gnome Gmail will save the last user name for file attachment uploads here."
-msgstr ""
-"Gnome Gmail sparar senaste användarnamnet för uppladdning av bilagor här."
-
-#: ../gnome-gmail.schemas.in.h:5
-msgid "Google Apps domain"
-msgstr "Google Apps-domän"
-
-#: ../gnome-gmail.schemas.in.h:6
-msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-msgstr "Fyll i domänen här för att använda Gnome Gmail med Google Apps"
-
-#: ../gnome-gmail.schemas.in.h:7
-msgid "Hide confirmation dialog"
-msgstr "Dölj bekräftelsedialog"
-
-#: ../gnome-gmail.schemas.in.h:8
-msgid ""
-"When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow "
-"Gnome Gmail to be configured for Google Apps support."
-msgstr ""
-"När denna ruta är ikryssad kommer Gnome Gmail inte kräva någon bekräftelse "
-"vid skapande av nya meddelanden. Bekräftelsen innehåller en länk som gör det "
-"möjligt att använda Gnome Gmail med Google Apps."
-
-#: ../gnome-gmail.schemas.in.h:9
-msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Låt Open Office använda Gnomes  föredragna program för epost"
-
-#: ../gnome-gmail.schemas.in.h:10
-msgid ""
-"When checked, Gnome Gmail will attempt to configure Open Office to use the "
-"currently selected Gnome Preferred Email Application with each login, using "
-"a Gnome Gmail compatibility application."
-msgstr ""
-"När denna ruta är ikryssad kommer Gnome Gmail försöka konfigurera Open "
-"Office för användning med Gnomes föredragna program för epost vid varje "
-"inloggning."
-
-#: ../gnome-gmail.schemas.in.h:11
-msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-msgstr "Använd inte Gnome Gmails föredragna epostprogram"
-
-#: ../gnome-gmail.schemas.in.h:12
-msgid ""
-"When checked, GNOME Gmail will not offer to set itself as the GNOME "
-"Preferred Mail application. Otherwise, the program will ask if you want it "
-"to be the mail application, if it isn't already."
-msgstr ""
-"När denna ruta är ikryssad kommer Gnome Gmail inte fråga om du vill göra det "
-"till föredragen program för epost."
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Integrera Gmail med skrivbordet"
 
-#: ../setOOmailer.desktop.in.h:1
+#: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Gnome Gmails Open Office-inställningar"
 
-#: ../setOOmailer.desktop.in.h:2
+#: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "Låt Open Office använda Gnomes föredragna epostprogram."
 
-#: ../gnome-gmail.xml.in.h:1
-msgid "Gmail"
-msgstr "Gmai"
+#~ msgid "GMail credentials incomplete"
+#~ msgstr "icke kompletta Gmailuppgifter"
+
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Ditt gmail-användarnamn, utan \"@gmail.com\""
+
+#~ msgid "Your Gmail password"
+#~ msgstr "Ditt gmail-lösenord"
+
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr "Mailkontots namn (tex \"kalle\" för kontot \"kalle@gmail.com\")"
+
+#~ msgid "Enter the password for the mail account"
+#~ msgstr "Lösenord för mailkontot"
+
+#~ msgid "Remember the Google Account password in the Gnome keychain."
+#~ msgstr "Spara googlekontots lösenord i Gnomes nyckelring"
+
+#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgstr "Använd Gnome Gmail med ett Google Apps-konto"
+
+#~ msgid "Don't change the Preferred Email Application"
+#~ msgstr "Byt inte föredraget epostprogram"
+
+#~ msgid "Use GNOME Gmail for sending mail"
+#~ msgstr "Använd Gnome Gmail för att skicka mail"
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "Spara IMAP-lösenord?"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
+#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ msgstr ""
+#~ "När denna ruta är ikrysasad kommer Gnome Gmail spara IMAP-lösenordet i "
+#~ "Gnome-nyckelringen. IMAP används för att ladda upp bilagor till Gmail."
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Sparade IMAP-användarnamn"
+
+#~ msgid ""
+#~ "Gnome Gmail will save the last user name for file attachment uploads here."
+#~ msgstr ""
+#~ "Gnome Gmail sparar senaste användarnamnet för uppladdning av bilagor här."
+
+#~ msgid "Google Apps domain"
+#~ msgstr "Google Apps-domän"
+
+#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgstr "Fyll i domänen här för att använda Gnome Gmail med Google Apps"
+
+#~ msgid "Hide confirmation dialog"
+#~ msgstr "Dölj bekräftelsedialog"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will suppress the confirmation notification "
+#~ "that appears with each message created. The notification includes a link "
+#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ msgstr ""
+#~ "När denna ruta är ikryssad kommer Gnome Gmail inte kräva någon "
+#~ "bekräftelse vid skapande av nya meddelanden. Bekräftelsen innehåller en "
+#~ "länk som gör det möjligt att använda Gnome Gmail med Google Apps."
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "Låt Open Office använda Gnomes  föredragna program för epost"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "När denna ruta är ikryssad kommer Gnome Gmail försöka konfigurera Open "
+#~ "Office för användning med Gnomes föredragna program för epost vid varje "
+#~ "inloggning."
+
+#~ msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+#~ msgstr "Använd inte Gnome Gmails föredragna epostprogram"
+
+#~ msgid ""
+#~ "When checked, GNOME Gmail will not offer to set itself as the GNOME "
+#~ "Preferred Mail application. Otherwise, the program will ask if you want "
+#~ "it to be the mail application, if it isn't already."
+#~ msgstr ""
+#~ "När denna ruta är ikryssad kommer Gnome Gmail inte fråga om du vill göra "
+#~ "det till föredragen program för epost."
+
+#~ msgid "Gmail"
+#~ msgstr "Gmai"
