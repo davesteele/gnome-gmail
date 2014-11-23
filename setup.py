@@ -59,6 +59,7 @@ DistUtilsExtra.auto.setup(
           ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
           ('/usr/share/applications', ['gnome-gmail.desktop']),
           ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
+          ('share/gnome-gmail', ['gnomegmail.glade']),
                  ],
       classifiers=[
           'Operating System :: POSIX :: Linux',

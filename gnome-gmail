@@ -697,7 +697,10 @@ def main( ):
                       header = header,
                      )
 
-    glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
+    # anyone know how to do this right?
+    for prefix in ['/usr/local', '/usr']:
+        if os.path.isfile(prefix + "/share/gnome-gmail/gnomegmail.glade"):
+            glade_file = prefix + "/share/gnome-gmail/gnomegmail.glade"
 
     emailer = Gio.app_info_get_default_for_type("x-scheme-handler/mailto", True)
     if emailer.get_id() != "gnome-gmail.desktop" \
