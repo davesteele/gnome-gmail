@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-11 20:06-0400\n"
+"POT-Creation-Date: 2014-11-22 20:41-0500\n"
 "PO-Revision-Date: 2011-05-13 15:14+0000\n"
 "Last-Translator: daves <dsteele@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,74 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: ../gnome-gmail:105
+#: ../gnome-gmail:254
 #, c-format
 msgid "Sending %s"
 msgstr "%s gönderiliyor"
 
-#: ../gnome-gmail:107
+#: ../gnome-gmail:256
 msgid "Mime message attached"
 msgstr "Mime mesajı eklendi"
 
-#: ../gnome-gmail:172
+#: ../gnome-gmail:327
 msgid "Drafts"
 msgstr "Taslaklar"
 
-#: ../gnome-gmail:184
+#: ../gnome-gmail:330
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "IMAP Taslaklar klasörünün yeri belirlenemedi"
 
-#: ../gnome-gmail:191
+#: ../gnome-gmail:334
 msgid "Error encountered while uploading the message"
 msgstr ""
 
-#: ../gnome-gmail:209
+#: ../gnome-gmail:340
 msgid "Error accessing message. Check the Drafts folder"
 msgstr ""
 
-#: ../gnome-gmail:392
-msgid "User cancelled \"Send To...\""
-msgstr "Kullanıcı \"Gönder...\" işlemini iptal etti"
-
-#: ../gnome-gmail:535
+#: ../gnome-gmail:453
 msgid "Error creating message with attachment"
 msgstr "Eklenti içeren mesaj oluşturulamadı"
 
-#: ../gnome-gmail:561
+#: ../gnome-gmail:474
 msgid "nvalid credentials"
 msgstr "Geçersiz giriş bilgileri"
 
-#: ../gnome-gmail:562
+#: ../gnome-gmail:475
 msgid "Invalid GMail User Name or Password"
 msgstr "Geçersiz Gmail kullanıcı adı veya şifresi"
 
-#: ../gnome-gmail:563
+#: ../gnome-gmail:476
 msgid "not enabled for IMAP"
 msgstr "IMAP etkin değil"
 
-#: ../gnome-gmail:564
+#: ../gnome-gmail:477
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr ""
 "Eklenti gönderebilmek için  Gmail ayarlarından IMAP'i etkinleştirmelisiniz"
 
-#: ../gnome-gmail:572
-msgid "GMail credentials incomplete"
-msgstr "Gmail giriş bilgileri eksik"
+#: ../gnome-gmail:722
+#, fuzzy
+msgid "User cancelled"
+msgstr "Kullanıcı \"Gönder...\" işlemini iptal etti"
 
-#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Telif Hakkı 2010 -  Dave Steele"
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr "açıklama"
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr "Yapılandır"
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
 msgstr "Gnome Gmail"
 
-#: ../gnomegmail.glade.h:2
+#: ../gnomegmail.glade.h:5
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
@@ -83,158 +92,118 @@ msgstr ""
 "Dosya yükleme için\n"
 "Gmail giriş bilgilerinizi giriniz"
 
-#: ../gnomegmail.glade.h:4
-msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Gmail kullanıcı adınız, '@gmail.com' kısmı olmadan"
-
-#: ../gnomegmail.glade.h:5
+#: ../gnomegmail.glade.h:7
 msgid "User Name"
 msgstr "Kullanıcı Adı"
 
-#: ../gnomegmail.glade.h:6
-msgid "Your Gmail password"
-msgstr "Gmail şifreniz"
-
-#: ../gnomegmail.glade.h:7
+#: ../gnomegmail.glade.h:8
 msgid "Password"
 msgstr "Şifre"
 
-#: ../gnomegmail.glade.h:8
-msgid ""
-"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr ""
-"E-posta hesabının adı (Örneğin; 'joe@gmail.com' e-posta hesabı için 'joe')"
-
 #: ../gnomegmail.glade.h:9
-msgid "Enter the password for the mail account"
-msgstr "E-posta hesabının şifresini giriniz"
-
-#: ../gnomegmail.glade.h:10
 msgid "Remember Password"
 msgstr "Şifremi Hatırla"
 
-#: ../gnomegmail.glade.h:11
-msgid "Remember the Google Account password in the Gnome keychain."
-msgstr "Google hesabının şifresini Gnome Şifre Yöneticisinde hatırla."
-
-#: ../gnomegmail.glade.h:12
-msgid "Configure"
-msgstr "Yapılandır"
-
-#: ../gnomegmail.glade.h:13
-msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Gnome Gmail'i bir Google Apps hesabı ile kullanın."
-
-#: ../gnomegmail.glade.h:14
-msgid "Copyright 2010 - Dave Steele"
-msgstr "Telif Hakkı 2010 -  Dave Steele"
-
-#: ../gnomegmail.glade.h:15
-msgid "comment"
-msgstr "açıklama"
-
-#: ../gnomegmail.glade.h:16
+#: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
 
-#: ../gnomegmail.glade.h:17
+#: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
 msgstr ""
 
-#: ../gnomegmail.glade.h:18
-msgid "Don't change the Preferred Email Application"
-msgstr ""
-
-#: ../gnomegmail.glade.h:19
-msgid "Use GNOME Gmail for sending mail"
-msgstr ""
-
-#: ../gnome-gmail.schemas.in.h:1
-msgid "Save IMAP password?"
-msgstr "IMAP şifresini kaydet?"
-
-#: ../gnome-gmail.schemas.in.h:2
-msgid ""
-"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
-"IMAP is used to upload file attachments to GMail."
-msgstr ""
-"Seçili olduğunda, Gnome Gmail IMAP şifresini Gnome Şifre Yöneticisine "
-"kaydedecektir. IMAP dosya eklentilerini Gmail'e yüklemek amacıyla "
-"kullanılmaktadır."
-
-#: ../gnome-gmail.schemas.in.h:3
-msgid "Saved IMAP user name"
-msgstr "Kaydedilmiş IMAP kullanıcı adı"
-
-#: ../gnome-gmail.schemas.in.h:4
-msgid ""
-"Gnome Gmail will save the last user name for file attachment uploads here."
-msgstr ""
-"Gnome Gmail dosya eklenti yüklemeleri için en son kullanıcı adını "
-"kaydedecektir."
-
-#: ../gnome-gmail.schemas.in.h:5
-msgid "Google Apps domain"
-msgstr "Google Apps alanadı"
-
-#: ../gnome-gmail.schemas.in.h:6
-msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-msgstr "Gnome Gmail'i Google Apps ile kullanmak için alanadını buraya giriniz"
-
-#: ../gnome-gmail.schemas.in.h:7
-msgid "Hide confirmation dialog"
-msgstr "Onay kutucuğunu gizle"
-
-#: ../gnome-gmail.schemas.in.h:8
-msgid ""
-"When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow "
-"Gnome Gmail to be configured for Google Apps support."
-msgstr ""
-"Seçili olduğunda, Gnome Gmail her mesaj yaratıldıktan sonra gözüken onay "
-"sorusunu gizleyecektir. Onay kutucuğunda, Gnome Gmail'i Google Apps hesabı "
-"ile kullanabilmek için gerekli ayarlara bir bağlantı bulunmaktadır."
-
-#: ../gnome-gmail.schemas.in.h:9
-msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Open Office, Gnome Tercih Edilen E-posta Uygulamasını kullansın"
-
-#: ../gnome-gmail.schemas.in.h:10
-msgid ""
-"When checked, Gnome Gmail will attempt to configure Open Office to use the "
-"currently selected Gnome Preferred Email Application with each login, using "
-"a Gnome Gmail compatibility application."
-msgstr ""
-"Seçili olduğunda; Gnome Gmail, her oturum açılışında bir uyumluluk "
-"uygulaması kullanarak Open Office'in seçili Gnome Tercih Edilen E-posta "
-"Uygulamasını kullanmasını sağlamaya çalışacaktır."
-
-#: ../gnome-gmail.schemas.in.h:11
-msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-msgstr ""
-
-#: ../gnome-gmail.schemas.in.h:12
-msgid ""
-"When checked, GNOME Gmail will not offer to set itself as the GNOME "
-"Preferred Mail application. Otherwise, the program will ask if you want it "
-"to be the mail application, if it isn't already."
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Gmail'i masaüstünüz ile entegre edin"
 
-#: ../setOOmailer.desktop.in.h:1
+#: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Gnome Gmail Open Office Yapılandırıcısı"
 
-#: ../setOOmailer.desktop.in.h:2
+#: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
 "Open Office'in, Gnome Tercih Edilen E-posta Uygulamasını kullanmasını sağlar"
 
-#: ../gnome-gmail.xml.in.h:1
-msgid "Gmail"
-msgstr "Gmail"
+#~ msgid "GMail credentials incomplete"
+#~ msgstr "Gmail giriş bilgileri eksik"
+
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Gmail kullanıcı adınız, '@gmail.com' kısmı olmadan"
+
+#~ msgid "Your Gmail password"
+#~ msgstr "Gmail şifreniz"
+
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr ""
+#~ "E-posta hesabının adı (Örneğin; 'joe@gmail.com' e-posta hesabı için 'joe')"
+
+#~ msgid "Enter the password for the mail account"
+#~ msgstr "E-posta hesabının şifresini giriniz"
+
+#~ msgid "Remember the Google Account password in the Gnome keychain."
+#~ msgstr "Google hesabının şifresini Gnome Şifre Yöneticisinde hatırla."
+
+#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgstr "Gnome Gmail'i bir Google Apps hesabı ile kullanın."
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "IMAP şifresini kaydet?"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
+#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ msgstr ""
+#~ "Seçili olduğunda, Gnome Gmail IMAP şifresini Gnome Şifre Yöneticisine "
+#~ "kaydedecektir. IMAP dosya eklentilerini Gmail'e yüklemek amacıyla "
+#~ "kullanılmaktadır."
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Kaydedilmiş IMAP kullanıcı adı"
+
+#~ msgid ""
+#~ "Gnome Gmail will save the last user name for file attachment uploads here."
+#~ msgstr ""
+#~ "Gnome Gmail dosya eklenti yüklemeleri için en son kullanıcı adını "
+#~ "kaydedecektir."
+
+#~ msgid "Google Apps domain"
+#~ msgstr "Google Apps alanadı"
+
+#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgstr ""
+#~ "Gnome Gmail'i Google Apps ile kullanmak için alanadını buraya giriniz"
+
+#~ msgid "Hide confirmation dialog"
+#~ msgstr "Onay kutucuğunu gizle"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will suppress the confirmation notification "
+#~ "that appears with each message created. The notification includes a link "
+#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ msgstr ""
+#~ "Seçili olduğunda, Gnome Gmail her mesaj yaratıldıktan sonra gözüken onay "
+#~ "sorusunu gizleyecektir. Onay kutucuğunda, Gnome Gmail'i Google Apps "
+#~ "hesabı ile kullanabilmek için gerekli ayarlara bir bağlantı bulunmaktadır."
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "Open Office, Gnome Tercih Edilen E-posta Uygulamasını kullansın"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "Seçili olduğunda; Gnome Gmail, her oturum açılışında bir uyumluluk "
+#~ "uygulaması kullanarak Open Office'in seçili Gnome Tercih Edilen E-posta "
+#~ "Uygulamasını kullanmasını sağlamaya çalışacaktır."
+
+#~ msgid "Gmail"
+#~ msgstr "Gmail"

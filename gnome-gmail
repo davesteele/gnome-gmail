@@ -12,10 +12,20 @@ GNOME Preferred Email application """
 import sys
 import urlparse
 import urllib
+import urllib2
 import webbrowser
-import imaplib
+import base64
 import os
+import os.path
 import re
+import textwrap
+import locale
+import gettext
+import string
+import json
+import mimetypes
+import random
+import time
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -23,25 +33,21 @@ from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import mimetypes
 
-import gconf
-import gio
+from gi.repository import Gtk
+from gi.repository import Gdk
+from gi.repository import Gio
+from gi.repository import GLib
+from gi.repository import WebKit
+from gi.repository import Secret
+from gi.repository import Notify
 
-import locale
-import gettext
+from ConfigParser import SafeConfigParser
 
 locale.setlocale( locale.LC_ALL, '' )
 gettext.textdomain( "gnome-gmail" )
 _ = gettext.gettext
 
-
-import gtk
-import gtk.glade
-
-import gnomekeyring as gkey
-
-import dbus
 
 class GGError( Exception ):
     """ Gnome Gmail exception """
@@ -52,43 +58,133 @@ class GGError( Exception ):
     def __str__( self ):
         return repr( self.value )
 
+class GMOauth():
+    """oauth mechanism per
+          https://developers.google.com/accounts/docs/OAuth2InstalledApp
+        example at
+          http://google-mail-oauth2-tools.googlecode.com/svn/trunk/python/oauth2.py
+        Eg:
+          (access, refresh) = GMOauth().generate_tokens( "user@gmail.com" )
+    """
 
-class myIMAP4_SSL( imaplib.IMAP4_SSL ):
-    def __init__( self, host = '', port = imaplib.IMAP4_SSL_PORT, keyfile = None, certfile = None):
-        imaplib.IMAP4_SSL.__init__( self, host, port, keyfile, certfile )
-
-        imaplib.Commands['XLIST'] = ('AUTH', 'SELECTED')
-        imaplib.Commands['ID'] = ('AUTH')
-
-    def xlist(self, directory='""', pattern='*'):
-        """List mailbox names in directory matching pattern.
-
-        (typ, [data]) = <instance>.xlist(directory='""', pattern='*')
-
-        'data' is list of XLIST responses.
-        """
-        name = 'XLIST'
-        typ, dat = self._simple_command(name, directory, pattern)
-        return self._untagged_response(typ, dat, name)
-
-    def id( self, *args ):
-
-        name = 'ID'
-        typ, dat = self._simple_command( name, *args )
-        return self._untagged_response(typ, dat, name)
+    def __init__(self):
+        self.auth_endpoint = "https://accounts.google.com/o/oauth2/auth"
+        self.token_endpoint = "https://accounts.google.com/o/oauth2/token"
+        self.scope = "https://www.googleapis.com/auth/gmail.compose"
+        self.client_id = "284739582412.apps.googleusercontent.com"
+        self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
+        self.win_valid = None
 
 
+    def get_code(self, login_hint):
+        s=string.lowercase + string.uppercase + string.digits
+        state = ''.join(random.sample(s,10))
+
+        GLib.threads_init()
+        win = Gtk.Window()
+        win.set_title("")
+        bro = WebKit.WebView()
+
+        args = { "response_type": "code",
+             "client_id": self.client_id,
+             "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+             "prompt": "consent",
+             #"scope": "openid email https://mail.google.com/",
+             "scope": self.scope,
+             "state": state,
+             "login_hint": login_hint }
+
+        code_url= "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+
+        bro.open(code_url)
+        win.add(bro)
+        win.resize(600,600)
+
+        self.win_valid=True
+        def win_closed(window, self):
+           self.win_valid = False
+        win.connect("destroy", win_closed, self)
+
+        win.show_all()
+
+        code = None
+        while self.win_valid:
+            Gtk.main_iteration_do(False)
+            bro_title = bro.get_title()
+            if bro_title and state in bro_title:
+                code = bro_title.split("=")[-1]
+                if not win.emit("delete-event", Gdk.Event(Gdk.EventType.DELETE)):
+                    win.destroy()
+
+        return code
+
+    def get_token_dict(self, code):
+
+        args = { "code": code,
+             "client_id": self.client_id,
+             "client_secret": self.client_secret,
+             "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+             "grant_type": "authorization_code",
+           }
+
+        token_page = urllib.urlopen( self.token_endpoint, urllib.urlencode(args))
+
+        return(json.loads(token_page.read()))
+
+    def get_access_from_refresh(self, refresh_token):
+
+        args = { "refresh_token": refresh_token,
+             "client_id": self.client_id,
+             "client_secret": self.client_secret,
+             "grant_type": "refresh_token",
+          }
+
+        token_page = urllib.urlopen( self.token_endpoint, urllib.urlencode(args))
+        token_dict = json.loads(token_page.read())
+
+        if "access_token" in token_dict:
+            return(token_dict["access_token"])
+        else:
+            return(None)
+
+    def generate_tokens(self, login, refresh_token=None):
+        """Generate an access token/refresh token pair for 'login' email
+           account, using an optional refresh token.
+           If refresh is not possible, the caller will be prompted for
+           authentication via an internal browser window."""
+
+        if refresh_token:
+           access_token = self.get_access_from_refresh(refresh_token)
+           if access_token:
+               return( (access_token, refresh_token) )
+
+        code = self.get_code(login)
+
+        token_dict = self.get_token_dict(code)
+
+        try:
+            return( (token_dict["access_token"], token_dict["refresh_token"]) )
+        except:
+            # todo - replace with a GG exception
+            return( (None, None) )
+
+    def access_iter(self, access, refresh, login):
+        if access:
+            yield (access, refresh)
+
+        if refresh:
+            yield (self.get_access_from_refresh(refresh), refresh)
+
+        yield self.generate_tokens(login)
 
 
-
-class GMailIMAP( ):
-    """ Handle mailto URLs that include 'attach' fields by uploading the 
-    messages using IMAP """
+class GMailAPI( ):
+    """ Handle mailto URLs that include 'attach' fields by uploading the
+    messages using the GMail API """
 
     def __init__( self, mail_dict  ):
         self.mail_dict = mail_dict
 
-        self.message_text = self.form_message()
 
     def form_message( self ):
         """ Form an RFC822 message, with an appropriate MIME attachment """
@@ -100,345 +196,100 @@ class GMailIMAP( ):
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
         fname = os.path.split( self.mail_dict[ "attach" ][0] )[1]
-        
+
         if "subject" not in self.mail_dict:
             msg[ "Subject" ] = _("Sending %s") % fname
 
         msg.preamble = _("Mime message attached")
 
-
-        # loop is superfluous - mail_dict will have only one path
         for filename in self.mail_dict[ 'attach' ]:
-
-            if( filename.find( "file://" ) == 0 ):
-                filename = filename[7:]
-
-            filepath = urlparse.urlsplit( filename ).path
-
-            if not os.path.isfile( filepath ):
-                raise GGError( "File not found - %s" % filepath )
-
-            ctype, encoding = mimetypes.guess_type( filepath )
-
-            if ctype is None or encoding is not None:
-                ctype = 'application/octet-stream'
-
-            maintype, subtype = ctype.split( '/', 1 )
-
-            attach_file = open( filepath, 'rb' )
-
-            if maintype == 'text':
-                attachment = MIMEText( attach_file.read(), _subtype = subtype )
-            elif maintype == 'image':
-                attachment = MIMEImage( attach_file.read(), _subtype = subtype )
-            elif maintype == 'audio':
-                attachment = MIMEAudio( attach_file.read(), _subtype = subtype )
-            else:
-                attachment = MIMEBase( maintype, subtype )
-                attachment.set_payload( attach_file.read() )
-                encoders.encode_base64( attachment )
-
-            attach_file.close()
-
-            attachment.add_header( 'Content-Disposition', 'attachment', 
-                filename=fname)
-
+            attachment = self.file2mime( filename )
             msg.attach( attachment )
 
+        self.message_text = msg.as_string()
 
-        return( msg.as_string() )
+    def file2mime( self, filename ):
+        if( filename.find( "file://" ) == 0 ):
+            filename = filename[7:]
 
+        filepath = urlparse.urlsplit( filename ).path
 
-    def send_mail( self, user, password ):
-        """ transfer the message to GMail Drafts folder, using IMAP.
+        if not os.path.isfile( filepath ):
+            raise GGError( "File not found - %s" % filepath )
+
+        ctype, encoding = mimetypes.guess_type( filepath )
+
+        if ctype is None or encoding is not None:
+            ctype = 'application/octet-stream'
+
+        maintype, subtype = ctype.split( '/', 1 )
+
+        attach_file = open( filepath, 'rb' )
+
+        if maintype == 'text':
+            attachment = MIMEText( attach_file.read(), _subtype = subtype )
+        elif maintype == 'image':
+            attachment = MIMEImage( attach_file.read(), _subtype = subtype )
+        elif maintype == 'audio':
+            attachment = MIMEAudio( attach_file.read(), _subtype = subtype )
+        else:
+            attachment = MIMEBase( maintype, subtype )
+            attachment.set_payload( attach_file.read() )
+            encoders.encode_base64( attachment )
+
+        attach_file.close()
+
+        attachment.add_header( 'Content-Disposition', 'attachment',
+            filename=os.path.split( filename )[1] )
+
+        return( attachment )
+
+    def _has_attachment( self ):
+
+        return( 'attach' in self.mail_dict )
+
+    def needs_api( self ):
+
+        return( self._has_attachment() )
+
+    def send_mail( self, user, access_token ):
+        """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
 
-        imap_obj = myIMAP4_SSL( "imap.gmail.com" )
+        url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib2.quote(user)
 
-        imap_obj.login( user, password )
-
-        # identify the client per http://code.google.com/apis/gmail/imap/
-        imap_obj.id( '('
-              + '"name" "gnome-gmail"'
-              + ' "version" "1.8.2"'
-              + ' "os" "Linux"'
-              + ' "contact" "dsteele@gmail.com"'
-              + ' "support-url" "http://sourceforge.net/tracker/?group_id=277145"'
-              + ')' 
-              )
+        opener = urllib2.build_opener(urllib2.HTTPSHandler)
+        request = urllib2.Request(url, data=self.message_text)
+        request.add_header('Content-Type', 'message/rfc822')
+        request.add_header('Content-Length', str(len(self.message_text)))
+        request.add_header('Authorization', "Bearer " + access_token)
+        request.get_method = lambda: 'POST'
 
         try:
-            # I may need this again someday
-            folder_name = _("Drafts")
-
-            # xlist returns directories e.g. 
-            #    (\HasNoChildren \Drafts) "/" "[Gmail]/Drafts"
-            # where the first "Drafts" is a flag, and the second is localized
-            drafts_ln = [ x for x in imap_obj.xlist()[1]
-                                     if re.search( ' .Drafts\)', x ) ][0]
-
-            draft_folder = re.search( '\"([^\"]+)\"$', drafts_ln ).group(1)
-
-        except:
-            imap_obj.logout()
-            raise GGError( _("Unable to determine IMAP Drafts folder location") )
-
-        try:
-            # upload the message to the Drafts folder
-            append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
-        except:
-            imap_obj.logout()
-            raise GGError( _("Error encountered while uploading the message") )
-
-        try:
-            # get the Google Message Id for the message, and convert to a hex string
-            # http://code.google.com/apis/gmail/imap/#x-gm-msgid
-            # nods to https://gist.github.com/964461
-
-            # the append returns something like ('OK', ['[APPENDUID 9 3113] (Success)'])
-            msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
-
-            imap_obj.select( draft_folder )
-            typ, data = imap_obj.uid( r'fetch', msg_uid, r'(X-GM-MSGID)')
-
-            msgid_dec = re.search( r'X-GM-MSGID ([0-9]+)', data[0] ).group(1)
-            msgid_hex = hex( int( msgid_dec ) )
-            msgid_hex_strp = re.search( r'0x(.+)', msgid_hex ).group(1)
-        except:
-            imap_obj.logout()
-            raise GGError( _("Error accessing message. Check the Drafts folder") )
-
-        imap_obj.logout()
-
-        return( msgid_hex_strp )
-
-
-class Keyring(object):
-    """ Access the GMail password in the Gnome keyring.
-    Used for IMAP attachment uploads """
-    def __init__(self, name, server, protocol, port):
-        self._name = name
-        self._server = server
-        self._protocol = protocol
-        self._port = port
-
-        self.server_tag = "server"
-        self.protocol_tag = "protocol"
-        self.user_tag = "user"
-        
-
-    def has_credentials(self):
-        """ Does the keyring have the password for this user? """
-        try:
-            attrs = {self.server_tag: self._server, 
-                self.protocol_tag: self._protocol}
-            items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
-            return len(items) > 0
-        except gkey.DeniedError:
-            return False
-
-    def get_credentials(self, user):
-        """ Get the GMail password for this user """
-        attrs = {self.server_tag: self._server, 
-            self.protocol_tag: self._protocol,
-            self.user_tag: user }
-        items = gkey.find_items_sync(gkey.ITEM_NETWORK_PASSWORD, attrs)
-
-        return (items[0].attributes[self.user_tag], items[0].secret)
-
-    def set_credentials(self, (user, password)):
-        """ Store the GMail password in the Gnome keyring """
-        attrs = {
-            self.user_tag: user,
-            self.server_tag: self._server,
-            self.protocol_tag: self._protocol,
-            }
-        gkey.item_create_sync(None,
-        gkey.ITEM_NETWORK_PASSWORD, self._name, attrs, password, True)
-
-class ConfigInfo( object ):
-    """ Manage configuration information in gconf and the gnome keyring """
-    def __init__( self, basedir = '/apps/gnome-gmail/' ):
-        self.client = gconf.client_get_default()
-        self.basedir = basedir
-
-        self.keyring = Keyring( "GMail", "imap.google.com", "imap",
-             "143" )
-
-        self.user = ""
-        self.password = ""
-        self.savepassword = False
-        self.appsdomain = ""
-        self.hideconfirmation = False
-        self.suppresspreferred = False
-
-        self.xml = None
-
-        #self.keyring.set_credentials( (self.user, "") )
-
-    def read_config( self ):
-        """ read in all configuration information """
-
-        self.user = self.client.get_string( self.basedir + 'user' )
-        if self.user == None:
-            self.user = ""
-
-        self.savepassword = self.client.get_bool( 
-            self.basedir + 'savepassword' )
-
-        if self.savepassword == None:
-            self.savepassword = False
-
-        self.appsdomain = self.client.get_string( self.basedir + 'appsdomain' )
-        if self.appsdomain == None:
-            self.appsdomain = ""
-
-        self.hideconfirmation = self.client.get_bool( 
-            self.basedir + 'hideconfirmation' )
-        if self.hideconfirmation == None:
-            self.hideconfirmation = False
-
-        self.suppresspreferred = self.client.get_bool( 
-            self.basedir + 'suppresspreferred' )
-        if self.suppresspreferred == None:
-            self.suppresspreferred = False
-
-        try:
-            if self.savepassword:
-                (luser, self.password ) = \
-                    self.keyring.get_credentials(self.user)
-
-            if self.password == None:
-                self.password = ""
-        except:
-            pass
-
-    def write_config( self ):
-        """ write out all configuration information """
-        self.client.set_string( self.basedir + 'user', self.user )
-        self.client.set_bool( self.basedir + 'savepassword', self.savepassword )
-        self.client.set_string( self.basedir + 'appsdomain', self.appsdomain )
-        self.client.set_bool( self.basedir + 'hideconfirmation', \
-            self.hideconfirmation )
-        self.client.set_bool( self.basedir + 'suppresspreferred', \
-            self.suppresspreferred )
-
-        if self.savepassword:
-            self.keyring.set_credentials( (self.user, self.password) )
-
-    def info_complete( self ):
-        """ is there enough information to work with IMAP? """
-        return( len( self.password) > 0 and len( self.user) > 0  )
-
-    #def gconftodialog( self, foo = 0, bar=0 ):
-    def gconftodialog( self ):
-        """ transfer existing config information to the dialog """
-
-        self.read_config()
-
-        user_field = self.xml.get_widget( 'entryUserName' )
-        user_field.set_text( self.user )
-
-        password_field = self.xml.get_widget( 'entryPW' )
-        password_field.set_text( self.password )
-
-        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-        savepassword_field.set_active( self.savepassword )
-        
-    def dialogtogconf( self ):
-        """ collect configuration info from the dialog """
-
-        user_field = self.xml.get_widget( 'entryUserName' )
-        self.user = user_field.get_text()
-
-        password_field = self.xml.get_widget( 'entryPW' )
-        self.password = password_field.get_text()
-
-        savepassword_field = self.xml.get_widget( 'checkbuttonPW' )
-        self.savepassword = savepassword_field.get_active()
-
-        self.write_config()
-        
-    def call_configure( self, foo, bar = 1 ):
-        """ the user has asked to edit configuration parameters """
-
-        self.dialogtogconf()
-
-        os.system( "/usr/bin/gconf-editor /apps/gnome-gmail/appsdomain &" )
-
-        return( True )
-
-
-    def query_config_info( self ):
-        """ Query the user for IMAP configuration information """
-
-        glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
-        self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
-
-        config_button = self.xml.get_widget( "buttonConfigure") 
-        config_button.connect( "button-press-event", self.call_configure )
-
-        # todo - should map window focus event to gconftodialog(), 
-        # but it isn't working
-
-        self.gconftodialog()
-
-        window = self.xml.get_widget( "dialog1" )
-        response = window.run()
-
-        if response == 1:
-            self.dialogtogconf()
-        else:
-            raise GGError( _("User cancelled \"Send To...\"") )
-
-        window.destroy()
-
-        return( self.info_complete() )
-
-    def query_set_preferred( self ):
-
-        if( not self.suppresspreferred ):
-
-            handler_path_base = "/desktop/gnome/url-handlers/mailto/"
-            handler_path = handler_path_base + "command"
-
-            our_handler = "gnome-gmail %s"
-
-            current_handler = self.client.get_string( handler_path )
-
-            if( our_handler != current_handler ):
-                glade_file = sys.prefix + "/share/gnome-gmail/gnomegmail.glade"
-                self.xml = gtk.glade.XML( glade_file, domain="gnome-gmail" )
-
-                window = self.xml.get_widget( "preferred_app_dialog" )
-                response = window.run()
-
-                if( response == 1 ):
-                    self.client.set_string( handler_path, our_handler )
-                    self.client.set_bool( handler_path_base + "enabled", True )
-                    self.client.set_bool( handler_path_base + "needs_terminal",\
-                        False )
-
-                ask_check_button = self.xml.get_widget( "check_dont_ask_again" )
-                self.suppresspreferred = ask_check_button.get_active()
-
-                self.write_config()
+            urlfp = opener.open(request)
+        except urllib2.HTTPError, e:
+            print e.code
+            print e.msg
+            print e.headers
+            print dir(e)
+            print e.fpread()
+            raise GGError("Error uploading message")
+
+        result = urlfp.fp.read()
+        json_result = json.loads(result)
+        id = json_result['message']['id']
+
+        return id
 
 
 class GMailURL( ):
     """ Logic to convert a mailto link to an appropriate GMail URL, by
-    any means necessary, including IMAP uploads, if necessary """
+    any means necessary, including API uploads."""
 
-    def __init__( self, mailto_url, cfg, enable_net_access = True ):
+    def __init__( self, mailto_url, from_address, enable_net_access = True ):
         self.mailto_url = mailto_url
         self.enable_net_access = enable_net_access
-        self.config_info = cfg
-
-        self.config_info.read_config()
-
-        self.appsdomainstr = self.config_info.appsdomain
-        if( len( self.appsdomainstr ) > 0 ):
-            self.appsdomainstr = "a/" + self.appsdomainstr + "/"
+        self.from_address = from_address
 
         self.mail_dict = self.mailto2dict( )
 
@@ -455,7 +306,7 @@ class GMailURL( ):
 
 
     def mailto2dict( self ):
-        """ Convert a mailto: reference to a dictionary containing the 
+        """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
         usplit = urlparse.urlsplit( self.mailto_url, "mailto" )
@@ -463,7 +314,7 @@ class GMailURL( ):
         path = usplit.path
 
         try:
-            # for some reason, urlsplit is not splitting off the 
+            # for some reason, urlsplit is not splitting off the
             # query string.
             # do it here
             # ( address, qs ) = string.split( path, "?", 1 )
@@ -494,13 +345,13 @@ class GMailURL( ):
         return( outdict )
 
     def standard_gmail_url( self ):
-        """ If there is no attachment reference, create a direct GMail 
+        """ If there is no attachment reference, create a direct GMail
         URL which will create the message """
 
         dct = self.mail_dict
 
-        tourl = "https://mail.google.com/%smail?view=cm&tf=0&fs=1" % \
-            self.appsdomainstr
+        tourl = "https://mail.google.com/mail/b/%s?view=cm&tf=0&fs=1" % \
+                self.from_address
 
         tourl = self.append_url( tourl, "to", dct, "to" )
         tourl = self.append_url( tourl, "su", dct, "subject" )
@@ -513,77 +364,238 @@ class GMailURL( ):
     def simple_gmail_url( self ):
         """ url to use if there is no mailto url """
 
-        return( "https://mail.google.com/%s" % self.appsdomainstr )
+        return( "https://mail.google.com/mail/b/%s" % self.from_address )
 
-    def has_attachment( self ):
-        """ does the mailto specify a file to be attached? """
+    def api_gmail_url( self ):
+        """ if the mailto refers to an attachment,
+        use the GMail API to upload the file """
 
-        return( 'attach' in self.mail_dict )
-
-    def imap_gmail_url( self ):
-        """ if the mailto refers to an attachment, 
-        use IMAP to upload the file """
-
-        imap_url = "https://mail.google.com/%smail/#drafts/" % self.appsdomainstr
+        api_url = "https://mail.google.com/mail/b/%s#drafts/" % \
+                   self.from_address
 
         if not self.enable_net_access:
-            return( imap_url )
+            return( api_url )
 
         try:
-            gm_imap = GMailIMAP( self.mail_dict )
-        except:
+            gm_api = GMailAPI( self.mail_dict )
+            gm_api.form_message()
+        except OSError:
             GGError( _("Error creating message with attachment") )
 
-        # get the configuration information from GConf
-        self.config_info.read_config()
 
-        # if we have a full set of configuration information, 
-        # go ahead and try the transfer
-        if( self.config_info.info_complete() ):
+        msg_id = None
+        auth = GMOauth()
+        keys = Oauth2Keyring(auth.scope)
+        old_access, old_refresh = keys.getTokens(self.from_address)
+
+        for access, refresh in auth.access_iter(old_access, old_refresh, self.from_address):
             try:
-                msg_id = gm_imap.send_mail( self.config_info.user, \
-                    self.config_info.password )
-            except imaplib.IMAP4.error as inst:
-                # don't report this failure. 
-                # We'll try again with prompted parameters
+                msg_id = gm_api.send_mail( self.from_address, \
+                                            access)
+                break
+            except:
+                # do nothing for a particular instance of this failure
                 pass
-            else:
-                return( imap_url + msg_id )
 
-        # query for needed information
-        if( self.config_info.query_config_info() ):
-            # do the IMAP upload
-            try:
-                msg_id = gm_imap.send_mail( self.config_info.user, \
-                    self.config_info.password )
-            except imaplib.IMAP4.error as inst:
-                error_str = None
-                if inst.args[0].find( _("nvalid credentials") ) > 0:
-                    error_str = _("Invalid GMail User Name or Password")
-                elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
-                    error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
-                else:
-                    error_str = inst.args[0]
-
-                raise GGError( error_str )
-
-            #self.config_info.write_config()
+        if msg_id:
+            keys.setTokens(self.from_address, access, refresh)
         else:
-            raise GGError( _("GMail credentials incomplete") )
+            error_str = ""
+            if inst.args[0].find( _("nvalid credentials") ) > 0:
+                error_str = _("Invalid GMail User Name or Password")
+            elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
+                error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
+            else:
+                error_str = inst.args[0]
 
-        return( imap_url + msg_id )
+            raise GGError( error_str )
+
+        return( api_url + msg_id )
 
     def gmail_url( self ):
-        """ Return a GMail URL appropriate for the mailto handled 
+        """ Return a GMail URL appropriate for the mailto handled
         by this instance """
         if( len( self.mailto_url ) == 0 ):
-            gmailurl = self.simple_gmail_url() 
-        elif self.has_attachment():
-            gmailurl = self.imap_gmail_url()
+            gmailurl = self.simple_gmail_url()
+        elif GMailAPI(self.mail_dict).needs_api():
+            gmailurl = self.api_gmail_url()
         else:
             gmailurl = self.standard_gmail_url( )
 
         return( gmailurl )
+
+
+def getFromAddress(last_address, gladefile):
+    class Handler:
+        def __init__(self, fromInit):
+            self.txtbox = builder.get_object("entryFrom")
+            self.txtbox.set_activates_default(True)
+
+            self.txtbox.set_property("text", fromInit)
+
+            self.txt = None
+
+        def onOkClicked(self, button ):
+            self.txt = self.txtbox.get_property("text")
+            Gtk.main_quit()
+
+        def onCancelClicked(self, button):
+            self.txt = None
+            Gtk.main_quit()
+
+        def onUserSelClose(self, foo):
+            self.onCancelClicked(foo)
+
+    builder = Gtk.Builder()
+    builder.add_from_file(gladefile)
+
+    hdlr = Handler(last_address)
+    builder.connect_signals(hdlr)
+
+    builder.get_object("user_select_dialog").show_all()
+
+    Gtk.main()
+
+    return hdlr.txt
+
+def getGoogleFromAddress(last_address, gladefile):
+    retval = getFromAddress(last_address, gladefile)
+
+    if retval and not re.search('@', retval):
+        retval += "@gmail.com"
+
+    return retval
+
+class GgConfig(SafeConfigParser):
+    def __init__(self, *args, **kwargs):
+
+        self.fpath = os.path.expanduser(self.strip_kwarg(kwargs, 'fpath'))
+        self.section = self.strip_kwarg(kwargs, 'section')
+        initvals = self.strip_kwarg(kwargs, 'initvals')
+        self.header = self.strip_kwarg(kwargs, 'header')
+
+        SafeConfigParser.__init__(self, *args, **kwargs)
+
+        self.add_section(self.section)
+
+        for option in initvals:
+            self.set(self.section, option, initvals[option])
+
+        self.read(self.fpath)
+        self.save()
+
+    def strip_kwarg(self, kwargs, option):
+        val = kwargs[option]
+        kwargs.pop(option, None)
+        return val
+
+    def save(self):
+        dir = os.path.dirname(self.fpath)
+
+        if not os.path.exists(dir):
+            os.makedirs(dir)
+
+        with open(self.fpath, 'w') as fp:
+            fp.write(self.header)
+            fp.write("# Automatically updated file - comments stripped\n")
+            self.write(fp)
+
+    def _saveit(fp):
+        def wrapper(inst, *args, **kwargs):
+            retval = fp(inst, *args, **kwargs)
+            inst.save()
+            return retval
+        return wrapper
+
+    def get_str(self, option):
+        return self.get(self.section, option)
+
+    @_saveit
+    def set_str(self, option, value):
+        return self.set(self.section, option, value)
+
+    def get_bool(self, option):
+        return self.getboolean(self.section, option)
+
+    @_saveit
+    def set_bool(self, param, val):
+        if isinstance(val, bool):
+            val = '1' if val else '0'
+        return self.set(self.section, param, val)
+
+
+class Oauth2Keyring( ):
+    # per https://people.gnome.org/~stefw/libsecret-docs/py-examples.html#py-schema-example
+    TOKEN_SCHEMA = Secret.Schema.new('com.github.davesteele.oauth2',
+        Secret.SchemaFlags.NONE,
+        {
+            "user"         : Secret.SchemaAttributeType.STRING,
+            "scope"        : Secret.SchemaAttributeType.STRING,
+        }
+    )
+
+    def __init__(self, scope):
+        self.scope = scope
+
+    def encodeTokens(self, access_token, refresh_token):
+        return "access:%s;refresh:%s" % (access_token, refresh_token)
+
+    def decodeTokens(self, encode_str):
+        match = re.search("^access:(.+);refresh:(.+)$", encode_str)
+
+        if match:
+            return match.group(1, 2)
+        else:
+            return (None, None)
+
+    def getTokens(self, user):
+        attributes = {
+                         "user": user,
+                         "scope": self.scope,
+                     }
+
+        password = Secret.password_lookup_sync(self.TOKEN_SCHEMA,
+                                               attributes, None)
+
+        if password:
+            return self.decodeTokens(password)
+        else:
+            return (None, None)
+
+    def setTokens(self, user, access_token, refresh_token):
+        attributes = {
+                         "user": user,
+                         "scope": self.scope,
+                     }
+
+        Secret.password_store_sync(self.TOKEN_SCHEMA, attributes,
+                          Secret.COLLECTION_DEFAULT,
+                          "Mail access to %s for %s" % (self.scope, user),
+                          self.encodeTokens(access_token, refresh_token),
+                          None
+                     )
+
+def do_preferred(glade_file, config):
+
+    class Handler:
+        def onCancelClicked(self, button):
+            Gtk.main_quit()
+
+    builder = Gtk.Builder()
+    builder.add_from_file(glade_file)
+
+    hdlr = Handler()
+    builder.connect_signals(hdlr)
+
+    response = builder.get_object("preferred_app_dialog").run()
+
+    preferred_setting = builder.get_object("check_dont_ask_again").get_active()
+    config.set_bool('suppress_preferred', preferred_setting)
+
+    if response == 1:
+        [ app.set_as_default_for_type( "x-scheme-handler/mailto" )
+          for app in Gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
+          if app.get_id() == "gnome-gmail.desktop" ]
 
 
 def main( ):
@@ -595,39 +607,57 @@ def main( ):
     else:
         mailto = ""
 
-    # set this app as the GNOME mailto handler, new-style
-    [ app.set_as_default_for_type( "x-scheme-handler/mailto" ) 
-      for app in gio.app_info_get_all_for_type( "x-scheme-handler/mailto" )
-      if app.get_id() == "gnome-gmail.desktop" ]
+    header = textwrap.dedent("""\
+        # GNOME Gmail Configuration
+        #
+        # suppress_preferred
+        #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
+        #     the default mail program.
+        # last_email
+        #     The email account used for the last run. It is used to populate
+        #     the account selection dialog. This is updated automatically.
+        #
+        """)
+    config = GgConfig(fpath = "~/.config/gnome-gmail/gnome-gmail.conf",
+                      section = 'gnome-gmail',
+                      initvals = {
+                                     'suppress_preferred': '0',
+                                     'last_email': '',
+                                 },
+                      header = header,
+                     )
+
+    # anyone know how to do this right?
+    for prefix in ['/usr/local', '/usr']:
+        if os.path.isfile(prefix + "/share/gnome-gmail/gnomegmail.glade"):
+            glade_file = prefix + "/share/gnome-gmail/gnomegmail.glade"
+
+    emailer = Gio.app_info_get_default_for_type("x-scheme-handler/mailto", True)
+    if emailer.get_id() != "gnome-gmail.desktop" \
+        and not config.get_bool('suppress_preferred'):
+        do_preferred(glade_file, config)
 
     # quiet mode, to set preferred app in postinstall
     if( len( sys.argv ) > 1 and sys.argv[1] == "-q" ):
         sys.exit(0)
 
-    cfg = ConfigInfo()
-    cfg.read_config()
-    cfg.write_config()
+    Notify.init("GNOME Gmail")
 
-    #import dbus.glib
-    #loop = dbus.mainloop.glib.DBusGMainLoop()
-    #sessionbus = dbus.SessionBus( mainloop = loop )
-    sessionbus = dbus.SessionBus( )
-    notifications_object = sessionbus.get_object(
-        'org.freedesktop.Notifications',
-        '/org/freedesktop/Notifications')
-    interface = dbus.Interface(
-        notifications_object,
-        'org.freedesktop.Notifications')
-
-    # for reverse compatibility, also set the preferred app the old way
-    cfg.query_set_preferred()
+    last_from = config.get_str('last_email')
+    from_address = getGoogleFromAddress(last_from, glade_file)
+    if from_address:
+        config.set_str('last_email', from_address)
 
     try:
-        gm_url = GMailURL( mailto, cfg )
+        gm_url = GMailURL( mailto, from_address )
         gmailurl = gm_url.gmail_url()
     except GGError as gerr:
-        interface.Notify( "gnome-gmail", 0, '', "gnome-gmail", \
-            gerr.value, [], {}, 3000 )
+        notice = Notify.Notification.new("GNOME GMail",
+                                          gerr.value,
+                                          "dialog-information"
+                                         )
+        notice.show()
+        time.sleep(5)
     else:
         webbrowser.open_new_tab( gmailurl )
 

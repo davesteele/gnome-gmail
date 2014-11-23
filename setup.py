@@ -33,6 +33,7 @@ class my_clean(distutils.command.clean.clean):
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
         filelist += ['po/gnome-gmail.pot']
+        filelist += ['gnomegmail.glade~']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
@@ -44,13 +45,12 @@ class my_clean(distutils.command.clean.clean):
 
 DistUtilsExtra.auto.setup(
       name='gnome-gmail',
-      version='1.8.2',
+      version='1.9',
       description='support for Gmail as the preferred email application in GNOME',
       author='David Steele',
       author_email='dsteele@gmail.com',
       url='https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about',
-      scripts=['gnome-gmail', 'setOOmailer'],
-#      xml_files=['gnome-gmail.xml'],
+      scripts=['gnome-gmail'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
@@ -58,9 +58,8 @@ DistUtilsExtra.auto.setup(
           ('/usr/share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
           ('/usr/share/applications', ['gnome-gmail.desktop']),
-          ('/usr/share/gnome/autostart', ['setOOmailer.desktop']),
-          ('/usr/share/gnome-control-center/default-apps', ['gnome-gmail.xml']),
-          ('/usr/share/gconf/schemas', ['gnome-gmail.schemas']),
+          ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
+          ('share/gnome-gmail', ['gnomegmail.glade']),
                  ],
       classifiers=[
           'Operating System :: POSIX :: Linux',

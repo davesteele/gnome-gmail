@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-11 20:06-0400\n"
+"POT-Creation-Date: 2014-11-22 20:41-0500\n"
 "PO-Revision-Date: 2011-08-06 03:43+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -18,65 +18,74 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-08-14 15:08+0000\n"
 "X-Generator: Launchpad (build 13674)\n"
 
-#: ../gnome-gmail:105
+#: ../gnome-gmail:254
 #, c-format
 msgid "Sending %s"
 msgstr "Menghantar %s"
 
-#: ../gnome-gmail:107
+#: ../gnome-gmail:256
 msgid "Mime message attached"
 msgstr "Mesej mime dilampirkan"
 
-#: ../gnome-gmail:172
+#: ../gnome-gmail:327
 msgid "Drafts"
 msgstr "Draf"
 
-#: ../gnome-gmail:184
+#: ../gnome-gmail:330
 msgid "Unable to determine IMAP Drafts folder location"
 msgstr "Tidak boleh menentukan lokasi folder Draf IMAP"
 
-#: ../gnome-gmail:191
+#: ../gnome-gmail:334
 msgid "Error encountered while uploading the message"
 msgstr "Ralat berlaku semasa memuat naik mesej"
 
-#: ../gnome-gmail:209
+#: ../gnome-gmail:340
 msgid "Error accessing message. Check the Drafts folder"
 msgstr "Ralat mencapai mesej. Semak folder Draf"
 
-#: ../gnome-gmail:392
-msgid "User cancelled \"Send To...\""
-msgstr "Pengguna membatalkan \"Hantar ke...\""
-
-#: ../gnome-gmail:535
+#: ../gnome-gmail:453
 msgid "Error creating message with attachment"
 msgstr "Ralat mencipta mesej dengan lampiran"
 
-#: ../gnome-gmail:561
+#: ../gnome-gmail:474
 msgid "nvalid credentials"
 msgstr "Kelayakan tidak sah"
 
-#: ../gnome-gmail:562
+#: ../gnome-gmail:475
 msgid "Invalid GMail User Name or Password"
 msgstr "Nama Pengguna atau Kata Laluan GMail tidak sah"
 
-#: ../gnome-gmail:563
+#: ../gnome-gmail:476
 msgid "not enabled for IMAP"
 msgstr "tidak dibenarkan untuk IMAP"
 
-#: ../gnome-gmail:564
+#: ../gnome-gmail:477
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
 msgstr ""
 "Anda mesti 'Benarkan IMAP' dalam Gmail supaya dapat menghantar lampiran"
 
-#: ../gnome-gmail:572
-msgid "GMail credentials incomplete"
-msgstr "Kelayakan GMail tidak selesai"
+#: ../gnome-gmail:722
+#, fuzzy
+msgid "User cancelled"
+msgstr "Pengguna membatalkan \"Hantar ke...\""
 
-#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Hakcipta 2010 - Dave Steele"
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr "ulasan"
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr "Konfigur"
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
 msgstr "Gnome Gmail"
 
-#: ../gnomegmail.glade.h:2
+#: ../gnomegmail.glade.h:5
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
@@ -84,56 +93,19 @@ msgstr ""
 "Masukkan kelayakan Gmail anda\n"
 "untuk muat naik fail"
 
-#: ../gnomegmail.glade.h:4
-msgid "Your Gmail user name, without the '@gmail.com' part"
-msgstr "Nama pengguna Gmail anda, tanpa bahagian '@gmail.com'"
-
-#: ../gnomegmail.glade.h:5
+#: ../gnomegmail.glade.h:7
 msgid "User Name"
 msgstr "Nama Pengguna"
 
-#: ../gnomegmail.glade.h:6
-msgid "Your Gmail password"
-msgstr "Kata laluan Gmail anda"
-
-#: ../gnomegmail.glade.h:7
+#: ../gnomegmail.glade.h:8
 msgid "Password"
 msgstr "Kata Laluan"
 
-#: ../gnomegmail.glade.h:8
-msgid ""
-"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-msgstr "Nama akaun mel (cth. 'abu', untuk akaun mel 'abu@gmail.com')"
-
 #: ../gnomegmail.glade.h:9
-msgid "Enter the password for the mail account"
-msgstr "Masukkan kata laluan untuk akaun mel"
-
-#: ../gnomegmail.glade.h:10
 msgid "Remember Password"
 msgstr "Ingat Kata Laluan"
 
-#: ../gnomegmail.glade.h:11
-msgid "Remember the Google Account password in the Gnome keychain."
-msgstr "Ingat kata laluan Akaun Google didalam rantaian kekunci Gnome."
-
-#: ../gnomegmail.glade.h:12
-msgid "Configure"
-msgstr "Konfigur"
-
-#: ../gnomegmail.glade.h:13
-msgid "Configure Gnome Gmail for use with a Google App account."
-msgstr "Konfigur Gmail Gnome untuk digunakan dengan akaun Google App."
-
-#: ../gnomegmail.glade.h:14
-msgid "Copyright 2010 - Dave Steele"
-msgstr "Hakcipta 2010 - Dave Steele"
-
-#: ../gnomegmail.glade.h:15
-msgid "comment"
-msgstr "ulasan"
-
-#: ../gnomegmail.glade.h:16
+#: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
@@ -141,104 +113,116 @@ msgstr ""
 "Gmail GNOME bukanlah Aplikasi Emel Digemari semasa anda. Adakah anda ingin "
 "emel anda dihantar menggunakan lama sesawang Gmail?"
 
-#: ../gnomegmail.glade.h:17
+#: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
 msgstr "Jangan tanya lagi"
 
-#: ../gnomegmail.glade.h:18
-msgid "Don't change the Preferred Email Application"
-msgstr "Jangan ubah Aplikasi Emel Digemari"
-
-#: ../gnomegmail.glade.h:19
-msgid "Use GNOME Gmail for sending mail"
-msgstr "Guna Gmail GNOME untuk menghantar mel"
-
-#: ../gnome-gmail.schemas.in.h:1
-msgid "Save IMAP password?"
-msgstr "Simpan kata laluan IMAP"
-
-#: ../gnome-gmail.schemas.in.h:2
-msgid ""
-"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
-"IMAP is used to upload file attachments to GMail."
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
 msgstr ""
-"Bila ditanda, Gmail Gnome akan simpan kata laluan IMAP didalam gelang "
-"kekunci Gnome. IMAP digunakan untuk memuat naik lampiran fail ke GMail."
-
-#: ../gnome-gmail.schemas.in.h:3
-msgid "Saved IMAP user name"
-msgstr "Nama pengguna IMAP tersimpan"
-
-#: ../gnome-gmail.schemas.in.h:4
-msgid ""
-"Gnome Gmail will save the last user name for file attachment uploads here."
-msgstr ""
-"Gmail Gnome akan simpan nama pengguna terakhir untuk muat naik lampiran fail "
-"disini."
-
-#: ../gnome-gmail.schemas.in.h:5
-msgid "Google Apps domain"
-msgstr "Domain Google Apps"
-
-#: ../gnome-gmail.schemas.in.h:6
-msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-msgstr ""
-"Untuk menggunakan Gmail Gnome dengan Google Apps, masukkan nama domain disini"
-
-#: ../gnome-gmail.schemas.in.h:7
-msgid "Hide confirmation dialog"
-msgstr "Sembunyi dialog pengesahan"
-
-#: ../gnome-gmail.schemas.in.h:8
-msgid ""
-"When checked, Gnome Gmail will suppress the confirmation notification that "
-"appears with each message created. The notification includes a link to allow "
-"Gnome Gmail to be configured for Google Apps support."
-msgstr ""
-"Bila ditanda, Gmail Gnome akan memaksa pemberitahuan pengesahan yang muncul "
-"setiap kali mesej dicipta. Pemberithuan termasuklah pautan untuk membenarkan "
-"Gmail Gnome dikonfigur untuk sokongan Google Apps."
-
-#: ../gnome-gmail.schemas.in.h:9
-msgid "Set Open Office to use the Gnome Preferred Email Application"
-msgstr "Tetapkan Open Office menggunakan Aplikasi Emel Digemari Gnome"
-
-#: ../gnome-gmail.schemas.in.h:10
-msgid ""
-"When checked, Gnome Gmail will attempt to configure Open Office to use the "
-"currently selected Gnome Preferred Email Application with each login, using "
-"a Gnome Gmail compatibility application."
-msgstr ""
-"Bila ditanda. Gmail Gnome akan cuba menkonfigur Open Office untuk gunakan "
-"Aplikasi Emel digemari Gnome yang dipilih semasa ini dengan setiap daftar "
-"masuk, menggunakan aplikasi keserasian Gmail Gnome."
-
-#: ../gnome-gmail.schemas.in.h:11
-msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-msgstr "Paksa Dialog Aplikasi Digemari Gmail GNOME"
-
-#: ../gnome-gmail.schemas.in.h:12
-msgid ""
-"When checked, GNOME Gmail will not offer to set itself as the GNOME "
-"Preferred Mail application. Otherwise, the program will ask if you want it "
-"to be the mail application, if it isn't already."
-msgstr ""
-"Bila ditanda, Gmail GNOME tidak akan tawarkan dirinya ditetapkan sebagai "
-"aplikasi Mel Digemari GNOME. Jika tidak, program akan menanya ia dijadikan "
-"aplikasi mel, jika tidak ditetapkan lagi."
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Integrasikan GMail dengan desktop anda"
 
-#: ../setOOmailer.desktop.in.h:1
+#: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Pengkonfigur Open Office Gmail Gnome"
 
-#: ../setOOmailer.desktop.in.h:2
+#: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "Konfigur Open Office menggunakan aplikasi Emel Digemari Gnome"
 
-#: ../gnome-gmail.xml.in.h:1
-msgid "Gmail"
-msgstr "Gmail"
+#~ msgid "GMail credentials incomplete"
+#~ msgstr "Kelayakan GMail tidak selesai"
+
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Nama pengguna Gmail anda, tanpa bahagian '@gmail.com'"
+
+#~ msgid "Your Gmail password"
+#~ msgstr "Kata laluan Gmail anda"
+
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr "Nama akaun mel (cth. 'abu', untuk akaun mel 'abu@gmail.com')"
+
+#~ msgid "Enter the password for the mail account"
+#~ msgstr "Masukkan kata laluan untuk akaun mel"
+
+#~ msgid "Remember the Google Account password in the Gnome keychain."
+#~ msgstr "Ingat kata laluan Akaun Google didalam rantaian kekunci Gnome."
+
+#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgstr "Konfigur Gmail Gnome untuk digunakan dengan akaun Google App."
+
+#~ msgid "Don't change the Preferred Email Application"
+#~ msgstr "Jangan ubah Aplikasi Emel Digemari"
+
+#~ msgid "Use GNOME Gmail for sending mail"
+#~ msgstr "Guna Gmail GNOME untuk menghantar mel"
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "Simpan kata laluan IMAP"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
+#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ msgstr ""
+#~ "Bila ditanda, Gmail Gnome akan simpan kata laluan IMAP didalam gelang "
+#~ "kekunci Gnome. IMAP digunakan untuk memuat naik lampiran fail ke GMail."
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Nama pengguna IMAP tersimpan"
+
+#~ msgid ""
+#~ "Gnome Gmail will save the last user name for file attachment uploads here."
+#~ msgstr ""
+#~ "Gmail Gnome akan simpan nama pengguna terakhir untuk muat naik lampiran "
+#~ "fail disini."
+
+#~ msgid "Google Apps domain"
+#~ msgstr "Domain Google Apps"
+
+#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgstr ""
+#~ "Untuk menggunakan Gmail Gnome dengan Google Apps, masukkan nama domain "
+#~ "disini"
+
+#~ msgid "Hide confirmation dialog"
+#~ msgstr "Sembunyi dialog pengesahan"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will suppress the confirmation notification "
+#~ "that appears with each message created. The notification includes a link "
+#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ msgstr ""
+#~ "Bila ditanda, Gmail Gnome akan memaksa pemberitahuan pengesahan yang "
+#~ "muncul setiap kali mesej dicipta. Pemberithuan termasuklah pautan untuk "
+#~ "membenarkan Gmail Gnome dikonfigur untuk sokongan Google Apps."
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "Tetapkan Open Office menggunakan Aplikasi Emel Digemari Gnome"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "Bila ditanda. Gmail Gnome akan cuba menkonfigur Open Office untuk gunakan "
+#~ "Aplikasi Emel digemari Gnome yang dipilih semasa ini dengan setiap daftar "
+#~ "masuk, menggunakan aplikasi keserasian Gmail Gnome."
+
+#~ msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+#~ msgstr "Paksa Dialog Aplikasi Digemari Gmail GNOME"
+
+#~ msgid ""
+#~ "When checked, GNOME Gmail will not offer to set itself as the GNOME "
+#~ "Preferred Mail application. Otherwise, the program will ask if you want "
+#~ "it to be the mail application, if it isn't already."
+#~ msgstr ""
+#~ "Bila ditanda, Gmail GNOME tidak akan tawarkan dirinya ditetapkan sebagai "
+#~ "aplikasi Mel Digemari GNOME. Jika tidak, program akan menanya ia "
+#~ "dijadikan aplikasi mel, jika tidak ditetapkan lagi."
+
+#~ msgid "Gmail"
+#~ msgstr "Gmail"

@@ -1,3 +1,22 @@
+2014-11-22 David Steele <dsteele@gmail.com>
+
+  * v1.9
+  * Multi-user/email account support!
+  * OAuth2 support!
+  * Removed GNOME/GTK 2 dependencies.
+    - Upgrade glade file to version 3.
+    - Remove gconf and gconf schemas.
+    - Remove GNOME 2 XML MIME file definition.
+  * IMAP cleanup.
+    - Update to better support GMail features.
+    - Eliminate deprecated XLIST.
+  * IMAP then replaced by the GMail API.
+  * Rework configuration storage.
+    - Public information to ~/.config/gnome-gmail/gnome-gmail.conf.
+    - New Oauth2 schema for keyring token storage.
+  * Fixes for setup.py installation.
+  * Better Notification implementation.
+
 2014-08-11 David Steele <daves@users.sourceforge.net>
 
   * v1.8.3
