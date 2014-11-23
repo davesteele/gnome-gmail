@@ -10,6 +10,7 @@
   * IMAP cleanup.
     - Update to better support GMail features.
     - Eliminate deprecated XLIST.
+  * IMAP then replaced by the GMail API.
   * Rework configuration storage.
     - Public information to ~/.config/gnome-gmail/gnome-gmail.conf.
     - New Oauth2 schema for keyring token storage.

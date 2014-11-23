@@ -12,8 +12,8 @@ GNOME Preferred Email application """
 import sys
 import urlparse
 import urllib
+import urllib2
 import webbrowser
-import imaplib
 import base64
 import os
 import os.path
@@ -70,7 +70,7 @@ class GMOauth():
     def __init__(self):
         self.auth_endpoint = "https://accounts.google.com/o/oauth2/auth"
         self.token_endpoint = "https://accounts.google.com/o/oauth2/token"
-        self.scope = "https://mail.google.com/"
+        self.scope = "https://www.googleapis.com/auth/gmail.compose"
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
         self.win_valid = None
@@ -178,62 +178,9 @@ class GMOauth():
         yield self.generate_tokens(login)
 
 
-class GmailIMAP4_SSL( imaplib.IMAP4_SSL ):
-    def __init__( self, host = 'imap.gmail.com',
-                        port = imaplib.IMAP4_SSL_PORT,
-                        keyfile = None,
-                        certfile = None):
-
-        imaplib.IMAP4_SSL.__init__( self, host, port, keyfile, certfile )
-
-        imaplib.Commands['XLIST'] = ('AUTH', 'SELECTED')
-        imaplib.Commands['ID'] = ('AUTH')
-
-    def get_special_folder(self, folder):
-        # to retrieve the local name of e.g. '\Drafts' (rfc6154)
-        for entry in self.list()[1]:
-            match = re.search("\(.*%s .*\).+\"([^\"]+)\"$" % folder, entry)
-            if match:
-                return match.group(1)
-
-        return None
-
-    def id( self, *args ):
-        """ Provide app information to the server,
-            and get information in return (RFC2971)"""
-        arg = '("' + '" "'.join( args ) + '")'
-        name = 'ID'
-        typ, dat = self._simple_command( name, arg )
-        return self._untagged_response(typ, dat, name)
-
-    def uid2msgid( self, uid ):
-        """ Convert an IMAP UID to a Gmail MSGID
-
-        http://code.google.com/apis/gmail/imap/#
-        #access_to_the_gmail_unique_message_id_x-gm-msgid"""
-
-        typ, data = self.uid( r'fetch', uid, r'(X-GM-MSGID)')
-
-        msgid_dec = re.search( r'X-GM-MSGID ([0-9]+)', data[0] ).group(1)
-        msgid_hex = hex( int( msgid_dec ) )
-
-        return msgid_hex[2:]
-
-    def generateOAuth2String(self, access, user):
-        """IMAP login string, per
-            https://developers.google.com/gmail/xoauth2_libraries"""
-
-        auth_string = 'user=%s\1auth=Bearer %s\1\1' % (user, access)
-        return auth_string
-
-    def login_oauth(self, user, access):
-        auth_string = self.generateOAuth2String(access, user)
-        self.authenticate('XOAUTH2', lambda x: auth_string)
-
-
-class GMailIMAP( ):
+class GMailAPI( ):
     """ Handle mailto URLs that include 'attach' fields by uploading the
-    messages using IMAP """
+    messages using the GMail API """
 
     def __init__( self, mail_dict  ):
         self.mail_dict = mail_dict
@@ -301,60 +248,43 @@ class GMailIMAP( ):
 
         return( 'attach' in self.mail_dict )
 
-    def needs_imap( self ):
+    def needs_api( self ):
 
         return( self._has_attachment() )
 
-    def send_mail( self, user, access ):
-        """ transfer the message to GMail Drafts folder, using IMAP.
+    def send_mail( self, user, access_token ):
+        """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
 
-        imap_obj = GmailIMAP4_SSL( )
+        url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib2.quote(user)
 
-        imap_obj.login_oauth( user, access )
-
-        # identify the client per http://code.google.com/apis/gmail/imap/
-        imap_obj.id(
-              "name", "gnome-gmail",
-              "version", "1.8.2",
-              "os", "Linux",
-              "contact", "dsteele@gmail.com",
-              "support-url", "https://github.com/davesteele/gnome-gmail/issues",
-              )
+        opener = urllib2.build_opener(urllib2.HTTPSHandler)
+        request = urllib2.Request(url, data=self.message_text)
+        request.add_header('Content-Type', 'message/rfc822')
+        request.add_header('Content-Length', str(len(self.message_text)))
+        request.add_header('Authorization', "Bearer " + access_token)
+        request.get_method = lambda: 'POST'
 
         try:
-            # I may need this again someday
-            folder_name = _("Drafts")
+            urlfp = opener.open(request)
+        except urllib2.HTTPError, e:
+            print e.code
+            print e.msg
+            print e.headers
+            print dir(e)
+            print e.fpread()
+            raise GGError("Error uploading message")
 
-            # Find the localized Drafts folder
-            error_exp = _("Unable to determine IMAP Drafts folder location")
-            draft_folder = imap_obj.get_special_folder('\Drafts')
+        result = urlfp.fp.read()
+        json_result = json.loads(result)
+        id = json_result['message']['id']
 
-            # upload the message to the Drafts folder
-            error_exp = _("Error encountered while uploading the message")
-            append_resp = imap_obj.append( draft_folder, None, None, self.message_text )
-
-            # the append returns e.g. ('OK', ['[APPENDUID 9 3113] (Success)'])
-            # get the uid (e.g. 3113), and convert to Gmail ID to return
-
-            error_exp = _("Error accessing message. Check the Drafts folder")
-            msg_uid = re.search( r'UID [0-9]+ ([0-9]+)', append_resp[1][0]).group(1)
-
-            imap_obj.select( draft_folder )
-            msgid = imap_obj.uid2msgid( msg_uid )
-
-        except (imap_obj.error, OSError):
-            imap_obj.logout()
-            raise GGError( error_exp )
-
-        imap_obj.logout()
-
-        return( msgid )
+        return id
 
 
 class GMailURL( ):
     """ Logic to convert a mailto link to an appropriate GMail URL, by
-    any means necessary, including IMAP uploads, if necessary """
+    any means necessary, including API uploads."""
 
     def __init__( self, mailto_url, from_address, enable_net_access = True ):
         self.mailto_url = mailto_url
@@ -436,20 +366,20 @@ class GMailURL( ):
 
         return( "https://mail.google.com/mail/b/%s" % self.from_address )
 
-    def imap_gmail_url( self ):
+    def api_gmail_url( self ):
         """ if the mailto refers to an attachment,
-        use IMAP to upload the file """
+        use the GMail API to upload the file """
 
-        imap_url = "https://mail.google.com/mail/b/%s#drafts/" % \
+        api_url = "https://mail.google.com/mail/b/%s#drafts/" % \
                    self.from_address
 
         if not self.enable_net_access:
-            return( imap_url )
+            return( api_url )
 
         try:
-            gm_imap = GMailIMAP( self.mail_dict )
-            gm_imap.form_message()
-        except (imaplib.IMAP4.error, OSError):
+            gm_api = GMailAPI( self.mail_dict )
+            gm_api.form_message()
+        except OSError:
             GGError( _("Error creating message with attachment") )
 
 
@@ -460,10 +390,10 @@ class GMailURL( ):
 
         for access, refresh in auth.access_iter(old_access, old_refresh, self.from_address):
             try:
-                msg_id = gm_imap.send_mail( self.from_address, \
+                msg_id = gm_api.send_mail( self.from_address, \
                                             access)
                 break
-            except (imaplib.IMAP4.error, OSError) as inst:
+            except:
                 # do nothing for a particular instance of this failure
                 pass
 
@@ -480,15 +410,15 @@ class GMailURL( ):
 
             raise GGError( error_str )
 
-        return( imap_url + msg_id )
+        return( api_url + msg_id )
 
     def gmail_url( self ):
         """ Return a GMail URL appropriate for the mailto handled
         by this instance """
         if( len( self.mailto_url ) == 0 ):
             gmailurl = self.simple_gmail_url()
-        elif GMailIMAP(self.mail_dict).needs_imap():
-            gmailurl = self.imap_gmail_url()
+        elif GMailAPI(self.mail_dict).needs_api():
+            gmailurl = self.api_gmail_url()
         else:
             gmailurl = self.standard_gmail_url( )
 
