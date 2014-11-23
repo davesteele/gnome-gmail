@@ -21,9 +21,6 @@ set -e
 case "$1" in
     configure)
 
-        gconf-schemas --register /usr/share/gconf/schemas/gnome-gmail.schemas
-        update-desktop-database -q || :
-
         if [ -f /usr/share/icons/hicolor/icon-theme.cache ]; then \
           gtk-update-icon-cache -f /usr/share/icons/hicolor >/dev/null 2>&1; \
         fi
