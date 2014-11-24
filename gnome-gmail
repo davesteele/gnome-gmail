@@ -268,12 +268,7 @@ class GMailAPI( ):
         try:
             urlfp = opener.open(request)
         except urllib2.HTTPError, e:
-            print e.code
-            print e.msg
-            print e.headers
-            print dir(e)
-            print e.fpread()
-            raise GGError("Error uploading message")
+            raise GGError("GMail API - %s - %s" % (e.code, e.msg))
 
         result = urlfp.fp.read()
         json_result = json.loads(result)
@@ -388,26 +383,19 @@ class GMailURL( ):
         keys = Oauth2Keyring(auth.scope)
         old_access, old_refresh = keys.getTokens(self.from_address)
 
+        error_str = ""
         for access, refresh in auth.access_iter(old_access, old_refresh, self.from_address):
             try:
                 msg_id = gm_api.send_mail( self.from_address, \
                                             access)
                 break
-            except:
-                # do nothing for a particular instance of this failure
-                pass
+            except GGError, e:
+                error_str = e.value
 
         if msg_id:
-            keys.setTokens(self.from_address, access, refresh)
+            if (old_access, old_refresh) != (access, refresh):
+                keys.setTokens(self.from_address, access, refresh)
         else:
-            error_str = ""
-            if inst.args[0].find( _("nvalid credentials") ) > 0:
-                error_str = _("Invalid GMail User Name or Password")
-            elif inst.args[0].find( _("not enabled for IMAP") ) > 0:
-                error_str = _("You must 'Enable IMAP' in Gmail in order to send attachments")
-            else:
-                error_str = inst.args[0]
-
             raise GGError( error_str )
 
         return( api_url + msg_id )
