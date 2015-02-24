@@ -175,7 +175,7 @@ class GMailIMAP( ):
             #    (\HasNoChildren \Drafts) "/" "[Gmail]/Drafts"
             # where the first "Drafts" is a flag, and the second is localized
             drafts_ln = [ x for x in imap_obj.xlist()[1]
-                                     if re.search( ' .Drafts\)', x ) ][0]
+                                     if re.search( '^\\(\\\\Drafts ', x ) ][0]
 
             draft_folder = re.search( '\"([^\"]+)\"$', drafts_ln ).group(1)
 
