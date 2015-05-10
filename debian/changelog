@@ -1,3 +1,13 @@
+gnome-gmail (1.9-2) unstable; urgency=low
+
+  * watch
+    - Fix the mangle to avoid debian branch tags
+    - Support source tar signature checking
+  * control: Adjust VCS tags to the debian branch
+  * gbp.conf: add upstream-tree option
+
+ -- David Steele <dsteele@gmail.com>  Sun, 10 May 2015 07:36:35 -0400
+
 gnome-gmail (1.9-1) unstable; urgency=low
 
   * Multiple user support
