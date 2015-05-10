@@ -2,7 +2,7 @@
 
 
 
-for manpg in gnome-gmail setOOmailer ; do
+for manpg in gnome-gmail ; do
     (man -t $manpg|ps2pdf - $manpg.pdf);
     man -Thtml $manpg >$manpg.html;
 done
