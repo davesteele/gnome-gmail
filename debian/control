@@ -11,8 +11,8 @@ Build-Depends: debhelper (>= 7.4.3),
 Standards-Version: 3.9.6
 X-Python-Version: >= 2.7
 Homepage: https://davesteele.github.io/gnome-gmail/
-Vcs-Browser: https://github.com/davesteele/gnome-gmail
-Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b master
+Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
+Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
 
 Package: gnome-gmail
 Architecture: all
