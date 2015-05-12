@@ -191,7 +191,8 @@ class GMailAPI( ):
 
         msg = MIMEMultipart()
 
-        for header in ( "To", "Cc", "Bcc", "Subject" ):
+        for header in ( "To", "Cc", "Bcc", "Subject",
+                        "References", "In-Reply-To" ):
             if header.lower() in self.mail_dict:
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
@@ -353,6 +354,8 @@ class GMailURL( ):
         tourl = self.append_url( tourl, "body", dct, "body" )
         tourl = self.append_url( tourl, "cc", dct, "cc" )
         tourl = self.append_url( tourl, "bcc", dct, "bcc" )
+        tourl = self.append_url( tourl, "references", dct, "references" )
+        tourl = self.append_url( tourl, "in-reply-to", dct, "in-reply-to" )
 
         return( tourl )
 
