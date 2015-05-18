@@ -14,7 +14,6 @@ import urlparse
 import urllib
 import urllib2
 import webbrowser
-import base64
 import os
 import os.path
 import re
