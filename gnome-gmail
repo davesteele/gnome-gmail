@@ -256,6 +256,9 @@ class GMailAPI( ):
         """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
 
+        if access_token is None:
+            raise GGError( _("No access token") )
+
         url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib2.quote(user)
 
         opener = urllib2.build_opener(urllib2.HTTPSHandler)
