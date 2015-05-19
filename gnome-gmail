@@ -442,9 +442,12 @@ def getFromAddress(last_address, gladefile):
     hdlr = Handler(last_address)
     builder.connect_signals(hdlr)
 
-    builder.get_object("user_select_dialog").show_all()
+    dlg = builder.get_object("user_select_dialog")
+    dlg.show_all()
 
     Gtk.main()
+
+    dlg.hide()
 
     return hdlr.txt
 
