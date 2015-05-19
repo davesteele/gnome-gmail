@@ -665,7 +665,7 @@ def main( ):
         notice.show()
         time.sleep(5)
     else:
-        webbrowser.open_new_tab( gmailurl )
+        browser().open(gmailurl, 1, True)
 
 if __name__ == "__main__":
     main()
