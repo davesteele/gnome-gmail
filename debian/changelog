@@ -1,3 +1,9 @@
+gnome-gmail (1.9.1-1) unstable; urgency=low
+
+  * Fix a crash if no initial OAuth access token found (Closes #786371).
+
+ -- David Steele <dsteele@gmail.com>  Thu, 21 May 2015 06:49:30 -0400
+
 gnome-gmail (1.9-2) unstable; urgency=low
 
   * watch
