@@ -1,3 +1,8 @@
+2015-05-22 David Steele <dsteele@gmail.com>
+
+  * V1.9.1
+  * Fix crash if no initial OAuth access key found
+
 2015-05-19 David Steele <dsteele@gmail.com>
 
   * v1.9.1
