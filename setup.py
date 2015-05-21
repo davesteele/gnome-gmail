@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python2
 
 import DistUtilsExtra.auto
 import DistUtilsExtra.command
@@ -45,11 +45,11 @@ class my_clean(distutils.command.clean.clean):
 
 DistUtilsExtra.auto.setup(
       name='gnome-gmail',
-      version='1.9',
+      version='1.9.1',
       description='support for Gmail as the preferred email application in GNOME',
       author='David Steele',
       author_email='dsteele@gmail.com',
-      url='https://plus.google.com/u/0/b/114865435962597546915/114865435962597546915/about',
+      url='https://davesteele.github.io/gnome-gmail/',
       scripts=['gnome-gmail'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),

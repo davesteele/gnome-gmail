@@ -1,3 +1,16 @@
+2015-05-22 David Steele <dsteele@gmail.com>
+
+  * V1.9.1
+  * Fix crash if no initial OAuth access key found
+
+2015-05-19 David Steele <dsteele@gmail.com>
+
+  * v1.9.1
+  * Make the script Python 2-only
+  * Support additional mail header tags
+  * Open compose in a new window
+  * Bug fixes
+
 2014-11-22 David Steele <dsteele@gmail.com>
 
   * v1.9

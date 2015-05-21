@@ -1,4 +1,4 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python2 -tt
 #
 # Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
@@ -14,7 +14,6 @@ import urlparse
 import urllib
 import urllib2
 import webbrowser
-import base64
 import os
 import os.path
 import re
@@ -57,6 +56,16 @@ class GGError( Exception ):
 
     def __str__( self ):
         return repr( self.value )
+
+def browser():
+    app = Gio.app_info_get_default_for_type('x-scheme-handler/https', True)
+    bpath = app.get_filename()
+
+    for candidate in webbrowser._tryorder:
+        if candidate in bpath:
+            return webbrowser.get(using=candidate)
+
+    return webbrowser.get()
 
 class GMOauth():
     """oauth mechanism per
@@ -191,7 +200,8 @@ class GMailAPI( ):
 
         msg = MIMEMultipart()
 
-        for header in ( "To", "Cc", "Bcc", "Subject" ):
+        for header in ( "To", "Cc", "Bcc", "Subject",
+                        "References", "In-Reply-To" ):
             if header.lower() in self.mail_dict:
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
@@ -255,6 +265,9 @@ class GMailAPI( ):
     def send_mail( self, user, access_token ):
         """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
+
+        if access_token is None:
+            raise GGError( _("No access token") )
 
         url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib2.quote(user)
 
@@ -353,6 +366,8 @@ class GMailURL( ):
         tourl = self.append_url( tourl, "body", dct, "body" )
         tourl = self.append_url( tourl, "cc", dct, "cc" )
         tourl = self.append_url( tourl, "bcc", dct, "bcc" )
+        tourl = self.append_url( tourl, "references", dct, "references" )
+        tourl = self.append_url( tourl, "in-reply-to", dct, "in-reply-to" )
 
         return( tourl )
 
@@ -440,9 +455,12 @@ def getFromAddress(last_address, gladefile):
     hdlr = Handler(last_address)
     builder.connect_signals(hdlr)
 
-    builder.get_object("user_select_dialog").show_all()
+    dlg = builder.get_object("user_select_dialog")
+    dlg.show_all()
 
     Gtk.main()
+
+    dlg.hide()
 
     return hdlr.txt
 
@@ -647,7 +665,7 @@ def main( ):
         notice.show()
         time.sleep(5)
     else:
-        webbrowser.open_new_tab( gmailurl )
+        browser().open(gmailurl, 1, True)
 
 if __name__ == "__main__":
     main()
