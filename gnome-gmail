@@ -332,6 +332,13 @@ class GMailURL( ):
 
             query_string = usplit.query
 
+		# For whatever reason, xdg-open 1.0.2 on Ubuntu 15 passes
+		# "mailto:///email@address" so the path has a leading slash when
+		# parsed by urlsplit.  Just trim off leading slashes; they're not
+		# valid in email addresses anyway.
+		address = re.sub("^/+", "", address)
+
+
         qsdict = urlparse.parse_qs( query_string )
 
         qsdict['to'] = [ address ]
