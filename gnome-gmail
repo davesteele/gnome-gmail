@@ -428,7 +428,7 @@ class GMailURL( ):
         return( gmailurl )
 
 
-def getFromAddress(last_address, gladefile):
+def getFromAddress(last_address, suppress_account_selection, gladefile):
     class Handler:
         def __init__(self, fromInit):
             self.txtbox = builder.get_object("entryFrom")
@@ -449,6 +449,9 @@ def getFromAddress(last_address, gladefile):
         def onUserSelClose(self, foo):
             self.onCancelClicked(foo)
 
+    if last_address and suppress_account_selection:
+        return last_address
+
     builder = Gtk.Builder()
     builder.add_from_file(gladefile)
 
@@ -464,8 +467,8 @@ def getFromAddress(last_address, gladefile):
 
     return hdlr.txt
 
-def getGoogleFromAddress(last_address, gladefile):
-    retval = getFromAddress(last_address, gladefile)
+def getGoogleFromAddress(last_address, suppress_account_selection, gladefile):
+    retval = getFromAddress(last_address, suppress_account_selection, gladefile)
 
     if retval and not re.search('@', retval):
         retval += "@gmail.com"
@@ -619,6 +622,10 @@ def main( ):
         # suppress_preferred
         #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
         #     the default mail program.
+        # suppress_account_selection
+        #     If True ('1', 'yes'...) don't ask account to use, if you have only one.
+        # new_browser
+        #     If True ('1', 'yes'...) forcedly open Gmail in a new browser window.
         # last_email
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
@@ -628,6 +635,8 @@ def main( ):
                       section = 'gnome-gmail',
                       initvals = {
                                      'suppress_preferred': '0',
+                                     'suppress_account_selection': '0',
+                                     'new_browser': '0',
                                      'last_email': '',
                                  },
                       header = header,
@@ -650,7 +659,8 @@ def main( ):
     Notify.init("GNOME Gmail")
 
     last_from = config.get_str('last_email')
-    from_address = getGoogleFromAddress(last_from, glade_file)
+    suppress_account_selection = config.get_bool('suppress_account_selection')
+    from_address = getGoogleFromAddress(last_from, suppress_account_selection, glade_file)
     if from_address:
         config.set_str('last_email', from_address)
 
@@ -665,10 +675,9 @@ def main( ):
         notice.show()
         time.sleep(5)
     else:
-        browser().open(gmailurl, 1, True)
+        new_browser = config.get_bool('new_browser')
+        browser().open(gmailurl, new_browser, True)
 
 if __name__ == "__main__":
     main()
-
-
 
