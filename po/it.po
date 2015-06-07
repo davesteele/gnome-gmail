@@ -9,7 +9,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-22 20:41-0500\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
-"Last-Translator: daves <dsteele@gmail.com>\n"
+"Last-Translator: Massimo Branchini <max.bra.gtalk@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 #: ../gnome-gmail:254
 #, c-format
 msgid "Sending %s"
-msgstr ""
+msgstr "Invio di %s"
 
 #: ../gnome-gmail:256
 msgid "Mime message attached"
-msgstr ""
+msgstr "Messaggio MIME allegato"
 
 #: ../gnome-gmail:327
 msgid "Drafts"
@@ -32,51 +32,51 @@ msgstr "Bozze"
 
 #: ../gnome-gmail:330
 msgid "Unable to determine IMAP Drafts folder location"
-msgstr ""
+msgstr "Impossibile determinare la posizione della cartella IMAP Bozze"
 
 #: ../gnome-gmail:334
 msgid "Error encountered while uploading the message"
-msgstr ""
+msgstr "É avvenuto un errore durante l'upload del messaggio"
 
 #: ../gnome-gmail:340
 msgid "Error accessing message. Check the Drafts folder"
-msgstr ""
+msgstr "É avvenuto un errore accedendo al messaggio. Controlla la cartella Bozze"
 
 #: ../gnome-gmail:453
 msgid "Error creating message with attachment"
-msgstr ""
+msgstr "É avvenuto un errore creando il messaggio con allegato"
 
 #: ../gnome-gmail:474
 msgid "nvalid credentials"
-msgstr ""
+msgstr "credenziali non valide"
 
 #: ../gnome-gmail:475
 msgid "Invalid GMail User Name or Password"
-msgstr ""
+msgstr "Nome utente o password di GMail non validi"
 
 #: ../gnome-gmail:476
 msgid "not enabled for IMAP"
-msgstr ""
+msgstr "non abilitato per IMAP"
 
 #: ../gnome-gmail:477
 msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr ""
+msgstr "Devi abilitare 'Attiva IMAP' in Gmail per poter inviare allegati"
 
 #: ../gnome-gmail:722
 msgid "User cancelled"
-msgstr ""
+msgstr "Annullato dall'utente"
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
-msgstr ""
+msgstr "Copyright 2010 - Dave Steele"
 
 #: ../gnomegmail.glade.h:2
 msgid "comment"
-msgstr ""
+msgstr "commento"
 
 #: ../gnomegmail.glade.h:3
 msgid "Configure"
-msgstr ""
+msgstr "Configura"
 
 #: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
@@ -87,10 +87,12 @@ msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
 msgstr ""
+"Inserisci le tue cradenziali di Gmail\n"
+"per l'upload del file"
 
 #: ../gnomegmail.glade.h:7
 msgid "User Name"
-msgstr ""
+msgstr "Nome utente"
 
 #: ../gnomegmail.glade.h:8
 msgid "Password"
@@ -105,26 +107,28 @@ msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
+"GNOME Gmail non è al momento l'applicazione Email preferita. Vuoi "
+"che le tue email vengano spedite usando la pagina web di Gmail?"
 
 #: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
-msgstr ""
+msgstr "Non chiedere di nuovo"
 
 #: ../gnomegmail.glade.h:12
 msgid "Which Google email account should be used?"
-msgstr ""
+msgstr "Quale account Google deve essere usato?"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr ""
+msgstr "Integra GMail con il tuo desktop"
 
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
-msgstr ""
+msgstr "Gnome Gmail Configuratore Open Office"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr ""
+msgstr "Configura Open Office per usare l'applicazione preferita di Gnome"
 
 #~ msgid "Enter the password for the mail account"
 #~ msgstr "Inserire la password per l'account mail"
