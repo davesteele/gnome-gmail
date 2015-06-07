@@ -25,6 +25,7 @@ import json
 import mimetypes
 import random
 import time
+import subprocess
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -37,9 +38,9 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
 from gi.repository import GLib
-from gi.repository import WebKit
 from gi.repository import Secret
 from gi.repository import Notify
+from gi.repository import Wnck
 
 from ConfigParser import SafeConfigParser
 
@@ -82,17 +83,10 @@ class GMOauth():
         self.scope = "https://www.googleapis.com/auth/gmail.compose"
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
-        self.win_valid = None
-
 
     def get_code(self, login_hint):
         s=string.lowercase + string.uppercase + string.digits
         state = ''.join(random.sample(s,10))
-
-        GLib.threads_init()
-        win = Gtk.Window()
-        win.set_title("")
-        bro = WebKit.WebView()
 
         args = { "response_type": "code",
              "client_id": self.client_id,
@@ -105,25 +99,41 @@ class GMOauth():
 
         code_url= "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
 
-        bro.open(code_url)
-        win.add(bro)
-        win.resize(600,600)
+        saveout = os.dup(1)
+        os.close(1)
+        os.open(os.devnull, os.O_RDWR)
+        saveout2 = os.dup(2)
+        os.close(2)
+        os.open(os.devnull, os.O_RDWR)
+        try:
+            browser().open(code_url, 1, True)
+        finally:
+            os.dup2(saveout, 1)
+            os.dup2(saveout2, 2)
 
-        self.win_valid=True
-        def win_closed(window, self):
-           self.win_valid = False
-        win.connect("destroy", win_closed, self)
-
-        win.show_all()
-
+        now = time.time()
         code = None
-        while self.win_valid:
-            Gtk.main_iteration_do(False)
-            bro_title = bro.get_title()
-            if bro_title and state in bro_title:
-                code = bro_title.split("=")[-1]
-                if not win.emit("delete-event", Gdk.Event(Gdk.EventType.DELETE)):
-                    win.destroy()
+        while True:
+            # Look for the state and code in the window title
+            output = subprocess.check_output("xwininfo -root -tree".split())
+
+            m = re.search("state=%s.code=([^ ]+)" % state, output)
+            if m:
+                code = m.group(1)
+                break
+
+            if time.time() - now > 120:
+                raise GGError(_("Timeout getting OAuth authentication"))
+
+            time.sleep(0.1)
+
+        Gtk.init([])
+        screen = Wnck.Screen.get_default()
+        screen.force_update()
+
+        for win in screen.get_windows():
+            if re.search(state, win.get_name()):
+                win.close(time.time())
 
         return code
 
