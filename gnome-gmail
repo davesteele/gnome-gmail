@@ -489,6 +489,9 @@ def getFromAddress(last_address, config, gladefile):
     sup_acc_sel = builder.get_object("check_account_dont_ask_again").get_active()
     config.set_bool('suppress_account_selection', sup_acc_sel)
 
+    sup_acc_sel = builder.get_object("check_account_dont_ask_again").get_active()
+    config.set_bool('suppress_account_selection', sup_acc_sel)
+
     return hdlr.txt
 
 def getGoogleFromAddress(last_address, config, gladefile):
