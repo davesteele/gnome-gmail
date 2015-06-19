@@ -660,7 +660,7 @@ def main( ):
                       initvals = {
                                      'suppress_preferred': '0',
                                      'suppress_account_selection': '0',
-                                     'new_browser': '0',
+                                     'new_browser': '1',
                                      'last_email': '',
                                  },
                       header = header,
