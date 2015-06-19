@@ -447,7 +447,7 @@ class GMailURL( ):
 
 def getFromAddress(last_address, suppress_account_selection, gladefile):
     class Handler:
-        def __init__(self, fromInit):
+        def __init__(self, fromInit, dlg):
             self.txtbox = builder.get_object("entryFrom")
             self.txtbox.set_activates_default(True)
 
@@ -455,12 +455,16 @@ def getFromAddress(last_address, suppress_account_selection, gladefile):
 
             self.txt = None
 
+            self.dlg = dlg
+
         def onOkClicked(self, button ):
             self.txt = self.txtbox.get_property("text")
+            self.dlg.hide()
             Gtk.main_quit()
 
         def onCancelClicked(self, button):
             self.txt = None
+            self.dlg.hide()
             Gtk.main_quit()
 
         def onUserSelClose(self, foo):
@@ -472,15 +476,14 @@ def getFromAddress(last_address, suppress_account_selection, gladefile):
     builder = Gtk.Builder()
     builder.add_from_file(gladefile)
 
-    hdlr = Handler(last_address)
+    dlg = builder.get_object("user_select_dialog")
+
+    hdlr = Handler(last_address, dlg)
     builder.connect_signals(hdlr)
 
-    dlg = builder.get_object("user_select_dialog")
     dlg.show_all()
 
     Gtk.main()
-
-    dlg.hide()
 
     return hdlr.txt
 
