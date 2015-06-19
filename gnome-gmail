@@ -235,7 +235,7 @@ class GMailAPI( ):
         filepath = urlparse.urlsplit( filename ).path
 
         if not os.path.isfile( filepath ):
-            raise GGError( "File not found - %s" % filepath )
+            raise GGError(_("File not found - %s") % filepath )
 
         ctype, encoding = mimetypes.guess_type( filepath )
 
@@ -291,7 +291,7 @@ class GMailAPI( ):
         try:
             urlfp = opener.open(request)
         except urllib2.HTTPError, e:
-            raise GGError("GMail API - %s - %s" % (e.code, e.msg))
+            raise GGError(_("GMail API - %s - %s") % (e.code, e.msg))
 
         result = urlfp.fp.read()
         json_result = json.loads(result)
