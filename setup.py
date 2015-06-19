@@ -6,6 +6,11 @@ import distutils.command
 import os
 import shutil
 
+import sys
+if not sys.version_info[0] == 2:
+    print "Sorry, Python 3 is not supported (yet)"
+    sys.exit(1)
+
 class my_build_i18n(DistUtilsExtra.command.build_i18n.build_i18n):
     def run(self):
         DistUtilsExtra.command.build_i18n.build_i18n.run(self)
@@ -51,6 +56,7 @@ DistUtilsExtra.auto.setup(
       author_email='dsteele@gmail.com',
       url='https://davesteele.github.io/gnome-gmail/',
       scripts=['gnome-gmail'],
+      requires=['gi'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),

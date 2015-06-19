@@ -1,3 +1,12 @@
+2015-06-19 David Steele <dsteele@gmail.com>
+  * V1.9.2
+  * Italian translation complete (thanks Massimo Branchini).
+  * Account name "Don't ask again" option (Massimo).
+  * "mailto: leading slash fix for Ubuntu (thanks Bryan Elliott).
+  * Replace WebKit with the default browser for OAuth2 authentication.
+  * Default to opening mail in a new window.
+  * Minor bug fixes.
+
 2015-05-22 David Steele <dsteele@gmail.com>
 
   * V1.9.1

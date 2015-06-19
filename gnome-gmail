@@ -25,6 +25,7 @@ import json
 import mimetypes
 import random
 import time
+import subprocess
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -37,9 +38,9 @@ from gi.repository import Gtk
 from gi.repository import Gdk
 from gi.repository import Gio
 from gi.repository import GLib
-from gi.repository import WebKit
 from gi.repository import Secret
 from gi.repository import Notify
+from gi.repository import Wnck
 
 from ConfigParser import SafeConfigParser
 
@@ -82,17 +83,10 @@ class GMOauth():
         self.scope = "https://www.googleapis.com/auth/gmail.compose"
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
-        self.win_valid = None
-
 
     def get_code(self, login_hint):
         s=string.lowercase + string.uppercase + string.digits
         state = ''.join(random.sample(s,10))
-
-        GLib.threads_init()
-        win = Gtk.Window()
-        win.set_title("")
-        bro = WebKit.WebView()
 
         args = { "response_type": "code",
              "client_id": self.client_id,
@@ -105,25 +99,41 @@ class GMOauth():
 
         code_url= "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
 
-        bro.open(code_url)
-        win.add(bro)
-        win.resize(600,600)
+        saveout = os.dup(1)
+        os.close(1)
+        os.open(os.devnull, os.O_RDWR)
+        saveout2 = os.dup(2)
+        os.close(2)
+        os.open(os.devnull, os.O_RDWR)
+        try:
+            browser().open(code_url, 1, True)
+        finally:
+            os.dup2(saveout, 1)
+            os.dup2(saveout2, 2)
 
-        self.win_valid=True
-        def win_closed(window, self):
-           self.win_valid = False
-        win.connect("destroy", win_closed, self)
-
-        win.show_all()
-
+        now = time.time()
         code = None
-        while self.win_valid:
-            Gtk.main_iteration_do(False)
-            bro_title = bro.get_title()
-            if bro_title and state in bro_title:
-                code = bro_title.split("=")[-1]
-                if not win.emit("delete-event", Gdk.Event(Gdk.EventType.DELETE)):
-                    win.destroy()
+        while True:
+            # Look for the state and code in the window title
+            output = subprocess.check_output("xwininfo -root -tree".split())
+
+            m = re.search("state=%s.code=([^ ]+)" % state, output)
+            if m:
+                code = m.group(1)
+                break
+
+            if time.time() - now > 120:
+                raise GGError(_("Timeout getting OAuth authentication"))
+
+            time.sleep(0.1)
+
+        Gtk.init([])
+        screen = Wnck.Screen.get_default()
+        screen.force_update()
+
+        for win in screen.get_windows():
+            if re.search(state, win.get_name()):
+                win.close(time.time())
 
         return code
 
@@ -225,7 +235,7 @@ class GMailAPI( ):
         filepath = urlparse.urlsplit( filename ).path
 
         if not os.path.isfile( filepath ):
-            raise GGError( "File not found - %s" % filepath )
+            raise GGError(_("File not found - %s") % filepath )
 
         ctype, encoding = mimetypes.guess_type( filepath )
 
@@ -281,7 +291,7 @@ class GMailAPI( ):
         try:
             urlfp = opener.open(request)
         except urllib2.HTTPError, e:
-            raise GGError("GMail API - %s - %s" % (e.code, e.msg))
+            raise GGError(_("GMail API - %s - %s") % (e.code, e.msg))
 
         result = urlfp.fp.read()
         json_result = json.loads(result)
@@ -331,6 +341,13 @@ class GMailURL( ):
             address = path
 
             query_string = usplit.query
+
+        # For whatever reason, xdg-open 1.0.2 on Ubuntu 15 passes
+        # "mailto:///email@address" so the path has a leading slash when
+        # parsed by urlsplit.  Just trim off leading slashes; they're not
+        # valid in email addresses anyway.
+        address = re.sub("^/+", "", address)
+
 
         qsdict = urlparse.parse_qs( query_string )
 
@@ -428,9 +445,9 @@ class GMailURL( ):
         return( gmailurl )
 
 
-def getFromAddress(last_address, gladefile):
+def getFromAddress(last_address, config, gladefile):
     class Handler:
-        def __init__(self, fromInit):
+        def __init__(self, fromInit, dlg):
             self.txtbox = builder.get_object("entryFrom")
             self.txtbox.set_activates_default(True)
 
@@ -438,34 +455,44 @@ def getFromAddress(last_address, gladefile):
 
             self.txt = None
 
+            self.dlg = dlg
+
         def onOkClicked(self, button ):
             self.txt = self.txtbox.get_property("text")
+            self.dlg.hide()
             Gtk.main_quit()
 
         def onCancelClicked(self, button):
             self.txt = None
+            self.dlg.hide()
             Gtk.main_quit()
 
         def onUserSelClose(self, foo):
             self.onCancelClicked(foo)
 
+    suppress_account_selection = config.get_bool('suppress_account_selection')
+    if last_address and suppress_account_selection:
+        return last_address
+
     builder = Gtk.Builder()
     builder.add_from_file(gladefile)
 
-    hdlr = Handler(last_address)
+    dlg = builder.get_object("user_select_dialog")
+
+    hdlr = Handler(last_address, dlg)
     builder.connect_signals(hdlr)
 
-    dlg = builder.get_object("user_select_dialog")
     dlg.show_all()
 
     Gtk.main()
 
-    dlg.hide()
+    sup_acc_sel = builder.get_object("check_account_dont_ask_again").get_active()
+    config.set_bool('suppress_account_selection', sup_acc_sel)
 
     return hdlr.txt
 
-def getGoogleFromAddress(last_address, gladefile):
-    retval = getFromAddress(last_address, gladefile)
+def getGoogleFromAddress(last_address, config, gladefile):
+    retval = getFromAddress(last_address, config, gladefile)
 
     if retval and not re.search('@', retval):
         retval += "@gmail.com"
@@ -619,6 +646,10 @@ def main( ):
         # suppress_preferred
         #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
         #     the default mail program.
+        # suppress_account_selection
+        #     If True ('1', 'yes'...) don't ask account to use, if you have only one.
+        # new_browser
+        #     If True ('1', 'yes'...) forcedly open Gmail in a new browser window.
         # last_email
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
@@ -628,6 +659,8 @@ def main( ):
                       section = 'gnome-gmail',
                       initvals = {
                                      'suppress_preferred': '0',
+                                     'suppress_account_selection': '0',
+                                     'new_browser': '1',
                                      'last_email': '',
                                  },
                       header = header,
@@ -650,7 +683,7 @@ def main( ):
     Notify.init("GNOME Gmail")
 
     last_from = config.get_str('last_email')
-    from_address = getGoogleFromAddress(last_from, glade_file)
+    from_address = getGoogleFromAddress(last_from, config, glade_file)
     if from_address:
         config.set_str('last_email', from_address)
 
@@ -665,10 +698,8 @@ def main( ):
         notice.show()
         time.sleep(5)
     else:
-        browser().open(gmailurl, 1, True)
+        new_browser = config.get_bool('new_browser')
+        browser().open(gmailurl, new_browser, True)
 
 if __name__ == "__main__":
     main()
-
-
-
