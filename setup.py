@@ -50,7 +50,7 @@ class my_clean(distutils.command.clean.clean):
 
 DistUtilsExtra.auto.setup(
       name='gnome-gmail',
-      version='1.9.1',
+      version='1.9.2',
       description='support for Gmail as the preferred email application in GNOME',
       author='David Steele',
       author_email='dsteele@gmail.com',
