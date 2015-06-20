@@ -6,33 +6,36 @@ b834c1db31ad688cc17a57fce64f4c8a  gnome-gmail_1.8.3-1_all.deb
 812e717a6e373e62205d34bbfb8469c2  gnome-gmail_1.9-1_all.deb
 492d100958a527e9f9c4d30607fcc163  gnome-gmail_1.9-2_all.deb
 a084163a15e010ee992ba2974ff1f14e  gnome-gmail_1.9.1-1_all.deb
+1026dab61ba1838c83482a3046addf13  gnome-gmail_1.9.2-1_all.deb
 
 SHA1
 3cc7a13b32e78bf71b6da761d3c3de01d5ec6f9c  gnome-gmail_1.8.3-1_all.deb
 b805552ac3a5ebf3453cfa0d85ca4aaefb3ecd2a  gnome-gmail_1.9-1_all.deb
 5dd9101716b5492d3bba19c16ff046bc51f96ac4  gnome-gmail_1.9-2_all.deb
 d0d153a870c90b9a3974b5deac408b760ea7c15b  gnome-gmail_1.9.1-1_all.deb
+e0f43335a5824495ae12ac1d0bd45dbae64074f4  gnome-gmail_1.9.2-1_all.deb
 
 SHA256
 f51cfa7ab0cc35fd7450582d3a7c0bf6c6256736d8c627cc45af177eafdabf31  gnome-gmail_1.8.3-1_all.deb
 9ce45387a7c988776652f41c7eb3447cfbf18a286c3ec2ac38019cf8f3ae48d1  gnome-gmail_1.9-1_all.deb
 39a90a2dd9e64ac0e893bb71fd3dedc3cd8e0ad5bd6558b019ca1a0affa64e18  gnome-gmail_1.9-2_all.deb
 a2addee9d72f4a80a0c7771a311ceb0f216af433a10c790db2d3f28bfafceeb9  gnome-gmail_1.9.1-1_all.deb
+5671f60ed27ea9a0ea0933bab2e89dae51080ab56aa16ee342dce631285951a8  gnome-gmail_1.9.2-1_all.deb
 
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1
 
-iQIcBAEBCAAGBQJVXb9yAAoJEGJ+uykKgXqC4yIQAKc2Dl/zqxdwHV3s5/1jcPpZ
-TecfGQZIZHb52tq00Svwa+Fb3wUHCYZk1Kgq7lCeeaHBJvm6JGANTDp+bu8sSBGv
-zzUEyp6PhFyuJljbcQq4LDUIl2RxI3UC41KZkJktSHmd0RTcTB9gHuXL24ZP4Owc
-zHFmbbegV/zoEDuMUJdxy2ygv7iFrzojQlCFHUlQjQt+Kgbk3AAUhBx6DGrrF6cd
-BeiQdqScSw/jrYFtu5VUQyb05ZU8YkI9trIW+Hg8VpWG40wSiTWEYArtTApx+jCk
-A0yrXrZmSHz+KhAcz/hSQSE/+xTJfRQ2rlcz37hrz9Fvipg8jLWKYXuGCETlYP7a
-LDajeMepzFfDrjUvotGG/CK6jI9RAkdp0ABc0PU9YX0/RHsnhWd9p5KCxsfHtOLS
-itvGAU5I4z0/ZJfW9n3UUdZlZtUeuV2Et5ev91gKBuECqKrzMarLeaXOXZmL/2Se
-3C9IXBcA8rnbcmVNb/ZtIyXlWELP2Hxbi8lr8nMyGavbSPOHBcdCQMs4LGdbAwtW
-Hpkf6aYl0n4gXc6wAoS7h3AjwLe+obVY/CXK4mO2MPTLwgDHYtWquGG3JItSN1lT
-AHZHPz2fwEtoks2IepRac0aPPp2WH7vaubLhX8WQ/mAf0H0Sji2RCDkNIuBNljVH
-zGiocVhthkgH7V+c2Zr/
-=lcM1
+iQIcBAEBCAAGBQJVhL3XAAoJEGJ+uykKgXqC2pYP/AsYeJhwK7wPwacgb5W8gzk6
+xW8OueUDVQT4EgWrXSHKpnF+cCu1WEKmXikyRDiy9//WCndDhsY3J8yFX4SCpgVt
+6Xq0P1p/JLBVy/2EbZM30K+YWAUrg5F7GwPUAtIJcLMnWQF0vsNZjN/fiP3/TopI
+G3JwyDXy/6U+Qo9KQg3FtBso8gqZiiKNFjb1mMTr3CXjY/3LDCKHRZdsyei+6BHk
+QtfmMwmVWnAv6sNh97w4ADU8SqhBcmeP84+3FuotmDOlsNp6zigYtdVbYaSVog4W
+utVxgqNnyy3+oJKh/obGl5WTSmZcOfKD9iU+kHv1h6bvdVjm2wQo4s9DPigrq2k8
+ItYYUgsBhW1DDuKaNI946ZnMjyyMp6JdnryGbtPSGZP37VBce43vvM9p0/W8MGQS
+3cyUDtfVf3p+DO+PL2mXPBwL7LO2RsQdgHodnvwKveTkmKUS25AE/Tzr8E1ypqSw
+IQNnHNcy/i/atMH/6Ncz4PvyrG3YVk1CD2gc0kg98u4fWZLvbJnZt4XWSRRj2dkK
+tWEWCu0iMkCK9+3UhY010ely9XB1XD4i4t6/XQsFb+FCYNVlZukhItSKUkYw5CK8
+uuOPHRP7FRuPnZVaW/ZngI9WG3blop24KMqJhisfmFNuqr8ncWtJiP46XaI79sns
+GSJ5ZU7aJBmr81AjiXYt
+=j0Ku
 -----END PGP SIGNATURE-----
