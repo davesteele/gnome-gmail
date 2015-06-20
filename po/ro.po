@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-06-19 23:22-0400\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: Daniel Șerbănescu <cyber19rider@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,36 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1))\n"
 
-#: ../gnome-gmail:254
+#: ../gnome-gmail:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnome-gmail:221
 #, c-format
 msgid "Sending %s"
 msgstr "Se trimite %s"
 
-#: ../gnome-gmail:256
+#: ../gnome-gmail:223
 msgid "Mime message attached"
 msgstr "Mesajul Mime a fost ataşat"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
+#: ../gnome-gmail:238
+#, c-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
+#: ../gnome-gmail:280
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnome-gmail:294
+#, c-format
+msgid "GMail API - %s - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
-msgstr ""
-
-#: ../gnome-gmail:453
+#: ../gnome-gmail:410
 msgid "Error creating message with attachment"
 msgstr ""
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr ""
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Utilizatorul sau parola pentru GMail este nevalida"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "Nu este activat pentru IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Trebuie să „Activați IMAP” în Gmail pentru a trimite atașamente"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "Utilizatorul a anulat \"Trimiteţi la ...\""
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -120,6 +101,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr ""
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr ""
@@ -127,6 +112,19 @@ msgstr ""
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Utilizatorul sau parola pentru GMail este nevalida"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "Nu este activat pentru IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Trebuie să „Activați IMAP” în Gmail pentru a trimite atașamente"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "Utilizatorul a anulat \"Trimiteţi la ...\""
 
 #~ msgid "Your Gmail user name, without the '@gmail.com' part"
 #~ msgstr "Numele de utilizator Gmail, fără partea „@gmail.com”"

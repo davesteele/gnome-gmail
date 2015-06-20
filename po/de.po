@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-06-19 23:22-0400\n"
 "PO-Revision-Date: 2011-10-25 20:19+0000\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,56 +18,36 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 
-#: ../gnome-gmail:254
+#: ../gnome-gmail:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnome-gmail:221
 #, c-format
 msgid "Sending %s"
 msgstr "%s wird gesendet"
 
-#: ../gnome-gmail:256
+#: ../gnome-gmail:223
 msgid "Mime message attached"
 msgstr "MIME-Nachricht angehängt"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Entwürfe"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Der Ort des IMAP-Entwurf-Ordners konnte nicht ermittelt werden"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
-msgstr "Fehler während des Hochladens der Nachricht"
-
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnome-gmail:238
+#, c-format
+msgid "File not found - %s"
 msgstr ""
-"Fehler beim Zugriff auf die Nachricht. Bitte den Entwurfs-Ordner überprüfen."
 
-#: ../gnome-gmail:453
+#: ../gnome-gmail:280
+msgid "No access token"
+msgstr ""
+
+#: ../gnome-gmail:294
+#, c-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnome-gmail:410
 msgid "Error creating message with attachment"
 msgstr "Fehler beim Erstellen der Nachricht mit Anhang"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "ungültige Anmeldedaten"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Ungültiger GMail-Benutzername oder -Passwort"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "nicht für IMAP aktiviert"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Sie müssen in Gmail »IMAP aktivieren«, um Anhänge senden zu können"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "Benutzer hat »Senden an …« abgebrochen."
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -125,6 +105,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Integriert die E-Mail-Dienste von GMail in die GNOME-Arbeitsumgebung"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "GNOME-GMail-Einrichtung für OpenOffice"
@@ -132,6 +116,36 @@ msgstr "GNOME-GMail-Einrichtung für OpenOffice"
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "OpenOffice als bevorzugte E-Mail-Anwendung in GNOMe einrichten"
+
+#~ msgid "Drafts"
+#~ msgstr "Entwürfe"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Der Ort des IMAP-Entwurf-Ordners konnte nicht ermittelt werden"
+
+#~ msgid "Error encountered while uploading the message"
+#~ msgstr "Fehler während des Hochladens der Nachricht"
+
+#~ msgid "Error accessing message. Check the Drafts folder"
+#~ msgstr ""
+#~ "Fehler beim Zugriff auf die Nachricht. Bitte den Entwurfs-Ordner "
+#~ "überprüfen."
+
+#~ msgid "nvalid credentials"
+#~ msgstr "ungültige Anmeldedaten"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Ungültiger GMail-Benutzername oder -Passwort"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "nicht für IMAP aktiviert"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Sie müssen in Gmail »IMAP aktivieren«, um Anhänge senden zu können"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "Benutzer hat »Senden an …« abgebrochen."
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "GMail-Anmeldeinformationen sind unvollständig"

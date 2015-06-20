@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-06-19 23:22-0400\n"
 "PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,36 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 
-#: ../gnome-gmail:254
+#: ../gnome-gmail:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnome-gmail:221
 #, c-format
 msgid "Sending %s"
 msgstr "Wysyłanie %s"
 
-#: ../gnome-gmail:256
+#: ../gnome-gmail:223
 msgid "Mime message attached"
 msgstr "Załączono wiadomość MIME"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Wersje robocze"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Nie można ustalić położenia katalogu Szkice protokołu IMAP"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnome-gmail:238
+#, c-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnome-gmail:280
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnome-gmail:294
+#, c-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnome-gmail:410
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "nieprawidłowe dane uwierzytelniające"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Nieprawidłowa nazwa użytkownika lub hasło usługi Gmail"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "nie włączono dla protokołu IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Należy włączyć protokół IMAP w usłudze Gmail, aby wysyłać załączniki"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "Użytkownik anulował \"Wyślij do...\""
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -122,6 +103,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Integracja usługi Gmail z pulpitem"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Konfiguracja usługi Gmail w OpenOffice.org"
@@ -131,6 +116,29 @@ msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
 "Konfiguracja użycia preferowanego programu pocztowego GNOME przez pakiet "
 "OpenOffice.org"
+
+#~ msgid "Drafts"
+#~ msgstr "Wersje robocze"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Nie można ustalić położenia katalogu Szkice protokołu IMAP"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "nieprawidłowe dane uwierzytelniające"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Nieprawidłowa nazwa użytkownika lub hasło usługi Gmail"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "nie włączono dla protokołu IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr ""
+#~ "Należy włączyć protokół IMAP w usłudze Gmail, aby wysyłać załączniki"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "Użytkownik anulował \"Wyślij do...\""
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "Dane uwierzytelniające usługi Gmail nie są pełne"
