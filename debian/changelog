@@ -1,3 +1,9 @@
+gnome-gmail (1.9.3-1) UNRELEASED; urgency=low
+
+  * Missing keyring introspection package in Mint
+
+ -- David Steele <dsteele@gmail.com>  Sun, 21 Jun 2015 17:27:29 -0400
+
 gnome-gmail (1.9.2-1) unstable; urgency=low
 
   * Italian translation complete (thanks Massimo Branchini).
