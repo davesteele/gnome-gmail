@@ -215,16 +215,34 @@ class GMailAPI( ):
             if header.lower() in self.mail_dict:
                 msg[ header ] = self.mail_dict[ header.lower() ][0]
 
-        fname = os.path.split( self.mail_dict[ "attach" ][0] )[1]
+        try:
+            fname = os.path.split( self.mail_dict[ "attach" ][0] )[1]
 
-        if "subject" not in self.mail_dict:
-            msg[ "Subject" ] = _("Sending %s") % fname
+            if "subject" not in self.mail_dict:
+                msg[ "Subject" ] = _("Sending %s") % fname
+        except KeyError:
+            pass
 
         msg.preamble = _("Mime message attached")
 
-        for filename in self.mail_dict[ 'attach' ]:
-            attachment = self.file2mime( filename )
-            msg.attach( attachment )
+        try:
+            body = self.mail_dict['body'][0]
+
+            mimebody = MIMEMultipart('alternative')
+            mimebody.attach(MIMEText(body))
+            mimebody.attach(MIMEText(self.body2html(), 'html'))
+
+            msg.attach(mimebody)
+
+        except KeyError:
+            pass
+
+        try:
+            for filename in self.mail_dict[ 'attach' ]:
+                attachment = self.file2mime( filename )
+                msg.attach( attachment )
+        except KeyError:
+            pass
 
         self.message_text = msg.as_string()
 
@@ -264,13 +282,55 @@ class GMailAPI( ):
 
         return( attachment )
 
+    def _convert_links(self, text):
+        schemes = [
+            'http', 'https', 'ftp', 'mailto',
+            'about', 'chrome', 'bitcoin', 'callto', 'file', 'geo', 'git',
+            'gtalk', 'irc', 'magnet', 'market', 'skype', 'ssh', 'webcal',
+            'xmpp',
+        ]
+        rgx = "(?P<url>(%s):[^ \),]+[^ \)\],\.'\"])" % '|'.join(schemes)
+        substr = "<a href=\"\g<url>\">\g<url></a>"
+
+        text = re.sub(rgx, substr, text)
+
+        return text
+
+    def body2html(self):
+
+        htmlbody = self.mail_dict['body'][0]
+
+#        htmlbody = htmlbody.replace('&', '&amp;')
+        htmlbody = re.sub('>', '&gt;', htmlbody)
+        htmlbody = re.sub('<', '&lt;', htmlbody)
+        htmlbody = re.sub('\t', '&emsp;', htmlbody)
+
+        htmlbody = self._convert_links(htmlbody)
+
+        while "  " in htmlbody:
+            htmlbody = re.sub("  ", "&nbsp; ", htmlbody)
+
+        while "&nbsp; &nbsp;" in htmlbody:
+            htmlbody = re.sub("&nbsp; &nbsp;", "&nbsp;&nbsp;&nbsp;", htmlbody)
+
+        htmlbody = re.sub("\n", "<br>\n", htmlbody)
+
+        htmlhdr = "<html>\n<head>\n</head>\n<body>\n"
+        htmltail = "\n</body>\n</html>"
+        htmltext = htmlhdr + htmlbody + htmltail
+
+        return htmltext
+
     def _has_attachment( self ):
 
         return( 'attach' in self.mail_dict )
 
+    def _has_body(self):
+        return('body' in self.mail_dict)
+
     def needs_api( self ):
 
-        return( self._has_attachment() )
+        return self._has_attachment() or self._has_body()
 
     def send_mail( self, user, access_token ):
         """ transfer the message to GMail Drafts folder, using the GMail API.
@@ -359,7 +419,7 @@ class GMailURL( ):
         outdict = {}
         for (key, value) in qsdict.iteritems():
             for i in range(0, len(value)):
-                if key.lower() in [ 'to', 'cc', 'bcc' ]:
+                if key.lower() in [ 'to', 'cc', 'bcc', 'body' ]:
                     value[i] = urllib.unquote( value[i]  )
                 else:
                     value[i] = urllib.unquote_plus( value[i]  )

@@ -39,14 +39,14 @@ testCaseStrings = [
 ( "mailto:joe?bcc=sue@example.com", "*&to=joe&bcc=sue%40example.com" ),
 ( "mailto:joe?bcc=sue@example.com,fred", "*&to=joe&bcc=sue%40example.com%2Cfred" ),
 
-( "mailto:joe?body=test message", "*&to=joe&body=test+message" ),
-( "mailto:joe?body=test+message", "*&to=joe&body=test+message" ),
-( "mailto:joe?body=test%20message", "*&to=joe&body=test+message" ),
-( "mailto:joe?body=test%0Amessage", "*&to=joe&body=test%0Amessage" ),
-( "mailto:joe?body=test%0amessage", "*&to=joe&body=test%0Amessage" ),
-
-( "mailto:joe?cc=sue&bcc=fred&body=the body&subject=the subject", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
-( "mailto:joe?bcc=fred&body=the body&subject=the subject&cc=sue", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
+#( "mailto:joe?body=test message", "*&to=joe&body=test+message" ),
+#( "mailto:joe?body=test+message", "*&to=joe&body=test+message" ),
+#( "mailto:joe?body=test%20message", "*&to=joe&body=test+message" ),
+#( "mailto:joe?body=test%0Amessage", "*&to=joe&body=test%0Amessage" ),
+#( "mailto:joe?body=test%0amessage", "*&to=joe&body=test%0Amessage" ),
+#
+#( "mailto:joe?cc=sue&bcc=fred&body=the body&subject=the subject", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
+#( "mailto:joe?bcc=fred&body=the body&subject=the subject&cc=sue", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 
 
 ( "", "https://mail.google.com/mail/b/me" ),
