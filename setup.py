@@ -55,7 +55,11 @@ DistUtilsExtra.auto.setup(
       author='David Steele',
       author_email='dsteele@gmail.com',
       url='https://davesteele.github.io/gnome-gmail/',
-      scripts=['gnome-gmail'],
+      entry_points = {
+          'console_scripts': [
+              'gnome-gmail = gnomegmail:main',
+          ],
+      },
       requires=['gi'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
