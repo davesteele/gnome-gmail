@@ -1,6 +1,7 @@
 #!/usr/bin/python2 -tt
 
-import unittest
+#import unittest
+import nose
 import re
 
 import sys
@@ -8,10 +9,10 @@ sys.path.append( '.' )
 
 import gnomegmail
 
-baseGmailURL = "https://mail.google.com/mail?view=cm&tf=0&fs=1"
+baseGmailURL = "https://mail.google.com/mail/b/me?view=cm&tf=0&fs=1"
 
 testCaseStrings = [
-( "mailto:joe", "https://mail.google.com/mail?view=cm&tf=0&fs=1&to=joe" ),
+( "mailto:joe", "https://mail.google.com/mail/b/me?view=cm&tf=0&fs=1&to=joe" ),
 ( "Mailto:joe", "*&to=joe" ),
 ( "joe", "*&to=joe" ),
 ( "joe@example.com", "*&to=joe%40example.com" ),
@@ -48,37 +49,20 @@ testCaseStrings = [
 ( "mailto:joe?bcc=fred&body=the body&subject=the subject&cc=sue", "*&to=joe&su=the+subject&body=the+body&cc=sue&bcc=fred" ),
 
 
-( "", "https://mail.google.com/" ),
+( "", "https://mail.google.com/mail/b/me" ),
 
-( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/#drafts/" ),
+( "mailto:joe?attach=file.txt", "https://mail.google.com/mail/b/me#drafts/" ),
 
 ( "mailto:joe", "*&to=joe" ),
 ( "mailto:joe", "*&to=joe" ),
  ]
 
-class TestURLCase( unittest.TestCase ):
-	def __init__( self, mailtoURL, gmailURL ):
+def check_urlgen(input, output):
+        gm = gnomegmail.GMailURL( input, "me", False )
+        GmUrl = gm.gmail_url( )
+        nose.tools.eq_( GmUrl, re.sub('^\*', baseGmailURL, output, 1))
 
-		unittest.TestCase.__init__(self,'testRun')
-
-		self.mailtoURL = mailtoURL
-		self.gmailURL = gmailURL
-
-	def testRun( self ):
-		cfg = gnomegmail.ConfigInfo()
-		gm = gnomegmail.GMailURL( self.mailtoURL, cfg, False )
-		GmUrl = gm.gmail_url( )
-		#GmDict = gnomegmail.mailto2dict( self.mailtoURL )
-		#GmUrl = gnomegmail.simpledict2url( GmDict )
-		self.assertEqual( GmUrl, self.gmailURL )
-
-if __name__ == "__main__":
-	suite = unittest.TestSuite()
-	suite.addTest( TestURLCase( "joe", "https://mail.google.com/mail?view=cm&tf=0&fs=1&to=joe" ) )
-
-	for ( mto, gm ) in testCaseStrings:
-		gmr = re.sub( '^\*', baseGmailURL, gm, 1 )
-		suite.addTest( TestURLCase( mto, gmr ) )
-
-	unittest.TextTestRunner().run(suite)
+def test_urlgen():
+    for (sin, sout) in testCaseStrings:
+        yield(check_urlgen, sin, sout)
 
