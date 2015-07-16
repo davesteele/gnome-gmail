@@ -72,7 +72,7 @@ class GMOauth():
     """oauth mechanism per
           https://developers.google.com/accounts/docs/OAuth2InstalledApp
         example at
-          http://google-mail-oauth2-tools.googlecode.com/svn/trunk/python/oauth2.py
+          https://github.com/google/gmail-oauth2-tools/blob/master/python/oauth2.py
         Eg:
           (access, refresh) = GMOauth().generate_tokens( "user@gmail.com" )
     """
