@@ -1,6 +1,6 @@
 # List of source files which contain translatable strings.
 
-gnome-gmail
+gnomegmail.py
 gnomegmail.glade
 gnome-gmail.desktop.in
 gnome-gmail-startup.desktop.in

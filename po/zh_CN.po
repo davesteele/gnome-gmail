@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 23:22-0400\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-03-26 03:45+0000\n"
 "Last-Translator: Lele Long <schemacs@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <zh_CN@li.org>\n"
@@ -18,34 +18,34 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-05-13 16:40+0000\n"
 "X-Generator: Launchpad (build 13037)\n"
 
-#: ../gnome-gmail:126
+#: ../gnomegmail.py:126
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnome-gmail:221
-#, c-format
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr ""
 
-#: ../gnome-gmail:223
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr ""
 
-#: ../gnome-gmail:238
-#, c-format
+#: ../gnomegmail.py:256
+#, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:280
+#: ../gnomegmail.py:340
 msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:294
-#, c-format
+#: ../gnomegmail.py:354
+#, python-format
 msgid "GMail API - %s - %s"
 msgstr ""
 
-#: ../gnome-gmail:410
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr ""
 

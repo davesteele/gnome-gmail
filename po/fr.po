@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 23:22-0400\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2012-01-06 22:38+0000\n"
 "Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,34 +19,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: ../gnome-gmail:126
+#: ../gnomegmail.py:126
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnome-gmail:221
-#, c-format
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "Envoi de %s"
 
-#: ../gnome-gmail:223
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "Message Mime attaché"
 
-#: ../gnome-gmail:238
-#, c-format
+#: ../gnomegmail.py:256
+#, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:280
+#: ../gnomegmail.py:340
 msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:294
-#, c-format
+#: ../gnomegmail.py:354
+#, python-format
 msgid "GMail API - %s - %s"
 msgstr ""
 
-#: ../gnome-gmail:410
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "Erreur de création du message avec pièce jointe"
 
