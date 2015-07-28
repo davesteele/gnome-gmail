@@ -15,7 +15,7 @@ Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
 
 Package: gnome-gmail
 Architecture: all
-Depends: ${misc:Depends}, python (>=2.7), python-gi, libgtk-3-bin (>=3.10),
+Depends: ${misc:Depends}, python2.7, python-gi, libgtk-3-bin (>=3.10),
          gir1.2-secret-1
 Description: support for Gmail as the preferred email application in GNOME
  GNOME Gmail integrates the Gmail web interface into the GNOME environment.
