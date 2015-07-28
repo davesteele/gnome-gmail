@@ -1,4 +1,4 @@
-#!/usr/bin/python2 -tt
+#!/usr/bin/python2.7 -tt
 #
 # Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
