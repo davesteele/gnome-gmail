@@ -1,0 +1,4 @@
+#!/bin/sh
+
+python2.7 /usr/share/gnome-gmail/gnomegmail.py "$@"
+
