@@ -17,5 +17,3 @@ override_dh_auto_build:
 	if [ ${DEBIAN_VERSION} != ${PRODUCT_VERSION} ] ; then exit 1 ; fi
 	dh_auto_build
 
-override_dh_auto_install:
-	python setup.py install --root=debian/gnome-gmail --install-layout=deb --install-lib=/usr/share/gnome-gmail --install-scripts=/usr/share/gnome-gmail
