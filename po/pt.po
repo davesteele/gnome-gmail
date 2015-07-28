@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-05-15 13:08+0000\n"
 "Last-Translator: Almufadado <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,36 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-05-15 13:12+0000\n"
 "X-Generator: Launchpad (build 13037)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "A enviar %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "Mensagem MIME em anexo"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Rascunhos"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Incapaz de determinar a localização da pasta de rascunhos IMAP"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnomegmail.py:340
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "Erro ao criar mensagem com anexo"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "Credenciais Inválidas"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Nome ou palavra-passe inválido(a) do utilizador GMAIL"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "não activado para IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Tem de 'Activar IMAP' no GMAIL para poder enviar anexos"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "\"Enviar para...\" cancelado pelo utilizador"
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -122,6 +103,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Integrar o GMail no sistema do seu computador"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Gnome Gmail - Configurador do OpenOffice"
@@ -129,6 +114,28 @@ msgstr "Gnome Gmail - Configurador do OpenOffice"
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "Configura o OpenOffice para usar Leitor de Email Preferido no GNOME"
+
+#~ msgid "Drafts"
+#~ msgstr "Rascunhos"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Incapaz de determinar a localização da pasta de rascunhos IMAP"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "Credenciais Inválidas"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Nome ou palavra-passe inválido(a) do utilizador GMAIL"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "não activado para IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Tem de 'Activar IMAP' no GMAIL para poder enviar anexos"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "\"Enviar para...\" cancelado pelo utilizador"
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "Credenciais do GMAIL incompletas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-10-26 00:29+0000\n"
 "Last-Translator: Said Marjan Zazai <saidsemail@gmail.com>\n"
 "Language-Team: Pashto <ps@li.org>\n"
@@ -18,53 +18,35 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "ورځي %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr ""
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "ګارليک"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnomegmail.py:340
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
-msgstr ""
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr ""
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr ""
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr ""
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr ""
-
-#: ../gnome-gmail:722
-msgid "User cancelled"
 msgstr ""
 
 #: ../gnomegmail.glade.h:1
@@ -119,6 +101,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr ""
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr ""
@@ -126,3 +112,6 @@ msgstr ""
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
+
+#~ msgid "Drafts"
+#~ msgstr "ګارليک"

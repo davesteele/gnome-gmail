@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2012-01-06 22:38+0000\n"
 "Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,56 +19,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "Envoi de %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "Message Mime attaché"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Brouillons"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
+msgstr ""
 
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Impossible de déterminer l'emplacement IMAP du dossier Brouillons"
+#: ../gnomegmail.py:340
+msgid "No access token"
+msgstr ""
 
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
-msgstr "Une erreur s'est produite lors du chargement le message"
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
-msgstr "Erreur d'accès aux messages. Vérifiez le dossier Brouillons"
-
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "Erreur de création du message avec pièce jointe"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "Identifiants invalides"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Nom d'utilisateur ou mot de passe GMail invalide"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "pas activé pour IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr ""
-"Vous devez cocher 'Activer IMAP' dans Gmail pour envoyer des pièces jointes"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "L'utilisateur a annulé \"Envoyer vers...\""
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -126,6 +106,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Intègre Gmail à votre bureau"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Configurateur de Gnome Gmail pour Open Office"
@@ -133,6 +117,36 @@ msgstr "Configurateur de Gnome Gmail pour Open Office"
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "Configure Open Office pour utiliser l'application préférée Gnome Email"
+
+#~ msgid "Drafts"
+#~ msgstr "Brouillons"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Impossible de déterminer l'emplacement IMAP du dossier Brouillons"
+
+#~ msgid "Error encountered while uploading the message"
+#~ msgstr "Une erreur s'est produite lors du chargement le message"
+
+#~ msgid "Error accessing message. Check the Drafts folder"
+#~ msgstr "Erreur d'accès aux messages. Vérifiez le dossier Brouillons"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "Identifiants invalides"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Nom d'utilisateur ou mot de passe GMail invalide"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "pas activé pour IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr ""
+#~ "Vous devez cocher 'Activer IMAP' dans Gmail pour envoyer des pièces "
+#~ "jointes"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "L'utilisateur a annulé \"Envoyer vers...\""
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "Identifiants GMail incomplets"

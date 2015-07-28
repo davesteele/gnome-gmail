@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: Alberto Domínguez <aldolo.vlc@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,55 +17,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "Enviando %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "Mensaje MIME incluído"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Borradores"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "No se encuentra la carpeta IMAP Borradores"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnomegmail.py:340
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "Error creando el mensaje con el adjunto"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "Credenciales inválidas"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Usuario o contraseña de GMail incorrectas"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "No se ha activado IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Debes activar IMAP en tu cuenta GMail para enviar adjuntos"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "El usuario canceló \"Enviar a...\""
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -121,6 +102,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Integra GMail en tu escritorio"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Configurador de Gnome Gmail Open Office"
@@ -129,6 +114,28 @@ msgstr "Configurador de Gnome Gmail Open Office"
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
 "Configura Open Office para usar la aplicación de correo preferida de Gnome"
+
+#~ msgid "Drafts"
+#~ msgstr "Borradores"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "No se encuentra la carpeta IMAP Borradores"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "Credenciales inválidas"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Usuario o contraseña de GMail incorrectas"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "No se ha activado IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Debes activar IMAP en tu cuenta GMail para enviar adjuntos"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "El usuario canceló \"Enviar a...\""
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "Credenciales de GMail incompletas"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: Jackseen Jeyaluck <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,55 +17,36 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "அனுப்புக %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "தகவல் இணைக்கப்பட்டுள்ளது"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "எழுதபட்டவை"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "IMAP கோப்பு பாதையை தெரிவு செய்ய முடியாதுள்ளது"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnomegmail.py:340
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "கோப்பு இணைக்கப்பட்ட தகவலில் பிழை ஏற்பட்டுள்ளது"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "செல்லுபடியாகாத உரிமம்"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "செல்லுபடியாகாத ஜிமெயில் பயனர் பெயர், கடவுச்சொல்லும்"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "IMAP செயற்படுத்த முடியாதுள்ளது"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "ஜிமெயில் இல் கோப்புகளை இணைக்க  IMAP செயற்படுத்த வேண்டும்"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "பயனர் அனுப்புவதை ரத்து செய்துள்ளார்"
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -121,6 +102,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "உங்கள் திரைபலகையுடன் இணைந்த ஜிமெயில்"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "க்னோம் ஜிமெயில் ஓபன் ஆபீஸ் உறுதிபடுத்தி"
@@ -128,6 +113,28 @@ msgstr "க்னோம் ஜிமெயில் ஓபன் ஆபீஸ்
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "க்னோம் மெயில் லில் ஓபன் ஆபீஸ் ஐ பயன்படுத்த உறுதி செய்க"
+
+#~ msgid "Drafts"
+#~ msgstr "எழுதபட்டவை"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "IMAP கோப்பு பாதையை தெரிவு செய்ய முடியாதுள்ளது"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "செல்லுபடியாகாத உரிமம்"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "செல்லுபடியாகாத ஜிமெயில் பயனர் பெயர், கடவுச்சொல்லும்"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "IMAP செயற்படுத்த முடியாதுள்ளது"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "ஜிமெயில் இல் கோப்புகளை இணைக்க  IMAP செயற்படுத்த வேண்டும்"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "பயனர் அனுப்புவதை ரத்து செய்துள்ளார்"
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "ஜிமெயில் லின் நம்பிக்கை சான்று முடிவடையவில்லை"

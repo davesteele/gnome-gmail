@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-22 20:41-0500\n"
+"POT-Creation-Date: 2015-07-21 20:03-0400\n"
 "PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: daves <dsteele@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,55 +18,36 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: ../gnome-gmail:254
-#, c-format
+#: ../gnomegmail.py:126
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:222
+#, python-format
 msgid "Sending %s"
 msgstr "Надсилання %s"
 
-#: ../gnome-gmail:256
+#: ../gnomegmail.py:226
 msgid "Mime message attached"
 msgstr "Повідомлення mime приєднано"
 
-#: ../gnome-gmail:327
-msgid "Drafts"
-msgstr "Чернетки"
-
-#: ../gnome-gmail:330
-msgid "Unable to determine IMAP Drafts folder location"
-msgstr "Не вдалось визначити адресу теки чернеток IMAP"
-
-#: ../gnome-gmail:334
-msgid "Error encountered while uploading the message"
+#: ../gnomegmail.py:256
+#, python-format
+msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:340
-msgid "Error accessing message. Check the Drafts folder"
+#: ../gnomegmail.py:340
+msgid "No access token"
 msgstr ""
 
-#: ../gnome-gmail:453
+#: ../gnomegmail.py:354
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:470
 msgid "Error creating message with attachment"
 msgstr "Помилка створення повідомлення з вкладенням"
-
-#: ../gnome-gmail:474
-msgid "nvalid credentials"
-msgstr "Помилкові реєстраційні дані"
-
-#: ../gnome-gmail:475
-msgid "Invalid GMail User Name or Password"
-msgstr "Помилкове ім'я або пароль GMail"
-
-#: ../gnome-gmail:476
-msgid "not enabled for IMAP"
-msgstr "не увімкнений протокол IMAP"
-
-#: ../gnome-gmail:477
-msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-msgstr "Щоб надсилати вкладення, увімкніть протокол IMAP в Gmail"
-
-#: ../gnome-gmail:722
-#, fuzzy
-msgid "User cancelled"
-msgstr "«Надіслати до...» скасовано користувачем"
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
@@ -122,6 +103,10 @@ msgstr ""
 msgid "Integrate GMail with your desktop"
 msgstr "Інтегрувати GMail в робоче середовище"
 
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Open Office Configurator"
 msgstr "Конфігуратор Open Office в Gnome Gmail"
@@ -129,6 +114,28 @@ msgstr "Конфігуратор Open Office в Gnome Gmail"
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr "Встановити Open Office основною поштовою програмою в Gnome"
+
+#~ msgid "Drafts"
+#~ msgstr "Чернетки"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Не вдалось визначити адресу теки чернеток IMAP"
+
+#~ msgid "nvalid credentials"
+#~ msgstr "Помилкові реєстраційні дані"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Помилкове ім'я або пароль GMail"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "не увімкнений протокол IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Щоб надсилати вкладення, увімкніть протокол IMAP в Gmail"
+
+#, fuzzy
+#~ msgid "User cancelled"
+#~ msgstr "«Надіслати до...» скасовано користувачем"
 
 #~ msgid "GMail credentials incomplete"
 #~ msgstr "Реєстраційні дані GMail неповні"
