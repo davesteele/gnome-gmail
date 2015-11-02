@@ -58,12 +58,27 @@ class GGError(Exception):
         return repr(self.value)
 
 
-def browser():
+def default_browser():
     app = Gio.app_info_get_default_for_type('x-scheme-handler/https', True)
-    bpath = app.get_filename()
+    return app.get_filename()
+
+
+def set_as_default_mailer():
+    for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
+        if app.get_id() == "gnome-gmail.desktop":
+            app.set_as_default_for_type("x-scheme-handler/mailto")
+
+
+def is_default_mailer():
+    mailer = Gio.app_info_get_default_for_type("x-scheme-handler/mailto", True)
+    return mailer.get_id() == "gnome-gmail.desktop"
+
+
+def browser():
+    brsr_name = default_browser()
 
     for candidate in webbrowser._tryorder:
-        if candidate in bpath:
+        if candidate in brsr_name:
             return webbrowser.get(using=candidate)
 
     return webbrowser.get()
@@ -695,9 +710,7 @@ def do_preferred(glade_file, config):
     config.set_bool('suppress_preferred', preferred_setting)
 
     if response == 1:
-        [app.set_as_default_for_type("x-scheme-handler/mailto")
-         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto")
-         if app.get_id() == "gnome-gmail.desktop"]
+        set_as_default_mailer()
 
 
 def main():
@@ -741,10 +754,7 @@ def main():
         if os.path.isfile(prefix + "/share/gnome-gmail/gnomegmail.glade"):
             glade_file = prefix + "/share/gnome-gmail/gnomegmail.glade"
 
-    emailer = Gio.app_info_get_default_for_type(
-                    "x-scheme-handler/mailto", True
-              )
-    if emailer.get_id() != "gnome-gmail.desktop" \
+    if not is_default_mailer() \
             and not config.get_bool('suppress_preferred'):
         do_preferred(glade_file, config)
 
