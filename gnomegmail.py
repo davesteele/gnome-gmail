@@ -60,19 +60,6 @@ class GGError(Exception):
         return repr(self.value)
 
 
-def default_browser():
-    returnval = None
-
-    if environ == 'GNOME':
-        app = Gio.app_info_get_default_for_type(
-                    'x-scheme-handler/https',
-                    True
-              )
-        returnval = app.get_filename()
-
-    return returnval
-
-
 def set_as_default_mailer():
     if environ == 'GNOME':
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
@@ -94,7 +81,8 @@ def is_default_mailer():
 
 
 def browser():
-    brsr_name = default_browser()
+    cmd = "xdg-settings get default-web-browser"
+    brsr_name = subprocess.check_output(cmd.split()).strip()
 
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:

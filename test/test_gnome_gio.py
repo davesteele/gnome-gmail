@@ -4,11 +4,6 @@ from gi.repository import Gio
 import webbrowser
 import gnomegmail
 
-def test_gio_default_browser():
-    browser = gnomegmail.browser()
-    assert isinstance(browser, webbrowser.BaseBrowser)
-
-
 def test_gio_set_default_mailer():
     gnomegmail.set_as_default_mailer()
 
