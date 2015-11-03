@@ -47,6 +47,8 @@ locale.setlocale(locale.LC_ALL, '')
 gettext.textdomain("gnome-gmail")
 _ = gettext.gettext
 
+environ = os.environ['XDG_CURRENT_DESKTOP']
+
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -59,19 +61,36 @@ class GGError(Exception):
 
 
 def default_browser():
-    app = Gio.app_info_get_default_for_type('x-scheme-handler/https', True)
-    return app.get_filename()
+    returnval = None
+
+    if environ == 'GNOME':
+        app = Gio.app_info_get_default_for_type(
+                    'x-scheme-handler/https',
+                    True
+              )
+        returnval = app.get_filename()
+
+    return returnval
 
 
 def set_as_default_mailer():
-    for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
-        if app.get_id() == "gnome-gmail.desktop":
-            app.set_as_default_for_type("x-scheme-handler/mailto")
+    if environ == 'GNOME':
+        for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
+            if app.get_id() == "gnome-gmail.desktop":
+                app.set_as_default_for_type("x-scheme-handler/mailto")
 
 
 def is_default_mailer():
-    mailer = Gio.app_info_get_default_for_type("x-scheme-handler/mailto", True)
-    return mailer.get_id() == "gnome-gmail.desktop"
+    returnvalue = True
+
+    if environ == 'GNOME':
+        mailer = Gio.app_info_get_default_for_type(
+                    "x-scheme-handler/mailto",
+                    True
+                 )
+        returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+
+    return returnvalue
 
 
 def browser():
@@ -114,7 +133,7 @@ class GMOauth():
                     "login_hint": login_hint,
                }
 
-        code_url= "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+        code_url = "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
 
         saveout = os.dup(1)
         os.close(1)
