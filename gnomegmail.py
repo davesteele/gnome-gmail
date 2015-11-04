@@ -65,6 +65,21 @@ def set_as_default_mailer():
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
+    elif environ == 'KDE':
+        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
+        with open(cfgpath, 'r') as cfp:
+            cfglines = cfp.readlines()
+
+        cfglines = [x for x in cfglines if not 'EmailClient' in x]
+
+        outlines = []
+        for line in cfglines:
+            outlines.append(line)
+            if 'PROFILE_Default' in line:
+                outlines.append("EmailClient[$e]=/usr/bin/gnome-gmail %u\n")
+
+        with open(cfgpath, 'w') as cfp:
+            cfp.writelines(outlines)
 
 
 def is_default_mailer():
@@ -76,6 +91,10 @@ def is_default_mailer():
                     True
                  )
         returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+    elif environ == 'KDE':
+        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
+        with open(cfgpath, 'r') as cfp:
+            returnvalue = 'gnome-gmail' in cfp.read()
 
     return returnvalue
 
