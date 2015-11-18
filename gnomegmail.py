@@ -398,7 +398,7 @@ class GMailAPI():
 
         try:
             urlfp = opener.open(request)
-        except urllib2.HTTPError, e:
+        except urllib2.HTTPError as e:
             raise GGError(_("GMail API - %s - %s") % (e.code, e.msg))
 
         result = urlfp.fp.read()
@@ -525,7 +525,7 @@ class GMailURL():
                 msg_id = gm_api.send_mail(self.from_address,
                                           access)
                 break
-            except GGError, e:
+            except GGError as e:
                 error_str = e.value
 
         if msg_id:

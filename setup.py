@@ -17,7 +17,7 @@ class my_build_i18n(DistUtilsExtra.command.build_i18n.build_i18n):
 
         cmd = "LC_ALL=C /usr/bin/intltool-merge -u -c ./po/.intltool-merge-cache ./po "
         for infile in (x[:-3] for x in os.listdir('.') if x[-3:] == '.in'):
-            print "Processing %s.in to %s" % (infile, infile)
+            print("Processing %s.in to %s" % (infile, infile))
 
             if 'desktop' in infile:
                 flag = '-d'
