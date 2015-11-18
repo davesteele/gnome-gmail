@@ -2,7 +2,7 @@
 import pytest
 from ggfixtures import *
 
-import urllib
+from six.moves import urllib
 
 import gnomegmail
 
@@ -21,16 +21,13 @@ base_mail_dict = {
 )
 @pytest.mark.parametrize("attach", (False, True))
 def test_gmailapi(web_fxt, tmpfile, attach, body):
-
-    print tmpfile
-
     mail_dict = base_mail_dict.copy()
 
     if body:
         mail_dict['body'] = body
 
     if attach:
-        mail_dict['attach'] = [urllib.pathname2url(tmpfile)]
+        mail_dict['attach'] = [urllib.request.pathname2url(tmpfile)]
 
     gmailapi = gnomegmail.GMailAPI(mail_dict)
     gmailapi.form_message()

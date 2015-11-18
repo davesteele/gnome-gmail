@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 import DistUtilsExtra.auto
 import DistUtilsExtra.command
@@ -40,7 +40,7 @@ class my_clean(distutils.command.clean.clean):
             if os.path.exists(infile):
                 os.unlink(infile)
 
-        for dir in ['build/mo', 'build/scripts-2.7']:
+        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4']:
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
@@ -53,7 +53,7 @@ DistUtilsExtra.auto.setup(
       author_email='dsteele@gmail.com',
       url='https://davesteele.github.io/gnome-gmail/',
       scripts = ['gnome-gmail'],
-      requires=['gi'],
+      requires=['gi', 'six'],
       data_files=[
           ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
           ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
@@ -67,6 +67,7 @@ DistUtilsExtra.auto.setup(
       classifiers=[
           'Operating System :: POSIX :: Linux',
           'Programming Language :: Python :: 2',
+          'Programming Language :: Python :: 3.4',
           'Topic :: Communications :: Email',
           'Topic :: Desktop Environment :: Gnome',
           'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',

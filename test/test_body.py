@@ -1,7 +1,7 @@
 #!/usr/bin/python2 -tt
 
 import nose
-import urllib
+from six.moves import urllib
 
 import gnomegmail
 
@@ -102,7 +102,7 @@ def test_urlgen():
         yield(check_needs_api, baseMailtoURL + sin, True)
         if '&' not in sin and '#' not in sin:
             yield(check_body2html, sin, sout)
-        yield(check_body2html, urllib.quote(sin), sout)
+        yield(check_body2html, urllib.parse.quote(sin), sout)
 
 
 def test_null_needs_api():

@@ -11,9 +11,6 @@ GMail web page to handle the directive. It is intended to support GMail as a
 GNOME Preferred Email application """
 
 import sys
-import urlparse
-import urllib
-import urllib2
 import webbrowser
 import os
 import os.path
@@ -40,8 +37,9 @@ from gi.repository import Gio
 from gi.repository import Secret
 from gi.repository import Notify
 from gi.repository import Wnck
+from six.moves import urllib
+from six.moves.configparser import SafeConfigParser
 
-from ConfigParser import SafeConfigParser
 
 locale.setlocale(locale.LC_ALL, '')
 gettext.textdomain("gnome-gmail")
@@ -101,7 +99,8 @@ def is_default_mailer():
 
 def browser():
     cmd = "xdg-settings get default-web-browser"
-    brsr_name = subprocess.check_output(cmd.split()).strip()
+    brsr_name = subprocess.check_output(
+        cmd.split(), universal_newlines=True).strip()
 
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
@@ -127,7 +126,7 @@ class GMOauth():
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
     def get_code(self, login_hint):
-        s = string.lowercase + string.uppercase + string.digits
+        s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
 
         args = {
@@ -140,7 +139,7 @@ class GMOauth():
                     "login_hint": login_hint,
                }
 
-        code_url = "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+        code_url = "%s?%s" % (self.auth_endpoint, urllib.parse.urlencode(args))
 
         saveout = os.dup(1)
         os.close(1)
@@ -158,7 +157,8 @@ class GMOauth():
         code = None
         while True:
             # Look for the state and code in the window title
-            output = subprocess.check_output("xwininfo -root -tree".split())
+            output = subprocess.check_output(
+                "xwininfo -root -tree".split(), universal_newlines=True)
 
             m = re.search("state=%s.code=([^ ]+)" % state, output)
             if m:
@@ -190,8 +190,8 @@ class GMOauth():
                     "grant_type": "authorization_code",
                }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
+        token_page = urllib.request.urlopen(self.token_endpoint,
+                                            urllib.parse.urlencode(args))
 
         return(json.loads(token_page.read()))
 
@@ -204,8 +204,8 @@ class GMOauth():
              "grant_type": "refresh_token",
           }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
+        token_page = urllib.request.urlopen(self.token_endpoint,
+                                            urllib.parse.urlencode(args))
         token_dict = json.loads(token_page.read())
 
         if "access_token" in token_dict:
@@ -290,13 +290,16 @@ class GMailAPI():
         except KeyError:
             pass
 
-        self.message_text = msg.as_string()
+        try:
+            self.message_text = msg.as_bytes()
+        except AttributeError:
+            self.message_text = msg.as_string()
 
     def file2mime(self, filename):
         if(filename.find("file://") == 0):
             filename = filename[7:]
 
-        filepath = urlparse.urlsplit(filename).path
+        filepath = urllib.parse.urlsplit(filename).path
 
         if not os.path.isfile(filepath):
             raise GGError(_("File not found - %s") % filepath)
@@ -308,7 +311,7 @@ class GMailAPI():
 
         maintype, subtype = ctype.split('/', 1)
 
-        attach_file = open(filepath, 'rb')
+        attach_file = open(filepath, 'r' if maintype == 'text' else 'rb')
 
         if maintype == 'text':
             attachment = MIMEText(attach_file.read(), _subtype=subtype)
@@ -387,10 +390,10 @@ class GMailAPI():
         if access_token is None:
             raise GGError(_("No access token"))
 
-        url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib2.quote(user)
+        url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib.parse.quote(user)
 
-        opener = urllib2.build_opener(urllib2.HTTPSHandler)
-        request = urllib2.Request(url, data=self.message_text)
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
+        request = urllib.request.Request(url, data=self.message_text)
         request.add_header('Content-Type', 'message/rfc822')
         request.add_header('Content-Length', str(len(self.message_text)))
         request.add_header('Authorization', "Bearer " + access_token)
@@ -398,10 +401,10 @@ class GMailAPI():
 
         try:
             urlfp = opener.open(request)
-        except urllib2.HTTPError as e:
+        except urllib.error.HTTPError as e:
             raise GGError(_("GMail API - %s - %s") % (e.code, e.msg))
 
-        result = urlfp.fp.read()
+        result = urlfp.fp.read().decode('utf-8')
         json_result = json.loads(result)
         id = json_result['message']['id']
 
@@ -425,7 +428,7 @@ class GMailURL():
 
         if dicttag in maildict:
             tourl = tourl + "&" + urltag + "=" + \
-                urllib.quote_plus(maildict[dicttag][0])
+                urllib.parse.quote_plus(maildict[dicttag][0])
 
         return(tourl)
 
@@ -433,7 +436,7 @@ class GMailURL():
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
-        usplit = urlparse.urlsplit(self.mailto_url, "mailto")
+        usplit = urllib.parse.urlsplit(self.mailto_url, "mailto")
 
         path = usplit.path
 
@@ -454,7 +457,7 @@ class GMailURL():
         # valid in email addresses anyway.
         address = re.sub("^/+", "", address)
 
-        qsdict = urlparse.parse_qs(query_string)
+        qsdict = urllib.parse.parse_qs(query_string)
 
         qsdict['to'] = [address]
 
@@ -462,12 +465,12 @@ class GMailURL():
             qsdict['attach'] = qsdict['attachment']
 
         outdict = {}
-        for (key, value) in qsdict.iteritems():
+        for (key, value) in qsdict.items():
             for i in range(0, len(value)):
                 if key.lower() in ['to', 'cc', 'bcc', 'body']:
-                    value[i] = urllib.unquote(value[i])
+                    value[i] = urllib.parse.unquote(value[i])
                 else:
-                    value[i] = urllib.unquote_plus(value[i])
+                    value[i] = urllib.parse.unquote_plus(value[i])
 
             outdict[key.lower()] = value
 
