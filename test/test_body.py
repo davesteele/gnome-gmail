@@ -2,7 +2,7 @@
 
 import nose
 import re
-import urllib
+from six.moves import urllib
 
 
 import sys
@@ -101,7 +101,7 @@ def test_urlgen():
         yield(check_needs_api, baseMailtoURL + sin, True)
         if not '&' in sin and not '#' in sin:
             yield(check_body2html, sin, sout)
-        yield(check_body2html, urllib.quote(sin), sout)
+        yield(check_body2html, urllib.parse.quote(sin), sout)
 
 def test_null_needs_api():
         check_needs_api("mailto:joe", False)
