@@ -1,14 +1,13 @@
 #!/usr/bin/python2 -tt
 
 import nose
-import re
 import urllib
 
+import gnomegmail
 
 import sys
-sys.path.append( '.' )
+sys.path.append('.')
 
-import gnomegmail
 
 baseMailtoURL = "mailto:joe?body="
 
@@ -66,12 +65,11 @@ testCaseStrings = [
 
     ("a>b", "a&gt;b"),
     ("a<b", "a&lt;b"),
-#    ("a&b", "a&amp;b"),
-
 
     ("a\nb", "a<br>\nb"),
     ("a\nb\nc", "a<br>\nb<br>\nc"),
  ]
+
 
 def get_gmapi(input):
         gm = gnomegmail.GMailURL(input, "me", False)
@@ -80,6 +78,7 @@ def get_gmapi(input):
         gmapi = gnomegmail.GMailAPI(mail_dict)
 
         return gmapi
+
 
 def check_body2html(input, output):
         input = baseMailtoURL + input
@@ -90,31 +89,31 @@ def check_body2html(input, output):
 
         nose.tools.assert_in(output, html_body)
 
+
 def check_needs_api(mailto, result):
 
         gmapi = get_gmapi(mailto)
 
         nose.tools.assert_true(gmapi.needs_api() is result)
 
+
 def test_urlgen():
     for (sin, sout) in testCaseStrings:
         yield(check_needs_api, baseMailtoURL + sin, True)
-        if not '&' in sin and not '#' in sin:
+        if '&' not in sin and '#' not in sin:
             yield(check_body2html, sin, sout)
         yield(check_body2html, urllib.quote(sin), sout)
+
 
 def test_null_needs_api():
         check_needs_api("mailto:joe", False)
         check_needs_api("mailto:joe?subject=hi", False)
 
+
 def test_body_needs_api():
         check_needs_api("mailto:joe?body=%20", True)
+
 
 def test_attach_needs_api():
         check_needs_api("mailto:joe?attach=file", True)
         check_needs_api("mailto:joe?attachment=file", True)
-
-
-
-
-
