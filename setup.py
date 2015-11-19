@@ -7,9 +7,6 @@ import os
 import shutil
 
 import sys
-if not sys.version_info[0] == 2:
-    print "Sorry, Python 3 is not supported (yet)"
-    sys.exit(1)
 
 class my_build_i18n(DistUtilsExtra.command.build_i18n.build_i18n):
     def run(self):

@@ -776,9 +776,11 @@ def main():
              )
 
     # anyone know how to do this right?
-    for prefix in ['/usr/local', '/usr']:
-        if os.path.isfile(prefix + "/share/gnome-gmail/gnomegmail.glade"):
-            glade_file = prefix + "/share/gnome-gmail/gnomegmail.glade"
+    glade_suffix = "/share/gnome-gmail/gnomegmail.glade"
+    glade_file = os.path.join('/usr', glade_suffix)
+    for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
+        if os.path.isfile(gpath):
+            glade_file = gpath
 
     if not is_default_mailer() \
             and not config.get_bool('suppress_preferred'):
