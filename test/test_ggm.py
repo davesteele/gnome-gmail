@@ -4,8 +4,6 @@ import nose
 import re
 
 import gnomegmail
-import sys
-sys.path.append('.')
 
 
 baseGmailURL = "https://mail.google.com/mail/b/me?view=cm&tf=0&fs=1"
@@ -44,8 +42,6 @@ testCaseStrings = [
     ("mailto:joe?bcc=sue@example.com", "*&to=joe&bcc=sue%40example.com"),
     ("mailto:joe?bcc=sue@example.com,fred",
      "*&to=joe&bcc=sue%40example.com%2Cfred"),
-
-
 
     ("", "https://mail.google.com/mail/b/me"),
 

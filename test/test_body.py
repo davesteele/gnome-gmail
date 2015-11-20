@@ -24,6 +24,7 @@ testCaseStrings = [
         "<a href=\"http://example.com\">http://example.com</a>"),
     ("http://example.com#1",
         "<a href=\"http://example.com#1\">http://example.com#1</a>"),
+    # flake8: noqa
     ("http://example.com?a=b&c=d",
         "<a href=\"http://example.com?a=b&c=d\">http://example.com?a=b&c=d</a>"),
     ("(http://example.com/)",

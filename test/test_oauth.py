@@ -1,7 +1,6 @@
 
-
 import pytest
-from ggfixtures import *
+from ggfixtures import *        # flake8: noqa
 
 import gnomegmail
 
@@ -27,4 +26,3 @@ def test_oauth_access_iter(oauth_fxt, access, refresh):
     oauth = gnomegmail.GMOauth()
     for aout, rout in oauth.access_iter(access, refresh, 'login'):
         pass
-    pass

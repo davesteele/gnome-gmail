@@ -68,7 +68,7 @@ def set_as_default_mailer():
         with open(cfgpath, 'r') as cfp:
             cfglines = cfp.readlines()
 
-        cfglines = [x for x in cfglines if not 'EmailClient' in x]
+        cfglines = [x for x in cfglines if 'EmailClient' not in x]
 
         outlines = []
         for line in cfglines:
@@ -390,7 +390,8 @@ class GMailAPI():
         if access_token is None:
             raise GGError(_("No access token"))
 
-        url = "https://www.googleapis.com/upload/gmail/v1/users/%s/drafts?uploadType=media" % urllib.parse.quote(user)
+        url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
+               "?uploadType=media") % urllib.parse.quote(user)
 
         opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
         request = urllib.request.Request(url, data=self.message_text)
@@ -668,7 +669,8 @@ class GgConfig(SafeConfigParser):
 
 
 class Oauth2Keyring():
-    # per https://people.gnome.org/~stefw/libsecret-docs/py-examples.html#py-schema-example
+    # per
+    # https://people.gnome.org/~stefw/libsecret-docs/py-examples.html#py-schema-example
     TOKEN_SCHEMA = Secret.Schema.new(
         'com.github.davesteele.oauth2',
         Secret.SchemaFlags.NONE,
@@ -758,9 +760,11 @@ def main():
         #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
         #     the default mail program.
         # suppress_account_selection
-        #     If True ('1', 'yes'...) don't ask account to use, if you have only one.
+        #     If True ('1', 'yes'...) don't ask account to use, if you have
+        #         only one.
         # new_browser
-        #     If True ('1', 'yes'...) forcedly open Gmail in a new browser window.
+        #     If True ('1', 'yes'...) forcedly open Gmail in a new browser
+        #         window.
         # last_email
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.

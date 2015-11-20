@@ -1,6 +1,6 @@
 
 import gnomegmail
-from ggfixtures import *
+from ggfixtures import *        # flake8: noqa
 
 
 def test_config_fixture(config_fxt):

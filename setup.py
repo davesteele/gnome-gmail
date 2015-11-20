@@ -40,42 +40,43 @@ class my_clean(distutils.command.clean.clean):
             if os.path.exists(infile):
                 os.unlink(infile)
 
-        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4']:
+        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4'
+                    'build/scripts-3.5']:
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
 
 DistUtilsExtra.auto.setup(
-      name='gnome-gmail',
-      version='1.9.3',
-      description='support for Gmail as the preferred email application in GNOME',
-      author='David Steele',
-      author_email='dsteele@gmail.com',
-      url='https://davesteele.github.io/gnome-gmail/',
-      scripts = ['gnome-gmail'],
-      requires=['gi', 'six'],
-      data_files=[
-          ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/32x32/apps', ['icons/32x32/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
-          ('/usr/share/applications', ['gnome-gmail.desktop']),
-          ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
-          ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
-                 ],
-      classifiers=[
-          'Operating System :: POSIX :: Linux',
-          'Programming Language :: Python :: 2',
-          'Programming Language :: Python :: 3.4',
-          'Topic :: Communications :: Email',
-          'Topic :: Desktop Environment :: Gnome',
-          'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
-          'Intended Audience :: End Users/Desktop',
-                  ],
-      cmdclass={
-          'build_i18n': my_build_i18n,
-          'clean': my_clean,
-               },
+    name='gnome-gmail',
+    version='1.9.3',
+    description='support for Gmail as the preferred email application in GNOME',
+    author='David Steele',
+    author_email='dsteele@gmail.com',
+    url='https://davesteele.github.io/gnome-gmail/',
+    scripts = ['gnome-gmail'],
+    requires=['gi', 'six'],
+    data_files=[
+        ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
+        ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
+        ('/usr/share/icons/hicolor/32x32/apps', ['icons/32x32/gnome-gmail.png']),
+        ('/usr/share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
+        ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
+        ('/usr/share/applications', ['gnome-gmail.desktop']),
+        ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
+        ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
+               ],
+    classifiers=[
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3.4',
+        'Topic :: Communications :: Email',
+        'Topic :: Desktop Environment :: Gnome',
+        # flake8: noqa
+        'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
+        'Intended Audience :: End Users/Desktop',
+                ],
+    cmdclass={
+        'build_i18n': my_build_i18n,
+        'clean': my_clean,
+             },
      )
-

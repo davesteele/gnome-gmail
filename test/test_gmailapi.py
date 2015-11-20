@@ -1,6 +1,6 @@
 
 import pytest
-from ggfixtures import *
+from ggfixtures import *        # flake8: noqa
 
 from six.moves import urllib
 
@@ -9,7 +9,6 @@ import gnomegmail
 base_mail_dict = {
     'to': "to@example.com",
     'from': "from@example.com",
-
 }
 
 

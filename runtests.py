@@ -3137,4 +3137,4 @@ if __name__ == "__main__":
     sys.meta_path.insert(0, importer)
 
     entry = "import pytest; raise SystemExit(pytest.cmdline.main())"
-    do_exec(entry, locals()) # noqa
+    do_exec(entry, locals()) # flake8: noqa

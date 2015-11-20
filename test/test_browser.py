@@ -1,7 +1,4 @@
 
-
-from ggfixtures import *
-
 import gnomegmail
 
 
