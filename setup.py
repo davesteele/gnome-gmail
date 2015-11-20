@@ -13,7 +13,11 @@ langs = sorted([os.path.split(x)[-1][:-3] for x in pos])
 
 
 def modir(lang):
-    return os.path.join(podir, lang)
+    mobase = "build/mo"
+    if not os.path.exists(mobase):
+        os.mkdir(mobase)
+
+    return os.path.join(mobase, lang)
 
 
 def rmmo(lang):
@@ -108,8 +112,6 @@ class my_clean(clean):
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
-        for lang in langs:
-            rmmo(lang)
 
 setup(
     name='gnome-gmail',
