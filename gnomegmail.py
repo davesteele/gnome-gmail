@@ -423,16 +423,6 @@ class GMailURL():
 
         self.mail_dict = self.mailto2dict()
 
-    def append_url(self, tourl, urltag, maildict, dicttag):
-        """ Given a GMail URL underconstruction and the URL tag for the
-        current mailto dicttag, add the parameter to the URL """
-
-        if dicttag in maildict:
-            tourl = tourl + "&" + urltag + "=" + \
-                urllib.parse.quote_plus(maildict[dicttag][0])
-
-        return(tourl)
-
     def mailto2dict(self):
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
@@ -476,25 +466,6 @@ class GMailURL():
             outdict[key.lower()] = value
 
         return(outdict)
-
-    def standard_gmail_url(self):
-        """ If there is no attachment reference, create a direct GMail
-        URL which will create the message """
-
-        dct = self.mail_dict
-
-        tourl = "https://mail.google.com/mail/b/%s?view=cm&tf=0&fs=1" % \
-                self.from_address
-
-        tourl = self.append_url(tourl, "to", dct, "to")
-        tourl = self.append_url(tourl, "su", dct, "subject")
-        tourl = self.append_url(tourl, "body", dct, "body")
-        tourl = self.append_url(tourl, "cc", dct, "cc")
-        tourl = self.append_url(tourl, "bcc", dct, "bcc")
-        tourl = self.append_url(tourl, "references", dct, "references")
-        tourl = self.append_url(tourl, "in-reply-to", dct, "in-reply-to")
-
-        return(tourl)
 
     def simple_gmail_url(self):
         """ url to use if there is no mailto url """
@@ -545,10 +516,8 @@ class GMailURL():
         by this instance """
         if(len(self.mailto_url) == 0):
             gmailurl = self.simple_gmail_url()
-        elif GMailAPI(self.mail_dict).needs_api():
-            gmailurl = self.api_gmail_url()
         else:
-            gmailurl = self.standard_gmail_url()
+            gmailurl = self.api_gmail_url()
 
         return(gmailurl)
 
