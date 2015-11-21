@@ -1,0 +1,114 @@
+# Uyghur translation for gnome-gmail
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-19 23:17-0500\n"
+"PO-Revision-Date: 2015-10-07 07:17+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uyghur <ug@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2015-11-21 14:56+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
+
+#: ../gnomegmail.py:169
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:268
+#, python-format
+msgid "Sending %s"
+msgstr ""
+
+#: ../gnomegmail.py:272
+msgid "Mime message attached"
+msgstr ""
+
+#: ../gnomegmail.py:305
+#, python-format
+msgid "File not found - %s"
+msgstr ""
+
+#: ../gnomegmail.py:391
+msgid "No access token"
+msgstr ""
+
+#: ../gnomegmail.py:406
+#, python-format
+msgid "GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:518
+msgid "Error creating message with attachment"
+msgstr ""
+
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr ""
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr ""
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr ""
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr ""
+
+#: ../gnomegmail.glade.h:5
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+
+#: ../gnomegmail.glade.h:7
+msgid "User Name"
+msgstr ""
+
+#: ../gnomegmail.glade.h:8
+msgid "Password"
+msgstr ""
+
+#: ../gnomegmail.glade.h:9
+msgid "Remember Password"
+msgstr ""
+
+#: ../gnomegmail.glade.h:10
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+
+#: ../gnomegmail.glade.h:11
+msgid "Don't ask again"
+msgstr ""
+
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
+#: ../gnome-gmail-startup.desktop.in.h:1
+msgid "Gnome Gmail Open Office Configurator"
+msgstr ""
+
+#: ../gnome-gmail-startup.desktop.in.h:2
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr ""
