@@ -311,20 +311,19 @@ class GMailAPI():
 
         maintype, subtype = ctype.split('/', 1)
 
-        attach_file = open(filepath, 'r' if maintype == 'text' else 'rb')
+        with open(filepath, 'r' if maintype == 'text' else 'rb') as fp:
+            attach_data = fp.read()
 
         if maintype == 'text':
-            attachment = MIMEText(attach_file.read(), _subtype=subtype)
+            attachment = MIMEText(attach_data, _subtype=subtype)
         elif maintype == 'image':
-            attachment = MIMEImage(attach_file.read(), _subtype=subtype)
+            attachment = MIMEImage(attach_data, _subtype=subtype)
         elif maintype == 'audio':
-            attachment = MIMEAudio(attach_file.read(), _subtype=subtype)
+            attachment = MIMEAudio(attach_data, _subtype=subtype)
         else:
             attachment = MIMEBase(maintype, subtype)
-            attachment.set_payload(attach_file.read())
+            attachment.set_payload(attach_data)
             encoders.encode_base64(attachment)
-
-        attach_file.close()
 
         attachment.add_header(
                         'Content-Disposition', 'attachment',
