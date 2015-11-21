@@ -1,0 +1,50 @@
+#!/usr/bin/python
+
+import os
+import subprocess
+import string
+import re
+import json
+
+lcodes = sorted([x[:-3] for x in os.listdir('po') if x[-3:] == ".po"])
+
+
+def get_lang(lcode):
+    cmd = "isoquery -i 639-3 " + lcode[0:2]
+    out = subprocess.check_output(cmd.split()).strip()
+
+    return out.split()[5]
+
+def percent_done(lcode):
+    cmd = "msgfmt --statistics po/%s.po" % lcode
+    out = subprocess.check_output(cmd, shell=True, stderr=subprocess.STDOUT)
+
+    tokens = out.split()
+    translated = string.atoi(tokens[0])
+    untranslated = string.atoi(tokens[3])
+
+    percent = int(100 * translated / (translated + untranslated))
+
+    return percent
+
+def get_translator(lcode):
+    with open("po/%s.po" % lcode, 'r') as fl:
+        for line in fl.readlines():
+            match = re.search("^\"Last-Translator: ([^<]+)", line)
+            if match and "FULL NAME" not in match.group(1):
+                return match.group(1)
+
+    return ""
+
+stats = []
+for lcode in lcodes:
+    stats.append({
+        'code': lcode,
+        'language': get_lang(lcode),
+        'percent': percent_done(lcode),
+        'translator': get_translator(lcode),
+    })
+
+
+
+print json.dumps({'polist': stats}, sort_keys=True, indent=4)

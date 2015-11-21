@@ -1,0 +1,166 @@
+{
+    "polist": [
+        {
+            "code": "da", 
+            "language": "Danish", 
+            "percent": 0, 
+            "translator": ""
+        }, 
+        {
+            "code": "de", 
+            "language": "German", 
+            "percent": 72, 
+            "translator": "Mario Bl\u00e4ttermann "
+        }, 
+        {
+            "code": "el_GR", 
+            "language": "Greek,", 
+            "percent": 40, 
+            "translator": ""
+        }, 
+        {
+            "code": "es", 
+            "language": "Spanish", 
+            "percent": 63, 
+            "translator": "Alberto Dom\u00ednguez "
+        }, 
+        {
+            "code": "et", 
+            "language": "Estonian", 
+            "percent": 27, 
+            "translator": "lyyser "
+        }, 
+        {
+            "code": "fa", 
+            "language": "Persian", 
+            "percent": 22, 
+            "translator": "Danial Behzadi "
+        }, 
+        {
+            "code": "fi", 
+            "language": "Finnish", 
+            "percent": 0, 
+            "translator": ""
+        }, 
+        {
+            "code": "fr", 
+            "language": "French", 
+            "percent": 72, 
+            "translator": "Mathieu LEFEBVRE Mathdabomb "
+        }, 
+        {
+            "code": "hu", 
+            "language": "Hungarian", 
+            "percent": 54, 
+            "translator": "\u00dar Bal\u00e1zs "
+        }, 
+        {
+            "code": "hy", 
+            "language": "Armenian", 
+            "percent": 27, 
+            "translator": "Serj Safarian "
+        }, 
+        {
+            "code": "id", 
+            "language": "Indonesian", 
+            "percent": 72, 
+            "translator": "dhardiputra "
+        }, 
+        {
+            "code": "it", 
+            "language": "Italian", 
+            "percent": 77, 
+            "translator": "Massimo Branchini "
+        }, 
+        {
+            "code": "ja", 
+            "language": "Japanese", 
+            "percent": 4, 
+            "translator": "bigriver9 "
+        }, 
+        {
+            "code": "ms", 
+            "language": "Malay", 
+            "percent": 72, 
+            "translator": "abuyop "
+        }, 
+        {
+            "code": "pl", 
+            "language": "Polish", 
+            "percent": 63, 
+            "translator": "Piotr Dr\u0105g "
+        }, 
+        {
+            "code": "ps", 
+            "language": "Pushto", 
+            "percent": 9, 
+            "translator": "Said Marjan Zazai "
+        }, 
+        {
+            "code": "pt", 
+            "language": "Portuguese", 
+            "percent": 68, 
+            "translator": "Almufadado "
+        }, 
+        {
+            "code": "pt_BR", 
+            "language": "Portuguese", 
+            "percent": 72, 
+            "translator": "Pablo Almeida "
+        }, 
+        {
+            "code": "ro", 
+            "language": "Romanian", 
+            "percent": 36, 
+            "translator": "Daniel \u0218erb\u0103nescu "
+        }, 
+        {
+            "code": "sv", 
+            "language": "Swedish", 
+            "percent": 72, 
+            "translator": "__a "
+        }, 
+        {
+            "code": "ta", 
+            "language": "Tamil", 
+            "percent": 63, 
+            "translator": "Jackseen Jeyaluck "
+        }, 
+        {
+            "code": "ta_LK", 
+            "language": "Tamil", 
+            "percent": 63, 
+            "translator": ""
+        }, 
+        {
+            "code": "tr", 
+            "language": "Turkish", 
+            "percent": 63, 
+            "translator": ""
+        }, 
+        {
+            "code": "uk", 
+            "language": "Ukrainian", 
+            "percent": 63, 
+            "translator": ""
+        }, 
+        {
+            "code": "vi", 
+            "language": "Vietnamese", 
+            "percent": 63, 
+            "translator": "L\u00ea Tr\u01b0\u1eddng An "
+        }, 
+        {
+            "code": "zh_CN", 
+            "language": "Chinese", 
+            "percent": 22, 
+            "translator": "Lele Long "
+        }, 
+        {
+            "code": "zh_TW", 
+            "language": "Chinese", 
+            "percent": 50, 
+            "translator": "Po-Chun Huang "
+        }
+    ]
+}

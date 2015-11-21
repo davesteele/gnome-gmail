@@ -24,6 +24,12 @@ cd man
 ./makeman
 cd ..
 
+git checkout master -- po
+git reset HEAD po
+./postats >postats.json
+rm -rf po messages.mo
+
+
 cd repo
 ./clearit
 ./addit
