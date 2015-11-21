@@ -190,10 +190,10 @@ class GMOauth():
                     "grant_type": "authorization_code",
                }
 
-        token_page = urllib.request.urlopen(self.token_endpoint,
-                                            urllib.parse.urlencode(args))
+        token_page = urllib.request.urlopen(
+            self.token_endpoint, urllib.parse.urlencode(args).encode("utf-8"))
 
-        return(json.loads(token_page.read()))
+        return(json.loads(token_page.read().decode("utf-8")))
 
     def get_access_from_refresh(self, refresh_token):
 
@@ -204,9 +204,9 @@ class GMOauth():
              "grant_type": "refresh_token",
           }
 
-        token_page = urllib.request.urlopen(self.token_endpoint,
-                                            urllib.parse.urlencode(args))
-        token_dict = json.loads(token_page.read())
+        token_page = urllib.request.urlopen(
+            self.token_endpoint, urllib.parse.urlencode(args).encode("utf-8"))
+        token_dict = json.loads(token_page.read().decode("utf-8"))
 
         if "access_token" in token_dict:
             return(token_dict["access_token"])
