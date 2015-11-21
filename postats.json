@@ -19,8 +19,26 @@
             "translator": "Po-Chun Huang "
         }, 
         {
+            "code": "hr", 
+            "language": "Croatian", 
+            "percent": 63, 
+            "translator": "kvaju "
+        }, 
+        {
+            "code": "cs", 
+            "language": "Czech", 
+            "percent": 50, 
+            "translator": "Kuvaly [LCT] "
+        }, 
+        {
             "code": "da", 
             "language": "Danish", 
+            "percent": 0, 
+            "translator": ""
+        }, 
+        {
+            "code": "nl", 
+            "language": "Dutch", 
             "percent": 0, 
             "translator": ""
         }, 
@@ -121,6 +139,18 @@
             "translator": "Daniel \u0218erb\u0103nescu "
         }, 
         {
+            "code": "ru", 
+            "language": "Russian", 
+            "percent": 72, 
+            "translator": "Kirill Babeev "
+        }, 
+        {
+            "code": "si", 
+            "language": "Sinhala", 
+            "percent": 0, 
+            "translator": ""
+        }, 
+        {
             "code": "es", 
             "language": "Spanish", 
             "percent": 63, 
@@ -148,6 +178,12 @@
             "code": "tr", 
             "language": "Turkish", 
             "percent": 63, 
+            "translator": ""
+        }, 
+        {
+            "code": "ug", 
+            "language": "Uighur", 
+            "percent": 0, 
             "translator": ""
         }, 
         {
