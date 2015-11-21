@@ -3,7 +3,6 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# daves <dsteele@gmail.com>, 2011.
 # Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>, 2012.
 msgid ""
 msgstr ""
