@@ -45,6 +45,6 @@ for lcode in lcodes:
         'translator': get_translator(lcode),
     })
 
-
+stats = sorted(stats, key=lambda x: x['language'])
 
 print json.dumps({'polist': stats}, sort_keys=True, indent=4)
