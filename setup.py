@@ -15,7 +15,7 @@ langs = sorted([os.path.split(x)[-1][:-3] for x in pos])
 def modir(lang):
     mobase = "build/mo"
     if not os.path.exists(mobase):
-        os.mkdir(mobase)
+        os.makedirs(mobase)
 
     return os.path.join(mobase, lang)
 
