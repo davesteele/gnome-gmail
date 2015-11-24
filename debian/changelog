@@ -1,3 +1,9 @@
+gnome-gmail (1.9.3-1+deb8u1) stable; urgency=medium
+
+  * Update from 1.8.3-1 to support OAuth2 - Closes: 805926
+
+ -- David Steele <dsteele@gmail.com>  Mon, 23 Nov 2015 21:47:26 -0500
+
 gnome-gmail (1.9.3-1) unstable; urgency=low
 
   * Missing keyring introspection package in Mint.
