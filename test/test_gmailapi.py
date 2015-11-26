@@ -1,6 +1,5 @@
 
 import pytest
-from ggfixtures import *        # flake8: noqa
 
 from six.moves import urllib
 

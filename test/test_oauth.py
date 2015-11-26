@@ -1,6 +1,5 @@
 
 import pytest
-from ggfixtures import *        # flake8: noqa
 
 import gnomegmail
 

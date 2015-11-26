@@ -1,7 +1,6 @@
 
 import pytest
 from mock import patch, Mock
-from ggfixtures import *        # flake8: noqa
 
 import gnomegmail
 
