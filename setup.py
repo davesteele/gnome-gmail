@@ -115,7 +115,7 @@ class my_clean(clean):
 
 setup(
     name='gnome-gmail',
-    version='1.9.3',
+    version='1.9.4',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
