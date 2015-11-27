@@ -1,12 +1,10 @@
 #!/usr/bin/python2 -tt
 
 import nose
+import pytest
 from six.moves import urllib
 
 import gnomegmail
-
-import sys
-sys.path.append('.')
 
 
 baseMailtoURL = "mailto:joe?body="
@@ -81,16 +79,6 @@ def get_gmapi(input):
         return gmapi
 
 
-def check_body2html(input, output):
-        input = baseMailtoURL + input
-
-        gmapi = get_gmapi(input)
-
-        html_body = gmapi.body2html()
-
-        nose.tools.assert_in(output, html_body)
-
-
 def check_needs_api(mailto, result):
 
         gmapi = get_gmapi(mailto)
@@ -98,23 +86,37 @@ def check_needs_api(mailto, result):
         nose.tools.assert_true(gmapi.needs_api() is result)
 
 
-def test_urlgen():
-    for (sin, sout) in testCaseStrings:
-        yield(check_needs_api, baseMailtoURL + sin, True)
-        if '&' not in sin and '#' not in sin:
-            yield(check_body2html, sin, sout)
-        yield(check_body2html, urllib.parse.quote(sin), sout)
+@pytest.mark.parametrize("body, result", testCaseStrings)
+def test_needs_api_yes(body, result):
+    gmapi = get_gmapi(baseMailtoURL + body)
+
+    assert gmapi.needs_api() is True
 
 
-def test_null_needs_api():
-        check_needs_api("mailto:joe", False)
-        check_needs_api("mailto:joe?subject=hi", False)
+@pytest.mark.parametrize("body, result", testCaseStrings)
+@pytest.mark.parametrize("encbody", (False, True))
+def test_body2html(encbody, body, result):
+
+    if encbody:
+        body = urllib.parse.quote(body)
+    elif '&' in body or '#' in body:
+        pytest.skip("Don't test unencoded bodies with URL special chars")
+
+    gmapi = get_gmapi(baseMailtoURL + body)
+
+    html_body = gmapi.body2html()
+
+    assert result in html_body
 
 
-def test_body_needs_api():
-        check_needs_api("mailto:joe?body=%20", True)
+@pytest.mark.parametrize("mailto, needs_api", (
+    ("mailto:joe", False),
+    ("mailto:joe?subject=hi", False),
+    ("mailto:joe?body=%20", True),
+    ("mailto:joe?attach=file", True),
+    ("mailto:joe?attachment=file", True),
+))
+def test_needs_api(mailto, needs_api):
+    gmapi = get_gmapi(mailto)
 
-
-def test_attach_needs_api():
-        check_needs_api("mailto:joe?attach=file", True)
-        check_needs_api("mailto:joe?attachment=file", True)
+    assert gmapi.needs_api() == needs_api
