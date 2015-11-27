@@ -387,7 +387,7 @@ class GMailAPI():
         Return a message ID that can be used to reference the mail via URL"""
 
         if access_token is None:
-            raise GGError(_("No access token"))
+            raise GGError(_("Unable to authenticate with GMail"))
 
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
                "?uploadType=media") % urllib.parse.quote(user)
@@ -402,7 +402,8 @@ class GMailAPI():
         try:
             urlfp = opener.open(request)
         except urllib.error.HTTPError as e:
-            raise GGError(_("GMail API - %s - %s") % (e.code, e.msg))
+            raise GGError(_("Error returned from the GMail API - %s - %s") %
+                          (e.code, e.msg))
 
         result = urlfp.fp.read().decode('utf-8')
         json_result = json.loads(result)
