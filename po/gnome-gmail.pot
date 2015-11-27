@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-19 23:17-0500\n"
+"POT-Creation-Date: 2015-11-27 10:36-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,16 +35,16 @@ msgstr ""
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:391
-msgid "No access token"
+#: ../gnomegmail.py:390
+msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:406
+#: ../gnomegmail.py:405
 #, python-format
-msgid "GMail API - %s - %s"
+msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:518
+#: ../gnomegmail.py:489
 msgid "Error creating message with attachment"
 msgstr ""
 
