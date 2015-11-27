@@ -1,3 +1,17 @@
+gnome-gmail (1.9.4) unstable; urgency=low
+
+  * Expand the use of the GMail API
+  * Changes to support Python3 (thanks to Ville Skyttä/scop)
+  * New translations:
+    - cs - Thanks Kuvaly
+    - hr - Thanks kvaju
+    - ru - Thanks Kirill Babeev
+    - si
+  * Expanded testing, using pytest
+  * Rework setup.py for portability
+
+ -- David Steele <dsteele@gmail.com>  Fri, 27 Nov 2015 10:53:55 -0500
+
 gnome-gmail (1.9.3-1) unstable; urgency=low
 
   * Missing keyring introspection package in Mint.
