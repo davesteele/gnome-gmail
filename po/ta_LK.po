@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-21 20:03-0400\n"
+"POT-Creation-Date: 2015-11-27 10:36-0500\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
-"Last-Translator: daves <dsteele@gmail.com>\n"
+"Last-Translator: FULL NAME <EMAIL>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ta_LK\n"
 "MIME-Version: 1.0\n"
@@ -17,34 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnomegmail.py:126
+#: ../gnomegmail.py:169
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:222
+#: ../gnomegmail.py:268
 #, python-format
 msgid "Sending %s"
 msgstr "அனுப்புக %s"
 
-#: ../gnomegmail.py:226
+#: ../gnomegmail.py:272
 msgid "Mime message attached"
 msgstr "தகவல் இணைக்கப்பட்டுள்ளது"
 
-#: ../gnomegmail.py:256
+#: ../gnomegmail.py:305
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:340
-msgid "No access token"
+#: ../gnomegmail.py:390
+msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:354
+#: ../gnomegmail.py:405
 #, python-format
-msgid "GMail API - %s - %s"
+msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:470
+#: ../gnomegmail.py:489
 msgid "Error creating message with attachment"
 msgstr "கோப்பு இணைக்கப்பட்ட தகவலில் பிழை ஏற்பட்டுள்ளது"
 

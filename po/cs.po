@@ -1,17 +1,17 @@
-# Persian translation for gnome-gmail
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Czech translation for gnome-gmail
+# Copyright (c) 2010 Rosetta Contributors and Canonical Ltd 2010
 # This file is distributed under the same license as the gnome-gmail package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-27 10:36-0500\n"
-"PO-Revision-Date: 2011-09-03 23:21+0000\n"
-"Last-Translator: Danial Behzadi <dani.behzi@gmail.com>\n"
-"Language-Team: Persian <fa@li.org>\n"
-"Language: fa\n"
+"PO-Revision-Date: 2011-08-29 16:14+0000\n"
+"Last-Translator: Kuvaly [LCT] <kuvaly@seznam.cz>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,11 +25,11 @@ msgstr ""
 #: ../gnomegmail.py:268
 #, python-format
 msgid "Sending %s"
-msgstr "درحال فرستادن %s"
+msgstr "Odesílá se %s"
 
 #: ../gnomegmail.py:272
 msgid "Mime message attached"
-msgstr "پیام MIME پیوست شد"
+msgstr "Byla přiložena zpráva mime"
 
 #: ../gnomegmail.py:305
 #, python-format
@@ -47,23 +47,23 @@ msgstr ""
 
 #: ../gnomegmail.py:489
 msgid "Error creating message with attachment"
-msgstr "خطا در ساختن پیام با ضمیمه"
+msgstr "Během zpracovávání zprávy s přílohou došlo k chybě"
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
-msgstr "Copyright 2010 - Dave Steele"
+msgstr ""
 
 #: ../gnomegmail.glade.h:2
 msgid "comment"
-msgstr ""
+msgstr "komentář"
 
 #: ../gnomegmail.glade.h:3
 msgid "Configure"
-msgstr "پیکربندی"
+msgstr "Konfigurovat"
 
 #: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
-msgstr ""
+msgstr "Gnome Gmail"
 
 #: ../gnomegmail.glade.h:5
 msgid ""
@@ -73,15 +73,15 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:7
 msgid "User Name"
-msgstr ""
+msgstr "Uživatelské jméno"
 
 #: ../gnomegmail.glade.h:8
 msgid "Password"
-msgstr ""
+msgstr "Heslo"
 
 #: ../gnomegmail.glade.h:9
 msgid "Remember Password"
-msgstr ""
+msgstr "Pamatovat si heslo"
 
 #: ../gnomegmail.glade.h:10
 msgid ""
@@ -91,7 +91,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
-msgstr ""
+msgstr "Neptat se znovu"
 
 #: ../gnomegmail.glade.h:12
 msgid "Which Google email account should be used?"
@@ -99,7 +99,7 @@ msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr ""
+msgstr "Začlenit GMail do vašeho pracovního prostředí"
 
 #: ../gnome-gmail.desktop.in.h:3
 msgid "email;mail;Google"
@@ -114,44 +114,54 @@ msgid "Configure Open Office to use the Gnome Preferred Email application"
 msgstr ""
 
 #~ msgid "Drafts"
-#~ msgstr "پیش‌نویس‌ها"
+#~ msgstr "Koncepty"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Nelze určit umístění složky konceptů IMAP"
+
+#~ msgid "User cancelled \"Send To...\""
+#~ msgstr "Uživatel zrušil \"Odeslat...\""
+
+#~ msgid "nvalid credentials"
+#~ msgstr "neplatné pověření"
 
 #~ msgid "Invalid GMail User Name or Password"
-#~ msgstr "نام کاربری یا گذرواژه‌ی نامعتبر"
+#~ msgstr "Neplatné heslo nebo uživatelské jméno"
 
 #~ msgid "not enabled for IMAP"
-#~ msgstr "برای IMAP فعال نیست"
+#~ msgstr "není povoleno pro IMAP"
 
 #~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-#~ msgstr "به منظور ارسال فایل پیوست شما باید در جی میل 'IMAP را فعال کنید'"
-
-#, fuzzy
-#~ msgid "User cancelled"
-#~ msgstr "کاربر \"فرستادن به …\" را لغو کرد"
-
-#~ msgid "Your Gmail user name, without the '@gmail.com' part"
-#~ msgstr "نام کاربری جی‌میل شما ، بدون بخش '@gmail.com'"
-
-#~ msgid "Your Gmail password"
-#~ msgstr "گذرواژه‌ی جی‌میل شما"
+#~ msgstr "Musíte 'Povolit IMAP' v Gmailu, aby bylo možné odesílat přílohy"
 
 #~ msgid "Enter the password for the mail account"
-#~ msgstr "گذرواژه برای حساب پست الکترونیکی‌ را وارد کنید"
+#~ msgstr "Vložte heslo pro poštovní účet"
 
-#~ msgid "Use GNOME Gmail for sending mail"
-#~ msgstr "از GNOME Gmail برای ارسال پست الکترونیکی‌ استفاده کنید"
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr ""
+#~ "Název poštovního účtu (např.  ‚pepa‘ pro e-mailový účet  ‚pepa@gmail.com‘)"
 
-#~ msgid "Save IMAP password?"
-#~ msgstr "گذرواژه‌ی IMAP ذخیره شود؟"
+#~ msgid "Your Gmail password"
+#~ msgstr "Vaše heslo"
 
-#~ msgid "Saved IMAP user name"
-#~ msgstr "نام کاربری ذخیره شده‌ی IMAP"
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Vaše uživatelské jméno (bez „@gmail.com“)"
 
 #~ msgid "Google Apps domain"
-#~ msgstr "دامنه‌ی Google Apps"
+#~ msgstr "Google Apps doména"
 
 #~ msgid "Hide confirmation dialog"
-#~ msgstr "مخفی‌ کردن پنجره تایید"
+#~ msgstr "Skrýt dialog o potvrzení"
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "Uložit heslo protokolu IMAP?"
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Uložit uživatelské jméno protokolu IMAP"
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "Použít Open Office pro použití jako výchozí e-mailovou aplikaci"
 
 #~ msgid "Gmail"
-#~ msgstr "جی میل"
+#~ msgstr "Gmail"

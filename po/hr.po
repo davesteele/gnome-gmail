@@ -1,0 +1,203 @@
+# Croatian translation for gnome-gmail
+# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-27 10:36-0500\n"
+"PO-Revision-Date: 2011-04-14 15:10+0000\n"
+"Last-Translator: kvaju <jukvamo@gmail.com>\n"
+"Language-Team: Croatian <hr@li.org>\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2011-05-13 16:40+0000\n"
+"X-Generator: Launchpad (build 13037)\n"
+
+#: ../gnomegmail.py:169
+msgid "Timeout getting OAuth authentication"
+msgstr ""
+
+#: ../gnomegmail.py:268
+#, python-format
+msgid "Sending %s"
+msgstr "Šaljem %s"
+
+#: ../gnomegmail.py:272
+msgid "Mime message attached"
+msgstr "Višenamjenska poruka u prilogu"
+
+#: ../gnomegmail.py:305
+#, python-format
+msgid "File not found - %s"
+msgstr ""
+
+#: ../gnomegmail.py:390
+msgid "Unable to authenticate with GMail"
+msgstr ""
+
+#: ../gnomegmail.py:405
+#, python-format
+msgid "Error returned from the GMail API - %s - %s"
+msgstr ""
+
+#: ../gnomegmail.py:489
+msgid "Error creating message with attachment"
+msgstr "Pogreška prilikom stvaranja poruke sa prilgom"
+
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Copyright 2010 - Dave Steele"
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr "komentar"
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr "Postavke"
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gnome Gmail"
+
+#: ../gnomegmail.glade.h:5
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr "Unesi svoje Gmail inicijale"
+
+#: ../gnomegmail.glade.h:7
+msgid "User Name"
+msgstr "Korisničko ime"
+
+#: ../gnomegmail.glade.h:8
+msgid "Password"
+msgstr "Šifra"
+
+#: ../gnomegmail.glade.h:9
+msgid "Remember Password"
+msgstr "Zapamti šifru"
+
+#: ../gnomegmail.glade.h:10
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+
+#: ../gnomegmail.glade.h:11
+msgid "Don't ask again"
+msgstr ""
+
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr "Integriraj Gmail u moju radnu površinu"
+
+#: ../gnome-gmail.desktop.in.h:3
+msgid "email;mail;Google"
+msgstr ""
+
+#: ../gnome-gmail-startup.desktop.in.h:1
+msgid "Gnome Gmail Open Office Configurator"
+msgstr "Gnome Gmail Open Office konfigurator"
+
+#: ../gnome-gmail-startup.desktop.in.h:2
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr "Namjesti Open Office da koristi Gnome zadanu e-mail aplikaciju"
+
+#~ msgid "Drafts"
+#~ msgstr "Skice"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Nemoguće utvrditi IMAP lokaciju mape Nedovršeno"
+
+#~ msgid "User cancelled \"Send To...\""
+#~ msgstr "Korisnik je poništio \"Pošalji za...\""
+
+#~ msgid "nvalid credentials"
+#~ msgstr "neispravni inicijali"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Netočno Gmail korisničko ime ili šifra"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "nije omogućen za IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Morate \"omogućiti IMAP\" u Gmail-u da bi mogli slati priloge"
+
+#~ msgid "GMail credentials incomplete"
+#~ msgstr "Gmail inicijali nedovršeni"
+
+#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgstr "Podesi Gnome Gmail za korištenje Google App računa."
+
+#~ msgid "Enter the password for the mail account"
+#~ msgstr "Unesi šifru za e-mail račun"
+
+#~ msgid "Remember the Google Account password in the Gnome keychain."
+#~ msgstr "Zapamti šifru Google Računa u Gnome keychain."
+
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr "Ime e-mail računa (npr. 'ivan' za mail račun 'ivan@gmail.com')"
+
+#~ msgid "Your Gmail password"
+#~ msgstr "Vaša Gmail šifra"
+
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Vaše Gmail korisničko ime, bez nastavka '@gmail.com'"
+
+#~ msgid "Google Apps domain"
+#~ msgstr "Google Apps domena"
+
+#~ msgid "Hide confirmation dialog"
+#~ msgstr "Sakrij okvir za potvrdu"
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "Sačuvati IMAP šifru?"
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Sačuvano IMAP korisničko ime"
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "Namjesti da Open Office korisni Gnome zadanu e-mail aplikaciju"
+
+#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgstr "Da koristite Gnome Gmail sa Google Apps, unesite domenu ovdje"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "Kad je označeno, Gnome Gmail će pokušati da podesi Open Office da koristi "
+#~ "odabranu Gnome zadanu e-mail aplikaciju pri svakom prijavljivanju, "
+#~ "koristeći Gnome Gmail kompatibilnu aplikaciju."
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
+#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ msgstr ""
+#~ "Kad je označeno, Gnome Gmail će sačuvati IMAP šifru u Gnome keyring. IMAP "
+#~ "je korišten da postavi priloge u Gmail."
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will suppress the confirmation notification "
+#~ "that appears with each message created. The notification includes a link "
+#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ msgstr ""
+#~ "Kad je označeno, Gnome Gmail će sakriti potvrdna izvješća koja se "
+#~ "pojavljuju kad je svaka poruka stvorena. Izvješće uključuje link za "
+#~ "dozvolu Gnome Gmail konfiguriranja  za Google Apps podršku."
+
+#~ msgid "Gmail"
+#~ msgstr "Gmail"

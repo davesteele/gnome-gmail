@@ -1,5 +1,9 @@
-prune debian
-include *
-recursive-include po *
-recursive-include test *
-
+include AUTHORS
+include ChangeLog
+include COPYING
+include gnome-gmail*
+include NEWS
+include README
+include po/*
+include test/*.py
+include runtests.py
