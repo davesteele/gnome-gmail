@@ -1,4 +1,4 @@
-gnome-gmail (1.9.4) unstable; urgency=low
+gnome-gmail (1.9.4-1) unstable; urgency=low
 
   * Expand the use of the GMail API
   * Changes to support Python3 (thanks to Ville Skyttä/scop)
