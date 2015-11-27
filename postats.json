@@ -31,28 +31,10 @@
             "translator": "Kuvaly [LCT] "
         }, 
         {
-            "code": "da", 
-            "language": "Danish", 
-            "percent": 0, 
-            "translator": ""
-        }, 
-        {
-            "code": "nl", 
-            "language": "Dutch", 
-            "percent": 0, 
-            "translator": ""
-        }, 
-        {
             "code": "et", 
             "language": "Estonian", 
             "percent": 27, 
             "translator": "lyyser "
-        }, 
-        {
-            "code": "fi", 
-            "language": "Finnish", 
-            "percent": 0, 
-            "translator": ""
         }, 
         {
             "code": "fr", 
