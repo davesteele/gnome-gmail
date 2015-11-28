@@ -1,6 +1,7 @@
 gnome-gmail (1.9.5-1) unstable; urgency=low
 
   * Fix broken glade path from the previous version (Thanks Ville Skyttä/scop)
+  * Revert Python 3 changes to fix GMail OAuth HTTP 400 errors
   * Silence gi startup complaints
   * Minor fixes
 
