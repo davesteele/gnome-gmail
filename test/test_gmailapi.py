@@ -1,7 +1,7 @@
 
 import pytest
 
-from six.moves import urllib
+import urllib
 
 import gnomegmail
 
@@ -27,7 +27,7 @@ def test_gmailapi(web_fxt, tmpfile, su, bcc, cc, attach, body):
         mail_dict['body'] = body
 
     if attach:
-        mail_dict['attach'] = [urllib.request.pathname2url(tmpfile)]
+        mail_dict['attach'] = [urllib.pathname2url(tmpfile)]
 
     if cc:
         mail_dict['cc'] = cc
