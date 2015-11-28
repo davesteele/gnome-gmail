@@ -32,13 +32,23 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-from gi.repository import Gtk
-from gi.repository import Gio
-from gi.repository import Secret
-from gi.repository import Notify
-from gi.repository import Wnck
 from six.moves import urllib
 from six.moves.configparser import SafeConfigParser
+
+import gi
+from gi.repository import Gio       # noqa
+
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk       # noqa
+
+gi.require_version('Secret', '1')
+from gi.repository import Secret    # noqa
+
+gi.require_version('Notify', '0.7')
+from gi.repository import Notify    # noqa
+
+gi.require_version('Wnck', '3.0')
+from gi.repository import Wnck      # noqa
 
 
 locale.setlocale(locale.LC_ALL, '')
@@ -752,7 +762,7 @@ def main():
              )
 
     # anyone know how to do this right?
-    glade_suffix = "/share/gnome-gmail/gnomegmail.glade"
+    glade_suffix = "share/gnome-gmail/gnomegmail.glade"
     glade_file = os.path.join('/usr', glade_suffix)
     for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
         if os.path.isfile(gpath):

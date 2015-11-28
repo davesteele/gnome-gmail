@@ -1,3 +1,6 @@
+2015-11-28 David Steele <dsteele@gmail.com>
+  * The previous version had a bad path for glade, breaking the GUI
+
 2015-11-27 David Steele <dsteele@gmail.com>
   * V1.9.4
   * Expand the use of the GMail API

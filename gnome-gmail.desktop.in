@@ -8,5 +8,5 @@ Icon=gnome-gmail
 Terminal=false
 Type=Application
 Categories=GNOME;GTK;Email;Network;
-_Keywords=email;mail;Google
+_Keywords=email;mail;Google;
 StartupNotify=true
