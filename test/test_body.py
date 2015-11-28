@@ -3,6 +3,7 @@
 import nose
 import pytest
 from six.moves import urllib
+import urllib
 
 import gnomegmail
 
@@ -98,7 +99,7 @@ def test_needs_api_yes(body, result):
 def test_body2html(encbody, body, result):
 
     if encbody:
-        body = urllib.parse.quote(body)
+        body = urllib.quote(body)
     elif '&' in body or '#' in body:
         pytest.skip("Don't test unencoded bodies with URL special chars")
 
