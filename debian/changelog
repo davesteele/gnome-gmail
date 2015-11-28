@@ -1,4 +1,12 @@
-gnome-gmail (1.9.4-1) unstable; urgency=low
+gnome-gmail (1.9.5-1) unstable; urgency=low
+
+  * Fix broken glade path from the previous version (Thanks Ville Skyttä/scop)
+  * Silence gi startup complaints
+  * Minor fixes
+
+ -- David Steele <dsteele@gmail.com>  Sat, 28 Nov 2015 09:31:15 -0500
+
+gnome-gmail (1.9.4-1) UNRELEASED; urgency=low
 
   * Expand the use of the GMail API
   * Changes to support Python3 (thanks to Ville Skyttä/scop)
