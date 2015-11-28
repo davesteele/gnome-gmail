@@ -104,7 +104,7 @@ msgid "Integrate GMail with your desktop"
 msgstr "Integrar o GMail no sistema do seu computador"
 
 #: ../gnome-gmail.desktop.in.h:3
-msgid "email;mail;Google"
+msgid "email;mail;Google;"
 msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
