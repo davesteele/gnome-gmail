@@ -50,12 +50,6 @@ from gi.repository import Notify    # noqa
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
-from gi.repository import Gtk
-from gi.repository import Gio
-from gi.repository import Secret
-from gi.repository import Notify
-from gi.repository import Wnck
-
 from ConfigParser import SafeConfigParser
 
 locale.setlocale(locale.LC_ALL, '')
