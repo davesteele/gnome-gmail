@@ -110,7 +110,8 @@ def is_default_mailer():
 
 def browser():
     cmd = "xdg-settings get default-web-browser"
-    brsr_name = subprocess.check_output(cmd.split()).strip()
+    brsr_name = subprocess.check_output(
+        cmd.split(), universal_newlines=True).strip()
 
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
@@ -136,7 +137,7 @@ class GMOauth():
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
     def get_code(self, login_hint):
-        s = string.lowercase + string.uppercase + string.digits
+        s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
 
         args = {
@@ -167,7 +168,8 @@ class GMOauth():
         code = None
         while True:
             # Look for the state and code in the window title
-            output = subprocess.check_output("xwininfo -root -tree".split())
+            output = subprocess.check_output(
+                "xwininfo -root -tree".split(), universal_newlines=True)
 
             m = re.search("state=%s.code=([^ ]+)" % state, output)
             if m:
@@ -462,7 +464,7 @@ class GMailURL():
             qsdict['attach'] = qsdict['attachment']
 
         outdict = {}
-        for (key, value) in qsdict.iteritems():
+        for (key, value) in qsdict.items():
             for i in range(0, len(value)):
                 if key.lower() in ['to', 'cc', 'bcc', 'body']:
                     value[i] = urllib.unquote(value[i])
