@@ -39,7 +39,7 @@ def notify_fxt(monkeypatch):
 
 @pytest.fixture()
 def web_fxt(monkeypatch):
-    monkeypatch.setattr('gnomegmail.urllib2', Mock())
+    monkeypatch.setattr('gnomegmail.requests', Mock())
 
     urllibmock = Mock()
     unquote = Mock(side_effect=lambda x: x)

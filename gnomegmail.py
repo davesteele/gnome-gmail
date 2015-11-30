@@ -13,7 +13,7 @@ GNOME Preferred Email application """
 import sys
 import urlparse
 import urllib
-import urllib2
+import requests
 import webbrowser
 import os
 import os.path
@@ -398,21 +398,23 @@ class GMailAPI():
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
                "?uploadType=media") % urllib.quote(user)
 
-        opener = urllib2.build_opener(urllib2.HTTPSHandler)
-        request = urllib2.Request(url, data=self.message_text)
-        request.add_header('Content-Type', 'message/rfc822')
-        request.add_header('Content-Length', str(len(self.message_text)))
-        request.add_header('Authorization', "Bearer " + access_token)
-        request.get_method = lambda: 'POST'
+        headers = {
+            'Content-Type': 'message/rfc822',
+            'Content-Length': str(len(self.message_text)),
+            'Authorization': "Bearer " + access_token,
+        }
 
         try:
-            urlfp = opener.open(request)
-        except urllib2.HTTPError as e:
-            raise GGError(_("Error returned from the GMail API - %s - %s") %
-                          (e.code, e.msg))
+            r = requests.post(url, headers=headers, data=self.message_text)
+            r.raise_for_status()
 
-        result = urlfp.fp.read()
-        json_result = json.loads(result)
+            json_result = json.loads(r.text)
+        except requests.exceptions.HTTPError as e:
+            raise GGError(_("Error returned from the GMail API - %d") %
+                          e.response.status_code)
+        except requests.exceptions.RequestException as e:
+            raise GGError(_("Error connecting to GMail"))
+
         id = json_result['message']['id']
 
         return id
