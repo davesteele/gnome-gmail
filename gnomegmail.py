@@ -199,10 +199,17 @@ class GMOauth():
                     "grant_type": "authorization_code",
                }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
+        try:
+            r = requests.post(self.token_endpoint, data=args)
+            r.raise_for_status()
+        except requests.exceptions.HTTPError as e:
+            print e.request.url
+            raise GGError(_("Error returned from access token request - %d") %
+                          e.response.status_code)
+        except requests.exceptions.RequestException as e:
+            raise GGError(_("Error connecting to GMail"))
 
-        return(json.loads(token_page.read().decode("utf-8")))
+        return(json.loads(r.text))
 
     def get_access_from_refresh(self, refresh_token):
 
@@ -213,14 +220,14 @@ class GMOauth():
              "grant_type": "refresh_token",
           }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
-        token_dict = json.loads(token_page.read())
+        try:
+            r = requests.post(self.token_endpoint, data=args)
+            r.raise_for_status()
+            access_token = json.loads(r.text)["access_token"]
+        except:
+            access_token = None
 
-        if "access_token" in token_dict:
-            return(token_dict["access_token"])
-        else:
-            return(None)
+        return access_token
 
     def generate_tokens(self, login, refresh_token=None):
         """Generate an access token/refresh token pair for 'login' email
