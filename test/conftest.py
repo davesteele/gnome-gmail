@@ -39,14 +39,8 @@ def notify_fxt(monkeypatch):
 
 @pytest.fixture()
 def web_fxt(monkeypatch):
-    monkeypatch.setattr('gnomegmail.urllib2', Mock())
-
-    urllibmock = Mock()
-    unquote = Mock(side_effect=lambda x: x)
-    urllibmock.unquote = unquote
-    urllibmock.unquote_plus = unquote
-    urllibmock.quote_plus = unquote
-    monkeypatch.setattr('gnomegmail.urllib', urllibmock)
+    monkeypatch.setattr('gnomegmail.urllib.request.urlopen', Mock())
+    monkeypatch.setattr('gnomegmail.urllib.request.build_opener', Mock())
 
     monkeypatch.setattr(
         'gnomegmail.json.loads',
@@ -62,9 +56,6 @@ def web_fxt(monkeypatch):
 @pytest.fixture()
 def tmpfile(request):
     fd, path = tempfile.mkstemp()
-
-    os.write(fd, 'test file')
-    os.close(fd)
 
     request.addfinalizer(lambda: os.remove(path))
 

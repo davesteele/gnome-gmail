@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7 -tt
+#!/usr/bin/python -tt
 #
 # Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
@@ -11,9 +11,6 @@ GMail web page to handle the directive. It is intended to support GMail as a
 GNOME Preferred Email application """
 
 import sys
-import urlparse
-import urllib
-import urllib2
 import webbrowser
 import os
 import os.path
@@ -35,6 +32,9 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from six.moves import urllib
+from six.moves.configparser import SafeConfigParser
+
 import gi
 from gi.repository import Gio       # noqa
 
@@ -49,8 +49,6 @@ from gi.repository import Notify    # noqa
 
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
-
-from ConfigParser import SafeConfigParser
 
 locale.setlocale(locale.LC_ALL, '')
 gettext.textdomain("gnome-gmail")
@@ -150,7 +148,7 @@ class GMOauth():
                     "login_hint": login_hint,
                }
 
-        code_url = "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+        code_url = "%s?%s" % (self.auth_endpoint, urllib.parse.urlencode(args))
 
         saveout = os.dup(1)
         os.close(1)
@@ -201,8 +199,12 @@ class GMOauth():
                     "grant_type": "authorization_code",
                }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
+        try:
+            token_page = urllib.request.urlopen(
+                self.token_endpoint,
+                urllib.parse.urlencode(args).encode("utf-8"))
+        except urllib.error.HTTPError as e:
+            token_page = e
 
         return(json.loads(token_page.read().decode("utf-8")))
 
@@ -215,9 +217,13 @@ class GMOauth():
              "grant_type": "refresh_token",
           }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
-        token_dict = json.loads(token_page.read())
+        try:
+            token_page = urllib.request.urlopen(
+                self.token_endpoint,
+                urllib.parse.urlencode(args).encode("utf-8"))
+        except urllib.error.HTTPError as e:
+            token_page = e
+        token_dict = json.loads(token_page.read().decode("utf-8"))
 
         if "access_token" in token_dict:
             return(token_dict["access_token"])
@@ -301,13 +307,16 @@ class GMailAPI():
         except KeyError:
             pass
 
-        self.message_text = msg.as_string()
+        try:
+            self.message_text = msg.as_bytes()
+        except AttributeError:
+            self.message_text = msg.as_string()
 
     def file2mime(self, filename):
         if(filename.find("file://") == 0):
             filename = filename[7:]
 
-        filepath = urlparse.urlsplit(filename).path
+        filepath = urllib.parse.urlsplit(filename).path
 
         if not os.path.isfile(filepath):
             raise GGError(_("File not found - %s") % filepath)
@@ -398,10 +407,10 @@ class GMailAPI():
             raise GGError(_("Unable to authenticate with GMail"))
 
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
-               "?uploadType=media") % urllib.quote(user)
+               "?uploadType=media") % urllib.parse.quote(user)
 
-        opener = urllib2.build_opener(urllib2.HTTPSHandler)
-        request = urllib2.Request(url, data=self.message_text)
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
+        request = urllib.request.Request(url, data=self.message_text)
         request.add_header('Content-Type', 'message/rfc822')
         request.add_header('Content-Length', str(len(self.message_text)))
         request.add_header('Authorization', "Bearer " + access_token)
@@ -409,11 +418,11 @@ class GMailAPI():
 
         try:
             urlfp = opener.open(request)
-        except urllib2.HTTPError as e:
+        except urllib.error.HTTPError as e:
             raise GGError(_("Error returned from the GMail API - %s - %s") %
                           (e.code, e.msg))
 
-        result = urlfp.fp.read()
+        result = urlfp.fp.read().decode('utf-8')
         json_result = json.loads(result)
         id = json_result['message']['id']
 
@@ -435,7 +444,7 @@ class GMailURL():
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
-        usplit = urlparse.urlsplit(self.mailto_url, "mailto")
+        usplit = urllib.parse.urlsplit(self.mailto_url, "mailto")
 
         path = usplit.path
 
@@ -456,7 +465,7 @@ class GMailURL():
         # valid in email addresses anyway.
         address = re.sub("^/+", "", address)
 
-        qsdict = urlparse.parse_qs(query_string)
+        qsdict = urllib.parse.parse_qs(query_string)
 
         qsdict['to'] = [address]
 
@@ -467,9 +476,9 @@ class GMailURL():
         for (key, value) in qsdict.items():
             for i in range(0, len(value)):
                 if key.lower() in ['to', 'cc', 'bcc', 'body']:
-                    value[i] = urllib.unquote(value[i])
+                    value[i] = urllib.parse.unquote(value[i])
                 else:
-                    value[i] = urllib.unquote_plus(value[i])
+                    value[i] = urllib.parse.unquote_plus(value[i])
 
             outdict[key.lower()] = value
 
@@ -765,6 +774,7 @@ def main():
     for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
         if os.path.isfile(gpath):
             glade_file = gpath
+    glade_file = "gnomegmail.glade"
 
     if not is_default_mailer() \
             and not config.get_bool('suppress_preferred'):

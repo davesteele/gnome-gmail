@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 from distutils.core import setup, Command
 from distutils.command.build import build
