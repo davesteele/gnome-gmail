@@ -774,7 +774,6 @@ def main():
     for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
         if os.path.isfile(gpath):
             glade_file = gpath
-    glade_file = "gnomegmail.glade"
 
     if not is_default_mailer() \
             and not config.get_bool('suppress_preferred'):
