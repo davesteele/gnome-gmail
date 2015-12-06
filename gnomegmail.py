@@ -564,6 +564,9 @@ def getFromAddress(last_address, config, gladefile):
         def onUserSelClose(self, foo):
             self.onCancelClicked(foo)
 
+        def onDestroy(self, foo):
+            self.onCancelClicked(foo)
+
     suppress_account_selection = config.get_bool('suppress_account_selection')
     if last_address and suppress_account_selection:
         return last_address
