@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=Gnome Gmail
-GenericName=GMail Web Integration
+_GenericName=GMail Web Integration
 _Comment=Integrate GMail with your desktop
 MimeType=application/mbox;message/rfc822;x-scheme-handler/mailto;
 Exec=gnome-gmail %U
