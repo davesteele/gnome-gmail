@@ -3,6 +3,12 @@
 # Uncomment this to turn on verbose mode.
 #export DH_VERBOSE=1
 
+export PYBUILD_NAME=gnome-gmail
+
+# Too many Build-Depends required to support test
+export PYBUILD_DISABLE=test
+
+
 PKD = $(word 1,$(abspath $(dir $(MAKEFILE_LIST))))
 PKG = $(shell dpkg-parsechangelog -l$(PKD)/changelog --show-field=Source)
 
@@ -12,7 +18,7 @@ VER ?= $(DEBIAN_VERSION)
 
 
 %:
-	dh $@ --with python2
+	dh $@ --with python2 --buildsystem=pybuild
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog
@@ -28,4 +34,3 @@ override_dh_clean:
 get-orig-source:  $(info I: $(PKG)_$(VER))
 	@echo "# Downloading..."
 	uscan --noconf --verbose --rename --destdir=$(CURDIR) --check-dirname-level=0 --force-download --download-version $(VER) $(PKD)
-
