@@ -1,0 +1,24 @@
+From: David Steele <dsteele@gmail.com>
+Date: Fri, 11 Dec 2015 21:09:09 -0500
+Subject: Ok if I can't verify default mailer
+
+---
+ gnomegmail.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gnomegmail.py b/gnomegmail.py
+index 756b8b6..32f3ccf 100755
+--- a/gnomegmail.py
++++ b/gnomegmail.py
+@@ -108,7 +108,10 @@ def is_default_mailer():
+                     "x-scheme-handler/mailto",
+                     True
+                  )
+-        returnvalue = mailer.get_id() == "gnome-gmail.desktop"
++        try:
++            returnvalue = mailer.get_id() == "gnome-gmail.desktop"
++        except AttributeError:
++            pass
+     elif environ == 'KDE':
+         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
+         with open(cfgpath, 'r') as cfp:

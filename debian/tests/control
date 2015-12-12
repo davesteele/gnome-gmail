@@ -1,0 +1,3 @@
+Tests: base, runtest
+Depends: python-pytest, python-mock, python-nose, python-gi,
+         gir1.2-gtk-3.0, gir1.2-secret-1, gir1.2-notify-0.7, gir1.2-wnck-3.0,

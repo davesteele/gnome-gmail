@@ -1,0 +1,24 @@
+From: David Steele <dsteele@gmail.com>
+Date: Fri, 11 Dec 2015 21:00:36 -0500
+Subject: Default to GNOME
+
+---
+ gnomegmail.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/gnomegmail.py b/gnomegmail.py
+index 6ed728b..756b8b6 100755
+--- a/gnomegmail.py
++++ b/gnomegmail.py
+@@ -62,7 +62,10 @@ locale.setlocale(locale.LC_ALL, '')
+ gettext.textdomain("gnome-gmail")
+ _ = gettext.gettext
+ 
+-environ = os.environ['XDG_CURRENT_DESKTOP']
++try:
++    environ = os.environ['XDG_CURRENT_DESKTOP']
++except:
++    environ = 'GNOME'
+ 
+ 
+ class GGError(Exception):
