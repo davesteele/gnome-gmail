@@ -54,7 +54,10 @@ locale.setlocale(locale.LC_ALL, '')
 gettext.textdomain("gnome-gmail")
 _ = gettext.gettext
 
-environ = os.environ['XDG_CURRENT_DESKTOP']
+try:
+    environ = os.environ['XDG_CURRENT_DESKTOP']
+except:
+    environ = 'GNOME'
 
 
 class GGError(Exception):
@@ -97,7 +100,10 @@ def is_default_mailer():
                     "x-scheme-handler/mailto",
                     True
                  )
-        returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+        try:
+            returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+        except AttributeError:
+            pass
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
         with open(cfgpath, 'r') as cfp:
