@@ -7,4 +7,5 @@ include README
 include po/*
 include test/*.py
 include runtests.py
+include conftest.py
 prune .gitignore
