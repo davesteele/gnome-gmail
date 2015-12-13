@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-27 10:36-0500\n"
+"POT-Creation-Date: 2015-12-13 11:51-0500\n"
 "PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2)\n"
 
-#: ../gnomegmail.py:169
+#: ../gnomegmail.py:184
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:268
+#: ../gnomegmail.py:291
 #, python-format
 msgid "Sending %s"
 msgstr "Wysyłanie %s"
 
-#: ../gnomegmail.py:272
+#: ../gnomegmail.py:295
 msgid "Mime message attached"
 msgstr "Załączono wiadomość MIME"
 
-#: ../gnomegmail.py:305
+#: ../gnomegmail.py:328
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:390
+#: ../gnomegmail.py:413
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:405
+#: ../gnomegmail.py:428
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:489
+#: ../gnomegmail.py:512
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
 
@@ -100,22 +100,33 @@ msgid "Which Google email account should be used?"
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
+msgid "GMail Web Integration"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:3
 msgid "Integrate GMail with your desktop"
 msgstr "Integracja usługi Gmail z pulpitem"
 
-#: ../gnome-gmail.desktop.in.h:3
+#: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-msgid "Gnome Gmail Open Office Configurator"
+#, fuzzy
+msgid "Gnome Gmail Configurator"
 msgstr "Konfiguracja usługi Gmail w OpenOffice.org"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-msgid "Configure Open Office to use the Gnome Preferred Email application"
+#, fuzzy
+msgid "Offer to make GNOME Gmail the Preferred Email application"
 msgstr ""
-"Konfiguracja użycia preferowanego programu pocztowego GNOME przez pakiet "
+"Ustawia użycie preferowanego programu pocztowego GNOME przez pakiet "
 "OpenOffice.org"
+
+#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
+#~ msgstr ""
+#~ "Konfiguracja użycia preferowanego programu pocztowego GNOME przez pakiet "
+#~ "OpenOffice.org"
 
 #~ msgid "Drafts"
 #~ msgstr "Wersje robocze"
@@ -203,11 +214,6 @@ msgstr ""
 #~ "potwierdzającego, które pojawia się po utworzeniu każdej wiadomości. "
 #~ "Powiadomienie zawiera odnośnik umożliwiający skonfigurowanie programu "
 #~ "GNOME Gmail do obsługi Google Apps."
-
-#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
-#~ msgstr ""
-#~ "Ustawia użycie preferowanego programu pocztowego GNOME przez pakiet "
-#~ "OpenOffice.org"
 
 #~ msgid ""
 #~ "When checked, Gnome Gmail will attempt to configure Open Office to use "

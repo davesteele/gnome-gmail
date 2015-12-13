@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-27 10:36-0500\n"
+"POT-Creation-Date: 2015-12-13 11:51-0500\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: Jackseen Jeyaluck <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: ../gnomegmail.py:169
+#: ../gnomegmail.py:184
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:268
+#: ../gnomegmail.py:291
 #, python-format
 msgid "Sending %s"
 msgstr "அனுப்புக %s"
 
-#: ../gnomegmail.py:272
+#: ../gnomegmail.py:295
 msgid "Mime message attached"
 msgstr "தகவல் இணைக்கப்பட்டுள்ளது"
 
-#: ../gnomegmail.py:305
+#: ../gnomegmail.py:328
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:390
+#: ../gnomegmail.py:413
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:405
+#: ../gnomegmail.py:428
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:489
+#: ../gnomegmail.py:512
 msgid "Error creating message with attachment"
 msgstr "கோப்பு இணைக்கப்பட்ட தகவலில் பிழை ஏற்பட்டுள்ளது"
 
@@ -99,20 +99,29 @@ msgid "Which Google email account should be used?"
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
+msgid "GMail Web Integration"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:3
 msgid "Integrate GMail with your desktop"
 msgstr "உங்கள் திரைபலகையுடன் இணைந்த ஜிமெயில்"
 
-#: ../gnome-gmail.desktop.in.h:3
+#: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-msgid "Gnome Gmail Open Office Configurator"
+#, fuzzy
+msgid "Gnome Gmail Configurator"
 msgstr "க்னோம் ஜிமெயில் ஓபன் ஆபீஸ் உறுதிபடுத்தி"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr "க்னோம் மெயில் லில் ஓபன் ஆபீஸ் ஐ பயன்படுத்த உறுதி செய்க"
+#, fuzzy
+msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgstr "ஓபன் ஆபீஸ் ஐ க்னோம் ஜிமெயில் லில் நிறுவுக"
+
+#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
+#~ msgstr "க்னோம் மெயில் லில் ஓபன் ஆபீஸ் ஐ பயன்படுத்த உறுதி செய்க"
 
 #~ msgid "Drafts"
 #~ msgstr "எழுதபட்டவை"
@@ -192,9 +201,6 @@ msgstr "க்னோம் மெயில் லில் ஓபன் ஆப�
 #~ "தெரியும் போது ,க்னோம் ஜிமெயில் உறுதிபடுத்தும் அறிவிப்புகளை தெரியபடுத்தும் தகவல் "
 #~ "உருவாக்கத்தில்.அறிவிப்பில் கூகிள் செயளிலியை உபயோகிக்க உறுதிபடுத்தும் தொடுப்பு "
 #~ "இணைகபடிருகும்."
-
-#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
-#~ msgstr "ஓபன் ஆபீஸ் ஐ க்னோம் ஜிமெயில் லில் நிறுவுக"
 
 #~ msgid ""
 #~ "When checked, Gnome Gmail will attempt to configure Open Office to use "

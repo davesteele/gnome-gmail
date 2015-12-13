@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-27 10:36-0500\n"
+"POT-Creation-Date: 2015-12-13 11:51-0500\n"
 "PO-Revision-Date: 2011-08-06 03:43+0000\n"
 "Last-Translator: abuyop <Unknown>\n"
 "Language-Team: Malay <ms@li.org>\n"
@@ -18,34 +18,34 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-08-14 15:08+0000\n"
 "X-Generator: Launchpad (build 13674)\n"
 
-#: ../gnomegmail.py:169
+#: ../gnomegmail.py:184
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:268
+#: ../gnomegmail.py:291
 #, python-format
 msgid "Sending %s"
 msgstr "Menghantar %s"
 
-#: ../gnomegmail.py:272
+#: ../gnomegmail.py:295
 msgid "Mime message attached"
 msgstr "Mesej mime dilampirkan"
 
-#: ../gnomegmail.py:305
+#: ../gnomegmail.py:328
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:390
+#: ../gnomegmail.py:413
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:405
+#: ../gnomegmail.py:428
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:489
+#: ../gnomegmail.py:512
 msgid "Error creating message with attachment"
 msgstr "Ralat mencipta mesej dengan lampiran"
 
@@ -102,20 +102,29 @@ msgid "Which Google email account should be used?"
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
+msgid "GMail Web Integration"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:3
 msgid "Integrate GMail with your desktop"
 msgstr "Integrasikan GMail dengan desktop anda"
 
-#: ../gnome-gmail.desktop.in.h:3
+#: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-msgid "Gnome Gmail Open Office Configurator"
+#, fuzzy
+msgid "Gnome Gmail Configurator"
 msgstr "Pengkonfigur Open Office Gmail Gnome"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr "Konfigur Open Office menggunakan aplikasi Emel Digemari Gnome"
+#, fuzzy
+msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgstr "Tetapkan Open Office menggunakan Aplikasi Emel Digemari Gnome"
+
+#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
+#~ msgstr "Konfigur Open Office menggunakan aplikasi Emel Digemari Gnome"
 
 #~ msgid "Drafts"
 #~ msgstr "Draf"
@@ -212,9 +221,6 @@ msgstr "Konfigur Open Office menggunakan aplikasi Emel Digemari Gnome"
 #~ "Bila ditanda, Gmail Gnome akan memaksa pemberitahuan pengesahan yang "
 #~ "muncul setiap kali mesej dicipta. Pemberithuan termasuklah pautan untuk "
 #~ "membenarkan Gmail Gnome dikonfigur untuk sokongan Google Apps."
-
-#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
-#~ msgstr "Tetapkan Open Office menggunakan Aplikasi Emel Digemari Gnome"
 
 #~ msgid ""
 #~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
