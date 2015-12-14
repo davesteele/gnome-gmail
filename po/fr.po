@@ -34,7 +34,7 @@ msgstr "Message Mime attaché"
 #: ../gnomegmail.py:305
 #, python-format
 msgid "File not found - %s"
-msgstr "Fichier introuvable"
+msgstr "Fichier introuvable - %s"
 
 #: ../gnomegmail.py:390
 msgid "Unable to authenticate with GMail"
@@ -43,7 +43,7 @@ msgstr "Impossible d'authentifier avec Gmail"
 #: ../gnomegmail.py:405
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
-msgstr "Erreur renvoyée par GMail"
+msgstr "Erreur renvoyée par GMail - %s %s"
 
 #: ../gnomegmail.py:489
 msgid "Error creating message with attachment"
