@@ -1,3 +1,11 @@
+gnome-gmail (1.9.5-2) unstable; urgency=low
+
+  * Use pybuild.
+  * Add DEP8 continuous test support.
+  * Dependency fixes.
+
+ -- David Steele <dsteele@gmail.com>  Tue, 15 Dec 2015 18:43:12 -0500
+
 gnome-gmail (1.9.5-1) unstable; urgency=low
 
   * Fix broken glade path from the previous version (Thanks Ville Skyttä/scop)
