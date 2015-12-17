@@ -20,7 +20,7 @@ msgstr ""
 
 #: ../gnomegmail.py:184
 msgid "Timeout getting OAuth authentication"
-msgstr "L'authentification OAuth expiré
+msgstr "L'authentification OAuth expiré"
 
 #: ../gnomegmail.py:291
 #, python-format
@@ -114,12 +114,10 @@ msgid "email;mail;Google;"
 msgstr "email;mail;Google;e-mail;"
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-#, fuzzy
 msgid "Gnome Gmail Configurator"
 msgstr "Configurateur de Gnome Gmail pour Open Office"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-#, fuzzy
 msgid "Offer to make GNOME Gmail the Preferred Email application"
 msgstr "Configure Open Office pour utiliser l'application préférée Gnome Email"
 
