@@ -439,9 +439,8 @@ class GMailURL():
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including API uploads."""
 
-    def __init__(self, mailto_url, from_address, enable_net_access=True):
+    def __init__(self, mailto_url, from_address):
         self.mailto_url = mailto_url
-        self.enable_net_access = enable_net_access
         self.from_address = from_address
 
         self.mail_dict = self.mailto2dict()
@@ -501,9 +500,6 @@ class GMailURL():
 
         api_url = "https://mail.google.com/mail/b/%s#drafts/" % \
                   self.from_address
-
-        if not self.enable_net_access:
-            return(api_url)
 
         try:
             gm_api = GMailAPI(self.mail_dict)
