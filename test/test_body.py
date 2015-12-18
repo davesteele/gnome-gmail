@@ -71,7 +71,7 @@ testCaseStrings = [
 
 
 def get_gmapi(input):
-        gm = gnomegmail.GMailURL(input, "me", False)
+        gm = gnomegmail.GMailURL(input, "me")
         mail_dict = gm.mail_dict
 
         gmapi = gnomegmail.GMailAPI(mail_dict)
