@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-13 11:51-0500\n"
-"PO-Revision-Date: 2012-01-06 22:38+0000\n"
+"PO-Revision-Date: 2015-12-20 21:48-0500\n"
 "Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.6\n"
 
 #: ../gnomegmail.py:184
 msgid "Timeout getting OAuth authentication"
@@ -103,7 +104,7 @@ msgstr "Quel compte Google email doit être utilisé?"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
-msgstr ""
+msgstr "Intégration Web GMail"
 
 #: ../gnome-gmail.desktop.in.h:3
 msgid "Integrate GMail with your desktop"
