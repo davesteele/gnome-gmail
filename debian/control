@@ -15,6 +15,7 @@ Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
 
 Package: gnome-gmail
 Architecture: all
+Provides: exec<gnome-gmail>, mime<x-scheme-handler/mailto>
 Depends: ${misc:Depends}, python2.7, python-gi,
          libgtk-3-bin (>=3.10), gir1.2-secret-1,
          python-six,
