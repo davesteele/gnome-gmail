@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-13 11:51-0500\n"
+"POT-Creation-Date: 2015-12-22 07:56-0500\n"
 "PO-Revision-Date: 2011-05-13 15:11+0000\n"
 "Last-Translator: Daniel Șerbănescu <cyber19rider@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:512
+#: ../gnomegmail.py:508
 msgid "Error creating message with attachment"
 msgstr ""
 
@@ -101,7 +101,7 @@ msgstr ""
 msgid "GMail Web Integration"
 msgstr ""
 
-#: ../gnome-gmail.desktop.in.h:3
+#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr ""
 
@@ -116,6 +116,42 @@ msgstr "Gnome Gmail"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:1
+msgid "GNOME GMail"
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:3
+msgid ""
+"GNOME GMail integrates the GMail web interface into the GNOME environment. "
+"Once installed, GMail becomes a choice as the default Mail Reader in the "
+"GNOME Preferred Applications administration application. When selected, a "
+"GMail web page will be used whenever an email service is requested."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:4
+msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:5
+msgid "Put GMail on your desktop."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "Uses the GMail web interface."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:7
+msgid "Send files from the File Browser, or other applications."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:8
+msgid "Supports multiple GMail accounts."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:9
+msgid "OAuth2 authentication - no password needed."
 msgstr ""
 
 #~ msgid "Invalid GMail User Name or Password"

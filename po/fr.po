@@ -8,15 +8,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-13 11:51-0500\n"
+"POT-Creation-Date: 2015-12-22 07:56-0500\n"
 "PO-Revision-Date: 2015-12-20 21:48-0500\n"
 "Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
+"Language-Team: \n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Language-Team: \n"
 "X-Generator: Poedit 1.8.6\n"
 
 #: ../gnomegmail.py:184
@@ -46,7 +46,7 @@ msgstr "Impossible d'authentifier avec Gmail"
 msgid "Error returned from the GMail API - %s - %s"
 msgstr "Erreur renvoyée par GMail - %s %s"
 
-#: ../gnomegmail.py:512
+#: ../gnomegmail.py:508
 msgid "Error creating message with attachment"
 msgstr "Erreur de création du message avec pièce jointe"
 
@@ -106,7 +106,7 @@ msgstr "Quel compte Google email doit être utilisé?"
 msgid "GMail Web Integration"
 msgstr "Intégration Web GMail"
 
-#: ../gnome-gmail.desktop.in.h:3
+#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Intègre Gmail à votre bureau"
 
@@ -121,6 +121,43 @@ msgstr "Configurateur de Gnome Gmail pour Open Office"
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Offer to make GNOME Gmail the Preferred Email application"
 msgstr "Configure Open Office pour utiliser l'application préférée Gnome Email"
+
+#: ../gnome-gmail.appdata.xml.in.h:1
+msgid "GNOME GMail"
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:3
+msgid ""
+"GNOME GMail integrates the GMail web interface into the GNOME environment. "
+"Once installed, GMail becomes a choice as the default Mail Reader in the "
+"GNOME Preferred Applications administration application. When selected, a "
+"GMail web page will be used whenever an email service is requested."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:4
+msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:5
+#, fuzzy
+msgid "Put GMail on your desktop."
+msgstr "Intègre Gmail à votre bureau"
+
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "Uses the GMail web interface."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:7
+msgid "Send files from the File Browser, or other applications."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:8
+msgid "Supports multiple GMail accounts."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:9
+msgid "OAuth2 authentication - no password needed."
+msgstr ""
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
 #~ msgstr ""
