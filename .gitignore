@@ -3,3 +3,4 @@ build
 .intltool-merge-cache
 *.desktop
 *.pyc
+*.xml

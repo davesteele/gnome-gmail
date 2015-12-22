@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2015 David Steele <dsteele@gmail.com> -->
+<component type="desktop">
+<id>gnome-gmail.desktop</id>
+<metadata_license>CC0-1.0</metadata_license>
+<_name>GNOME GMail</_name>
+<_summary>Integrate GMail with your desktop</_summary>
+<description>
+<_p>GNOME GMail integrates the GMail web interface into the GNOME environment.
+Once installed, GMail becomes a choice as the default Mail Reader in the GNOME
+Preferred Applications administration application. When selected, a GMail web
+page will be used whenever an email service is requested.</_p>
+<_p>Logout, or launch GNOME GMail, to complete the configuration.</_p>
+</description>
+<provides>
+    <binary>gnome-gmail</binary>
+</provides>
+<mimetypes>
+    <mimetype>x-scheme-handler/mailto</mimetype>
+</mimetypes>
+<project_license>GPL-2.0</project_license>
+<developer_name>David Steele</developer_name>
+<update_contact>dsteele_AT_gmail.com</update_contact>
+<screenshots>
+    <screenshot type="default">
+        <img>https://davesteele.github.io/gnome-gmail/screenshots/Desktop-crop.png</img>
+        <_caption>Put GMail on your desktop.</_caption>
+    </screenshot>
+    <screenshot>
+        <img>https://davesteele.github.io/gnome-gmail/screenshots/WebInterface-crop.png</img>
+        <_caption>Uses the GMail web interface.</_caption>
+    </screenshot>
+    <screenshot>
+        <img>https://davesteele.github.io/gnome-gmail/screenshots/Nautilus-crop.png</img>
+        <_caption>Send files from the File Browser, or other applications.</_caption>
+    </screenshot>
+    <screenshot>
+        <img>https://davesteele.github.io/gnome-gmail/screenshots/AccountSelection-crop.png</img>
+        <_caption>Supports multiple GMail accounts.</_caption>
+    </screenshot>
+    <screenshot>
+        <img>https://davesteele.github.io/gnome-gmail/screenshots/OAuth2-crop.png</img>
+        <_caption>OAuth2 authentication - no password needed.</_caption>
+    </screenshot>
+</screenshots>
+<releases>
+    <release version="1.9.5"></release>
+</releases>
+</component>
+
