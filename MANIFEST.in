@@ -7,4 +7,6 @@ include README
 include po/*
 include test/*.py
 include runtests.py
+include conftest.py
+include gnome-gmail.appdata.xml
 prune .gitignore

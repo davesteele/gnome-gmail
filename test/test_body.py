@@ -3,7 +3,6 @@
 import nose
 import pytest
 from six.moves import urllib
-import urllib
 
 import gnomegmail
 
@@ -72,7 +71,7 @@ testCaseStrings = [
 
 
 def get_gmapi(input):
-        gm = gnomegmail.GMailURL(input, "me", False)
+        gm = gnomegmail.GMailURL(input, "me")
         mail_dict = gm.mail_dict
 
         gmapi = gnomegmail.GMailAPI(mail_dict)
@@ -99,7 +98,7 @@ def test_needs_api_yes(body, result):
 def test_body2html(encbody, body, result):
 
     if encbody:
-        body = urllib.quote(body)
+        body = urllib.parse.quote(body)
     elif '&' in body or '#' in body:
         pytest.skip("Don't test unencoded bodies with URL special chars")
 

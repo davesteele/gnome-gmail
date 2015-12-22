@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 from distutils.core import setup, Command
 from distutils.command.build import build
@@ -115,7 +115,7 @@ class my_clean(clean):
 
 setup(
     name='gnome-gmail',
-    version='1.9.5',
+    version='2.0',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
@@ -132,6 +132,7 @@ setup(
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
         ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
+        ('share/appdata', ['gnome-gmail.appdata.xml']),
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',

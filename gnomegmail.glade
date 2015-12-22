@@ -375,6 +375,8 @@ for the file upload</property>
     <property name="can_focus">False</property>
     <property name="type_hint">dialog</property>
     <signal name="close" handler="onUserSelClose" swapped="no"/>
+    <signal name="destroy" handler="onDestroy" swapped="no"/>
+    <signal name="destroy-event" handler="onDestroy" swapped="no"/>
     <child internal-child="vbox">
       <object class="GtkBox" id="dialog-vbox4">
         <property name="can_focus">False</property>

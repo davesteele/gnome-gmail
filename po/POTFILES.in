@@ -4,4 +4,4 @@ gnomegmail.py
 gnomegmail.glade
 gnome-gmail.desktop.in
 gnome-gmail-startup.desktop.in
-
+gnome-gmail.appdata.xml.in

@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7 -tt
+#!/usr/bin/python -tt
 #
 # Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
@@ -11,9 +11,6 @@ GMail web page to handle the directive. It is intended to support GMail as a
 GNOME Preferred Email application """
 
 import sys
-import urlparse
-import urllib
-import urllib2
 import webbrowser
 import os
 import os.path
@@ -35,6 +32,9 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+from six.moves import urllib
+from six.moves.configparser import SafeConfigParser
+
 import gi
 from gi.repository import Gio       # noqa
 
@@ -50,19 +50,14 @@ from gi.repository import Notify    # noqa
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
-from gi.repository import Gtk
-from gi.repository import Gio
-from gi.repository import Secret
-from gi.repository import Notify
-from gi.repository import Wnck
-
-from ConfigParser import SafeConfigParser
-
 locale.setlocale(locale.LC_ALL, '')
 gettext.textdomain("gnome-gmail")
 _ = gettext.gettext
 
-environ = os.environ['XDG_CURRENT_DESKTOP']
+try:
+    environ = os.environ['XDG_CURRENT_DESKTOP']
+except:
+    environ = 'GNOME'
 
 
 class GGError(Exception):
@@ -105,7 +100,10 @@ def is_default_mailer():
                     "x-scheme-handler/mailto",
                     True
                  )
-        returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+        try:
+            returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+        except AttributeError:
+            pass
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
         with open(cfgpath, 'r') as cfp:
@@ -116,7 +114,8 @@ def is_default_mailer():
 
 def browser():
     cmd = "xdg-settings get default-web-browser"
-    brsr_name = subprocess.check_output(cmd.split()).strip()
+    brsr_name = subprocess.check_output(
+        cmd.split(), universal_newlines=True).strip()
 
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
@@ -142,7 +141,7 @@ class GMOauth():
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
     def get_code(self, login_hint):
-        s = string.lowercase + string.uppercase + string.digits
+        s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
 
         args = {
@@ -155,7 +154,7 @@ class GMOauth():
                     "login_hint": login_hint,
                }
 
-        code_url = "%s?%s" % (self.auth_endpoint, urllib.urlencode(args))
+        code_url = "%s?%s" % (self.auth_endpoint, urllib.parse.urlencode(args))
 
         saveout = os.dup(1)
         os.close(1)
@@ -173,7 +172,8 @@ class GMOauth():
         code = None
         while True:
             # Look for the state and code in the window title
-            output = subprocess.check_output("xwininfo -root -tree".split())
+            output = subprocess.check_output(
+                "xwininfo -root -tree".split(), universal_newlines=True)
 
             m = re.search("state=%s.code=([^ ]+)" % state, output)
             if m:
@@ -205,8 +205,12 @@ class GMOauth():
                     "grant_type": "authorization_code",
                }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
+        try:
+            token_page = urllib.request.urlopen(
+                self.token_endpoint,
+                urllib.parse.urlencode(args).encode("utf-8"))
+        except urllib.error.HTTPError as e:
+            token_page = e
 
         return(json.loads(token_page.read().decode("utf-8")))
 
@@ -219,9 +223,13 @@ class GMOauth():
              "grant_type": "refresh_token",
           }
 
-        token_page = urllib.urlopen(self.token_endpoint,
-                                    urllib.urlencode(args))
-        token_dict = json.loads(token_page.read())
+        try:
+            token_page = urllib.request.urlopen(
+                self.token_endpoint,
+                urllib.parse.urlencode(args).encode("utf-8"))
+        except urllib.error.HTTPError as e:
+            token_page = e
+        token_dict = json.loads(token_page.read().decode("utf-8"))
 
         if "access_token" in token_dict:
             return(token_dict["access_token"])
@@ -305,13 +313,16 @@ class GMailAPI():
         except KeyError:
             pass
 
-        self.message_text = msg.as_string()
+        try:
+            self.message_text = msg.as_bytes()
+        except AttributeError:
+            self.message_text = msg.as_string()
 
     def file2mime(self, filename):
         if(filename.find("file://") == 0):
             filename = filename[7:]
 
-        filepath = urlparse.urlsplit(filename).path
+        filepath = urllib.parse.urlsplit(filename).path
 
         if not os.path.isfile(filepath):
             raise GGError(_("File not found - %s") % filepath)
@@ -402,10 +413,10 @@ class GMailAPI():
             raise GGError(_("Unable to authenticate with GMail"))
 
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
-               "?uploadType=media") % urllib.quote(user)
+               "?uploadType=media") % urllib.parse.quote(user)
 
-        opener = urllib2.build_opener(urllib2.HTTPSHandler)
-        request = urllib2.Request(url, data=self.message_text)
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
+        request = urllib.request.Request(url, data=self.message_text)
         request.add_header('Content-Type', 'message/rfc822')
         request.add_header('Content-Length', str(len(self.message_text)))
         request.add_header('Authorization', "Bearer " + access_token)
@@ -413,11 +424,11 @@ class GMailAPI():
 
         try:
             urlfp = opener.open(request)
-        except urllib2.HTTPError as e:
+        except urllib.error.HTTPError as e:
             raise GGError(_("Error returned from the GMail API - %s - %s") %
                           (e.code, e.msg))
 
-        result = urlfp.fp.read()
+        result = urlfp.fp.read().decode('utf-8')
         json_result = json.loads(result)
         id = json_result['message']['id']
 
@@ -428,9 +439,8 @@ class GMailURL():
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including API uploads."""
 
-    def __init__(self, mailto_url, from_address, enable_net_access=True):
+    def __init__(self, mailto_url, from_address):
         self.mailto_url = mailto_url
-        self.enable_net_access = enable_net_access
         self.from_address = from_address
 
         self.mail_dict = self.mailto2dict()
@@ -439,7 +449,7 @@ class GMailURL():
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
-        usplit = urlparse.urlsplit(self.mailto_url, "mailto")
+        usplit = urllib.parse.urlsplit(self.mailto_url, "mailto")
 
         path = usplit.path
 
@@ -460,7 +470,7 @@ class GMailURL():
         # valid in email addresses anyway.
         address = re.sub("^/+", "", address)
 
-        qsdict = urlparse.parse_qs(query_string)
+        qsdict = urllib.parse.parse_qs(query_string)
 
         qsdict['to'] = [address]
 
@@ -468,12 +478,12 @@ class GMailURL():
             qsdict['attach'] = qsdict['attachment']
 
         outdict = {}
-        for (key, value) in qsdict.iteritems():
+        for (key, value) in qsdict.items():
             for i in range(0, len(value)):
                 if key.lower() in ['to', 'cc', 'bcc', 'body']:
-                    value[i] = urllib.unquote(value[i])
+                    value[i] = urllib.parse.unquote(value[i])
                 else:
-                    value[i] = urllib.unquote_plus(value[i])
+                    value[i] = urllib.parse.unquote_plus(value[i])
 
             outdict[key.lower()] = value
 
@@ -490,9 +500,6 @@ class GMailURL():
 
         api_url = "https://mail.google.com/mail/b/%s#drafts/" % \
                   self.from_address
-
-        if not self.enable_net_access:
-            return(api_url)
 
         try:
             gm_api = GMailAPI(self.mail_dict)
@@ -557,6 +564,9 @@ def getFromAddress(last_address, config, gladefile):
             Gtk.main_quit()
 
         def onUserSelClose(self, foo):
+            self.onCancelClicked(foo)
+
+        def onDestroy(self, foo):
             self.onCancelClicked(foo)
 
     suppress_account_selection = config.get_bool('suppress_account_selection')

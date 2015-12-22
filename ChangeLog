@@ -1,3 +1,9 @@
+2015-12-22 David Steele <dsteele@gmail.com>
+  * V2.0
+  * Python3 support re-added
+  * Minor bug fixes
+  * Add Appstream XML data
+
 2015-11-28 David Steele <dsteele@gmail.com>
   * The previous version had a bad path for glade, breaking the GUI
 
