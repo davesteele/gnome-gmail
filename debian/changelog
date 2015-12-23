@@ -1,3 +1,12 @@
+gnome-gmail (2.0-1) unstable; urgency=low
+
+  * Python 3 compatibility re-introduced.
+  * Testing enhanced for Continuous Integration integration.
+  * Closing windows exits the utility correctly.
+  * Add DEP11 Appstream metadata.
+
+ -- David Steele <dsteele@gmail.com>  Tue, 22 Dec 2015 08:23:24 -0500
+
 gnome-gmail (1.9.5-2) unstable; urgency=low
 
   * Use pybuild.
