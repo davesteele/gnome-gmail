@@ -102,13 +102,13 @@ class my_clean(clean):
 
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
-        filelist += ['gnomegmail.glade~']
+        filelist += ['gnomegmail.glade~', 'conftest.pyc']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
 
-        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4'
-                    'build/scripts-3.5']:
+        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4',
+                    'build/scripts-3.5', '__pycache__', 'test/__pycache__']:
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
