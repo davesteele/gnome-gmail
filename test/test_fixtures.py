@@ -57,4 +57,4 @@ def test_oauth_fixture(oauth_fxt):
     win = screen.get_windows()[0]
     assert win.tag == 'win'
 
-    assert win.get_name() == 'abcdefghij'
+    assert win.get_name() == 'state=abcdefghij.code=thecode'

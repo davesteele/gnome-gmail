@@ -172,31 +172,22 @@ class GMOauth():
             browser().open(code_url, 1, True)
 
         now = time.time()
-        code = None
+
         while True:
-            # Look for the state and code in the window title
-            output = subprocess.check_output(
-                "xwininfo -root -tree".split(), universal_newlines=True)
-
-            m = re.search("state=%s.code=([^ ]+)" % state, output)
-            if m:
-                code = m.group(1)
-                break
-
+            time.sleep(0.1)
             if time.time() - now > 120:
                 raise GGError(_("Timeout getting OAuth authentication"))
 
-            time.sleep(0.1)
+            Gtk.main_iteration()
+            screen = Wnck.Screen.get_default()
+            screen.force_update()
 
-        Gtk.init([])
-        screen = Wnck.Screen.get_default()
-        screen.force_update()
+            for win in screen.get_windows():
+                m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
+                if m:
+                    win.close(time.time())
 
-        for win in screen.get_windows():
-            if re.search(state, win.get_name()):
-                win.close(time.time())
-
-        return code
+                    return m.group(1)
 
     def get_token_dict(self, code):
 
