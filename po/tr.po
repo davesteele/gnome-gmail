@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-22 07:56-0500\n"
+"POT-Creation-Date: 2015-12-24 10:48-0500\n"
 "PO-Revision-Date: 2011-05-13 15:14+0000\n"
 "Last-Translator: FULL NAME <EMAIL>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +17,34 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
-#: ../gnomegmail.py:184
+#: ../gnomegmail.py:179
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:291
+#: ../gnomegmail.py:285
 #, python-format
 msgid "Sending %s"
 msgstr "%s gönderiliyor"
 
-#: ../gnomegmail.py:295
+#: ../gnomegmail.py:289
 msgid "Mime message attached"
 msgstr "Mime mesajı eklendi"
 
-#: ../gnomegmail.py:328
+#: ../gnomegmail.py:322
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:413
+#: ../gnomegmail.py:407
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:428
+#: ../gnomegmail.py:422
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:508
+#: ../gnomegmail.py:502
 msgid "Error creating message with attachment"
 msgstr "Eklenti içeren mesaj oluşturulamadı"
 
@@ -138,23 +138,23 @@ msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 #, fuzzy
-msgid "Put GMail on your desktop."
+msgid "Put GMail on your desktop"
 msgstr "Gmail'i masaüstünüz ile entegre edin"
 
 #: ../gnome-gmail.appdata.xml.in.h:6
-msgid "Uses the GMail web interface."
+msgid "Uses the GMail web interface"
 msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:7
-msgid "Send files from the File Browser, or other applications."
+msgid "Send from the File Browser, or other applications"
 msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:8
-msgid "Supports multiple GMail accounts."
+msgid "Supports multiple GMail accounts"
 msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:9
-msgid "OAuth2 authentication - no password needed."
+msgid "OAuth2 authentication - no password needed"
 msgstr ""
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
