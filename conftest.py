@@ -88,4 +88,4 @@ def oauth_fxt(monkeypatch, web_fxt):
     win.tag = 'win'
     screen.get_windows.return_value = [win]
 
-    win.get_name.return_value = 'abcdefghij'
+    win.get_name.return_value = 'state=abcdefghij.code=thecode'

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 David Steele <dsteele@gmail.com> -->
-<component type="desktop">
-<id>gnome-gmail.desktop</id>
+<application>
+<id type="desktop">gnome-gmail.desktop</id>
 <metadata_license>CC0-1.0</metadata_license>
 <_name>GNOME GMail</_name>
 <_summary>Integrate GMail with your desktop</_summary>
@@ -12,6 +12,8 @@ Preferred Applications administration application. When selected, a GMail web
 page will be used whenever an email service is requested.</_p>
 <_p>Logout, or launch GNOME GMail, to complete the configuration.</_p>
 </description>
+<url type="homepage">https://github.com/davesteele/gnome-gmail</url>
+<url type="bugtracker">https://github.com/davesteele/gnome-gmail/issues</url>
 <provides>
     <binary>gnome-gmail</binary>
 </provides>
@@ -23,28 +25,28 @@ page will be used whenever an email service is requested.</_p>
 <update_contact>dsteele_AT_gmail.com</update_contact>
 <screenshots>
     <screenshot type="default">
-        <img>https://davesteele.github.io/gnome-gmail/screenshots/Desktop-crop.png</img>
-        <_caption>Put GMail on your desktop.</_caption>
+        <image>https://davesteele.github.io/gnome-gmail/screenshots/Desktop-crop.png</image>
+        <_caption>Put GMail on your desktop</_caption>
     </screenshot>
     <screenshot>
-        <img>https://davesteele.github.io/gnome-gmail/screenshots/WebInterface-crop.png</img>
-        <_caption>Uses the GMail web interface.</_caption>
+        <image>https://davesteele.github.io/gnome-gmail/screenshots/WebInterface-crop.png</image>
+        <_caption>Uses the GMail web interface</_caption>
     </screenshot>
     <screenshot>
-        <img>https://davesteele.github.io/gnome-gmail/screenshots/Nautilus-crop.png</img>
-        <_caption>Send files from the File Browser, or other applications.</_caption>
+        <image>https://davesteele.github.io/gnome-gmail/screenshots/Nautilus-crop.png</image>
+        <_caption>Send from the File Browser, or other applications</_caption>
     </screenshot>
     <screenshot>
-        <img>https://davesteele.github.io/gnome-gmail/screenshots/AccountSelection-crop.png</img>
-        <_caption>Supports multiple GMail accounts.</_caption>
+        <image>https://davesteele.github.io/gnome-gmail/screenshots/AccountSelection-crop.png</image>
+        <_caption>Supports multiple GMail accounts</_caption>
     </screenshot>
     <screenshot>
-        <img>https://davesteele.github.io/gnome-gmail/screenshots/OAuth2-crop.png</img>
-        <_caption>OAuth2 authentication - no password needed.</_caption>
+        <image>https://davesteele.github.io/gnome-gmail/screenshots/OAuth2-crop.png</image>
+        <_caption>OAuth2 authentication - no password needed</_caption>
     </screenshot>
 </screenshots>
 <releases>
-    <release version="2.0"></release>
+    <release version="2.0" timestamp="1450790604"></release>
 </releases>
-</component>
+</application>
 

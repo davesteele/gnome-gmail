@@ -24,6 +24,7 @@ import mimetypes
 import random
 import time
 import subprocess
+from contextlib import contextmanager
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -68,6 +69,17 @@ class GGError(Exception):
 
     def __str__(self):
         return repr(self.value)
+
+
+@contextmanager
+def nullfd(fd):
+    saveout = os.dup(fd)
+    os.close(fd)
+    os.open(os.devnull, os.O_RDWR)
+    try:
+        yield
+    finally:
+        os.dup2(saveout, fd)
 
 
 def set_as_default_mailer():
@@ -156,44 +168,26 @@ class GMOauth():
 
         code_url = "%s?%s" % (self.auth_endpoint, urllib.parse.urlencode(args))
 
-        saveout = os.dup(1)
-        os.close(1)
-        os.open(os.devnull, os.O_RDWR)
-        saveout2 = os.dup(2)
-        os.close(2)
-        os.open(os.devnull, os.O_RDWR)
-        try:
+        with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
-        finally:
-            os.dup2(saveout, 1)
-            os.dup2(saveout2, 2)
 
         now = time.time()
-        code = None
+
         while True:
-            # Look for the state and code in the window title
-            output = subprocess.check_output(
-                "xwininfo -root -tree".split(), universal_newlines=True)
-
-            m = re.search("state=%s.code=([^ ]+)" % state, output)
-            if m:
-                code = m.group(1)
-                break
-
+            time.sleep(0.1)
             if time.time() - now > 120:
                 raise GGError(_("Timeout getting OAuth authentication"))
 
-            time.sleep(0.1)
+            Gtk.main_iteration()
+            screen = Wnck.Screen.get_default()
+            screen.force_update()
 
-        Gtk.init([])
-        screen = Wnck.Screen.get_default()
-        screen.force_update()
+            for win in screen.get_windows():
+                m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
+                if m:
+                    win.close(time.time())
 
-        for win in screen.get_windows():
-            if re.search(state, win.get_name()):
-                win.close(time.time())
-
-        return code
+                    return m.group(1)
 
     def get_token_dict(self, code):
 
