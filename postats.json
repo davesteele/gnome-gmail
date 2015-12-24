@@ -9,109 +9,109 @@
         {
             "code": "zh_CN", 
             "language": "Chinese", 
-            "percent": 21, 
+            "percent": 16, 
             "translator": "Lele Long "
         }, 
         {
             "code": "zh_TW", 
             "language": "Chinese", 
-            "percent": 84, 
+            "percent": 78, 
             "translator": "Po-Chun Huang "
         }, 
         {
             "code": "hr", 
             "language": "Croatian", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": "kvaju "
         }, 
         {
             "code": "cs", 
             "language": "Czech", 
-            "percent": 84, 
+            "percent": 78, 
             "translator": "Kuvaly [LCT] "
         }, 
         {
             "code": "et", 
             "language": "Estonian", 
-            "percent": 26, 
+            "percent": 19, 
             "translator": "lyyser "
         }, 
         {
             "code": "fr", 
             "language": "French", 
-            "percent": 87, 
+            "percent": 95, 
             "translator": "Mathieu LEFEBVRE Mathdabomb "
         }, 
         {
             "code": "de", 
             "language": "German", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "Mario Bl\u00e4ttermann "
         }, 
         {
             "code": "el_GR", 
             "language": "Greek,", 
-            "percent": 90, 
+            "percent": 81, 
             "translator": ""
         }, 
         {
             "code": "hu", 
             "language": "Hungarian", 
-            "percent": 91, 
+            "percent": 84, 
             "translator": "\u00dar Bal\u00e1zs "
         }, 
         {
             "code": "id", 
             "language": "Indonesian", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "dhardiputra "
         }, 
         {
             "code": "it", 
             "language": "Italian", 
-            "percent": 88, 
+            "percent": 86, 
             "translator": "Massimo Branchini "
         }, 
         {
             "code": "ja", 
             "language": "Japanese", 
-            "percent": 4, 
+            "percent": 3, 
             "translator": "bigriver9 "
         }, 
         {
             "code": "ms", 
             "language": "Malay", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "abuyop "
         }, 
         {
             "code": "fa", 
             "language": "Persian", 
-            "percent": 21, 
+            "percent": 16, 
             "translator": "Danial Behzadi "
         }, 
         {
             "code": "pl", 
             "language": "Polish", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": "Piotr Dr\u0105g "
         }, 
         {
             "code": "pt", 
             "language": "Portuguese", 
-            "percent": 86, 
+            "percent": 81, 
             "translator": "Almufadado "
         }, 
         {
             "code": "pt_BR", 
             "language": "Portuguese", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "Pablo Almeida "
         }, 
         {
             "code": "ps", 
             "language": "Pushto", 
-            "percent": 8, 
+            "percent": 6, 
             "translator": "Said Marjan Zazai "
         }, 
         {
@@ -123,7 +123,7 @@
         {
             "code": "ru", 
             "language": "Russian", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "Kirill Babeev "
         }, 
         {
@@ -135,31 +135,31 @@
         {
             "code": "es", 
             "language": "Spanish", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": "Alberto Dom\u00ednguez "
         }, 
         {
             "code": "sv", 
             "language": "Swedish", 
-            "percent": 87, 
+            "percent": 82, 
             "translator": "__a "
         }, 
         {
             "code": "ta", 
             "language": "Tamil", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": "Jackseen Jeyaluck "
         }, 
         {
             "code": "ta_LK", 
             "language": "Tamil", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": ""
         }, 
         {
             "code": "tr", 
             "language": "Turkish", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": ""
         }, 
         {
@@ -171,13 +171,13 @@
         {
             "code": "uk", 
             "language": "Ukrainian", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": ""
         }, 
         {
             "code": "vi", 
             "language": "Vietnamese", 
-            "percent": 85, 
+            "percent": 80, 
             "translator": "L\u00ea Tr\u01b0\u1eddng An "
         }
     ]
