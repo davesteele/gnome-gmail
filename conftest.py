@@ -74,7 +74,7 @@ def oauth_fxt(monkeypatch, web_fxt):
         Mock(return_value='state=abcdefghij.code=thecode')
     )
 
-    monkeypatch.setattr('gnomegmail.Gtk.init', Mock())
+    monkeypatch.setattr('gnomegmail.Gtk.main_iteration', Mock())
 
     Wnck = Mock()
     Wnck.tag = 'wnck'
