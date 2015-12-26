@@ -1,3 +1,7 @@
+2015-12-26 David Steele <dsteele@gmail.com>
+  * V2.0.1
+  * No changes - this is a workaround for a bad Debian upload
+
 2015-12-22 David Steele <dsteele@gmail.com>
   * V2.0
   * Python3 support re-added
