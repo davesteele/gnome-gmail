@@ -1,3 +1,11 @@
+gnome-gmail (2.0.1-2) unstable; urgency=low
+
+  * DEP8 Continuous Integration fixes:
+    - Fix a hang in the OAuth2 test.
+    - Add Python 3 tests.
+
+ -- David Steele <dsteele@gmail.com>  Sat, 26 Dec 2015 21:38:00 -0500
+
 gnome-gmail (2.0.1-1) unstable; urgency=low
 
   * Rev to workaround bad V2.0 source upload.
