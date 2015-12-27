@@ -1,5 +1,5 @@
 Package: gnome-gmail
-Version: 2.0-1
+Version: 2.0.1-2
 Architecture: all
 Maintainer: David Steele <dsteele@gmail.com>
 Installed-Size: 243
@@ -7,11 +7,11 @@ Depends: python-gi, python-six, python:any (<< 2.8), python:any (>= 2.7.5-5~), l
 Homepage: https://davesteele.github.io/gnome-gmail/
 Priority: optional
 Section: gnome
-Filename: pool/main/g/gnome-gmail/gnome-gmail_2.0-1_all.deb
-Size: 54078
-SHA256: b0673d4d25eaaf6a9b6b1059b9c34e866f0862f476ee450357072ba4ff172716
-SHA1: c76c52fcf3790491cf2019f09fa1053c6f5b9643
-MD5sum: f75fa8a4e55c55cc69d831737828a7ac
+Filename: pool/main/g/gnome-gmail/gnome-gmail_2.0.1-2_all.deb
+Size: 54234
+SHA256: c29da3f6491300b123757c84f3c27c08bbfc1386d615360c1605c4f68ca8e1d6
+SHA1: 61f8a046a2c4f0399f50f0b6f1dd45c3455819e4
+MD5sum: 94c36e0c710fcbf5b4c7c821404f34d2
 Description: support for Gmail as the preferred email application in GNOME
  GNOME Gmail integrates the Gmail web interface into the GNOME environment.
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
