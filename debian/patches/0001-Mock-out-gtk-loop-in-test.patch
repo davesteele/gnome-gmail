@@ -1,0 +1,21 @@
+From: David Steele <dsteele@gmail.com>
+Date: Sat, 26 Dec 2015 17:01:25 -0500
+Subject: Mock out gtk loop in test
+
+---
+ conftest.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conftest.py b/conftest.py
+index b4b01b9..d35a2c8 100644
+--- a/conftest.py
++++ b/conftest.py
+@@ -74,7 +74,7 @@ def oauth_fxt(monkeypatch, web_fxt):
+         Mock(return_value='state=abcdefghij.code=thecode')
+     )
+ 
+-    monkeypatch.setattr('gnomegmail.Gtk.init', Mock())
++    monkeypatch.setattr('gnomegmail.Gtk.main_iteration', Mock())
+ 
+     Wnck = Mock()
+     Wnck.tag = 'wnck'
