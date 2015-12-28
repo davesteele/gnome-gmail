@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 David Steele <dsteele@gmail.com> -->
-<application>
+<component type="desktop">
 <id type="desktop">gnome-gmail.desktop</id>
 <metadata_license>CC0-1.0</metadata_license>
 <_name>GNOME GMail</_name>
@@ -47,6 +47,6 @@ page will be used whenever an email service is requested.</_p>
 </screenshots>
 <releases>
     <release version="2.0" timestamp="1450790604"></release>
+    <release version="2.0.1" timestamp="1451180280"></release>
 </releases>
-</application>
-
+</component>
