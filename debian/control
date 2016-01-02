@@ -1,25 +1,31 @@
 Source: gnome-gmail
-Section: gnome
-Priority: optional
 Maintainer: David Steele <dsteele@gmail.com>
+Section: gnome
+Testsuite: autopkgtest
+Priority: optional
 Build-Depends: debhelper (>= 7.4.3),
                dh-python,
                intltool,
-               python (>= 2.6.6-3),
-Testsuite: autopkgtest
+               python
 Standards-Version: 3.9.6
-X-Python-Version: >= 2.7
-Homepage: https://davesteele.github.io/gnome-gmail/
 Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
+Homepage: https://davesteele.github.io/gnome-gmail/
+X-Python-Version: >= 2.7
 
 Package: gnome-gmail
 Architecture: all
-Provides: exec<gnome-gmail>, mime<x-scheme-handler/mailto>
-Depends: ${misc:Depends}, ${python:Depends}, python-gi,
-         libgtk-3-bin (>=3.10), gir1.2-secret-1, gir1.2-gtk-3.0,
-         gir1.2-notify-0.7, gir1.2-wnck-3.0,
-         python-six,
+Depends: ${misc:Depends},
+         ${python:Depends},
+         python-gi,
+         libgtk-3-bin (>= 3.10),
+         gir1.2-secret-1,
+         gir1.2-gtk-3.0,
+         gir1.2-notify-0.7,
+         gir1.2-wnck-3.0,
+         python-six
+Provides: exec<gnome-gmail>,
+          mime<x-scheme-handler/mailto>
 Description: support for Gmail as the preferred email application in GNOME
  GNOME Gmail integrates the Gmail web interface into the GNOME environment.
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
