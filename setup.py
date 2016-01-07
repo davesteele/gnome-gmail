@@ -5,6 +5,7 @@ from distutils.command.build import build
 from distutils.command.clean import clean
 
 import os
+import sys
 import shutil
 import subprocess
 
@@ -108,6 +109,19 @@ class my_clean(clean):
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
+class my_test(Command):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+
+    def initialize_options(self):
+        self.pytest_args = []
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
 
 setup(
     name='gnome-gmail',
@@ -144,5 +158,6 @@ setup(
         'build_i18n': my_build_i18n,
         'clean': my_clean,
         'build': my_build,
+        'test': my_test,
              },
      )
