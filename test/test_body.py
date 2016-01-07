@@ -79,13 +79,6 @@ def get_gmapi(input):
         return gmapi
 
 
-def check_needs_api(mailto, result):
-
-        gmapi = get_gmapi(mailto)
-
-        nose.tools.assert_true(gmapi.needs_api() is result)
-
-
 @pytest.mark.parametrize("body, result", testCaseStrings)
 def test_needs_api_yes(body, result):
     gmapi = get_gmapi(baseMailtoURL + body)
