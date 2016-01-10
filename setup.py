@@ -108,6 +108,7 @@ class my_clean(clean):
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
+
 class my_test(Command):
     user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
 
