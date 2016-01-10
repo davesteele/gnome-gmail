@@ -50,7 +50,6 @@ def merge_i18n():
 
         if flag:
             args = " %s %s.in %s" % (flag, infile, infile)
-            print(cmd + args)
             subprocess.call(cmd + args, shell=True)
 
 
