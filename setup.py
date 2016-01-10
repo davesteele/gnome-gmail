@@ -28,7 +28,7 @@ def mkmo(lang):
     inpath = os.path.join(podir, lang + pext)
     cmd = "msgfmt %s -o %s/gnome-gmail.mo" % (inpath, outpath)
 
-    subprocess.call(cmd, shell=True)
+    subprocess.call(cmd, shell=True) and sys.exit(1)
 
 
 def merge_i18n():
@@ -50,7 +50,7 @@ def merge_i18n():
 
         if flag:
             args = " %s %s.in %s" % (flag, infile, infile)
-            subprocess.call(cmd + args, shell=True)
+            subprocess.call(cmd + args, shell=True) and sys.exit(1)
 
 
 class my_build(build):
