@@ -20,7 +20,8 @@ matrix:
       install:
         # https://github.com/travis-ci/apt-package-whitelist/issues/2216
         # https://github.com/travis-ci/apt-package-whitelist/issues/2217
-        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0
+        # https://github.com/travis-ci/apt-package-whitelist/issues/2219
+        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0 desktop-file-utils
         - pip install six
     - python: "3.4"
       addons:
@@ -34,8 +35,11 @@ matrix:
       install:
         # https://github.com/travis-ci/apt-package-whitelist/issues/2216
         # https://github.com/travis-ci/apt-package-whitelist/issues/2217
-        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0
+        # https://github.com/travis-ci/apt-package-whitelist/issues/2219
+        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0 desktop-file-utils
         - pip install six
 
 script:
   - python setup.py build test
+  - desktop-file-validate gnome-gmail.desktop
+  - desktop-file-validate gnome-gmail-startup.desktop
