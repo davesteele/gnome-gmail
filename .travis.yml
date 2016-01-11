@@ -14,14 +14,13 @@ matrix:
           packages:
             - python-gi
             - gir1.2-gtk-3.0
+            - gir1.2-notify-0.7
             - gir1.2-secret-1
+            - gir1.2-wnck-3.0
             - gettext
             - intltool
+            - desktop-file-utils
       install:
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2216
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2217
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2219
-        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0 desktop-file-utils
         - pip install six
     - python: "3.4"
       addons:
@@ -29,14 +28,13 @@ matrix:
           packages:
             - python3-gi
             - gir1.2-gtk-3.0
+            - gir1.2-notify-0.7
             - gir1.2-secret-1
+            - gir1.2-wnck-3.0
             - gettext
             - intltool
+            - desktop-file-utils
       install:
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2216
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2217
-        # https://github.com/travis-ci/apt-package-whitelist/issues/2219
-        - sudo apt-get -yq install gir1.2-notify-0.7 gir1.2-wnck-3.0 desktop-file-utils
         - pip install six
 
 script:
