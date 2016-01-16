@@ -1,26 +1,31 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Aviary.pl
+# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
+# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
+# gnomepl@aviary.pl
+# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
+# Piotr Drąg <piotrdrag@gmail.com>, 2010-2016.
+# Aviary.pl <gnomepl@aviary.pl>, 2010-2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-24 10:48-0500\n"
-"PO-Revision-Date: 2011-05-13 15:10+0000\n"
+"PO-Revision-Date: 2016-01-16 14:50+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Polish <gnomepl@aviary.pl>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2)\n"
+"|| n%100>=20) ? 1 : 2);\n"
+"X-Poedit-Language: Polish\n"
+"X-Poedit-Country: Poland\n"
 
 #: ../gnomegmail.py:179
 msgid "Timeout getting OAuth authentication"
-msgstr ""
+msgstr "Przekroczono czas oczekiwania podczas uwierzytelniania OAuth"
 
 #: ../gnomegmail.py:285
 #, python-format
@@ -34,16 +39,16 @@ msgstr "Załączono wiadomość MIME"
 #: ../gnomegmail.py:322
 #, python-format
 msgid "File not found - %s"
-msgstr ""
+msgstr "Nie odnaleziono pliku — %s"
 
 #: ../gnomegmail.py:407
 msgid "Unable to authenticate with GMail"
-msgstr ""
+msgstr "Nie można uwierzytelnić z serwisem Gmail"
 
 #: ../gnomegmail.py:422
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
-msgstr ""
+msgstr "Zwrócono błąd z API serwisu Gmail — %s — %s"
 
 #: ../gnomegmail.py:502
 msgid "Error creating message with attachment"
@@ -59,7 +64,7 @@ msgstr "komentarz"
 
 #: ../gnomegmail.glade.h:3
 msgid "Configure"
-msgstr "Konfiguracja"
+msgstr "Skonfiguruj"
 
 #: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
@@ -70,7 +75,7 @@ msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
 msgstr ""
-"Proszę podać dane uwierzytelniające usługi Gmail,\n"
+"Proszę podać dane uwierzytelniające serwisu Gmail,\n"
 "aby wysłać plik"
 
 #: ../gnomegmail.glade.h:7
@@ -90,42 +95,41 @@ msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
+"GNOME Gmail nie jest obecnie preferowanym programem pocztowym. Wysyłać "
+"pocztę za pomocą interfejsu serwisu Gmail?"
 
 #: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
-msgstr ""
+msgstr "Bez pytania ponownie"
 
 #: ../gnomegmail.glade.h:12
 msgid "Which Google email account should be used?"
-msgstr ""
+msgstr "Którego konta e-mail Google użyć?"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
-msgstr ""
+msgstr "Integracja z serwisem Gmail"
 
 #: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr "Integracja usługi Gmail z pulpitem"
+msgstr "Integracja serwisu Gmail ze środowiskiem"
 
 #: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
-msgstr ""
+msgstr "email;e-mail;poczta;skrzynka;wyślij;mail;mejl;Google;"
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-#, fuzzy
 msgid "Gnome Gmail Configurator"
-msgstr "Konfiguracja usługi Gmail w OpenOffice.org"
+msgstr "Konfiguracja GNOME Gmail"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-#, fuzzy
 msgid "Offer to make GNOME Gmail the Preferred Email application"
 msgstr ""
-"Ustawia użycie preferowanego programu pocztowego GNOME przez pakiet "
-"OpenOffice.org"
+"Umożliwia ustawienie GNOME Gmail jako preferowanego programu pocztowego"
 
 #: ../gnome-gmail.appdata.xml.in.h:1
 msgid "GNOME GMail"
-msgstr ""
+msgstr "GNOME Gmail"
 
 #: ../gnome-gmail.appdata.xml.in.h:3
 msgid ""
@@ -134,132 +138,32 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
+"GNOME Gmail integruje interfejs serwisu Gmail ze środowiskiem GNOME. Po "
+"zainstalowaniu można wybrać Gmail jako domyślny program pocztowy w "
+"ustawieniach preferowanych programów GNOME. Po wybraniu interfejs serwisu "
+"Gmail będzie używany do wysyłania poczty."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
 msgstr ""
+"Należy się wylogować lub uruchomić GNOME Gmail, aby ukończyć konfigurację."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
-#, fuzzy
 msgid "Put GMail on your desktop"
-msgstr "Integracja usługi Gmail z pulpitem"
+msgstr "Integruje serwis Gmail ze środowiskiem"
 
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "Uses the GMail web interface"
-msgstr ""
+msgstr "Używa interfejsu serwisu Gmail"
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Send from the File Browser, or other applications"
-msgstr ""
+msgstr "Umożliwia wysyłanie z przeglądarki plików i innych programów"
 
 #: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Supports multiple GMail accounts"
-msgstr ""
+msgstr "Obsługuje wiele kont Gmail"
 
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
-msgstr ""
-
-#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
-#~ msgstr ""
-#~ "Konfiguracja użycia preferowanego programu pocztowego GNOME przez pakiet "
-#~ "OpenOffice.org"
-
-#~ msgid "Drafts"
-#~ msgstr "Wersje robocze"
-
-#~ msgid "Unable to determine IMAP Drafts folder location"
-#~ msgstr "Nie można ustalić położenia katalogu Szkice protokołu IMAP"
-
-#~ msgid "nvalid credentials"
-#~ msgstr "nieprawidłowe dane uwierzytelniające"
-
-#~ msgid "Invalid GMail User Name or Password"
-#~ msgstr "Nieprawidłowa nazwa użytkownika lub hasło usługi Gmail"
-
-#~ msgid "not enabled for IMAP"
-#~ msgstr "nie włączono dla protokołu IMAP"
-
-#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
-#~ msgstr ""
-#~ "Należy włączyć protokół IMAP w usłudze Gmail, aby wysyłać załączniki"
-
-#, fuzzy
-#~ msgid "User cancelled"
-#~ msgstr "Użytkownik anulował \"Wyślij do...\""
-
-#~ msgid "GMail credentials incomplete"
-#~ msgstr "Dane uwierzytelniające usługi Gmail nie są pełne"
-
-#~ msgid "Your Gmail user name, without the '@gmail.com' part"
-#~ msgstr "Nazwa użytkownika usługi Gmail, bez części \"@gmail.com\""
-
-#~ msgid "Your Gmail password"
-#~ msgstr "Hasło usługi Gmail"
-
-#~ msgid ""
-#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
-#~ msgstr ""
-#~ "Nazwa konta pocztowego (np. \"jan\" dla konta pocztowego \"jan@gmail.com"
-#~ "\")"
-
-#~ msgid "Enter the password for the mail account"
-#~ msgstr "Proszę podać hasło do konta pocztowego"
-
-#~ msgid "Remember the Google Account password in the Gnome keychain."
-#~ msgstr "Zapamiętuje hasło konta Google w bazie kluczy środowiska GNOME."
-
-#~ msgid "Configure Gnome Gmail for use with a Google App account."
-#~ msgstr "Konfiguracja programu GNOME Gmail do użycia z kontem Google Apps."
-
-#~ msgid "Save IMAP password?"
-#~ msgstr "Zapisać hasło protokołu IMAP?"
-
-#~ msgid ""
-#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
-#~ "keyring. IMAP is used to upload file attachments to GMail."
-#~ msgstr ""
-#~ "Jeśli jest wybrane, program GNOME Gmail zapisze hasło protokołu IMAP w "
-#~ "bazie kluczy środowiska GNOME. Protokół IMAP jest używany do wysyłania "
-#~ "załączników do usługi Gmail."
-
-#~ msgid "Saved IMAP user name"
-#~ msgstr "Zapisana nazwa użytkownika protokołu IMAP"
-
-#~ msgid ""
-#~ "Gnome Gmail will save the last user name for file attachment uploads here."
-#~ msgstr ""
-#~ "Program GNOME Gmail zapisze tutaj ostatnią nazwę użytkownika do wysyłania "
-#~ "załączników."
-
-#~ msgid "Google Apps domain"
-#~ msgstr "Domena Google Apps"
-
-#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-#~ msgstr ""
-#~ "Aby użyć programu GNOME Gmail z Google Apps, należy tutaj podać domenę"
-
-#~ msgid "Hide confirmation dialog"
-#~ msgstr "Ukrycie okna potwierdzenia"
-
-#~ msgid ""
-#~ "When checked, Gnome Gmail will suppress the confirmation notification "
-#~ "that appears with each message created. The notification includes a link "
-#~ "to allow Gnome Gmail to be configured for Google Apps support."
-#~ msgstr ""
-#~ "Jeśli jest wybrane, program GNOME Gmail nie wyświetli powiadomienia "
-#~ "potwierdzającego, które pojawia się po utworzeniu każdej wiadomości. "
-#~ "Powiadomienie zawiera odnośnik umożliwiający skonfigurowanie programu "
-#~ "GNOME Gmail do obsługi Google Apps."
-
-#~ msgid ""
-#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
-#~ "the currently selected Gnome Preferred Email Application with each login, "
-#~ "using a Gnome Gmail compatibility application."
-#~ msgstr ""
-#~ "Jeśli jest wybrane, program GNOME Gmail spróbuje skonfigurować pakiet "
-#~ "OpenOffice.org do użycia obecnie wybranego programu pocztowego środowiska "
-#~ "GNOME za każdym logowaniem, używając programu zgodności GNOME Gmail."
-
-#~ msgid "Gmail"
-#~ msgstr "Gmail"
+msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"
