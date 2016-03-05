@@ -174,8 +174,6 @@ class GMOauth():
         now = time.time()
 
         while time.time() - now < 120:
-            time.sleep(0.1)
-
             Gtk.main_iteration()
             screen = Wnck.Screen.get_default()
             screen.force_update()
