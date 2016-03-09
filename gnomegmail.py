@@ -89,10 +89,14 @@ def set_as_default_mailer():
                 app.set_as_default_for_type("x-scheme-handler/mailto")
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
-        with open(cfgpath, 'r') as cfp:
-            cfglines = cfp.readlines()
+        try:
+            with open(cfgpath, 'r') as cfp:
+                cfglines = cfp.readlines()
+        except FileNotFoundError:
+            cfglines = []
 
-        cfglines = [x for x in cfglines if 'EmailClient' not in x]
+        cfglines = [x for x in cfglines if 'EmailClient' not in x] or \
+                   ['[PROFILE_Default]']
 
         outlines = []
         for line in cfglines:
@@ -118,8 +122,11 @@ def is_default_mailer():
             pass
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
-        with open(cfgpath, 'r') as cfp:
-            returnvalue = 'gnome-gmail' in cfp.read()
+        try:
+            with open(cfgpath, 'r') as cfp:
+                returnvalue = 'gnome-gmail' in cfp.read()
+        except FileNotFoundError:
+            pass
 
     return returnvalue
 
