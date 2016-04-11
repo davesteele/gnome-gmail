@@ -24,6 +24,7 @@ import mimetypes
 import random
 import time
 import subprocess
+import shlex
 from contextlib import contextmanager
 
 from email import encoders
@@ -60,6 +61,7 @@ try:
 except:
     environ = 'GNOME'
 
+config = None
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -129,11 +131,19 @@ def browser():
     brsr_name = subprocess.check_output(
         cmd.split(), universal_newlines=True).strip()
 
+    browser = webbrowser.get()
+
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
-            return webbrowser.get(using=candidate)
+            browser = webbrowser.get(using=candidate)
 
-    return webbrowser.get()
+    return customize_browser(browser)
+
+
+def customize_browser(browser):
+    browser.remote_args += shlex.split(config.get_str('browser_options'))
+
+    return browser
 
 
 class GMOauth():
@@ -733,6 +743,8 @@ def main():
     """ given an optional parameter of a valid mailto url, open an appropriate
     gmail web page """
 
+    global config
+
     if(len(sys.argv) > 1):
         mailto = sys.argv[1]
     else:
@@ -754,6 +766,10 @@ def main():
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
         #
+        # browser_options
+        #     Add to the command line options used to call the browser. Note
+        #     that these options are not portable acrosss browsers.
+        #
         """)
     config = GgConfig(
                 fpath="~/.config/gnome-gmail/gnome-gmail.conf",
@@ -763,6 +779,7 @@ def main():
                     'suppress_account_selection': '0',
                     'new_browser': '1',
                     'last_email': '',
+                    'browser_options': '',
                 },
                 header=header,
              )
