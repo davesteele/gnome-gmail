@@ -141,7 +141,26 @@ def browser():
 
 
 def customize_browser(browser):
-    browser.remote_args += shlex.split(config.get_str('browser_options'))
+
+    argmap = {
+        'Chrome': '-P -no-remote',
+        'Konqueror': '',
+        'Mozilla': '',
+        'Galeon': '',
+        'Opera': '',
+        'Grail': '',
+    }
+
+    addl_args = config.get_str('browser_options')
+
+    # we're mucking in webbrowser internals. Tolerate problems.
+    try:
+        if not addl_args:
+            addl_args = argmap[type(browser).__name__]
+
+        browser.remote_args += shlex.split(addl_args)
+    except:
+        pass
 
     return browser
 
