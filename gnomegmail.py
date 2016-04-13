@@ -143,9 +143,9 @@ def browser():
 def customize_browser(browser):
 
     argmap = {
-        'Chrome': '-P -no-remote',
+        'Chrome': '',
         'Konqueror': '',
-        'Mozilla': '',
+        'Mozilla': '-P -no-remote',
         'Galeon': '',
         'Opera': '',
         'Grail': '',
