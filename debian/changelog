@@ -1,3 +1,9 @@
+gnome-gmail (2.0.1-3) UNRELEASED; urgency=medium
+
+  * Update to gtk-update-icon-cache for icon update (Closes: #825451).
+
+ -- David Steele <dsteele@gmail.com>  Thu, 26 May 2016 21:59:22 -0400
+
 gnome-gmail (2.0.1-2) unstable; urgency=low
 
   * DEP8 Continuous Integration fixes:
