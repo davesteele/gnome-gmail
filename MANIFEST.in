@@ -3,7 +3,7 @@ include ChangeLog
 include COPYING
 include gnome-gmail*
 include NEWS
-include README
+include README.md
 include po/*
 include test/*.py
 include conftest.py
