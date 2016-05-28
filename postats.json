@@ -49,7 +49,7 @@
             "translator": "Mario Bl\u00e4ttermann "
         }, 
         {
-            "code": "el_GR", 
+            "code": "el", 
             "language": "Greek,", 
             "percent": 81, 
             "translator": ""
@@ -93,7 +93,7 @@
         {
             "code": "pl", 
             "language": "Polish", 
-            "percent": 80, 
+            "percent": 100, 
             "translator": "Piotr Dr\u0105g "
         }, 
         {
@@ -149,12 +149,6 @@
             "language": "Tamil", 
             "percent": 80, 
             "translator": "Jackseen Jeyaluck "
-        }, 
-        {
-            "code": "ta_LK", 
-            "language": "Tamil", 
-            "percent": 80, 
-            "translator": ""
         }, 
         {
             "code": "tr", 
