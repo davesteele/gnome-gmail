@@ -5,42 +5,37 @@ from distutils.command.build import build
 from distutils.command.clean import clean
 
 import os
+import sys
 import shutil
+import subprocess
 
-podir = "po"
-pos = [x for x in os.listdir(podir) if x[-3:] == ".po"]
-langs = sorted([os.path.split(x)[-1][:-3] for x in pos])
+podir = "./po"
+pext = ".po"
+
+langs = sorted([x[:-3] for x in os.listdir(podir) if x[-3:] == pext])
 
 
 def modir(lang):
-    mobase = "build/mo"
-    if not os.path.exists(mobase):
-        os.makedirs(mobase)
-
-    return os.path.join(mobase, lang)
-
-
-def rmmo(lang):
-    path = modir(lang)
-    if os.path.exists(path):
-        shutil.rmtree(path)
+    return os.path.join("build/mo", lang)
 
 
 def mkmo(lang):
-    rmmo(lang)
-
     outpath = modir(lang)
-    os.mkdir(outpath)
+    if os.path.exists(outpath):
+        shutil.rmtree(outpath)
+    os.makedirs(outpath)
 
-    inpath = os.path.join(podir, lang + ".po")
-
+    inpath = os.path.join(podir, lang + pext)
     cmd = "msgfmt %s -o %s/gnome-gmail.mo" % (inpath, outpath)
 
-    os.system(cmd)
+    subprocess.call(cmd, shell=True) and sys.exit(1)
 
 
 def merge_i18n():
-    cmd = "LC_ALL=C intltool-merge -u -c ./po/.intltool-merge-cache ./po "
+
+    cmd = "LC_ALL=C intltool-merge -u " +\
+          "-c %s/.intltool-merge-cache " % podir +\
+          podir
     for infile in (x[:-3] for x in os.listdir('.') if x[-3:] == '.in'):
         print("Processing %s.in to %s" % (infile, infile))
 
@@ -54,7 +49,8 @@ def merge_i18n():
             flag = ''
 
         if flag:
-            os.system("%s %s %s.in %s" % (cmd, flag, infile, infile))
+            args = " %s %s.in %s" % (flag, infile, infile)
+            subprocess.call(cmd + args, shell=True) and sys.exit(1)
 
 
 class my_build(build):
@@ -87,13 +83,13 @@ class my_build_i18n(Command):
     def run(self):
         print("Creating POT file")
         cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
-        os.system(cmd)
+        subprocess.call(cmd, shell=True)
 
         for lang in langs:
             print("Updating %s PO file" % lang)
             cmd = "cd po; intltool-update --dist \
                    --gettext-package=gnome-gmail %s >/dev/null 2>&1" % lang
-            os.system(cmd)
+            subprocess.call(cmd, shell=True)
 
 
 class my_clean(clean):
@@ -113,9 +109,23 @@ class my_clean(clean):
                 shutil.rmtree(dir)
 
 
+class my_test(Command):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
+
+    def initialize_options(self):
+        self.pytest_args = []
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
 setup(
     name='gnome-gmail',
-    version='2.0.1',
+    version='2.1',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
@@ -148,5 +158,6 @@ setup(
         'build_i18n': my_build_i18n,
         'clean': my_clean,
         'build': my_build,
+        'test': my_test,
              },
      )

@@ -173,11 +173,7 @@ class GMOauth():
 
         now = time.time()
 
-        while True:
-            time.sleep(0.1)
-            if time.time() - now > 120:
-                raise GGError(_("Timeout getting OAuth authentication"))
-
+        while time.time() - now < 120:
             Gtk.main_iteration()
             screen = Wnck.Screen.get_default()
             screen.force_update()
@@ -188,6 +184,8 @@ class GMOauth():
                     win.close(time.time())
 
                     return m.group(1)
+
+        raise GGError(_("Timeout getting OAuth authentication"))
 
     def get_token_dict(self, code):
 
