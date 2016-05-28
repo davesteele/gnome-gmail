@@ -1,6 +1,8 @@
-gnome-gmail (2.0.1-3) UNRELEASED; urgency=medium
+gnome-gmail (2.1-1) UNRELEASED; urgency=medium
 
   * Update to gtk-update-icon-cache for icon update (Closes: #825451).
+  * Improved testing (w Travis support).
+  * Polish update.
 
  -- David Steele <dsteele@gmail.com>  Thu, 26 May 2016 21:59:22 -0400
 
