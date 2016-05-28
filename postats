@@ -21,7 +21,11 @@ def percent_done(lcode):
 
     tokens = out.split()
     translated = string.atoi(tokens[0])
-    untranslated = string.atoi(tokens[3])
+
+    try:
+        untranslated = string.atoi(tokens[3])
+    except IndexError:
+        untranslated = 0
 
     percent = int(100 * translated / (translated + untranslated))
 
