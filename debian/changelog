@@ -1,3 +1,9 @@
+gnome-gmail (2.1-1+ppa1) gnome-gmailppa; urgency=medium
+
+  * Revert the gtk-update-icon-cache change, for other dists
+
+ -- David Steele <dsteele@gmail.com>  Fri, 03 Jun 2016 20:43:04 -0400
+
 gnome-gmail (2.1-1) UNRELEASED; urgency=medium
 
   * Update to gtk-update-icon-cache for icon update (Closes: #825451).

@@ -18,7 +18,7 @@ Architecture: all
 Depends: ${misc:Depends},
          ${python:Depends},
          python-gi,
-         gtk-update-icon-cache,
+         libgtk-3-bin (>= 3.10),
          gir1.2-secret-1,
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
