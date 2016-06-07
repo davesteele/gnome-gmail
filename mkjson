@@ -2,14 +2,17 @@
 
 import os
 import json
+import re
 
 
 def parse_ver(version):
     """ Blow out a version string into a sortable list-based structure"""
 
-    blowout = lambda x: [int(y) for y in x.split('.')]
+    vstr = re.sub('[^0-9]', ' ', version)
+    vstr = vstr.split()
+    vstr = [int(x) for x in vstr]
 
-    return [blowout(x) for x in version.split('-')]
+    return vstr
 
 
 def pkgkeyfunc(a):
