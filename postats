@@ -10,10 +10,10 @@ lcodes = sorted([x[:-3] for x in os.listdir('po') if x[-3:] == ".po"])
 
 
 def get_lang(lcode):
-    cmd = "isoquery -i 639-3 " + lcode[0:2]
+    cmd = "isoquery -i 639 " + lcode[0:2]
     out = subprocess.check_output(cmd.split()).strip()
 
-    return out.split()[5]
+    return out.split()[3].strip(',;')
 
 def percent_done(lcode):
     cmd = "msgfmt --statistics po/%s.po" % lcode
