@@ -135,7 +135,7 @@ msgstr ""
 "Una vez instalado, Gmail se convierte en una opción como la predeterminada "
 "de correo del lector en el GNOME aplicación de administración de "
 "aplicaciones preferidas. Cuando se selecciona, una la página web de Gmail "
-"se utilizará siempre que se solicite un servicio de correo electrónico.
+"se utilizará siempre que se solicite un servicio de correo electrónico."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
