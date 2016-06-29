@@ -131,10 +131,15 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
+"GNOME Gmail integra la interfaz web de Gmail en el entorno GNOME. "
+"Una vez instalado, Gmail se convierte en una opción como la predeterminada "
+"de correo del lector en el GNOME aplicación de administración de "
+"aplicaciones preferidas. Cuando se selecciona, una la página web de Gmail "
+"se utilizará siempre que se solicite un servicio de correo electrónico."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
-msgstr ""
+msgstr "Cerrar sesión, o lanzar GNOME Gmail, para completar la configuración."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 #, fuzzy
@@ -143,19 +148,19 @@ msgstr "Integra GMail en tu escritorio"
 
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "Uses the GMail web interface"
-msgstr ""
+msgstr "Utiliza la interfaz web de Gmail"
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Send from the File Browser, or other applications"
-msgstr ""
+msgstr "Enviar desde el explorador de archivos, u otras aplicaciones"
 
 #: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Supports multiple GMail accounts"
-msgstr ""
+msgstr "Soporta múltiples cuentas de Gmail"
 
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
-msgstr ""
+msgstr "Autentificación OAuth2 - sin necesidad de contraseña"
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
 #~ msgstr ""
