@@ -1,11 +1,11 @@
 gnome-gmail (2.2-1) unstable; urgency=medium
 
-  * Add config opion to control browser CLI launch options.
+  * Add config option to control browser CLI launch options.
     - Chrome launches in a tabless 'app' window.
 
  -- David Steele <steele@debian.org>  Mon, 27 Jun 2016 16:20:00 -0400
  
- gnome-gmail (2.1-1) unstable; urgency=medium
+gnome-gmail (2.1-1) UNRELEASED; urgency=medium
 
   * Update to gtk-update-icon-cache for icon update (Closes: #825451).
   * Improved testing (w Travis support).
