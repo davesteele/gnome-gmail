@@ -1,3 +1,9 @@
+2016-06-28 David Steele <dsteele@gmail.com>
+  * V2.2
+  * Support for defining browser command line options.
+    - Chrome opens tabless 'app' window.
+  * Appdata translations
+
 2016-05-27 David Steele <dsteele@gmail.com>
   * V2.1
   * Appstream fix
