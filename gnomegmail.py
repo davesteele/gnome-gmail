@@ -24,6 +24,7 @@ import mimetypes
 import random
 import time
 import subprocess
+import shlex
 from contextlib import contextmanager
 
 from email import encoders
@@ -60,6 +61,7 @@ try:
 except:
     environ = 'GNOME'
 
+config = None
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -129,11 +131,41 @@ def browser():
     brsr_name = subprocess.check_output(
         cmd.split(), universal_newlines=True).strip()
 
+    browser = webbrowser.get()
+
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
-            return webbrowser.get(using=candidate)
+            browser = webbrowser.get(using=candidate)
 
-    return webbrowser.get()
+    return customize_browser(browser)
+
+
+def customize_browser(browser):
+
+    argmap = {
+        'Chrome': '--app=%s',
+        'Konqueror': '',
+        'Mozilla': '',
+        'Galeon': '',
+        'Opera': '',
+        'Grail': '',
+    }
+
+    replace_args = config.get_str('browser_options')
+
+    if replace_args:
+        browser.remote_args = shlex.split(replace_args)
+    else:
+        try:
+            std_args = argmap[type(browser).__name__]
+
+            if std_args:
+                browser.remote_args = shlex.split(std_args)
+
+        except KeyError:
+            pass
+
+    return browser
 
 
 class GMOauth():
@@ -731,6 +763,8 @@ def main():
     """ given an optional parameter of a valid mailto url, open an appropriate
     gmail web page """
 
+    global config
+
     if(len(sys.argv) > 1):
         mailto = sys.argv[1]
     else:
@@ -752,6 +786,16 @@ def main():
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
         #
+        # browser_options
+        #     Replace the command line arguments used to call the browser. Note
+        #     that these options are not portable acrosss browsers. '%s' is
+        #     replaced with the url. '%action' is replaced with an option that
+        #     that implements the 'new_browser' functionality. Default options
+        #     are:
+        #         Chrome - "%action %s"
+        #         Mozilla - "-remote openurl(%s%action)"
+        #         ...
+        #
         """)
     config = GgConfig(
                 fpath="~/.config/gnome-gmail/gnome-gmail.conf",
@@ -761,6 +805,7 @@ def main():
                     'suppress_account_selection': '0',
                     'new_browser': '1',
                     'last_email': '',
+                    'browser_options': '',
                 },
                 header=header,
              )

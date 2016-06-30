@@ -1,5 +1,5 @@
 Source: gnome-gmail
-Maintainer: David Steele <dsteele@gmail.com>
+Maintainer: David Steele <steele@debian.org>
 Section: gnome
 Testsuite: autopkgtest
 Priority: optional
