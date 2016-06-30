@@ -39,18 +39,18 @@
         {
             "code": "fr", 
             "language": "French", 
-            "percent": 95, 
+            "percent": 96, 
             "translator": "Mathieu LEFEBVRE Mathdabomb "
         }, 
         {
             "code": "de", 
             "language": "German", 
-            "percent": 82, 
+            "percent": 86, 
             "translator": "Mario Bl\u00e4ttermann "
         }, 
         {
             "code": "el", 
-            "language": "Greek,", 
+            "language": "Greek", 
             "percent": 81, 
             "translator": ""
         }, 
@@ -105,7 +105,7 @@
         {
             "code": "pt_BR", 
             "language": "Portuguese", 
-            "percent": 82, 
+            "percent": 86, 
             "translator": "Pablo Almeida "
         }, 
         {
@@ -135,7 +135,7 @@
         {
             "code": "es", 
             "language": "Spanish", 
-            "percent": 80, 
+            "percent": 85, 
             "translator": "Alberto Dom\u00ednguez "
         }, 
         {
