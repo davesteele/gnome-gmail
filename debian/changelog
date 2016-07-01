@@ -1,3 +1,9 @@
+gnome-gmail (2.2-2) unstable; urgency=medium
+
+  * Fix CI tests.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 10:14:05 -0400
+
 gnome-gmail (2.2-1) unstable; urgency=medium
 
   * Add config option to control browser CLI launch options.
