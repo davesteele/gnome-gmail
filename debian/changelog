@@ -1,3 +1,9 @@
+gnome-gmail (2.2-3) unstable; urgency=medium
+
+  * Fix the CI fix fix.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 23:56:24 -0400
+
 gnome-gmail (2.2-2) unstable; urgency=medium
 
   * Fix CI tests.

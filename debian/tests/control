@@ -1,5 +1,5 @@
-Test-Command: python setup.py test
+Test-Command: python setup.py test --pytest-args --ignore=test/test_setup.py
 Depends: @, python-pytest, python-mock, python-nose,
 
-Test-Command: python3 setup.py test
+Test-Command: python3 setup.py test --pytest-args --ignore=test/test_setup.py
 Depends: @, python3-pytest, python3-mock, python3-nose, python3-gi,
