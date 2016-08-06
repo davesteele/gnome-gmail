@@ -1,83 +1,163 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
-import DistUtilsExtra.auto
-import DistUtilsExtra.command
-import distutils.command
+from distutils.core import setup, Command
+from distutils.command.build import build
+from distutils.command.clean import clean
+
 import os
-import shutil
-
 import sys
-if not sys.version_info[0] == 2:
-    print "Sorry, Python 3 is not supported (yet)"
-    sys.exit(1)
+import shutil
+import subprocess
 
-class my_build_i18n(DistUtilsExtra.command.build_i18n.build_i18n):
+podir = "./po"
+pext = ".po"
+
+langs = sorted([x[:-3] for x in os.listdir(podir) if x[-3:] == pext])
+
+
+def modir(lang):
+    return os.path.join("build/mo", lang)
+
+
+def mkmo(lang):
+    outpath = modir(lang)
+    if os.path.exists(outpath):
+        shutil.rmtree(outpath)
+    os.makedirs(outpath)
+
+    inpath = os.path.join(podir, lang + pext)
+    cmd = "msgfmt %s -o %s/gnome-gmail.mo" % (inpath, outpath)
+
+    subprocess.call(cmd, shell=True) and sys.exit(1)
+
+
+def merge_i18n():
+
+    cmd = "LC_ALL=C intltool-merge -u " +\
+          "-c %s/.intltool-merge-cache " % podir +\
+          podir
+    for infile in (x[:-3] for x in os.listdir('.') if x[-3:] == '.in'):
+        print("Processing %s.in to %s" % (infile, infile))
+
+        if 'desktop' in infile:
+            flag = '-d'
+        elif 'schema' in infile:
+            flag = '-s'
+        elif 'xml' in infile:
+            flag = '-x'
+        else:
+            flag = ''
+
+        if flag:
+            args = " %s %s.in %s" % (flag, infile, infile)
+            subprocess.call(cmd + args, shell=True) and sys.exit(1)
+
+
+class my_build(build):
+    def run(self, *args):
+        build.run(self, *args)
+
+        for lang in langs:
+            mkmo(lang)
+
+        merge_i18n()
+
+
+def polist():
+    dst_tmpl = "share/locale/%s/LC_MESSAGES/"
+    polist = [(dst_tmpl % x, ["%s/gnome-gmail.mo" % modir(x)]) for x in langs]
+
+    return polist
+
+
+class my_build_i18n(Command):
+    description = "Create/update po/pot translation files"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
     def run(self):
-        DistUtilsExtra.command.build_i18n.build_i18n.run(self)
+        print("Creating POT file")
+        cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
+        subprocess.call(cmd, shell=True)
 
-        cmd = "LC_ALL=C /usr/bin/intltool-merge -u -c ./po/.intltool-merge-cache ./po "
-        for infile in (x[:-3] for x in os.listdir('.') if x[-3:] == '.in'):
-            print "Processing %s.in to %s" % (infile, infile)
+        for lang in langs:
+            print("Updating %s PO file" % lang)
+            cmd = "cd po; intltool-update --dist \
+                   --gettext-package=gnome-gmail %s >/dev/null 2>&1" % lang
+            subprocess.call(cmd, shell=True)
 
-            if 'desktop' in infile:
-                flag = '-d'
-            elif 'schema' in infile:
-                flag = '-s'
-            elif 'xml' in infile:
-                flag = '-x'
-            else:
-                flag = ''
 
-            if flag:
-                os.system("%s %s %s.in %s" % (cmd, flag, infile, infile))
-
-class my_clean(distutils.command.clean.clean):
+class my_clean(clean):
     def run(self):
-        distutils.command.clean.clean.run(self)
+        clean.run(self)
 
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
-        filelist += ['po/gnome-gmail.pot']
-        filelist += ['gnomegmail.glade~']
+        filelist += ['gnomegmail.glade~', 'conftest.pyc']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
 
-        for dir in ['build/mo', 'build/scripts-2.7']:
+        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4',
+                    'build/scripts-3.5', '__pycache__', 'test/__pycache__']:
             if os.path.exists(dir):
                 shutil.rmtree(dir)
 
 
-DistUtilsExtra.auto.setup(
-      name='gnome-gmail',
-      version='1.9.2',
-      description='support for Gmail as the preferred email application in GNOME',
-      author='David Steele',
-      author_email='dsteele@gmail.com',
-      url='https://davesteele.github.io/gnome-gmail/',
-      scripts=['gnome-gmail'],
-      requires=['gi'],
-      data_files=[
-          ('/usr/share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/32x32/apps', ['icons/32x32/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
-          ('/usr/share/icons/hicolor/256x256/apps', ['icons/256x256/gnome-gmail.png']),
-          ('/usr/share/applications', ['gnome-gmail.desktop']),
-          ('/usr/share/gnome/autostart', ['gnome-gmail-startup.desktop']),
-          ('share/gnome-gmail', ['gnomegmail.glade']),
-                 ],
-      classifiers=[
-          'Operating System :: POSIX :: Linux',
-          'Programming Language :: Python :: 2',
-          'Topic :: Communications :: Email',
-          'Topic :: Desktop Environment :: Gnome',
-          'License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)',
-          'Intended Audience :: End Users/Desktop',
-                  ],
-      cmdclass={
-          'build_i18n': my_build_i18n,
-          'clean': my_clean,
-               },
-     )
+class my_test(Command):
+    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
 
+    def initialize_options(self):
+        self.pytest_args = []
+
+    def finalize_options(self):
+        pass
+
+    def run(self):
+        import pytest
+        errno = pytest.main(self.pytest_args)
+        sys.exit(errno)
+
+setup(
+    name='gnome-gmail',
+    version='2.2',
+    description='support for Gmail as the preferred GNOME email application',
+    author='David Steele',
+    author_email='dsteele@gmail.com',
+    url='https://davesteele.github.io/gnome-gmail/',
+    scripts=['gnome-gmail'],
+    requires=['gi', 'six'],
+    data_files=[
+        ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
+        ('share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
+        ('share/icons/hicolor/32x32/apps', ['icons/32x32/gnome-gmail.png']),
+        ('share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
+        ('share/icons/hicolor/256x256/apps',
+            ['icons/256x256/gnome-gmail.png']),
+        ('share/applications', ['gnome-gmail.desktop']),
+        ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
+        ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
+        ('share/appdata', ['gnome-gmail.appdata.xml']),
+               ] + polist(),
+    classifiers=[
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3.4',
+        'Topic :: Communications :: Email',
+        'Topic :: Desktop Environment :: Gnome',
+        'License :: OSI Approved :: " \
+            "GNU General Public License v2 or later (GPLv2+)',
+        'Intended Audience :: End Users/Desktop',
+                ],
+    cmdclass={
+        'build_i18n': my_build_i18n,
+        'clean': my_clean,
+        'build': my_build,
+        'test': my_test,
+             },
+     )

@@ -4,6 +4,12 @@ Copyright 2011-2014 David Steele <dsteele@gmail.com>
 This file is part of gnome-gmail
 Available under the terms of the GNU General Public License version 2 or later
 
+* Version announcement for Version 2.0
+
+GNOME Gmail version 2.0 has been released. The application is now
+feature-complete, with support for multiple GMail acounts, rich text bodies,
+and OAuth2 authentication.
+
 * Version announcement for Version 1.8.2
 
 GNOME Gmail version 1.8.2 has been released, fixing a number of installation

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-19 23:22-0400\n"
+"POT-Creation-Date: 2015-12-24 10:48-0500\n"
 "PO-Revision-Date: 2011-10-25 20:19+0000\n"
 "Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,34 @@ msgstr ""
 "X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
 "X-Generator: Launchpad (build 14197)\n"
 
-#: ../gnome-gmail:126
+#: ../gnomegmail.py:179
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnome-gmail:221
-#, c-format
+#: ../gnomegmail.py:285
+#, python-format
 msgid "Sending %s"
 msgstr "%s wird gesendet"
 
-#: ../gnome-gmail:223
+#: ../gnomegmail.py:289
 msgid "Mime message attached"
 msgstr "MIME-Nachricht angehängt"
 
-#: ../gnome-gmail:238
-#, c-format
+#: ../gnomegmail.py:322
+#, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnome-gmail:280
-msgid "No access token"
+#: ../gnomegmail.py:407
+msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnome-gmail:294
-#, c-format
-msgid "GMail API - %s - %s"
+#: ../gnomegmail.py:422
+#, python-format
+msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnome-gmail:410
+#: ../gnomegmail.py:502
 msgid "Error creating message with attachment"
 msgstr "Fehler beim Erstellen der Nachricht mit Anhang"
 
@@ -102,20 +102,70 @@ msgid "Which Google email account should be used?"
 msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
+msgid "GMail Web Integration"
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Integriert die E-Mail-Dienste von GMail in die GNOME-Arbeitsumgebung"
 
-#: ../gnome-gmail.desktop.in.h:3
-msgid "email;mail;Google"
+#: ../gnome-gmail.desktop.in.h:4
+msgid "email;mail;Google;"
 msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-msgid "Gnome Gmail Open Office Configurator"
+#, fuzzy
+msgid "Gnome Gmail Configurator"
 msgstr "GNOME-GMail-Einrichtung für OpenOffice"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-msgid "Configure Open Office to use the Gnome Preferred Email application"
-msgstr "OpenOffice als bevorzugte E-Mail-Anwendung in GNOMe einrichten"
+#, fuzzy
+msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgstr "OpenOffice als bevorzugte Anwendung für E-Mail in GNOME festlegen"
+
+#: ../gnome-gmail.appdata.xml.in.h:1
+msgid "GNOME GMail"
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:3
+msgid ""
+"GNOME GMail integrates the GMail web interface into the GNOME environment. "
+"Once installed, GMail becomes a choice as the default Mail Reader in the "
+"GNOME Preferred Applications administration application. When selected, a "
+"GMail web page will be used whenever an email service is requested."
+msgstr ""
+"GNOME GMail integriert die GMail Web-Interface in die GNOME-Umgebung. "
+"Einmal installiert, wird GMail eine Wahl als Standard-Mail-Reader in der "
+"GNOME Bevorzugte Anwendungen Administrationsanwendung . Wenn ausgewählt, ein "
+"GMail Web-Seite verwendet werden, wenn eine E-Mail-Dienst angefordert wird."
+
+#: ../gnome-gmail.appdata.xml.in.h:4
+msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgstr "Abmelden, oder starten Sie GNOME GMail, um die Konfiguration abzuschließen."
+
+#: ../gnome-gmail.appdata.xml.in.h:5
+#, fuzzy
+msgid "Put GMail on your desktop"
+msgstr "Integriert die E-Mail-Dienste von GMail in die GNOME-Arbeitsumgebung"
+
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "Uses the GMail web interface"
+msgstr "Verwendet die GMail Web-Interface"
+
+#: ../gnome-gmail.appdata.xml.in.h:7
+msgid "Send from the File Browser, or other applications"
+msgstr "Senden Sie aus dem Datei-Browser oder andere Anwendungen."
+
+#: ../gnome-gmail.appdata.xml.in.h:8
+msgid "Supports multiple GMail accounts"
+msgstr "Unterstützt mehrere GMail-Konten"
+
+#: ../gnome-gmail.appdata.xml.in.h:9
+msgid "OAuth2 authentication - no password needed"
+msgstr "OAuth2 Authentifizierung - kein Passwort erforderlich"
+
+#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
+#~ msgstr "OpenOffice als bevorzugte E-Mail-Anwendung in GNOMe einrichten"
 
 #~ msgid "Drafts"
 #~ msgstr "Entwürfe"
@@ -217,9 +267,6 @@ msgstr "OpenOffice als bevorzugte E-Mail-Anwendung in GNOMe einrichten"
 #~ "jeder erstellten Nachricht angezeigt wird. Die Benachrichtigung enthält "
 #~ "einen Verweis, mit Hilfe dessen Sie die Unterstützung für Google Apps in "
 #~ "GNOME-Gmail einrichten können."
-
-#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
-#~ msgstr "OpenOffice als bevorzugte Anwendung für E-Mail in GNOME festlegen"
 
 #~ msgid "Suppress the GNOME Gmail Preferred Application Dialog"
 #~ msgstr ""

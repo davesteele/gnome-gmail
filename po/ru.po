@@ -1,0 +1,286 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+
+msgid ""
+msgstr ""
+"Project-Id-Version: GNOME Gmail\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-24 10:48-0500\n"
+"PO-Revision-Date: 2016-07-06 22:47+0000\n"
+"Last-Translator: cdrw winiks1@gmail.com\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../gnomegmail.py:179
+msgid "Timeout getting OAuth authentication"
+msgstr "Вышло время для аутентификации OAuth"
+
+#: ../gnomegmail.py:285
+#, python-format
+msgid "Sending %s"
+msgstr "Отправка %s"
+
+#: ../gnomegmail.py:289
+msgid "Mime message attached"
+msgstr "Mime сообщение вложено"
+
+#: ../gnomegmail.py:322
+#, python-format
+msgid "File not found - %s"
+msgstr "Файл не найден - %s"
+
+#: ../gnomegmail.py:407
+msgid "Unable to authenticate with GMail"
+msgstr "Не удалось проверить подлинность для GMail"
+
+#: ../gnomegmail.py:422
+#, python-format
+msgid "Error returned from the GMail API - %s - %s"
+msgstr "Возврат ошибки из API GMail - %s - %s"
+
+#: ../gnomegmail.py:502
+msgid "Error creating message with attachment"
+msgstr "Ошибка при создании сообщения с вложением"
+
+#: ../gnomegmail.glade.h:1
+msgid "Copyright 2010 - Dave Steele"
+msgstr "Авторское право 2010 - Dave Steele"
+
+#: ../gnomegmail.glade.h:2
+msgid "comment"
+msgstr "комментарий"
+
+#: ../gnomegmail.glade.h:3
+msgid "Configure"
+msgstr "Настройка"
+
+#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gnome Gmail"
+
+#: ../gnomegmail.glade.h:5
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+"Введите учетные данные Gmail\n"
+"для загрузки файла"
+
+#: ../gnomegmail.glade.h:7
+msgid "User Name"
+msgstr "Имя"
+
+#: ../gnomegmail.glade.h:8
+msgid "Password"
+msgstr "Ваш пароль"
+
+#: ../gnomegmail.glade.h:9
+msgid "Remember Password"
+msgstr "Запомнить пароль"
+
+#: ../gnomegmail.glade.h:10
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+"GNOME Gmail не является вашей предпочитаемой почтовой программой. Хотите "
+"посылать ваши электронные сообщения, используя веб-страницу Gmail?"
+
+#: ../gnomegmail.glade.h:11
+msgid "Don't ask again"
+msgstr "Больше не спрашивать"
+
+#: ../gnomegmail.glade.h:12
+msgid "Which Google email account should be used?"
+msgstr "Какую учетную запись электронной почты Google следует использовать?"
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "GMail Web Integration"
+msgstr "Веб-интеграция GMail"
+
+#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr "Интегрировать GMail с вашим рабочим столом"
+
+#: ../gnome-gmail.desktop.in.h:4
+msgid "email;mail;Google;"
+msgstr "email;mail;Google;"
+
+#: ../gnome-gmail-startup.desktop.in.h:1
+msgid "Gnome Gmail Configurator"
+msgstr "Настройщик Gnome Gmail"
+
+#: ../gnome-gmail-startup.desktop.in.h:2
+msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgstr "Использовать GNOME Gmail в качестве приложения электронной почты"
+
+#: ../gnome-gmail.appdata.xml.in.h:1
+msgid "GNOME GMail"
+msgstr "GNOME GMail"
+
+#: ../gnome-gmail.appdata.xml.in.h:3
+msgid ""
+"GNOME GMail integrates the GMail web interface into the GNOME environment. "
+"Once installed, GMail becomes a choice as the default Mail Reader in the "
+"GNOME Preferred Applications administration application. When selected, a "
+"GMail web page will be used whenever an email service is requested."
+msgstr ""
+"GNOME GMail интегрирует веб-интерфейс GMail в среду GNOME. После "
+"установки и настройки приложение выбирается по умолчанию для чтения "
+"почты GMail в среде GNOME. При выборе веб-страницы Gmail будет  "
+"использоваться всякий раз, когда предлагается услуга электронной почты."
+
+#: ../gnome-gmail.appdata.xml.in.h:4
+msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgstr "Выход или запуск GNOME GMail, для завершения настройки."
+
+#: ../gnome-gmail.appdata.xml.in.h:5
+msgid "Put GMail on your desktop"
+msgstr "Разместить GMail на рабочем столе"
+
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "Uses the GMail web interface"
+msgstr "Использовать веб-интерфейс GMail"
+
+#: ../gnome-gmail.appdata.xml.in.h:7
+msgid "Send from the File Browser, or other applications"
+msgstr "Отправить из браузера файлов или других приложений"
+
+#: ../gnome-gmail.appdata.xml.in.h:8
+msgid "Supports multiple GMail accounts"
+msgstr "Поддержка нескольких учетных записей GMail"
+
+#: ../gnome-gmail.appdata.xml.in.h:9
+msgid "OAuth2 authentication - no password needed"
+msgstr "Аутентификация OAuth2 - без пароля"
+
+
+#~ msgid "Configure Open Office to use the Gnome Preferred Email application"
+#~ msgstr ""
+#~ "Настроить Open Office, для работы с предпочитаемой Gnome почтовой "
+#~ "программой"
+
+#~ msgid "Drafts"
+#~ msgstr "Черновики"
+
+#~ msgid "Unable to determine IMAP Drafts folder location"
+#~ msgstr "Невозможно определить расположение папки IMAP Черновиков"
+
+#~ msgid "Error encountered while uploading the message"
+#~ msgstr "Произошла ошибка при отправке сообщение"
+
+#~ msgid "Error accessing message. Check the Drafts folder"
+#~ msgstr "Ошибка доступа к сообщению. Проверьте папку Черновики"
+
+#~ msgid "User cancelled \"Send To...\""
+#~ msgstr "Пользователь отменил \"Отправить в...\""
+
+#~ msgid "nvalid credentials"
+#~ msgstr "Неверные полномочия"
+
+#~ msgid "Invalid GMail User Name or Password"
+#~ msgstr "Неверное Имя Пользователя GMail или Пароль"
+
+#~ msgid "not enabled for IMAP"
+#~ msgstr "не включена поддержка IMAP"
+
+#~ msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+#~ msgstr "Вы должны «Включить IMAP» в Gmail, чтобы отправлять вложения"
+
+#~ msgid "GMail credentials incomplete"
+#~ msgstr "Неполные учётные данные GMail"
+
+#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgstr "Настройка Gnome Gmail для работы с учетной записью Google App."
+
+#~ msgid "Don't change the Preferred Email Application"
+#~ msgstr "Не заменять предпочтительную почтовую программу"
+
+#~ msgid "Enter the password for the mail account"
+#~ msgstr "Введите пароль для учетной записи электронной почты"
+
+#~ msgid "Remember the Google Account password in the Gnome keychain."
+#~ msgstr "Запомнить пароль аккаунта Google в связке ключей GNOME."
+
+#~ msgid ""
+#~ "The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+#~ msgstr ""
+#~ "Имя учетной записи электронной почты (например, «joe», для учетной записи "
+#~ "электронной почты «joe@gmail.com»)"
+
+#~ msgid "Use GNOME Gmail for sending mail"
+#~ msgstr "Использование GNOME Gmail для отправки почты"
+
+#~ msgid "Your Gmail password"
+#~ msgstr "Ваш пароль Gmail"
+
+#~ msgid "Your Gmail user name, without the '@gmail.com' part"
+#~ msgstr "Ваше имя пользователя Gmail, без \"@gmail.com\""
+
+#~ msgid ""
+#~ "Gnome Gmail will save the last user name for file attachment uploads here."
+#~ msgstr ""
+#~ "Gnome Gmail сохранит имя последнего пользователя для добавления файла."
+
+#~ msgid "Google Apps domain"
+#~ msgstr "Домен Google Apps"
+
+#~ msgid "Hide confirmation dialog"
+#~ msgstr "Скрыть диалог подтверждения"
+
+#~ msgid "Save IMAP password?"
+#~ msgstr "Сохранить пароль IMAP?"
+
+#~ msgid "Saved IMAP user name"
+#~ msgstr "Сохранить имя пользователя IMAP"
+
+#~ msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+#~ msgstr "Не отображать диалог предпочтительного приложения GNOME Gmail"
+
+#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgstr ""
+#~ "Чтобы использовать Gnome Gmail с Google Apps, введите имя домена здесь"
+
+#~ msgid ""
+#~ "When checked, GNOME Gmail will not offer to set itself as the GNOME "
+#~ "Preferred Mail application. Otherwise, the program will ask if you want "
+#~ "it to be the mail application, if it isn't already."
+#~ msgstr ""
+#~ "Если выбран GNOME Gmail,он не будет предлагать установить себя в качестве "
+#~ "предпочтительного почтового приложения  GNOME. В противном случае "
+#~ "программа будет предлагать установить себя в качестве почтовой программы, "
+#~ "если этого еще не было сделано."
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "Если выбрано, Gnome Gmail будет пытаться настроить Open Office "
+#~ "использовать выбранное Gnome почтовое приложение с каждым логином, "
+#~ "используя приложение совместимости Gnome Gmail."
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
+#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ msgstr ""
+#~ "Если выбрано, Gnome Gmail сохранит пароль IMAP в связке ключей GNOME. "
+#~ "IMAP используется для загрузки файлов вложений в GMail."
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will suppress the confirmation notification "
+#~ "that appears with each message created. The notification includes a link "
+#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ msgstr ""
+#~ "Если выбрано, Gnome Gmail будет скрывать подтверждающие уведомления, "
+#~ "который появляется с каждым созданным сообщением. Уведомление содержит "
+#~ "ссылку, чтобы настроить Gnome Gmail для поддержки Google Apps."
+
+#~ msgid "Gmail"
+#~ msgstr "Gmail"

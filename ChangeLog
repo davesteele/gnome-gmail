@@ -1,3 +1,43 @@
+2016-06-28 David Steele <dsteele@gmail.com>
+  * V2.2
+  * Support for defining browser command line options.
+    - Chrome opens tabless 'app' window.
+  * Appdata translations
+
+2016-05-27 David Steele <dsteele@gmail.com>
+  * V2.1
+  * Appstream fix
+  * Self-test support (Travis - thanks Ville Skyttä/scop)
+  * Updated Polish translations (Thanks piotrdrag )
+
+2015-12-26 David Steele <dsteele@gmail.com>
+  * V2.0.1
+  * No changes - this is a workaround for a bad Debian upload
+
+2015-12-22 David Steele <dsteele@gmail.com>
+  * V2.0
+  * Python3 support re-added
+  * Minor bug fixes
+  * Add Appstream XML data
+
+2015-11-28 David Steele <dsteele@gmail.com>
+  * The previous version had a bad path for glade, breaking the GUI
+
+2015-11-27 David Steele <dsteele@gmail.com>
+  * V1.9.4
+  * Expand the use of the GMail API
+  * Changes to support Python3 (thanks to Ville Skyttä/scop)
+  * New translations:
+    - cs - Thanks Kuvaly
+    - hr - Thanks kvaju
+    - ru - Thanks Kirill Babeev
+    - si
+  * Expanded testing, using pytest
+  * Rework setup.py for portability
+
+2015-07-21 David Steele <dsteele@gmail.com>
+  * Render bodies as HTML text.
+
 2015-06-19 David Steele <dsteele@gmail.com>
   * V1.9.2
   * Italian translation complete (thanks Massimo Branchini).

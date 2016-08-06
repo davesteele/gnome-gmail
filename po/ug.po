@@ -1,135 +1,125 @@
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Aviary.pl
-# Jeśli masz jakiekolwiek uwagi odnoszące się do tłumaczenia lub chcesz
-# pomóc w jego rozwijaniu i pielęgnowaniu, napisz do nas:
-# gnomepl@aviary.pl
-# -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
-# Piotr Drąg <piotrdrag@gmail.com>, 2010-2016.
-# Aviary.pl <gnomepl@aviary.pl>, 2010-2016.
+# Uyghur translation for gnome-gmail
+# Copyright (c) 2015 Rosetta Contributors and Canonical Ltd 2015
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2015.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME Gmail\n"
+"Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-24 10:48-0500\n"
-"PO-Revision-Date: 2016-01-16 14:50+0100\n"
-"Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
-"Language-Team: Polish <gnomepl@aviary.pl>\n"
-"Language: pl\n"
+"PO-Revision-Date: 2015-10-07 07:17+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Uyghur <ug@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Poedit-Language: Polish\n"
-"X-Poedit-Country: Poland\n"
+"X-Launchpad-Export-Date: 2015-11-21 14:56+0000\n"
+"X-Generator: Launchpad (build 17850)\n"
 
 #: ../gnomegmail.py:179
 msgid "Timeout getting OAuth authentication"
-msgstr "Przekroczono czas oczekiwania podczas uwierzytelniania OAuth"
+msgstr ""
 
 #: ../gnomegmail.py:285
 #, python-format
 msgid "Sending %s"
-msgstr "Wysyłanie %s"
+msgstr ""
 
 #: ../gnomegmail.py:289
 msgid "Mime message attached"
-msgstr "Załączono wiadomość MIME"
+msgstr ""
 
 #: ../gnomegmail.py:322
 #, python-format
 msgid "File not found - %s"
-msgstr "Nie odnaleziono pliku — %s"
+msgstr ""
 
 #: ../gnomegmail.py:407
 msgid "Unable to authenticate with GMail"
-msgstr "Nie można uwierzytelnić z serwisem Gmail"
+msgstr ""
 
 #: ../gnomegmail.py:422
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
-msgstr "Zwrócono błąd z API serwisu Gmail — %s — %s"
+msgstr ""
 
 #: ../gnomegmail.py:502
 msgid "Error creating message with attachment"
-msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
+msgstr ""
 
 #: ../gnomegmail.glade.h:1
 msgid "Copyright 2010 - Dave Steele"
-msgstr "Copyright 2010 Dave Steele"
+msgstr ""
 
 #: ../gnomegmail.glade.h:2
 msgid "comment"
-msgstr "komentarz"
+msgstr ""
 
 #: ../gnomegmail.glade.h:3
 msgid "Configure"
-msgstr "Skonfiguruj"
+msgstr ""
 
 #: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
 msgid "Gnome Gmail"
-msgstr "GNOME Gmail"
+msgstr ""
 
 #: ../gnomegmail.glade.h:5
 msgid ""
 "Enter your Gmail credentials\n"
 "for the file upload"
 msgstr ""
-"Proszę podać dane uwierzytelniające serwisu Gmail,\n"
-"aby wysłać plik"
 
 #: ../gnomegmail.glade.h:7
 msgid "User Name"
-msgstr "Nazwa użytkownika"
+msgstr ""
 
 #: ../gnomegmail.glade.h:8
 msgid "Password"
-msgstr "Hasło"
+msgstr ""
 
 #: ../gnomegmail.glade.h:9
 msgid "Remember Password"
-msgstr "Zapamiętanie hasła"
+msgstr ""
 
 #: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
-"GNOME Gmail nie jest obecnie preferowanym programem pocztowym. Wysyłać "
-"pocztę za pomocą interfejsu serwisu Gmail?"
 
 #: ../gnomegmail.glade.h:11
 msgid "Don't ask again"
-msgstr "Bez pytania ponownie"
+msgstr ""
 
 #: ../gnomegmail.glade.h:12
 msgid "Which Google email account should be used?"
-msgstr "Którego konta e-mail Google użyć?"
+msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
-msgstr "Integracja z serwisem Gmail"
+msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr "Integracja serwisu Gmail ze środowiskiem"
+msgstr ""
 
 #: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
-msgstr "email;e-mail;poczta;skrzynka;wyślij;mail;mejl;Google;"
+msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:1
 msgid "Gnome Gmail Configurator"
-msgstr "Konfiguracja GNOME Gmail"
+msgstr ""
 
 #: ../gnome-gmail-startup.desktop.in.h:2
 msgid "Offer to make GNOME Gmail the Preferred Email application"
 msgstr ""
-"Umożliwia ustawienie GNOME Gmail jako preferowanego programu pocztowego"
 
 #: ../gnome-gmail.appdata.xml.in.h:1
 msgid "GNOME GMail"
-msgstr "GNOME Gmail"
+msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:3
 msgid ""
@@ -138,32 +128,27 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME Gmail integruje interfejs serwisu Gmail ze środowiskiem GNOME. Po "
-"zainstalowaniu można wybrać Gmail jako domyślny program pocztowy w "
-"ustawieniach preferowanych programów GNOME. Po wybraniu interfejs serwisu "
-"Gmail będzie używany do wysyłania poczty."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
 msgstr ""
-"Należy się wylogować lub uruchomić GNOME Gmail, aby ukończyć konfigurację."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 msgid "Put GMail on your desktop"
-msgstr "Integruje serwis Gmail ze środowiskiem"
+msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "Uses the GMail web interface"
-msgstr "Używa interfejsu serwisu Gmail"
+msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Send from the File Browser, or other applications"
-msgstr "Umożliwia wysyłanie z przeglądarki plików i innych programów"
+msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Supports multiple GMail accounts"
-msgstr "Obsługuje wiele kont Gmail"
+msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
-msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"
+msgstr ""

@@ -1,5 +1,11 @@
-prune debian
-include *
-recursive-include po *
-recursive-include test *
-
+include AUTHORS
+include ChangeLog
+include COPYING
+include gnome-gmail*
+include NEWS
+include README.md
+include po/*
+include test/*.py
+include conftest.py
+include gnome-gmail.appdata.xml
+prune .gitignore

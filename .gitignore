@@ -1,0 +1,6 @@
+__pycache__
+build
+.intltool-merge-cache
+*.desktop
+*.pyc
+*.xml
