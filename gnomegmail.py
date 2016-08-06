@@ -319,7 +319,7 @@ class GMailAPI():
 
         """ prepare preamble to be ascii encoded: bug #29 """
         """ normalization """
-        preamble = unicodedata.normalize('NFKD', _("Mime message attached"))
+        preamble = unicodedata.normalize('NFKD', u"%s" % str(_("Mime message attached")))
         """ stripping of what is still ascii incompatible """
         preamble = preamble.encode('ascii', 'ignore').decode('ascii')
         msg.preamble = preamble
