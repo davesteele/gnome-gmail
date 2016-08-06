@@ -53,7 +53,10 @@ gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
 locale.setlocale(locale.LC_ALL, '')
-gettext.textdomain("gnome-gmail")
+kwargs = {}
+if sys.version_info[0] > 3:
+    kwargs['unicode'] = True
+gettext.install("gnome-gmail", **kwargs)
 _ = gettext.gettext
 
 try:
