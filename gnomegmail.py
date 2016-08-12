@@ -25,6 +25,7 @@ import random
 import time
 import subprocess
 import shlex
+import unicodedata
 from contextlib import contextmanager
 
 from email import encoders
@@ -316,7 +317,12 @@ class GMailAPI():
         except KeyError:
             pass
 
-        msg.preamble = _("Mime message attached")
+        """ prepare preamble to be ascii encoded: bug #29 """
+        """ normalization """
+        preamble = unicodedata.normalize('NFKD', u"%s" % str(_("Mime message attached")))
+        """ stripping of what is still ascii incompatible """
+        preamble = preamble.encode('ascii', 'ignore').decode('ascii')
+        msg.preamble = preamble
 
         try:
             body = self.mail_dict['body'][0]
