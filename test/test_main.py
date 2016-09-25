@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 import pytest
 from mock import patch, Mock
@@ -19,7 +20,7 @@ def test_main_quick(default_mailer_fxt, config_fxt, monkeypatch):
     assert gnomegmail.sys.exit.calledwith(0)
 
 
-@pytest.mark.parametrize('body', ("", "hi"))
+@pytest.mark.parametrize('body', ("", "hi yä"))
 @pytest.mark.parametrize('attach', ("", "/etc/resolv.conf"))
 @pytest.mark.parametrize('cc', ("", 'cc@example.com'))
 @pytest.mark.parametrize('bcc', ("", 'bcc@example.com'))
