@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2015 David Steele <dsteele@gmail.com> -->
 <component type="desktop">
-<id>gnome-gmail.desktop</id>
+<id type="desktop">gnome-gmail.desktop</id>
 <metadata_license>CC0-1.0</metadata_license>
 <_name>GNOME GMail</_name>
 <_summary>Integrate GMail with your desktop</_summary>
