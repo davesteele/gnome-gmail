@@ -146,7 +146,7 @@ def customize_browser(browser):
     argmap = {
         'Chrome': '--app=%s',
         'Konqueror': '',
-        'Mozilla': '',
+        'Mozilla': '-new-window %s',
         'Galeon': '',
         'Opera': '',
         'Grail': '',
