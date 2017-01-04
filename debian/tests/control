@@ -1,7 +1,5 @@
-Tests: runtest2.7
-Depends: python-pytest, python-mock, python-nose, python-gi,
-         gir1.2-gtk-3.0, gir1.2-secret-1, gir1.2-notify-0.7, gir1.2-wnck-3.0,
+Test-Command: python setup.py test --pytest-args --ignore=test/test_setup.py
+Depends: @, python-pytest, python-mock, python-nose,
 
-Tests: runtest3
-Depends: python3-pytest, python3-mock, python3-nose, python3-gi,
-         gir1.2-gtk-3.0, gir1.2-secret-1, gir1.2-notify-0.7, gir1.2-wnck-3.0,
+Test-Command: python3 setup.py test --pytest-args --ignore=test/test_setup.py
+Depends: @, python3-pytest, python3-mock, python3-nose, python3-gi,

@@ -125,7 +125,7 @@ class my_test(Command):
 
 setup(
     name='gnome-gmail',
-    version='2.2',
+    version='2.3',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',

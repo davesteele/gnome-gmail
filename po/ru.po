@@ -3,24 +3,23 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-24 10:48-0500\n"
-"PO-Revision-Date: 2011-08-20 22:47+0000\n"
-"Last-Translator: Kirill Babeev <Unknown>\n"
+"PO-Revision-Date: 2016-07-06 22:47+0000\n"
+"Last-Translator: cdrw winiks1@gmail.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
 
 #: ../gnomegmail.py:179
 msgid "Timeout getting OAuth authentication"
-msgstr ""
+msgstr "Вышло время для аутентификации OAuth"
 
 #: ../gnomegmail.py:285
 #, python-format
@@ -34,16 +33,16 @@ msgstr "Mime сообщение вложено"
 #: ../gnomegmail.py:322
 #, python-format
 msgid "File not found - %s"
-msgstr ""
+msgstr "Файл не найден - %s"
 
 #: ../gnomegmail.py:407
 msgid "Unable to authenticate with GMail"
-msgstr ""
+msgstr "Не удалось проверить подлинность для GMail"
 
 #: ../gnomegmail.py:422
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
-msgstr ""
+msgstr "Возврат ошибки из API GMail - %s - %s"
 
 #: ../gnomegmail.py:502
 msgid "Error creating message with attachment"
@@ -83,7 +82,7 @@ msgstr "Ваш пароль"
 
 #: ../gnomegmail.glade.h:9
 msgid "Remember Password"
-msgstr "Запомнить Пароль"
+msgstr "Запомнить пароль"
 
 #: ../gnomegmail.glade.h:10
 msgid ""
@@ -99,35 +98,31 @@ msgstr "Больше не спрашивать"
 
 #: ../gnomegmail.glade.h:12
 msgid "Which Google email account should be used?"
-msgstr ""
+msgstr "Какую учетную запись электронной почты Google следует использовать?"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
-msgstr ""
+msgstr "Веб-интеграция GMail"
 
 #: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
-msgstr "Интегрировать GMail с вашим рабочи столом"
+msgstr "Интегрировать GMail с вашим рабочим столом"
 
 #: ../gnome-gmail.desktop.in.h:4
 msgid "email;mail;Google;"
-msgstr ""
+msgstr "email;mail;Google;"
 
 #: ../gnome-gmail-startup.desktop.in.h:1
-#, fuzzy
 msgid "Gnome Gmail Configurator"
-msgstr "Gnome Gmail Open Office Конфигуратор"
+msgstr "Настройщик Gnome Gmail"
 
 #: ../gnome-gmail-startup.desktop.in.h:2
-#, fuzzy
 msgid "Offer to make GNOME Gmail the Preferred Email application"
-msgstr ""
-"Использовать Open Office в качестве предпочитаемого приложения для работы с "
-"электронной почтой GNOME"
+msgstr "Использовать GNOME Gmail в качестве приложения электронной почты"
 
 #: ../gnome-gmail.appdata.xml.in.h:1
 msgid "GNOME GMail"
-msgstr ""
+msgstr "GNOME GMail"
 
 #: ../gnome-gmail.appdata.xml.in.h:3
 msgid ""
@@ -136,31 +131,35 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
+"GNOME GMail интегрирует веб-интерфейс GMail в среду GNOME. После "
+"установки и настройки приложение выбирается по умолчанию для чтения "
+"почты GMail в среде GNOME. При выборе веб-страницы Gmail будет  "
+"использоваться всякий раз, когда предлагается услуга электронной почты."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
-msgstr ""
+msgstr "Выход или запуск GNOME GMail, для завершения настройки."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
-#, fuzzy
 msgid "Put GMail on your desktop"
-msgstr "Интегрировать GMail с вашим рабочи столом"
+msgstr "Разместить GMail на рабочем столе"
 
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "Uses the GMail web interface"
-msgstr ""
+msgstr "Использовать веб-интерфейс GMail"
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Send from the File Browser, or other applications"
-msgstr ""
+msgstr "Отправить из браузера файлов или других приложений"
 
 #: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Supports multiple GMail accounts"
-msgstr ""
+msgstr "Поддержка нескольких учетных записей GMail"
 
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
-msgstr ""
+msgstr "Аутентификация OAuth2 - без пароля"
+
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
 #~ msgstr ""

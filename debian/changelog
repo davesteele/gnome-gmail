@@ -1,3 +1,24 @@
+gnome-gmail (2.3-1) unstable; urgency=medium
+
+  * Fix Mozilla 'new window' support, addressing an authentication
+    problem (Closes: 850100).
+  * PNG optimization (thanks Ville Skyttä).
+  * Improved Unicode support (thanks Massimo Branchini)
+
+ -- David Steele <steele@debian.org>  Tue, 03 Jan 2017 22:09:32 -0500
+
+gnome-gmail (2.2-3) unstable; urgency=medium
+
+  * Fix the CI fix fix.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 23:56:24 -0400
+
+gnome-gmail (2.2-2) unstable; urgency=medium
+
+  * Fix CI tests.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 10:14:05 -0400
+
 gnome-gmail (2.2-1+ppa1) UNRELEASED; urgency=medium
 
   * merge to ppa branch.

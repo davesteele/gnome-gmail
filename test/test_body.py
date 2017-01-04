@@ -1,4 +1,5 @@
 #!/usr/bin/python2 -tt
+# -*- coding: utf-8 -*-
 
 import nose
 import pytest
@@ -67,6 +68,11 @@ testCaseStrings = [
 
     ("a\nb", "a<br>\nb"),
     ("a\nb\nc", "a<br>\nb<br>\nc"),
+
+    # Unicode
+    ("ä", "ä"),
+    ("mailto:joe@exämple.com",
+        "<a href=\"mailto:joe@exämple.com\">mailto:joe@exämple.com</a>"),
  ]
 
 
