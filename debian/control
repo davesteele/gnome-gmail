@@ -3,7 +3,7 @@ Maintainer: David Steele <steele@debian.org>
 Section: gnome
 Testsuite: autopkgtest
 Priority: optional
-Build-Depends: debhelper (>= 7.4.3),
+Build-Depends: debhelper (>= 10),
                dh-python,
                intltool,
                python
