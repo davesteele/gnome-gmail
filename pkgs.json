@@ -1,5 +1,6 @@
 {
     "all_pkgs": [
+        "gnome-gmail_2.3.1-1_all.deb", 
         "gnome-gmail_2.3-1+ppa1_all.deb", 
         "gnome-gmail_2.3-1_all.deb", 
         "gnome-gmail_2.2-1+ppa1_all.deb", 
@@ -20,6 +21,6 @@
         "gnome-gmail_1.8.3-1_all.deb"
     ], 
     "latest_pkgs": [
-        "gnome-gmail_2.3-1+ppa1_all.deb"
+        "gnome-gmail_2.3.1-1_all.deb"
     ]
 }
