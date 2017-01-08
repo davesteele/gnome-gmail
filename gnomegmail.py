@@ -86,7 +86,7 @@ def nullfd(fd):
 
 
 def set_as_default_mailer():
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
@@ -110,7 +110,7 @@ def set_as_default_mailer():
 def is_default_mailer():
     returnvalue = True
 
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         mailer = Gio.app_info_get_default_for_type(
                     "x-scheme-handler/mailto",
                     True
