@@ -1,3 +1,10 @@
+gnome-gmail (2.3.1-1) unstable; urgency=medium
+
+  * Tolerate oath token keyring storage failures.
+  * More robust default mail app handling.
+
+ -- David Steele <dsteele@gmail.com>  Sat, 07 Jan 2017 23:47:47 -0500
+
 gnome-gmail (2.3-1) unstable; urgency=medium
 
   * Fix Mozilla 'new window' support, addressing an authentication
