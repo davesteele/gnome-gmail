@@ -52,5 +52,6 @@ page will be used whenever an email service is requested.</_p>
     <release version="2.1" timestamp="1464383933"></release>
     <release version="2.2" timestamp="1467166565"></release>
     <release version="2.3" timestamp="1483500463"></release>
+    <release version="2.3.1" timestamp="1483845277"></release>
 </releases>
 </component>

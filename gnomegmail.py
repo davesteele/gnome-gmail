@@ -86,7 +86,7 @@ def nullfd(fd):
 
 
 def set_as_default_mailer():
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
@@ -110,7 +110,7 @@ def set_as_default_mailer():
 def is_default_mailer():
     returnvalue = True
 
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         mailer = Gio.app_info_get_default_for_type(
                     "x-scheme-handler/mailto",
                     True
@@ -540,7 +540,11 @@ class GMailURL():
         msg_id = None
         auth = GMOauth()
         keys = Oauth2Keyring(auth.scope)
-        old_access, old_refresh = keys.getTokens(self.from_address)
+        try:
+            old_access, old_refresh = keys.getTokens(self.from_address)
+        except GLib.Error:
+            print("Error getting tokens from keyring")
+            old_access = old_refresh = None
 
         error_str = ""
         for access, refresh in auth.access_iter(old_access, old_refresh,
@@ -554,7 +558,10 @@ class GMailURL():
 
         if msg_id:
             if (old_access, old_refresh) != (access, refresh):
-                keys.setTokens(self.from_address, access, refresh)
+                try:
+                    keys.setTokens(self.from_address, access, refresh)
+                except GLib.Error:
+                    print("Error saving tokens to keyring")
         else:
             raise GGError(error_str)
 
