@@ -120,7 +120,10 @@ class my_test(Command):
 
     def run(self):
         import pytest
-        errno = pytest.main(self.pytest_args.split())
+        args = self.pytest_args
+        if type(args) == str:
+            args = args.split()
+        errno = pytest.main(args)
         sys.exit(errno)
 
 setup(
