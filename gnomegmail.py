@@ -356,8 +356,8 @@ class GMailAPI():
             'gtalk', 'irc', 'magnet', 'market', 'skype', 'ssh', 'webcal',
             'xmpp',
         ]
-        rgx = "(?P<url>(%s):[^ \),]+[^ \)\],\.'\"])" % '|'.join(schemes)
-        substr = "<a href=\"\g<url>\">\g<url></a>"
+        rgx = "(?P<url>(%s):[^ \\),]+[^ \\)\\],\\.'\"])" % '|'.join(schemes)
+        substr = '<a href="\\g<url>">\\g<url></a>'
 
         text = re.sub(rgx, substr, text)
 
