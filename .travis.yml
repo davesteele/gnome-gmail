@@ -3,8 +3,8 @@ language: python
 sudo: required
 dist: trusty
 
-virtualenv:
-  system_site_packages: true
+#virtualenv:
+#  system_site_packages: true
 
 matrix:
   include:
