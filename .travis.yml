@@ -3,8 +3,8 @@ language: python
 sudo: required
 dist: trusty
 
-#virtualenv:
-#  system_site_packages: true
+virtualenv:
+  system_site_packages: true
 
 matrix:
   include:
@@ -23,40 +23,6 @@ matrix:
       install:
         - pip install six
     - python: "3.4"
-      addons:
-        apt:
-          packages:
-            - python3-gi
-            - gir1.2-gtk-3.0
-            - gir1.2-notify-0.7
-            - gir1.2-secret-1
-            - gir1.2-wnck-3.0
-            - gettext
-            - intltool
-            - desktop-file-utils
-      install:
-        - pip install six
-    - python: "3.5"
-      addons:
-        apt:
-          packages:
-            - python3-gi
-            - gir1.2-gtk-3.0
-            - gir1.2-notify-0.7
-            - gir1.2-secret-1
-            - gir1.2-wnck-3.0
-            - gettext
-            - intltool
-            - desktop-file-utils
-      install:
-        - pip install six
-        - sudo apt-key update
-        - sudo apt-get update -q
-        - sudo apt-get -o Dpkg::Options::="--force-confnew" --force-yes -fuy dist-upgrade
-        - sudo apt-get -y install build-essential
-        - sudo apt-get -y --force-yes install linux-headers-`uname -r`
-        - sudo rm -rf /dev/shm && sudo ln -s /run/shm /dev/shm
-    - python: "3.6"
       addons:
         apt:
           packages:
