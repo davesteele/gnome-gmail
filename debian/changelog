@@ -1,3 +1,9 @@
+gnome-gmail (2.3.1-2) unstable; urgency=medium
+
+  * Remove the dependency for gtk-icon-cache.
+
+ -- David Steele <steele@debian.org>  Fri, 17 Feb 2017 20:37:00 -0500
+
 gnome-gmail (2.3.1-1) unstable; urgency=medium
 
   * Tolerate oath token keyring storage failures.
