@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import base64
 import pytest
 from mock import patch, Mock
 
@@ -63,13 +64,16 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
 
     assert gnomegmail.GMailAPI.send_mail.called
 
-    with open('foo', 'w') as fp:
-        fp.write(rfc822txt)
-
     assert "To: joe@example.com" in rfc822txt
 
     if body:
-        assert body in rfc822txt
+        # Once py3 only, remove the py2tst and the try logic
+        try:
+            py3tst = base64.b64encode(body.encode()) in rfc822txt.encode()
+        except UnicodeDecodeError:
+            py3tst = False
+        py2tst = body in rfc822txt
+        assert py3tst or py2tst
 
     if su:
         assert "Subject: " + su in rfc822txt

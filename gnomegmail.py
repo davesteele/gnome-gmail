@@ -343,10 +343,7 @@ class GMailAPI():
         except KeyError:
             pass
 
-        try:
-            self.message_text = msg.as_bytes()
-        except AttributeError:
-            self.message_text = msg.as_string()
+        self.message_text = msg.as_string()
 
     def file2mime(self, filename):
         if(filename.find("file://") == 0):
