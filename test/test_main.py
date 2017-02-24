@@ -30,9 +30,21 @@ def test_main_quick(default_mailer_fxt, config_fxt, monkeypatch):
     Mock(return_value="me@example.com"),
 )
 @patch('gnomegmail.browser', Mock())
+@patch('gnomegmail.GMailAPI.send_mail', Mock(return_value='1'))
 def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
               notify_fxt, web_fxt, oauth_fxt,
               monkeypatch, su, bcc, cc, attach, body):
+
+    rfc822txt = None
+
+    def spy_decorator(method_to_decorate):
+        msgtxt = []
+        def wrapper(self, *args, **kwargs):
+            returnvalue = method_to_decorate(self, *args, **kwargs)
+            msgtxt.append(self.message_text)
+            return returnvalue
+        wrapper.msgtxt = msgtxt
+        return wrapper
 
     args = ['body', 'cc', 'bcc', 'su', 'attach']
     argvals = locals()
@@ -44,4 +56,39 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
 
     monkeypatch.setattr('gnomegmail.sys.argv', ['prog', mailto])
 
-    gnomegmail.main()
+    myform = spy_decorator(gnomegmail.GMailAPI.form_message)
+    with patch.object(gnomegmail.GMailAPI, 'form_message', myform):
+        gnomegmail.main()
+        rfc822txt = gnomegmail.GMailAPI.form_message.msgtxt[0]
+
+    assert gnomegmail.GMailAPI.send_mail.called
+
+    with open('foo', 'w') as fp:
+        fp.write(rfc822txt)
+
+    assert "To: joe@example.com" in rfc822txt
+
+    if body:
+        assert body in rfc822txt
+
+    if su:
+        assert "Subject: " + su in rfc822txt
+    elif attach:
+        assert "Subject: Sending " in rfc822txt
+    else:
+        assert "Subject:" not in rfc822txt
+
+    if attach:
+        assert "Content-Disposition: attachment; " in rfc822txt
+    else:
+        assert "Content-Disposition: attachment; " not in rfc822txt
+
+    if cc:
+        assert "Cc: " + cc in rfc822txt
+    else:
+        assert "Cc: " not in rfc822txt
+
+    if bcc:
+        assert "Bcc: " + bcc in rfc822txt
+    else:
+        assert "Bcc: " not in rfc822txt

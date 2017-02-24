@@ -517,6 +517,9 @@ class GMailURL():
 
             outdict[key.lower()] = value
 
+        if 'su' in qsdict:
+            outdict["subject"] = outdict["su"]
+
         return(outdict)
 
     def simple_gmail_url(self):
