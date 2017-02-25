@@ -26,6 +26,7 @@ import time
 import subprocess
 import shlex
 import unicodedata
+import argparse
 from contextlib import contextmanager
 
 from email import encoders
@@ -771,6 +772,38 @@ def do_preferred(glade_file, config):
     if response == 1:
         set_as_default_mailer()
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Send mail via the Gmail API and the browser interface.",
+        usage="%(prog)s [-h|-q|<mailto>]",
+        epilog=textwrap.dedent("""\
+            The gnome-gmail utility will create an email message from the
+            mailto argument, upload it to Gmail using the Gmail API, and open
+            a browser window showing the Draft message. If necessary, it will
+            display a dialog asking for the From address, and use the default
+            browser to establish OAuth2 credentials. It's primary purpose is
+            as a helper program to integrate the Gmail web interface with the
+            desktop.
+            """
+        )
+    )
+
+    parser.add_argument(
+        'mailto',
+        nargs='?',
+        default="",
+        help="an RFC2368 mailto URL specifying the message to be sent",
+    )
+
+    parser.add_argument(
+        '-q', '--quiet',
+        action="store_true",
+        help="determine if this should be the desktop mail handler, and exit",
+    )
+
+    args = parser.parse_args()
+
+    return args
 
 def main():
     """ given an optional parameter of a valid mailto url, open an appropriate
@@ -778,10 +811,7 @@ def main():
 
     global config
 
-    if(len(sys.argv) > 1):
-        mailto = sys.argv[1]
-    else:
-        mailto = ""
+    args = parse_args()
 
     header = textwrap.dedent("""\
         # GNOME Gmail Configuration
@@ -835,7 +865,7 @@ def main():
         do_preferred(glade_file, config)
 
     # quiet mode, to set preferred app in postinstall
-    if(len(sys.argv) > 1 and sys.argv[1] == "-q"):
+    if args.quiet:
         sys.exit(0)
 
     Notify.init("GNOME Gmail")
@@ -846,7 +876,7 @@ def main():
         config.set_str('last_email', from_address)
 
     try:
-        gm_url = GMailURL(mailto, from_address)
+        gm_url = GMailURL(args.mailto, from_address)
         gmailurl = gm_url.gmail_url()
     except GGError as gerr:
         notice = Notify.Notification.new(
