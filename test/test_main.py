@@ -21,10 +21,30 @@ def test_main_quick(default_mailer_fxt, config_fxt, monkeypatch):
     assert gnomegmail.sys.exit.calledwith(0)
 
 
+def b64grep(str, text):
+    try:
+        b64tst = base64.b64encode(str.encode()) in text.encode()
+    except UnicodeDecodeError:
+        b64tst = False
+
+    return b64tst or str in text
+
+
+def spy_decorator(method_to_decorate):
+    msgtxt = []
+    def wrapper(self, *args, **kwargs):
+        returnvalue = method_to_decorate(self, *args, **kwargs)
+        msgtxt.append(self.message_text)
+        return returnvalue
+    wrapper.msgtxt = msgtxt
+    return wrapper
+
+
 @pytest.mark.parametrize('body', ("", "hi yä"))
 @pytest.mark.parametrize('attach', ("", "/etc/resolv.conf"))
-@pytest.mark.parametrize('cc', ("", 'cc@example.com'))
-@pytest.mark.parametrize('bcc', ("", 'bcc@example.com'))
+@pytest.mark.parametrize('cc', ("", 'cc@example.com', "cc@exämple.com" ))
+# TODO - oddly, unicode in Bcc doesn't work, while cc works
+@pytest.mark.parametrize('bcc', ("", 'bcc@example.com') )#,"bcc@exämple.com" ))
 @pytest.mark.parametrize('su', ("", 'subject'))
 @patch(
     'gnomegmail.getGoogleFromAddress',
@@ -37,15 +57,6 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
               monkeypatch, su, bcc, cc, attach, body):
 
     rfc822txt = None
-
-    def spy_decorator(method_to_decorate):
-        msgtxt = []
-        def wrapper(self, *args, **kwargs):
-            returnvalue = method_to_decorate(self, *args, **kwargs)
-            msgtxt.append(self.message_text)
-            return returnvalue
-        wrapper.msgtxt = msgtxt
-        return wrapper
 
     args = ['body', 'cc', 'bcc', 'su', 'attach']
     argvals = locals()
@@ -67,13 +78,7 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
     assert "To: joe@example.com" in rfc822txt
 
     if body:
-        # Once py3 only, remove the py2tst and the try logic
-        try:
-            py3tst = base64.b64encode(body.encode()) in rfc822txt.encode()
-        except UnicodeDecodeError:
-            py3tst = False
-        py2tst = body in rfc822txt
-        assert py3tst or py2tst
+        assert b64grep(body, rfc822txt)
 
     if su:
         assert "Subject: " + su in rfc822txt
@@ -88,11 +93,11 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
         assert "Content-Disposition: attachment; " not in rfc822txt
 
     if cc:
-        assert "Cc: " + cc in rfc822txt
+        assert b64grep(cc, rfc822txt)
     else:
         assert "Cc: " not in rfc822txt
 
     if bcc:
-        assert "Bcc: " + bcc in rfc822txt
+        assert b64grep(bcc, rfc822txt)
     else:
         assert "Bcc: " not in rfc822txt
