@@ -51,7 +51,7 @@ def spy_decorator(method_to_decorate):
     Mock(return_value="me@example.com"),
 )
 @patch('gnomegmail.browser', Mock())
-@patch('gnomegmail.GMailAPI.send_mail', Mock(return_value='1'))
+@patch('gnomegmail.GMailAPI.upload_mail', Mock(return_value='1'))
 def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
               notify_fxt, web_fxt, oauth_fxt,
               monkeypatch, su, bcc, cc, attach, body):
@@ -73,7 +73,7 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
         gnomegmail.main()
         rfc822txt = gnomegmail.GMailAPI.form_message.msgtxt[0]
 
-    assert gnomegmail.GMailAPI.send_mail.called
+    assert gnomegmail.GMailAPI.upload_mail.called
 
     assert "To: joe@example.com" in rfc822txt
 

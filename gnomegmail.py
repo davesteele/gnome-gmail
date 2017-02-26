@@ -433,7 +433,7 @@ class GMailAPI():
 
         return self._has_attachment() or self._has_body()
 
-    def send_mail(self, user, access_token):
+    def upload_mail(self, user, access_token):
         """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
 
@@ -457,10 +457,30 @@ class GMailAPI():
                           (e.code, e.msg))
 
         result = urlfp.fp.read().decode('utf-8')
+        self.resource = result
         json_result = json.loads(result)
         id = json_result['message']['id']
 
         return id
+
+    def send_mail(self, user, access_token):
+        """ send the recently uploaded draft message"""
+
+        url = "https://www.googleapis.com/gmail/v1/users/%s/drafts/send" \
+                % urllib.parse.quote(user)
+
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
+        request = urllib.request.Request(url, data=self.resource)
+        request.add_header('Content-Type', 'application/json')
+        request.add_header('Content-Length', str(len(self.resource)))
+        request.add_header('Authorization', "Bearer " + access_token)
+        request.get_method = lambda: 'POST'
+
+        try:
+            urlfp = opener.open(request)
+        except urllib.error.HTTPError as e:
+            raise GGError(_("Error returned from the GMail API - %s - %s") %
+                          (e.code, e.msg))
 
 
 class GMailURL():
@@ -525,7 +545,7 @@ class GMailURL():
 
         return("https://mail.google.com/mail/b/%s" % self.from_address)
 
-    def api_gmail_url(self):
+    def api_gmail_url(self, send=False):
         """ if the mailto refers to an attachment,
         use the GMail API to upload the file """
 
@@ -551,7 +571,7 @@ class GMailURL():
         for access, refresh in auth.access_iter(old_access, old_refresh,
                                                 self.from_address):
             try:
-                msg_id = gm_api.send_mail(self.from_address,
+                msg_id = gm_api.upload_mail(self.from_address,
                                           access)
                 break
             except GGError as e:
@@ -563,18 +583,21 @@ class GMailURL():
                     keys.setTokens(self.from_address, access, refresh)
                 except GLib.Error:
                     print("Error saving tokens to keyring")
+
+            if send:
+                gm_api.send_mail(self.from_address, access)
         else:
             raise GGError(error_str)
 
         return(api_url + msg_id)
 
-    def gmail_url(self):
+    def gmail_url(self, send):
         """ Return a GMail URL appropriate for the mailto handled
         by this instance """
         if(len(self.mailto_url) == 0):
             gmailurl = self.simple_gmail_url()
         else:
-            gmailurl = self.api_gmail_url()
+            gmailurl = self.api_gmail_url(send)
 
         return(gmailurl)
 
@@ -775,7 +798,7 @@ def do_preferred(glade_file, config):
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Send mail via the Gmail API and the browser interface.",
-        usage="%(prog)s [-h|-q|<mailto>]",
+        usage="%(prog)s [-h|-q|[-s] <mailto>]",
         epilog=textwrap.dedent("""\
             The gnome-gmail utility will create an email message from the
             mailto argument, upload it to Gmail using the Gmail API, and open
@@ -799,6 +822,13 @@ def parse_args():
         '-q', '--quiet',
         action="store_true",
         help="determine if this should be the desktop mail handler, and exit",
+    )
+
+    parser.add_argument(
+        '-s', '--send',
+        action="store_true",
+        help="actually send the draft. Otherwise, the draft is opened in a "
+             "browser compose window",
     )
 
     args = parser.parse_args()
@@ -877,7 +907,7 @@ def main():
 
     try:
         gm_url = GMailURL(args.mailto, from_address)
-        gmailurl = gm_url.gmail_url()
+        gmailurl = gm_url.gmail_url(args.send)
     except GGError as gerr:
         notice = Notify.Notification.new(
             "GNOME GMail",
@@ -888,8 +918,9 @@ def main():
         notice.show()
         time.sleep(5)
     else:
-        new_browser = config.get_bool('new_browser')
-        browser().open(gmailurl, new_browser, True)
+        if not args.send:
+            new_browser = config.get_bool('new_browser')
+            browser().open(gmailurl, new_browser, True)
 
 if __name__ == "__main__":
     main()

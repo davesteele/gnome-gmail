@@ -41,6 +41,6 @@ def test_gmailapi(web_fxt, tmpfile, su, bcc, cc, attach, body):
 
     gmailapi = gnomegmail.GMailAPI(mail_dict)
     gmailapi.form_message()
-    id = gmailapi.send_mail('user', 'atoken')
+    id = gmailapi.upload_mail('user', 'atoken')
 
     assert id == '1'
