@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/davesteele/gnome-gmail.svg?branch=master)](https://travis-ci.org/davesteele/gnome-gmail)
 [![Packaging status](https://repology.org/badge/tiny-repos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
 
-##GNOME Gmail
+## GNOME Gmail
 
 This is part of the GNOME Gmail project.
 
