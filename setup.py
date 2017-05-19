@@ -120,12 +120,15 @@ class my_test(Command):
 
     def run(self):
         import pytest
-        errno = pytest.main(self.pytest_args)
+        args = self.pytest_args
+        if type(args) == str:
+            args = args.split()
+        errno = pytest.main(args)
         sys.exit(errno)
 
 setup(
     name='gnome-gmail',
-    version='2.3.1',
+    version='2.4',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
