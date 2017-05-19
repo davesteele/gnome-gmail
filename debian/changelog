@@ -1,3 +1,13 @@
+gnome-gmail (2.4-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+  * Better unicode/python3 support
+  * Use full python interpreter path (Closes: 855889).
+  * Fix bug in Subject: handling.
+  * Add a "send now" option.
+
+ -- David Steele <steele@debian.org>  Fri, 19 May 2017 16:20:53 -0400
+
 gnome-gmail (2.3.1-2) unstable; urgency=medium
 
   * Remove the dependency for gtk-icon-cache.
