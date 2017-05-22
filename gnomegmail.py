@@ -458,9 +458,9 @@ class GMailAPI():
             raise GGError(_("Error returned from the GMail API - %s - %s") %
                           (e.code, e.msg))
 
-        result = urlfp.fp.read().decode('utf-8')
+        result = urlfp.fp.read()
         self.resource = result
-        json_result = json.loads(result)
+        json_result = json.loads(result.decode('utf-8'))
         id = json_result['message']['id']
 
         return id
