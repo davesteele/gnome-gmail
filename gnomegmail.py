@@ -210,6 +210,8 @@ class GMOauth():
         while time.time() - now < 120:
             Gtk.main_iteration()
             screen = Wnck.Screen.get_default()
+            if screen is None:  # Possible in non-X11, e.g. Wayland
+                raise GGError(_("Could not access default screen"))
             screen.force_update()
 
             for win in screen.get_windows():
