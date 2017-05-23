@@ -23,6 +23,7 @@ page will be used whenever an email service is requested.</_p>
 <project_license>GPL-2.0</project_license>
 <developer_name>David Steele</developer_name>
 <update_contact>dsteele_AT_gmail.com</update_contact>
+<translation type="gettext">gnome-gmail</translation>
 <screenshots>
     <screenshot type="default">
         <image>https://davesteele.github.io/gnome-gmail/screenshots/Desktop-crop.png</image>
