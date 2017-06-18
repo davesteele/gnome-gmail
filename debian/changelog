@@ -1,3 +1,11 @@
+gnome-gmail (2.4.1-1) UNRELEASED; urgency=medium
+
+  * New upstream version.
+  * Fail gracefully if OAuth2 window not found (Wayland).
+  * Minor fixes.
+
+ -- David Steele <steele@debian.org>  Fri, 19 May 2017 16:20:53 -0400
+
 gnome-gmail (2.4-1) UNRELEASED; urgency=medium
 
   * New upstream version
