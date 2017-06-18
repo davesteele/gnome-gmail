@@ -210,6 +210,8 @@ class GMOauth():
         while time.time() - now < 120:
             Gtk.main_iteration()
             screen = Wnck.Screen.get_default()
+            if screen is None:  # Possible in non-X11, e.g. Wayland
+                raise GGError(_("Could not access default screen"))
             screen.force_update()
 
             for win in screen.get_windows():
@@ -456,9 +458,9 @@ class GMailAPI():
             raise GGError(_("Error returned from the GMail API - %s - %s") %
                           (e.code, e.msg))
 
-        result = urlfp.fp.read().decode('utf-8')
+        result = urlfp.fp.read()
         self.resource = result
-        json_result = json.loads(result)
+        json_result = json.loads(result.decode('utf-8'))
         id = json_result['message']['id']
 
         return id
