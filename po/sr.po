@@ -1,0 +1,224 @@
+# Serbian translation for gnome-gmail
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the gnome-gmail package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-gmail\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-01-13 03:00+0000\n"
+"PO-Revision-Date: 2016-12-20 04:07+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <sr@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2017-06-20 12:36+0000\n"
+"X-Generator: Launchpad (build 18416)\n"
+
+#: ../gnome-gmail:106
+#, c-format
+msgid "Sending %s"
+msgstr "Шаљем „%s“"
+
+#: ../gnome-gmail:108
+msgid "Mime message attached"
+msgstr ""
+
+#: ../gnome-gmail:173
+msgid "Drafts"
+msgstr "Нацрти"
+
+#: ../gnome-gmail:185
+msgid "Unable to determine IMAP Drafts folder location"
+msgstr ""
+
+#: ../gnome-gmail:192
+msgid "Error encountered while uploading the message"
+msgstr ""
+
+#: ../gnome-gmail:210
+msgid "Error accessing message. Check the Drafts folder"
+msgstr ""
+
+#: ../gnome-gmail:393
+msgid "User cancelled \"Send To...\""
+msgstr ""
+
+#: ../gnome-gmail:529
+msgid "Error creating message with attachment"
+msgstr ""
+
+#: ../gnome-gmail:555
+msgid "nvalid credentials"
+msgstr ""
+
+#: ../gnome-gmail:556
+msgid "Invalid GMail User Name or Password"
+msgstr ""
+
+#: ../gnome-gmail:557
+msgid "not enabled for IMAP"
+msgstr ""
+
+#: ../gnome-gmail:558
+msgid "You must 'Enable IMAP' in Gmail in order to send attachments"
+msgstr ""
+
+#: ../gnome-gmail:566
+msgid "GMail credentials incomplete"
+msgstr ""
+
+#: ../gnomegmail.glade.h:1 ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr ""
+
+#: ../gnomegmail.glade.h:2
+msgid ""
+"Enter your Gmail credentials\n"
+"for the file upload"
+msgstr ""
+
+#: ../gnomegmail.glade.h:4
+msgid "Your Gmail user name, without the '@gmail.com' part"
+msgstr ""
+
+#: ../gnomegmail.glade.h:5
+msgid "User Name"
+msgstr ""
+
+#: ../gnomegmail.glade.h:6
+msgid "Your Gmail password"
+msgstr ""
+
+#: ../gnomegmail.glade.h:7
+msgid "Password"
+msgstr ""
+
+#: ../gnomegmail.glade.h:8
+msgid ""
+"The mail account name (e.g. 'joe', for the mail account 'joe@gmail.com')"
+msgstr ""
+
+#: ../gnomegmail.glade.h:9
+msgid "Enter the password for the mail account"
+msgstr ""
+
+#: ../gnomegmail.glade.h:10
+msgid "Remember Password"
+msgstr ""
+
+#: ../gnomegmail.glade.h:11
+msgid "Remember the Google Account password in the Gnome keychain."
+msgstr ""
+
+#: ../gnomegmail.glade.h:12
+msgid "Configure"
+msgstr ""
+
+#: ../gnomegmail.glade.h:13
+msgid "Configure Gnome Gmail for use with a Google App account."
+msgstr ""
+
+#: ../gnomegmail.glade.h:14
+msgid "Copyright 2010 - Dave Steele"
+msgstr ""
+
+#: ../gnomegmail.glade.h:15
+msgid "comment"
+msgstr ""
+
+#: ../gnomegmail.glade.h:16
+msgid ""
+"GNOME Gmail is not currently your Preferred Email Application. Would you "
+"like your emails to be sent using the Gmail web page?"
+msgstr ""
+
+#: ../gnomegmail.glade.h:17
+msgid "Don't ask again"
+msgstr ""
+
+#: ../gnomegmail.glade.h:18
+msgid "Don't change the Preferred Email Application"
+msgstr ""
+
+#: ../gnomegmail.glade.h:19
+msgid "Use GNOME Gmail for sending mail"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:1
+msgid "Save IMAP password?"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:2
+msgid ""
+"When checked, Gnome Gmail will save the IMAP password in the Gnome keyring. "
+"IMAP is used to upload file attachments to GMail."
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:3
+msgid "Saved IMAP user name"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:4
+msgid ""
+"Gnome Gmail will save the last user name for file attachment uploads here."
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:5
+msgid "Google Apps domain"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:6
+msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:7
+msgid "Hide confirmation dialog"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:8
+msgid ""
+"When checked, Gnome Gmail will suppress the confirmation notification that "
+"appears with each message created. The notification includes a link to allow "
+"Gnome Gmail to be configured for Google Apps support."
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:9
+msgid "Set Open Office to use the Gnome Preferred Email Application"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:10
+msgid ""
+"When checked, Gnome Gmail will attempt to configure Open Office to use the "
+"currently selected Gnome Preferred Email Application with each login, using "
+"a Gnome Gmail compatibility application."
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:11
+msgid "Suppress the GNOME Gmail Preferred Application Dialog"
+msgstr ""
+
+#: ../gnome-gmail.schemas.in.h:12
+msgid ""
+"When checked, GNOME Gmail will not offer to set itself as the GNOME "
+"Preferred Mail application. Otherwise, the program will ask if you want it "
+"to be the mail application, if it isn't already."
+msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:2
+msgid "Integrate GMail with your desktop"
+msgstr ""
+
+#: ../setOOmailer.desktop.in.h:1
+msgid "Gnome Gmail Open Office Configurator"
+msgstr ""
+
+#: ../setOOmailer.desktop.in.h:2
+msgid "Configure Open Office to use the Gnome Preferred Email application"
+msgstr ""
+
+#: ../gnome-gmail.xml.in.h:1
+msgid "Gmail"
+msgstr ""
