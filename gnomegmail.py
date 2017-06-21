@@ -489,11 +489,16 @@ class GMailURL():
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including API uploads."""
 
-    def __init__(self, mailto_url, from_address):
+    def __init__(self, mailto_url, from_address, message):
         self.mailto_url = mailto_url
         self.from_address = from_address
+        self.message = message
 
-        self.mail_dict = self.mailto2dict()
+        if self.mailto_url:
+            self.mail_dict = self.mailto2dict()
+        else:
+            self.mail_dict = {}
+
 
     def mailto2dict(self):
         """ Convert a mailto: reference to a dictionary containing the
@@ -556,7 +561,11 @@ class GMailURL():
 
         try:
             gm_api = GMailAPI(self.mail_dict)
-            gm_api.form_message()
+
+            if self.message:
+                gm_api.message_text = self.message
+            else:
+                gm_api.form_message()
         except OSError:
             GGError(_("Error creating message with attachment"))
 
@@ -596,7 +605,7 @@ class GMailURL():
     def gmail_url(self, send):
         """ Return a GMail URL appropriate for the mailto handled
         by this instance """
-        if(len(self.mailto_url) == 0):
+        if(len(self.mailto_url) == 0 and not self.message):
             gmailurl = self.simple_gmail_url()
         else:
             gmailurl = self.api_gmail_url(send)
@@ -662,6 +671,14 @@ def getGoogleFromAddress(last_address, config, gladefile):
         retval += "@gmail.com"
 
     return retval
+
+
+def fromFromMessage(message):
+    line = [x for x in message.split('\n') if 'FROM:' in x.upper() ][0]
+    email = line.split(' ')[-1]
+    email = re.sub('[<>]', '', email)
+
+    return email
 
 
 class GgConfig(SafeConfigParser):
@@ -833,6 +850,12 @@ def parse_args():
              "browser compose window",
     )
 
+    parser.add_argument(
+        '-r', '--rfc822',
+        action="store_true",
+        help="upload an RFC822-formatted message received from STDIN",
+    )
+
     args = parser.parse_args()
 
     return args
@@ -902,13 +925,19 @@ def main():
 
     Notify.init("GNOME Gmail")
 
-    last_from = config.get_str('last_email')
-    from_address = getGoogleFromAddress(last_from, config, glade_file)
-    if from_address:
-        config.set_str('last_email', from_address)
+    from_address = None
+    message = None
+    if args.rfc822:
+        message = sys.stdin.read()
+        from_address = fromFromMessage(message)
+    else:
+        last_from = config.get_str('last_email')
+        from_address = getGoogleFromAddress(last_from, config, glade_file)
+        if from_address:
+            config.set_str('last_email', from_address)
 
     try:
-        gm_url = GMailURL(args.mailto, from_address)
+        gm_url = GMailURL(args.mailto, from_address, message)
         gmailurl = gm_url.gmail_url(args.send)
     except GGError as gerr:
         notice = Notify.Notification.new(
