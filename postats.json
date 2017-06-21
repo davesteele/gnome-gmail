@@ -45,8 +45,8 @@
         {
             "code": "de", 
             "language": "German", 
-            "percent": 86, 
-            "translator": "Mario Bl\u00e4ttermann "
+            "percent": 88, 
+            "translator": "Mauro Sbicego "
         }, 
         {
             "code": "el", 
@@ -125,6 +125,12 @@
             "language": "Russian", 
             "percent": 100, 
             "translator": "cdrw winiks1@gmail.com\\n\"\n"
+        }, 
+        {
+            "code": "sr", 
+            "language": "Serbian", 
+            "percent": 4, 
+            "translator": "\u041c\u0438\u0440\u043e\u0441\u043b\u0430\u0432 \u041d\u0438\u043a\u043e\u043b\u0438\u045b "
         }, 
         {
             "code": "si", 
