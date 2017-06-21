@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-
 msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 10:48-0500\n"
+"POT-Creation-Date: 2017-06-20 20:43-0400\n"
 "PO-Revision-Date: 2016-07-06 22:47+0000\n"
 "Last-Translator: cdrw winiks1@gmail.com\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,34 +16,39 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../gnomegmail.py:179
+#. Possible in non-X11, e.g. Wayland
+#: ../gnomegmail.py:214
+msgid "Could not access default screen"
+msgstr ""
+
+#: ../gnomegmail.py:224
 msgid "Timeout getting OAuth authentication"
 msgstr "Вышло время для аутентификации OAuth"
 
-#: ../gnomegmail.py:285
+#: ../gnomegmail.py:319
 #, python-format
 msgid "Sending %s"
 msgstr "Отправка %s"
 
-#: ../gnomegmail.py:289
+#: ../gnomegmail.py:325
 msgid "Mime message attached"
 msgstr "Mime сообщение вложено"
 
-#: ../gnomegmail.py:322
+#: ../gnomegmail.py:358
 #, python-format
 msgid "File not found - %s"
 msgstr "Файл не найден - %s"
 
-#: ../gnomegmail.py:407
+#: ../gnomegmail.py:443
 msgid "Unable to authenticate with GMail"
 msgstr "Не удалось проверить подлинность для GMail"
 
-#: ../gnomegmail.py:422
+#: ../gnomegmail.py:458 ../gnomegmail.py:484
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr "Возврат ошибки из API GMail - %s - %s"
 
-#: ../gnomegmail.py:502
+#: ../gnomegmail.py:561
 msgid "Error creating message with attachment"
 msgstr "Ошибка при создании сообщения с вложением"
 
@@ -131,10 +135,10 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME GMail интегрирует веб-интерфейс GMail в среду GNOME. После "
-"установки и настройки приложение выбирается по умолчанию для чтения "
-"почты GMail в среде GNOME. При выборе веб-страницы Gmail будет  "
-"использоваться всякий раз, когда предлагается услуга электронной почты."
+"GNOME GMail интегрирует веб-интерфейс GMail в среду GNOME. После установки и "
+"настройки приложение выбирается по умолчанию для чтения почты GMail в среде "
+"GNOME. При выборе веб-страницы Gmail будет  использоваться всякий раз, когда "
+"предлагается услуга электронной почты."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
@@ -159,7 +163,6 @@ msgstr "Поддержка нескольких учетных записей GM
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
 msgstr "Аутентификация OAuth2 - без пароля"
-
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
 #~ msgstr ""
