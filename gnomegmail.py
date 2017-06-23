@@ -852,8 +852,10 @@ def parse_args():
 
     parser.add_argument(
         '-r', '--rfc822',
-        action="store_true",
-        help="upload an RFC822-formatted message received from STDIN",
+        metavar="file",
+        type=string,
+        default=None,
+        help="upload an RFC822-formatted message",
     )
 
     args = parser.parse_args()
@@ -928,7 +930,7 @@ def main():
     from_address = None
     message = None
     if args.rfc822:
-        message = sys.stdin.read()
+        message = open(args.rfc822, 'r').read()
         from_address = fromFromMessage(message)
     else:
         last_from = config.get_str('last_email')
