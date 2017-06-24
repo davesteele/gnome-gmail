@@ -489,7 +489,7 @@ class GMailURL():
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including API uploads."""
 
-    def __init__(self, mailto_url, from_address, message):
+    def __init__(self, mailto_url, from_address, message=None):
         self.mailto_url = mailto_url
         self.from_address = from_address
         self.message = message
