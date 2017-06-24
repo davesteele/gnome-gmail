@@ -853,7 +853,6 @@ def parse_args():
     parser.add_argument(
         '-r', '--rfc822',
         metavar="file",
-        type=string,
         default=None,
         help="upload an RFC822-formatted message",
     )
