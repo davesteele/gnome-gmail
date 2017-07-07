@@ -1,6 +1,6 @@
 Source: gnome-gmail
 Maintainer: David Steele <steele@debian.org>
-Section: gnome
+Section: mail
 Testsuite: autopkgtest
 Priority: optional
 Build-Depends: debhelper (>= 10),
