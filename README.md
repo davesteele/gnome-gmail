@@ -1,5 +1,4 @@
 
-[![Build Status](https://travis-ci.org/davesteele/gnome-gmail.svg?branch=master)](https://travis-ci.org/davesteele/gnome-gmail)
 [![Packaging status](https://repology.org/badge/tiny-repos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
 
 ## GNOME Gmail
@@ -13,3 +12,6 @@ Once installed, Gmail can act as the default mail application for the desktop.
 supported.
 
 [Screenshots](https://davesteele.github.io/gnome-gmail/screenshots.html)
+
+[![Packaging status](https://repology.org/badge/vertical-allrepos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
+

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 10:48-0500\n"
+"POT-Creation-Date: 2017-06-20 20:43-0400\n"
 "PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: FULL NAME <EMAIL>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,34 +18,39 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: ../gnomegmail.py:179
+#. Possible in non-X11, e.g. Wayland
+#: ../gnomegmail.py:214
+msgid "Could not access default screen"
+msgstr ""
+
+#: ../gnomegmail.py:224
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:285
+#: ../gnomegmail.py:319
 #, python-format
 msgid "Sending %s"
 msgstr "Надсилання %s"
 
-#: ../gnomegmail.py:289
+#: ../gnomegmail.py:325
 msgid "Mime message attached"
 msgstr "Повідомлення mime приєднано"
 
-#: ../gnomegmail.py:322
+#: ../gnomegmail.py:358
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:407
+#: ../gnomegmail.py:443
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:422
+#: ../gnomegmail.py:458 ../gnomegmail.py:484
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:502
+#: ../gnomegmail.py:561
 msgid "Error creating message with attachment"
 msgstr "Помилка створення повідомлення з вкладенням"
 

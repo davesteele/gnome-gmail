@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 10:48-0500\n"
+"POT-Creation-Date: 2017-06-20 20:43-0400\n"
 "PO-Revision-Date: 2015-12-20 21:48-0500\n"
 "Last-Translator: Mathieu LEFEBVRE Mathdabomb <mathdabomb@gmail.com>\n"
 "Language-Team: \n"
@@ -19,34 +19,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: Poedit 1.8.6\n"
 
-#: ../gnomegmail.py:179
+#. Possible in non-X11, e.g. Wayland
+#: ../gnomegmail.py:214
+msgid "Could not access default screen"
+msgstr ""
+
+#: ../gnomegmail.py:224
 msgid "Timeout getting OAuth authentication"
 msgstr "L'authentification OAuth expiré"
 
-#: ../gnomegmail.py:285
+#: ../gnomegmail.py:319
 #, python-format
 msgid "Sending %s"
 msgstr "Envoi de %s"
 
-#: ../gnomegmail.py:289
+#: ../gnomegmail.py:325
 msgid "Mime message attached"
 msgstr "Message Mime attaché"
 
-#: ../gnomegmail.py:322
+#: ../gnomegmail.py:358
 #, python-format
 msgid "File not found - %s"
 msgstr "Fichier introuvable - %s"
 
-#: ../gnomegmail.py:407
+#: ../gnomegmail.py:443
 msgid "Unable to authenticate with GMail"
 msgstr "Impossible d'authentifier avec Gmail"
 
-#: ../gnomegmail.py:422
+#: ../gnomegmail.py:458 ../gnomegmail.py:484
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr "Erreur renvoyée par GMail - %s %s"
 
-#: ../gnomegmail.py:502
+#: ../gnomegmail.py:561
 msgid "Error creating message with attachment"
 msgstr "Erreur de création du message avec pièce jointe"
 
@@ -133,10 +138,11 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME GMail intègre l'interface Web GMail dans l'environnement GNOME. "
-"Une fois installé, GMail devient un choix par défaut Courrier Reader dans la "
-"GNOME application préférée d'administration des applications. Lorsqu'il est sélectionné, un "
-"page Web GMail sera utilisé chaque fois qu'un service de courrier électronique est demandé."
+"GNOME GMail intègre l'interface Web GMail dans l'environnement GNOME. Une "
+"fois installé, GMail devient un choix par défaut Courrier Reader dans la "
+"GNOME application préférée d'administration des applications. Lorsqu'il est "
+"sélectionné, un page Web GMail sera utilisé chaque fois qu'un service de "
+"courrier électronique est demandé."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."

@@ -7,45 +7,50 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 10:48-0500\n"
-"PO-Revision-Date: 2011-10-25 20:19+0000\n"
-"Last-Translator: Mario Blättermann <mario.blaettermann@gmail.com>\n"
+"POT-Creation-Date: 2017-06-20 20:43-0400\n"
+"PO-Revision-Date: 2017-06-05 12:23+0000\n"
+"Last-Translator: Mauro Sbicego <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2017-06-20 12:36+0000\n"
+"X-Generator: Launchpad (build 18416)\n"
 
-#: ../gnomegmail.py:179
+#. Possible in non-X11, e.g. Wayland
+#: ../gnomegmail.py:214
+msgid "Could not access default screen"
+msgstr ""
+
+#: ../gnomegmail.py:224
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:285
+#: ../gnomegmail.py:319
 #, python-format
 msgid "Sending %s"
 msgstr "%s wird gesendet"
 
-#: ../gnomegmail.py:289
+#: ../gnomegmail.py:325
 msgid "Mime message attached"
 msgstr "MIME-Nachricht angehängt"
 
-#: ../gnomegmail.py:322
+#: ../gnomegmail.py:358
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:407
+#: ../gnomegmail.py:443
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:422
+#: ../gnomegmail.py:458 ../gnomegmail.py:484
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:502
+#: ../gnomegmail.py:561
 msgid "Error creating message with attachment"
 msgstr "Fehler beim Erstellen der Nachricht mit Anhang"
 
@@ -134,14 +139,15 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME GMail integriert die GMail Web-Interface in die GNOME-Umgebung. "
-"Einmal installiert, wird GMail eine Wahl als Standard-Mail-Reader in der "
-"GNOME Bevorzugte Anwendungen Administrationsanwendung . Wenn ausgewählt, ein "
-"GMail Web-Seite verwendet werden, wenn eine E-Mail-Dienst angefordert wird."
+"GNOME GMail integriert die GMail Web-Interface in die GNOME-Umgebung. Einmal "
+"installiert, wird GMail eine Wahl als Standard-Mail-Reader in der GNOME "
+"Bevorzugte Anwendungen Administrationsanwendung . Wenn ausgewählt, ein GMail "
+"Web-Seite verwendet werden, wenn eine E-Mail-Dienst angefordert wird."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
-msgstr "Abmelden, oder starten Sie GNOME GMail, um die Konfiguration abzuschließen."
+msgstr ""
+"Abmelden, oder starten Sie GNOME GMail, um die Konfiguration abzuschließen."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 #, fuzzy
@@ -163,6 +169,25 @@ msgstr "Unterstützt mehrere GMail-Konten"
 #: ../gnome-gmail.appdata.xml.in.h:9
 msgid "OAuth2 authentication - no password needed"
 msgstr "OAuth2 Authentifizierung - kein Passwort erforderlich"
+
+#~ msgid "User cancelled \"Send To...\""
+#~ msgstr "Benutzer hat »Senden an …« abgebrochen."
+
+#~ msgid "Set Open Office to use the Gnome Preferred Email Application"
+#~ msgstr "OpenOffice als bevorzugte Anwendung für E-Mail in GNOME festlegen"
+
+#~ msgid ""
+#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
+#~ "the currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Gnome Gmail compatibility application."
+#~ msgstr ""
+#~ "Wenn ausgewählt wird Gnome Gmail versuchen Open Office so zu "
+#~ "konfigurieren, dass es die momentan ausgewählte von Gnome bevorzugte e-"
+#~ "Mail-Anwendung bei jedem Login verwendet, indem es eine Gnome-Gmail-"
+#~ "kompatible Anwendung benutzt."
+
+#~ msgid "Gnome Gmail Open Office Configurator"
+#~ msgstr "GNOME-GMail-Einrichtung für OpenOffice"
 
 #~ msgid "Configure Open Office to use the Gnome Preferred Email application"
 #~ msgstr "OpenOffice als bevorzugte E-Mail-Anwendung in GNOMe einrichten"

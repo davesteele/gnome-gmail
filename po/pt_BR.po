@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 10:48-0500\n"
+"POT-Creation-Date: 2017-06-20 20:43-0400\n"
 "PO-Revision-Date: 2012-03-28 11:04+0000\n"
 "Last-Translator: Pablo Almeida <Unknown>\n"
 "Language-Team: Brazilian Portuguese <pt_BR@li.org>\n"
@@ -18,34 +18,39 @@ msgstr ""
 "X-Launchpad-Export-Date: 2012-10-04 23:40+0000\n"
 "X-Generator: Launchpad (build 16061)\n"
 
-#: ../gnomegmail.py:179
+#. Possible in non-X11, e.g. Wayland
+#: ../gnomegmail.py:214
+msgid "Could not access default screen"
+msgstr ""
+
+#: ../gnomegmail.py:224
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:285
+#: ../gnomegmail.py:319
 #, python-format
 msgid "Sending %s"
 msgstr "Enviando %s"
 
-#: ../gnomegmail.py:289
+#: ../gnomegmail.py:325
 msgid "Mime message attached"
 msgstr "Mensagem MIME anexada"
 
-#: ../gnomegmail.py:322
+#: ../gnomegmail.py:358
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:407
+#: ../gnomegmail.py:443
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:422
+#: ../gnomegmail.py:458 ../gnomegmail.py:484
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:502
+#: ../gnomegmail.py:561
 msgid "Error creating message with attachment"
 msgstr "Erro ao criar mensagem com anexo"
 
@@ -135,10 +140,11 @@ msgid ""
 "GNOME Preferred Applications administration application. When selected, a "
 "GMail web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME GMail integra a interface web do Gmail para o ambiente GNOME. "
-"Uma vez instalado, o Gmail torna-se uma escolha como padrão de correio Leitor na "
-"GNOME aplicativo de administração aplicações preferidas. Quando selecionada, a "
-"A página da web do Gmail será usado sempre que um serviço de e-mail é solicitado."
+"GNOME GMail integra a interface web do Gmail para o ambiente GNOME. Uma vez "
+"instalado, o Gmail torna-se uma escolha como padrão de correio Leitor na "
+"GNOME aplicativo de administração aplicações preferidas. Quando selecionada, "
+"a A página da web do Gmail será usado sempre que um serviço de e-mail é "
+"solicitado."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
