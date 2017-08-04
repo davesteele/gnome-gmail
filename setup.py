@@ -145,7 +145,7 @@ setup(
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
         ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
-        ('share/appdata', ['gnome-gmail.appdata.xml']),
+        ('share/metainfo', ['gnome-gmail.appdata.xml']),
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',
