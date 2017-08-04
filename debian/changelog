@@ -3,7 +3,7 @@ gnome-gmail (2.5-1) UNRELEASED; urgency=medium
   * Add Serbian, and update German and Polish.
   * Support rfc822 option, to read the message from a file.
 
- -- David Steele <daves@daves-HP-Pavilion-Notebook>  Fri, 04 Aug 2017 11:14:17 -0400
+ -- David Steele <steele@debian.org>  Fri, 04 Aug 2017 11:14:17 -0400
 
 gnome-gmail (2.4.1-1) unstable; urgency=medium
 
