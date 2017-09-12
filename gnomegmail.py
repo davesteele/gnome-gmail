@@ -65,6 +65,7 @@ except:
 
 config = None
 
+
 class GGError(Exception):
     """ Gnome Gmail exception """
     def __init__(self, value):
@@ -469,7 +470,7 @@ class GMailAPI():
         """ send the recently uploaded draft message"""
 
         url = "https://www.googleapis.com/gmail/v1/users/%s/drafts/send" \
-                % urllib.parse.quote(user)
+              % urllib.parse.quote(user)
 
         opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
         request = urllib.request.Request(url, data=self.resource)
@@ -498,7 +499,6 @@ class GMailURL():
             self.mail_dict = self.mailto2dict()
         else:
             self.mail_dict = {}
-
 
     def mailto2dict(self):
         """ Convert a mailto: reference to a dictionary containing the
@@ -582,8 +582,7 @@ class GMailURL():
         for access, refresh in auth.access_iter(old_access, old_refresh,
                                                 self.from_address):
             try:
-                msg_id = gm_api.upload_mail(self.from_address,
-                                          access)
+                msg_id = gm_api.upload_mail(self.from_address, access)
                 break
             except GGError as e:
                 error_str = e.value
@@ -674,7 +673,7 @@ def getGoogleFromAddress(last_address, config, gladefile):
 
 
 def fromFromMessage(message):
-    line = [x for x in message.split('\n') if 'FROM:' in x.upper() ][0]
+    line = [x for x in message.split('\n') if 'FROM:' in x.upper()][0]
     email = line.split(' ')[-1]
     email = re.sub('[<>]', '', email)
 
@@ -814,6 +813,7 @@ def do_preferred(glade_file, config):
     if response == 1:
         set_as_default_mailer()
 
+
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Send mail via the Gmail API and the browser interface.",
@@ -860,6 +860,7 @@ def parse_args():
     args = parser.parse_args()
 
     return args
+
 
 def main():
     """ given an optional parameter of a valid mailto url, open an appropriate
@@ -953,6 +954,7 @@ def main():
         if not args.send:
             new_browser = config.get_bool('new_browser')
             browser().open(gmailurl, new_browser, True)
+
 
 if __name__ == "__main__":
     main()

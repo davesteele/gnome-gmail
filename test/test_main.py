@@ -42,9 +42,9 @@ def spy_decorator(method_to_decorate):
 
 @pytest.mark.parametrize('body', ("", "hi yä"))
 @pytest.mark.parametrize('attach', ("", "/etc/resolv.conf"))
-@pytest.mark.parametrize('cc', ("", 'cc@example.com', "cc@exämple.com" ))
+@pytest.mark.parametrize('cc', ("", 'cc@example.com', "cc@exämple.com"))
 # TODO - oddly, unicode in Bcc doesn't work, while cc works
-@pytest.mark.parametrize('bcc', ("", 'bcc@example.com') )#,"bcc@exämple.com" ))
+@pytest.mark.parametrize('bcc', ("", 'bcc@example.com'))#,"bcc@exämple.com"))
 @pytest.mark.parametrize('su', ("", 'subject'))
 @patch(
     'gnomegmail.getGoogleFromAddress',
