@@ -18,7 +18,7 @@ VER ?= $(DEBIAN_VERSION)
 
 
 %:
-	dh $@ --with python2 --buildsystem=pybuild
+	dh $@ --with python3 --buildsystem=pybuild
 
 override_dh_installchangelogs:
 	dh_installchangelogs ChangeLog

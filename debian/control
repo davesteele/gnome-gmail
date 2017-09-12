@@ -6,23 +6,23 @@ Priority: optional
 Build-Depends: debhelper (>= 10),
                dh-python,
                intltool,
-               python
+               python3
 Standards-Version: 4.0.0
 Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
 Homepage: https://davesteele.github.io/gnome-gmail/
-X-Python-Version: >= 2.7
+X-Python3-Version: >= 3.4
 
 Package: gnome-gmail
 Architecture: all
 Depends: ${misc:Depends},
          ${python:Depends},
-         python-gi,
+         python3-gi,
          gir1.2-secret-1,
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
          gir1.2-wnck-3.0,
-         python-six
+         python3-six
 Provides: exec<gnome-gmail>,
           mime<x-scheme-handler/mailto>
 Description: support for Gmail as the preferred email application in GNOME
