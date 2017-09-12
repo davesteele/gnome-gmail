@@ -22,10 +22,35 @@ matrix:
             - desktop-file-utils
       install:
         - pip install six
-    - python:
-        - "3.4"
-        - "3.5"
-        - "3.6"
+    - python: "3.4"
+      addons:
+        apt:
+          packages:
+            - python3-gi
+            - gir1.2-gtk-3.0
+            - gir1.2-notify-0.7
+            - gir1.2-secret-1
+            - gir1.2-wnck-3.0
+            - gettext
+            - intltool
+            - desktop-file-utils
+      install:
+        - pip install six
+    - python: "3.5"
+      addons:
+        apt:
+          packages:
+            - python3-gi
+            - gir1.2-gtk-3.0
+            - gir1.2-notify-0.7
+            - gir1.2-secret-1
+            - gir1.2-wnck-3.0
+            - gettext
+            - intltool
+            - desktop-file-utils
+      install:
+        - pip install six
+    - python: "3.6"
       addons:
         apt:
           packages:
