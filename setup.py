@@ -126,6 +126,7 @@ class my_test(Command):
         errno = pytest.main(args)
         sys.exit(errno)
 
+
 setup(
     name='gnome-gmail',
     version='2.5',
