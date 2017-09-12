@@ -22,7 +22,10 @@ matrix:
             - desktop-file-utils
       install:
         - pip install six
-    - python: "3.4"
+    - python:
+        - "3.4"
+        - "3.5"
+        - "3.6"
       addons:
         apt:
           packages:
