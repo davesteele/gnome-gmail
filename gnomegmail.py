@@ -645,10 +645,12 @@ def getFromAddress(last_address, config, gladefile):
     if last_address and suppress_account_selection:
         return last_address
 
-    builder = Gtk.Builder()
-    builder.add_from_file(gladefile)
+    dlgid = "user_select_dialog"
 
-    dlg = builder.get_object("user_select_dialog")
+    builder = Gtk.Builder()
+    builder.add_objects_from_file(gladefile, (dlgid, ))
+
+    dlg = builder.get_object(dlgid)
 
     hdlr = Handler(last_address, dlg)
     builder.connect_signals(hdlr)
@@ -800,13 +802,15 @@ def do_preferred(glade_file, config):
         def onCancelClicked(self, button):
             Gtk.main_quit()
 
+    dlgid = "preferred_app_dialog"
+
     builder = Gtk.Builder()
-    builder.add_from_file(glade_file)
+    builder.add_objects_from_file(glade_file, (dlgid, ))
 
     hdlr = Handler()
     builder.connect_signals(hdlr)
 
-    response = builder.get_object("preferred_app_dialog").run()
+    response = builder.get_object(dlgid).run()
 
     preferred_setting = builder.get_object("check_dont_ask_again").get_active()
     config.set_bool('suppress_preferred', preferred_setting)
