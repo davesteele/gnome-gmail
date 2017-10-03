@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from distutils.core import setup, Command
 from distutils.command.build import build
@@ -150,8 +150,7 @@ setup(
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3',
         'Topic :: Communications :: Email',
         'Topic :: Desktop Environment :: Gnome',
         'License :: OSI Approved :: " \
