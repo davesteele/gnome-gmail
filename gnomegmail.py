@@ -54,7 +54,11 @@ from gi.repository import Notify    # noqa
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
-locale.setlocale(locale.LC_ALL, '')
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except locale.Error:
+    locale.setlocale(locale.LC_CTYPE, "en_US.UTF-8")
+
 gettext.textdomain("gnome-gmail")
 _ = gettext.gettext
 
