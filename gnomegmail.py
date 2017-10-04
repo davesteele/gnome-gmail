@@ -64,6 +64,7 @@ _ = gettext.gettext
 
 try:
     environ = os.environ['XDG_CURRENT_DESKTOP']
+    environ = environ.split(':')[-1]
 except:
     environ = 'GNOME'
 
