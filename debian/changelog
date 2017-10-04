@@ -1,0 +1,249 @@
+gnome-gmail (2.5-1) UNRELEASED; urgency=medium
+
+  * Add Serbian, and update German and Polish.
+  * Support rfc822 option, to read the message from a file.
+
+ -- David Steele <steele@debian.org>  Fri, 04 Aug 2017 11:14:17 -0400
+
+gnome-gmail (2.4.1-1) unstable; urgency=medium
+
+  * New upstream version.
+  * Fail gracefully if OAuth2 window not found (Wayland).
+  * Minor fixes.
+
+ -- David Steele <steele@debian.org>  Sun, 18 Jun 2017 21:44:45 -0400
+
+gnome-gmail (2.4-1) UNRELEASED; urgency=medium
+
+  * New upstream version
+  * Better unicode/python3 support
+  * Use full python interpreter path (Closes: 855889).
+  * Fix bug in Subject: handling.
+  * Add a "send now" option.
+
+ -- David Steele <steele@debian.org>  Fri, 19 May 2017 16:20:53 -0400
+
+gnome-gmail (2.3.1-2) unstable; urgency=medium
+
+  * Remove the dependency for gtk-icon-cache.
+
+ -- David Steele <steele@debian.org>  Fri, 17 Feb 2017 20:37:00 -0500
+
+gnome-gmail (2.3.1-1) unstable; urgency=medium
+
+  * Tolerate oath token keyring storage failures.
+  * More robust default mail app handling.
+
+ -- David Steele <steele@debian.org>  Sat, 07 Jan 2017 23:47:47 -0500
+
+gnome-gmail (2.3-1) unstable; urgency=medium
+
+  * Fix Mozilla 'new window' support, addressing an authentication
+    problem (Closes: 850100).
+  * PNG optimization (thanks Ville Skyttä).
+  * Improved Unicode support (thanks Massimo Branchini)
+
+ -- David Steele <steele@debian.org>  Tue, 03 Jan 2017 22:09:32 -0500
+
+gnome-gmail (2.2-3) unstable; urgency=medium
+
+  * Fix the CI fix fix.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 23:56:24 -0400
+
+gnome-gmail (2.2-2) unstable; urgency=medium
+
+  * Fix CI tests.
+
+ -- David Steele <steele@debian.org>  Fri, 01 Jul 2016 10:14:05 -0400
+
+gnome-gmail (2.2-1) unstable; urgency=medium
+
+  * Add config option to control browser CLI launch options.
+    - Chrome launches in a tabless 'app' window.
+
+ -- David Steele <steele@debian.org>  Mon, 27 Jun 2016 16:20:00 -0400
+ 
+gnome-gmail (2.1-1) UNRELEASED; urgency=medium
+
+  * Update to gtk-update-icon-cache for icon update (Closes: #825451).
+  * Improved testing (w Travis support).
+  * Polish update.
+
+ -- David Steele <dsteele@gmail.com>  Thu, 26 May 2016 21:59:22 -0400
+
+gnome-gmail (2.0.1-2) unstable; urgency=low
+
+  * DEP8 Continuous Integration fixes:
+    - Fix a hang in the OAuth2 test.
+    - Add Python 3 tests.
+
+ -- David Steele <dsteele@gmail.com>  Sat, 26 Dec 2015 21:38:00 -0500
+
+gnome-gmail (2.0.1-1) unstable; urgency=low
+
+  * Rev to workaround bad V2.0 source upload.
+
+ -- David Steele <dsteele@gmail.com>  Sat, 26 Dec 2015 10:40:23 -0500
+
+gnome-gmail (2.0-1) unstable; urgency=low
+
+  * Python 3 compatibility re-introduced.
+  * Testing enhanced for Continuous Integration integration.
+  * Closing windows exits the utility correctly.
+  * Add DEP11 Appstream metadata.
+
+ -- David Steele <dsteele@gmail.com>  Tue, 22 Dec 2015 08:23:24 -0500
+
+gnome-gmail (1.9.5-2) unstable; urgency=low
+
+  * Use pybuild.
+  * Add DEP8 continuous test support.
+  * Dependency fixes.
+
+ -- David Steele <dsteele@gmail.com>  Tue, 15 Dec 2015 18:43:12 -0500
+
+gnome-gmail (1.9.5-1) unstable; urgency=low
+
+  * Fix broken glade path from the previous version (Thanks Ville Skyttä/scop)
+  * Revert Python 3 changes to fix GMail OAuth HTTP 400 errors
+  * Silence gi startup complaints
+  * Minor fixes
+
+ -- David Steele <dsteele@gmail.com>  Sat, 28 Nov 2015 09:31:15 -0500
+
+gnome-gmail (1.9.4-1) UNRELEASED; urgency=low
+
+  * Expand the use of the GMail API
+  * Changes to support Python3 (thanks to Ville Skyttä/scop)
+  * New translations:
+    - cs - Thanks Kuvaly
+    - hr - Thanks kvaju
+    - ru - Thanks Kirill Babeev
+    - si
+  * Expanded testing, using pytest
+  * Rework setup.py for portability
+
+ -- David Steele <dsteele@gmail.com>  Fri, 27 Nov 2015 10:53:55 -0500
+
+gnome-gmail (1.9.3-1) unstable; urgency=low
+
+  * Missing keyring introspection package in Mint.
+  * Change to a module-based installation.
+  * Render bodies to HTML
+
+ -- David Steele <dsteele@gmail.com>  Tue, 28 Jul 2015 18:40:23 -0400
+
+gnome-gmail (1.9.2-1) unstable; urgency=low
+
+  * Italian translation complete (thanks Massimo Branchini).
+  * Account name "Don't ask again" option (Massimo).
+  * "mailto: leading slash fix for Ubuntu (thanks Bryan Elliott).
+  * Replace WebKit with the default browser for OAuth2 authentication.
+  * Default to opening mail in a new window.
+  * Minor bug fixes.
+
+ -- David Steele <dsteele@gmail.com>  Fri, 19 Jun 2015 16:56:15 -0400
+
+gnome-gmail (1.9.1-1) unstable; urgency=low
+
+  * Fix a crash if no initial OAuth access token found (Closes #786371).
+
+ -- David Steele <dsteele@gmail.com>  Thu, 21 May 2015 06:49:30 -0400
+
+gnome-gmail (1.9-2) unstable; urgency=low
+
+  * watch
+    - Fix the mangle to avoid debian branch tags
+    - Support source tar signature checking
+  * control: Adjust VCS tags to the debian branch
+  * gbp.conf: add upstream-tree option
+
+ -- David Steele <dsteele@gmail.com>  Sun, 10 May 2015 07:36:35 -0400
+
+gnome-gmail (1.9-1) unstable; urgency=low
+
+  * Multiple user support
+  * OAuth2 support
+  * IMAP replaced with GMail API
+  * Dependencies on GNOME/GTK2 removed
+  * Configuration moved to .config and keyring OAuth2 schema
+  * Other misc changes - see package Changelog
+
+ -- David Steele <dsteele@gmail.com>  Sun, 23 Nov 2014 10:26:28 -0500
+
+gnome-gmail (1.8.3-1) unstable; urgency=low
+
+  * Change the Home Page and CM links off of Sourceforge.
+  * Convert from autotools build to setup.py.
+  * Rework repository for git-buildpackage.
+  * Change email to dsteele@gmail.com.
+  * Update Debian Policy to 3.9.5.
+
+ -- David Steele <dsteele@gmail.com>  Mon, 11 Aug 2014 15:07:26 -0400
+
+gnome-gmail (1.8.2-1) unstable; urgency=low
+
+  * Added Dependencies needed by GNOME 3 (python-glade2 and python-gconf)
+  * Set as Default mailer on installation
+  * Fix postinstall crash on upgrade (LP: #878494)
+  * Lintian fixes
+  * Fix setOOmailer XML write failure
+  * Updates to 6 languages
+  * Determine Drafts folder using Google IMAP Extentions (LP: #882337)
+  * Remove dependency on libgnome2
+
+ -- David Steele <daves@users.sourceforge.net>  Mon, 24 Oct 2011 22:31:22 -0400
+
+gnome-gmail (1.8.1-1) unstable; urgency=low
+
+  * Fix setting gnome-gmail as default mailer, using dconf
+
+ -- David Steele <daves@users.sourceforge.net>  Mon, 29 Aug 2011 23:14:57 -0400
+
+gnome-gmail (1.8-1) unstable; urgency=low
+
+  * GNOME 3 compatibility (LP: #729357)
+  * Messages with attachments open directly, instead of the Drafts folder
+  * Fixed "Send Document as Email" in LibreOffice (LP: #774055)
+  * Added python-glade2 dependency for Oneiric (LP: #833355)
+  * Translation improvementsa(LP: #783005)
+  * Unity message indicator (LP: #773765)
+
+ -- David Steele <daves@users.sourceforge.net>  Sun, 14 Aug 2011 23:14:57 -0400
+
+gnome-gmail (1.7.3) unstable; urgency=low
+
+  * Switch to native package as debian/ is maintained upstream
+  * Add libgconf2-dev, autotools-dev, and dh-autoreconf to Build-Depends
+  * Migrate to simplified dh based debian/rules (these last two changes fixes a FTBFS)
+  * Include the non-Debian changelog in the package
+
+ -- Michael R. Crusoe <michael.crusoe@gmail.com>  Tue, 29 Mar 2011 13:40:36 -0700
+
+gnome-gmail (1.7.2-1) unstable; urgency=low
+
+  * Fix automake problem present in v1.7.1 tar
+
+ -- David Steele <daves@users.sourceforge.net>  Mon, 21 Feb 2011 22:14:54 -0500
+
+gnome-gmail (1.7.1-1) unstable; urgency=low
+
+  * Manage the Preferred Mail setting from inside the application (for Fedora15)
+  * Configures LibreOffice to use the preferred email application
+  * Translations (de, es, fr, it, ja, pl, ro, ru, ta, tr, vi)
+  * Refer to attached files by name instead of path
+  * Minor bug fixes
+
+ -- David Steele <daves@users.sourceforge.net>  Sat, 12 Feb 2011 19:34:36 -0500
+
+gnome-gmail (1.7-1) unstable; urgency=low
+
+  * Internationalization support
+  * Initial Debian Release (closes: Bug#597903)
+  * Automake build
+  * Minor bug fixes
+
+ -- David Steele <daves@users.sourceforge.net>  Sun, 17 Oct 2010 21:53:12 -0400
+
+

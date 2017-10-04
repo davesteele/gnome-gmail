@@ -82,7 +82,7 @@ class my_build_i18n(Command):
 
     def run(self):
         print("Creating POT file")
-        cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
+        cmd = "cd po; xgettext -f POTFILES.in -f gnome-gmail.po -a"
         subprocess.call(cmd, shell=True)
 
         for lang in langs:

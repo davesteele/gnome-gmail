@@ -1,4 +1,3 @@
-#!/usr/bin/python2 -tt
 # -*- coding: utf-8 -*-
 
 import nose
