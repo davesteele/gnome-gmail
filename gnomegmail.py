@@ -69,7 +69,7 @@ except:
     environ = 'GNOME'
 
 config = None
-
+oauthport = 27478
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -196,10 +196,17 @@ class GMOauth():
         s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
 
+        screen = Wnck.Screen.get_default()
+        if screen:
+            # I can read the titles of other windows
+            urn = "urn:ietf:wg:oauth:2.0:oob"
+        else:
+            urn = "http://127.0.0.1:%d/" % oauthport
+
         args = {
                     "response_type": "code",
                     "client_id": self.client_id,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": urn,
                     "prompt": "consent",
                     "scope": self.scope,
                     "state": state,
@@ -211,21 +218,24 @@ class GMOauth():
         with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
 
-        now = time.time()
+        if screen:
+            now = time.time()
 
-        while time.time() - now < 120:
-            Gtk.main_iteration()
-            screen = Wnck.Screen.get_default()
-            if screen is None:  # Possible in non-X11, e.g. Wayland
-                raise GGError(_("Could not access default screen"))
-            screen.force_update()
+            while time.time() - now < 120:
+                Gtk.main_iteration()
+                screen = Wnck.Screen.get_default()
+                if screen is None:  # Possible in non-X11, e.g. Wayland
+                    raise GGError(_("Could not access default screen"))
+                screen.force_update()
 
-            for win in screen.get_windows():
-                m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
-                if m:
-                    win.close(time.time())
+                for win in screen.get_windows():
+                    m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
+                    if m:
+                        win.close(time.time())
 
-                    return m.group(1)
+                        return m.group(1)
+        else:
+            print("Need a Wayland strategy")
 
         raise GGError(_("Timeout getting OAuth authentication"))
 
