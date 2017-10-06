@@ -462,7 +462,7 @@ class GMailAPI():
                "?uploadType=media") % urllib.parse.quote(user)
 
         opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
-        request = urllib.request.Request(url, data=self.message_text)
+        request = urllib.request.Request(url, data=self.message_text.encode())
         request.add_header('Content-Type', 'message/rfc822')
         request.add_header('Content-Length', str(len(self.message_text)))
         request.add_header('Authorization', "Bearer " + access_token)
