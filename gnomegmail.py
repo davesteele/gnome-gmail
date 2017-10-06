@@ -587,11 +587,7 @@ class GMailURL():
         msg_id = None
         auth = GMOauth()
         keys = Oauth2Keyring(auth.scope)
-        try:
-            old_access, old_refresh = keys.getTokens(self.from_address)
-        except GLib.Error:
-            print("Error getting tokens from keyring")
-            old_access = old_refresh = None
+        old_access, old_refresh = keys.getTokens(self.from_address)
 
         error_str = ""
         for access, refresh in auth.access_iter(old_access, old_refresh,
@@ -604,10 +600,7 @@ class GMailURL():
 
         if msg_id:
             if (old_access, old_refresh) != (access, refresh):
-                try:
-                    keys.setTokens(self.from_address, access, refresh)
-                except GLib.Error:
-                    print("Error saving tokens to keyring")
+                keys.setTokens(self.from_address, access, refresh)
 
             if send:
                 gm_api.send_mail(self.from_address, access)
