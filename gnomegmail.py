@@ -28,6 +28,7 @@ import shlex
 import unicodedata
 import argparse
 from contextlib import contextmanager
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -192,21 +193,22 @@ class GMOauth():
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
+
+    def get_urn(self):
+        if Wnck.Screen.get_default():
+            return "urn:ietf:wg:oauth:2.0:oob"
+        else:
+            return "http://127.0.0.1:%d/" % oauthport
+
+
     def get_code(self, login_hint):
         s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
 
-        screen = Wnck.Screen.get_default()
-        if screen:
-            # I can read the titles of other windows
-            urn = "urn:ietf:wg:oauth:2.0:oob"
-        else:
-            urn = "http://127.0.0.1:%d/" % oauthport
-
         args = {
                     "response_type": "code",
                     "client_id": self.client_id,
-                    "redirect_uri": urn,
+                    "redirect_uri": self.get_urn(),
                     "prompt": "consent",
                     "scope": self.scope,
                     "state": state,
@@ -218,7 +220,7 @@ class GMOauth():
         with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
 
-        if screen:
+        if "oob" in self.get_urn():
             now = time.time()
 
             while time.time() - now < 120:
@@ -235,7 +237,22 @@ class GMOauth():
 
                         return m.group(1)
         else:
-            print("Need a Wayland strategy")
+            class RequestHandler(BaseHTTPRequestHandler):
+                code = None
+                def do_GET(s):
+                    m = re.search("state=%s.code=([^ ]+)" % state, s.path)
+                    if m:
+                        RequestHandler.code = m.group(1)
+
+                    s.send_response(200)
+                    s.send_header("Content-type", "text/html")
+                    s.end_headers()
+                    s.wfile.write("<html><head><title>Title</title></head>".encode())
+
+            httpd = HTTPServer(('127.0.0.1', oauthport), RequestHandler)
+            httpd.socket.settimeout(120)
+            httpd.handle_request()
+            return RequestHandler.code
 
         raise GGError(_("Timeout getting OAuth authentication"))
 
@@ -245,7 +262,7 @@ class GMOauth():
                     "code": code,
                     "client_id": self.client_id,
                     "client_secret": self.client_secret,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": self.get_urn(),
                     "grant_type": "authorization_code",
                }
 
