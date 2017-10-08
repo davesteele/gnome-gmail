@@ -1,9 +1,8 @@
 # Compulsory line, this is a version 3 file
-version=3
+version=4
 
-opts=filenamemangle=s/.+\/v?(\d\S*)\.tar\.gz/gnome-gmail-$1\.tar\.gz/,\
+opts=filenamemangle=s/.+\/(\d\S*@ARCHIVE_EXT@)/@PACKAGE@-$1/,\
 pgpsigurlmangle=s/github.com/raw.githubusercontent.com/;\
 s/archive\/master/signatures/;\
-s/([^\/]+)\.tar\.gz/gnome-gmail-$1\.tar\.gz/;\
-s/$/.asc/ \
-https://github.com/davesteele/gnome-gmail/tags .*master/v?(\d\S*)\.tar\.gz
+s/([^\/]+@ARCHIVE_EXT@)/@PACKAGE@-$1.asc/ \
+https://github.com/davesteele/@PACKAGE@/tags .*master/(\d\S*)@ARCHIVE_EXT@
