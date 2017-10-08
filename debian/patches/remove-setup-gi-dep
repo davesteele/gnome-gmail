@@ -1,0 +1,17 @@
+Description: Remove the setup.py dependency on gi
+ It was causing a build warning.
+ .
+ gnome-gmail (2.5-1) UNRELEASED; urgency=medium
+Last-Update: 2017-10-08
+
+--- gnome-gmail-2.5.orig/setup.py
++++ gnome-gmail-2.5/setup.py
+@@ -135,7 +135,7 @@ setup(
+     author_email='dsteele@gmail.com',
+     url='https://davesteele.github.io/gnome-gmail/',
+     scripts=['gnome-gmail'],
+-    requires=['gi', 'six'],
++    requires=['six'],
+     data_files=[
+         ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
+         ('share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
