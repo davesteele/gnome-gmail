@@ -1,11 +1,11 @@
-gnome-gmail (2.5-1) UNRELEASED; urgency=medium
+gnome-gmail (2.5-1) unstable; urgency=medium
 
   * Move to Python 3.
   * Compatibility with Wayland.
   * Add Serbian, and update German and Polish.
   * Support rfc822 option, to read the message from a file.
 
- -- David Steele <steele@debian.org>  Fri, 04 Aug 2017 11:14:17 -0400
+ -- David Steele <steele@debian.org>  Sun, 08 Oct 2017 14:37:56 -0400
 
 gnome-gmail (2.4.1-1) unstable; urgency=medium
 
