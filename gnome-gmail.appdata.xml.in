@@ -48,7 +48,7 @@ page will be used whenever an email service is requested.</_p>
 </screenshots>
 <releases>
     <!-- Get timestamp with 'date +%s' -->
-    <release version="2.5" timestamp="1501859309"></release>
+    <release version="2.5" timestamp="1507485794"></release>
     <release version="2.4.1" timestamp="1497796751"></release>
     <release version="2.4" timestamp="1495225253"></release>
     <release version="2.3.1" timestamp="1483845277"></release>
