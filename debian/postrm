@@ -1,0 +1,13 @@
+#!/bin/sh
+
+set -e
+
+case "$1" in
+    purge)
+        rm -rf /home/*/.config/gnome-gmail/
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0
