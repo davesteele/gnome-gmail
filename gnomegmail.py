@@ -28,6 +28,7 @@ import shlex
 import unicodedata
 import argparse
 from contextlib import contextmanager
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -69,7 +70,7 @@ except:
     environ = 'GNOME'
 
 config = None
-
+oauthport = 27478
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -192,6 +193,14 @@ class GMOauth():
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
+
+    def get_urn(self):
+        if Wnck.Screen.get_default():
+            return "urn:ietf:wg:oauth:2.0:oob"
+        else:
+            return "http://127.0.0.1:%d/" % oauthport
+
+
     def get_code(self, login_hint):
         s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
@@ -199,7 +208,7 @@ class GMOauth():
         args = {
                     "response_type": "code",
                     "client_id": self.client_id,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": self.get_urn(),
                     "prompt": "consent",
                     "scope": self.scope,
                     "state": state,
@@ -211,21 +220,39 @@ class GMOauth():
         with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
 
-        now = time.time()
+        if "oob" in self.get_urn():
+            now = time.time()
 
-        while time.time() - now < 120:
-            Gtk.main_iteration()
-            screen = Wnck.Screen.get_default()
-            if screen is None:  # Possible in non-X11, e.g. Wayland
-                raise GGError(_("Could not access default screen"))
-            screen.force_update()
+            while time.time() - now < 120:
+                Gtk.main_iteration()
+                screen = Wnck.Screen.get_default()
+                if screen is None:  # Possible in non-X11, e.g. Wayland
+                    raise GGError(_("Could not access default screen"))
+                screen.force_update()
 
-            for win in screen.get_windows():
-                m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
-                if m:
-                    win.close(time.time())
+                for win in screen.get_windows():
+                    m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
+                    if m:
+                        win.close(time.time())
 
-                    return m.group(1)
+                        return m.group(1)
+        else:
+            class RequestHandler(BaseHTTPRequestHandler):
+                code = None
+                def do_GET(s):
+                    m = re.search("state=%s.code=([^ ]+)" % state, s.path)
+                    if m:
+                        RequestHandler.code = m.group(1)
+
+                    s.send_response(200)
+                    s.send_header("Content-type", "text/html")
+                    s.end_headers()
+                    s.wfile.write("<html><head><title>Title</title></head>".encode())
+
+            httpd = HTTPServer(('127.0.0.1', oauthport), RequestHandler)
+            httpd.socket.settimeout(120)
+            httpd.handle_request()
+            return RequestHandler.code
 
         raise GGError(_("Timeout getting OAuth authentication"))
 
@@ -235,7 +262,7 @@ class GMOauth():
                     "code": code,
                     "client_id": self.client_id,
                     "client_secret": self.client_secret,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": self.get_urn(),
                     "grant_type": "authorization_code",
                }
 
@@ -451,10 +478,11 @@ class GMailAPI():
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
                "?uploadType=media") % urllib.parse.quote(user)
 
+        msgbytes = self.message_text.encode()
         opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
-        request = urllib.request.Request(url, data=self.message_text)
+        request = urllib.request.Request(url, data=msgbytes)
         request.add_header('Content-Type', 'message/rfc822')
-        request.add_header('Content-Length', str(len(self.message_text)))
+        request.add_header('Content-Length', str(len(msgbytes)))
         request.add_header('Authorization', "Bearer " + access_token)
         request.get_method = lambda: 'POST'
 
@@ -577,11 +605,7 @@ class GMailURL():
         msg_id = None
         auth = GMOauth()
         keys = Oauth2Keyring(auth.scope)
-        try:
-            old_access, old_refresh = keys.getTokens(self.from_address)
-        except GLib.Error:
-            print("Error getting tokens from keyring")
-            old_access = old_refresh = None
+        old_access, old_refresh = keys.getTokens(self.from_address)
 
         error_str = ""
         for access, refresh in auth.access_iter(old_access, old_refresh,
@@ -594,10 +618,7 @@ class GMailURL():
 
         if msg_id:
             if (old_access, old_refresh) != (access, refresh):
-                try:
-                    keys.setTokens(self.from_address, access, refresh)
-                except GLib.Error:
-                    print("Error saving tokens to keyring")
+                keys.setTokens(self.from_address, access, refresh)
 
             if send:
                 gm_api.send_mail(self.from_address, access)
