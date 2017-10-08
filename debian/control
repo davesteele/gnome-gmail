@@ -15,13 +15,12 @@ X-Python3-Version: >= 3.4
 Package: gnome-gmail
 Architecture: all
 Depends: ${misc:Depends},
-         ${python:Depends},
+         ${python3:Depends},
          python3-gi,
          gir1.2-secret-1,
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
          gir1.2-wnck-3.0,
-         python3-six
 Provides: exec<gnome-gmail>,
           mime<x-scheme-handler/mailto>
 Description: support for Gmail as the preferred email application in GNOME
