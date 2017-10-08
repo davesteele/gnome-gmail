@@ -1,5 +1,5 @@
 <!-- Creator     : groff version 1.22.3 -->
-<!-- CreationDate: Wed Jun 21 00:33:46 2017 -->
+<!-- CreationDate: Sun Oct  8 21:40:43 2017 -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -46,7 +46,8 @@ Integrate GMail into the GNOME desktop</p>
 
 
 <p style="margin-left:11%; margin-top: 1em"><b>gnome-gmail</b>
-[<i>&lt;mailto-URL&gt;</i>]</p>
+[<b>-r</b> <i>file</i>|<i>&lt;mailto-URL&gt;</i>]
+[<b>--send</b>]</p>
 
 <h2>DESCRIPTION
 <a name="DESCRIPTION"></a>
@@ -70,7 +71,17 @@ email.</p>
 &rsquo;BCC&rsquo;, &rsquo;Subject&rsquo;, and
 &rsquo;Body&rsquo; fields are supported. If the argument is
 not well formed, it is assumed to be the recipient. If no
-argument is supplied, a default GMail page is opened.</p>
+argument is supplied, a default GMail page is opened.
+<b><br>
+-s, --send</b></p>
+
+<p style="margin-left:22%;">send immediately</p>
+
+<p style="margin-left:11%;"><b>-r</b> <i>file</i><b>,
+--rfc</b> <i>file</i></p>
+
+<p style="margin-left:22%;">send the RFC822-formatted file
+<i>file</i></p>
 
 <h2>FILES
 <a name="FILES"></a>

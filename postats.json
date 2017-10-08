@@ -9,7 +9,7 @@
         {
             "code": "zh_CN", 
             "language": "Chinese", 
-            "percent": 16, 
+            "percent": 15, 
             "translator": "Lele Long "
         }, 
         {
@@ -33,7 +33,7 @@
         {
             "code": "et", 
             "language": "Estonian", 
-            "percent": 19, 
+            "percent": 18, 
             "translator": "lyyser "
         }, 
         {
@@ -45,7 +45,7 @@
         {
             "code": "de", 
             "language": "German", 
-            "percent": 88, 
+            "percent": 86, 
             "translator": "Mauro Sbicego "
         }, 
         {
@@ -87,7 +87,7 @@
         {
             "code": "fa", 
             "language": "Persian", 
-            "percent": 16, 
+            "percent": 15, 
             "translator": "Danial Behzadi "
         }, 
         {
@@ -123,13 +123,13 @@
         {
             "code": "ru", 
             "language": "Russian", 
-            "percent": 100, 
+            "percent": 96, 
             "translator": "cdrw winiks1@gmail.com\\n\"\n"
         }, 
         {
             "code": "sr", 
             "language": "Serbian", 
-            "percent": 4, 
+            "percent": 3, 
             "translator": "\u041c\u0438\u0440\u043e\u0441\u043b\u0430\u0432 \u041d\u0438\u043a\u043e\u043b\u0438\u045b "
         }, 
         {
