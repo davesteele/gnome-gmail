@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-20 20:43-0400\n"
+"POT-Creation-Date: 2017-11-29 20:49-0500\n"
 "PO-Revision-Date: 2011-08-29 16:14+0000\n"
 "Last-Translator: Kuvaly [LCT] <kuvaly@seznam.cz>\n"
 "Language-Team: Czech <cs@li.org>\n"
@@ -19,88 +19,58 @@ msgstr ""
 "X-Generator: Launchpad (build 14197)\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:214
+#: ../gnomegmail.py:230
 msgid "Could not access default screen"
 msgstr ""
 
-#: ../gnomegmail.py:224
+#: ../gnomegmail.py:257
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:319
+#: ../gnomegmail.py:352
 #, python-format
 msgid "Sending %s"
 msgstr "Odesílá se %s"
 
-#: ../gnomegmail.py:325
+#: ../gnomegmail.py:358
 msgid "Mime message attached"
 msgstr "Byla přiložena zpráva mime"
 
-#: ../gnomegmail.py:358
+#: ../gnomegmail.py:391
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:443
+#: ../gnomegmail.py:476
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:458 ../gnomegmail.py:484
+#: ../gnomegmail.py:492 ../gnomegmail.py:518
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:561
+#: ../gnomegmail.py:603
 msgid "Error creating message with attachment"
 msgstr "Během zpracovávání zprávy s přílohou došlo k chybě"
 
 #: ../gnomegmail.glade.h:1
-msgid "Copyright 2010 - Dave Steele"
-msgstr ""
-
-#: ../gnomegmail.glade.h:2
-msgid "comment"
-msgstr "komentář"
-
-#: ../gnomegmail.glade.h:3
-msgid "Configure"
-msgstr "Konfigurovat"
-
-#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
-msgstr "Gnome Gmail"
-
-#: ../gnomegmail.glade.h:5
-msgid ""
-"Enter your Gmail credentials\n"
-"for the file upload"
-msgstr ""
-
-#: ../gnomegmail.glade.h:7
-msgid "User Name"
-msgstr "Uživatelské jméno"
-
-#: ../gnomegmail.glade.h:8
-msgid "Password"
-msgstr "Heslo"
-
-#: ../gnomegmail.glade.h:9
-msgid "Remember Password"
-msgstr "Pamatovat si heslo"
-
-#: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
 msgstr ""
 
-#: ../gnomegmail.glade.h:11
+#: ../gnomegmail.glade.h:2
 msgid "Don't ask again"
 msgstr "Neptat se znovu"
 
-#: ../gnomegmail.glade.h:12
+#: ../gnomegmail.glade.h:3
 msgid "Which Google email account should be used?"
 msgstr ""
+
+#: ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "Gnome Gmail"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
@@ -137,29 +107,54 @@ msgid ""
 msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:4
-msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgid ""
+"File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
+"etc."
 msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:5
+msgid "Logout, or launch GNOME GMail, to complete the configuration."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:7
 #, fuzzy
 msgid "Put GMail on your desktop"
 msgstr "Začlenit GMail do vašeho pracovního prostředí"
 
-#: ../gnome-gmail.appdata.xml.in.h:6
+#: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Uses the GMail web interface"
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:7
+#: ../gnome-gmail.appdata.xml.in.h:9
 msgid "Send from the File Browser, or other applications"
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:8
+#: ../gnome-gmail.appdata.xml.in.h:10
 msgid "Supports multiple GMail accounts"
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:9
+#: ../gnome-gmail.appdata.xml.in.h:11
 msgid "OAuth2 authentication - no password needed"
 msgstr ""
+
+#~ msgid "comment"
+#~ msgstr "komentář"
+
+#~ msgid "Configure"
+#~ msgstr "Konfigurovat"
+
+#~ msgid "User Name"
+#~ msgstr "Uživatelské jméno"
+
+#~ msgid "Password"
+#~ msgstr "Heslo"
+
+#~ msgid "Remember Password"
+#~ msgstr "Pamatovat si heslo"
 
 #~ msgid "Drafts"
 #~ msgstr "Koncepty"

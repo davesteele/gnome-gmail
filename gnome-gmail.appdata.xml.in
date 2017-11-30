@@ -13,6 +13,7 @@ page will be used whenever an email service is requested.</_p>
 <_p>File attachments are supported, as well as the setting of Subject, Cc, Bcc,
 etc.</_p>
 <_p>Logout, or launch GNOME GMail, to complete the configuration.</_p>
+<_p>To demonstrate, select "Send To..." on a file in the File Browser.</_p>
 </description>
 <url type="homepage">https://davesteele.github.io/gnome-gmail/</url>
 <url type="bugtracker">https://github.com/davesteele/gnome-gmail/issues</url>
@@ -50,6 +51,7 @@ etc.</_p>
 </screenshots>
 <releases>
     <!-- Get timestamp with 'date +%s' -->
+    <release version="2.5.1" timestamp="1512064122"></release>
     <release version="2.5" timestamp="1507485794"></release>
     <release version="2.4.1" timestamp="1497796751"></release>
     <release version="2.4" timestamp="1495225253"></release>
