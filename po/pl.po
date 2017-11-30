@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-20 20:43-0400\n"
+"POT-Creation-Date: 2017-11-29 20:49-0500\n"
 "PO-Revision-Date: 2017-06-21 20:00+0200\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -20,78 +20,42 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:214
+#: ../gnomegmail.py:230
 msgid "Could not access default screen"
 msgstr "Nie można uzyskać dostępu do domyślnego ekranu"
 
-#: ../gnomegmail.py:224
+#: ../gnomegmail.py:257
 msgid "Timeout getting OAuth authentication"
 msgstr "Przekroczono czas oczekiwania podczas uwierzytelniania OAuth"
 
-#: ../gnomegmail.py:319
+#: ../gnomegmail.py:352
 #, python-format
 msgid "Sending %s"
 msgstr "Wysyłanie %s"
 
-#: ../gnomegmail.py:325
+#: ../gnomegmail.py:358
 msgid "Mime message attached"
 msgstr "Załączono wiadomość MIME"
 
-#: ../gnomegmail.py:358
+#: ../gnomegmail.py:391
 #, python-format
 msgid "File not found - %s"
 msgstr "Nie odnaleziono pliku — %s"
 
-#: ../gnomegmail.py:443
+#: ../gnomegmail.py:476
 msgid "Unable to authenticate with GMail"
 msgstr "Nie można uwierzytelnić z serwisem Gmail"
 
-#: ../gnomegmail.py:458 ../gnomegmail.py:484
+#: ../gnomegmail.py:492 ../gnomegmail.py:518
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr "Zwrócono błąd z API serwisu Gmail — %s — %s"
 
-#: ../gnomegmail.py:561
+#: ../gnomegmail.py:603
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
 
 #: ../gnomegmail.glade.h:1
-msgid "Copyright 2010 - Dave Steele"
-msgstr "Copyright 2010 Dave Steele"
-
-#: ../gnomegmail.glade.h:2
-msgid "comment"
-msgstr "komentarz"
-
-#: ../gnomegmail.glade.h:3
-msgid "Configure"
-msgstr "Skonfiguruj"
-
-#: ../gnomegmail.glade.h:4 ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
-msgstr "GNOME Gmail"
-
-#: ../gnomegmail.glade.h:5
-msgid ""
-"Enter your Gmail credentials\n"
-"for the file upload"
-msgstr ""
-"Proszę podać dane uwierzytelniające serwisu Gmail,\n"
-"aby wysłać plik"
-
-#: ../gnomegmail.glade.h:7
-msgid "User Name"
-msgstr "Nazwa użytkownika"
-
-#: ../gnomegmail.glade.h:8
-msgid "Password"
-msgstr "Hasło"
-
-#: ../gnomegmail.glade.h:9
-msgid "Remember Password"
-msgstr "Zapamiętanie hasła"
-
-#: ../gnomegmail.glade.h:10
 msgid ""
 "GNOME Gmail is not currently your Preferred Email Application. Would you "
 "like your emails to be sent using the Gmail web page?"
@@ -99,13 +63,17 @@ msgstr ""
 "GNOME Gmail nie jest obecnie preferowanym klientem poczty. Wysyłać pocztę za "
 "pomocą interfejsu serwisu Gmail?"
 
-#: ../gnomegmail.glade.h:11
+#: ../gnomegmail.glade.h:2
 msgid "Don't ask again"
 msgstr "Bez pytania ponownie"
 
-#: ../gnomegmail.glade.h:12
+#: ../gnomegmail.glade.h:3
 msgid "Which Google email account should be used?"
 msgstr "Którego konta e-mail Google użyć?"
+
+#: ../gnome-gmail.desktop.in.h:1
+msgid "Gnome Gmail"
+msgstr "GNOME Gmail"
 
 #: ../gnome-gmail.desktop.in.h:2
 msgid "GMail Web Integration"
@@ -144,26 +112,61 @@ msgstr ""
 "używany do wysyłania poczty."
 
 #: ../gnome-gmail.appdata.xml.in.h:4
+msgid ""
+"File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
+"etc."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:5
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
 msgstr ""
 "Należy się wylogować lub uruchomić GNOME Gmail, aby ukończyć konfigurację."
 
-#: ../gnome-gmail.appdata.xml.in.h:5
+#: ../gnome-gmail.appdata.xml.in.h:6
+msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
+msgstr ""
+
+#: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Put GMail on your desktop"
 msgstr "Integruje serwis Gmail ze środowiskiem"
 
-#: ../gnome-gmail.appdata.xml.in.h:6
+#: ../gnome-gmail.appdata.xml.in.h:8
 msgid "Uses the GMail web interface"
 msgstr "Używa interfejsu serwisu Gmail"
 
-#: ../gnome-gmail.appdata.xml.in.h:7
+#: ../gnome-gmail.appdata.xml.in.h:9
 msgid "Send from the File Browser, or other applications"
 msgstr "Umożliwia wysyłanie z przeglądarki plików i innych programów"
 
-#: ../gnome-gmail.appdata.xml.in.h:8
+#: ../gnome-gmail.appdata.xml.in.h:10
 msgid "Supports multiple GMail accounts"
 msgstr "Obsługuje wiele kont Gmail"
 
-#: ../gnome-gmail.appdata.xml.in.h:9
+#: ../gnome-gmail.appdata.xml.in.h:11
 msgid "OAuth2 authentication - no password needed"
 msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"
+
+#~ msgid "Copyright 2010 - Dave Steele"
+#~ msgstr "Copyright 2010 Dave Steele"
+
+#~ msgid "comment"
+#~ msgstr "komentarz"
+
+#~ msgid "Configure"
+#~ msgstr "Skonfiguruj"
+
+#~ msgid ""
+#~ "Enter your Gmail credentials\n"
+#~ "for the file upload"
+#~ msgstr ""
+#~ "Proszę podać dane uwierzytelniające serwisu Gmail,\n"
+#~ "aby wysłać plik"
+
+#~ msgid "User Name"
+#~ msgstr "Nazwa użytkownika"
+
+#~ msgid "Password"
+#~ msgstr "Hasło"
+
+#~ msgid "Remember Password"
+#~ msgstr "Zapamiętanie hasła"
