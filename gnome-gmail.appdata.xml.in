@@ -10,6 +10,8 @@
 Once installed, GMail becomes a choice as the default Mail Reader in the GNOME
 Preferred Applications administration application. When selected, a GMail web
 page will be used whenever an email service is requested.</_p>
+<_p>File attachments are supported, as well as the setting of Subject, Cc, Bcc,
+etc.</_p>
 <_p>Logout, or launch GNOME GMail, to complete the configuration.</_p>
 </description>
 <url type="homepage">https://davesteele.github.io/gnome-gmail/</url>
