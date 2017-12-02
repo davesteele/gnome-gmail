@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-11-29 20:49-0500\n"
-"PO-Revision-Date: 2017-06-21 20:00+0200\n"
+"PO-Revision-Date: 2017-12-03 00:22+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
 "Language: pl\n"
@@ -116,6 +116,7 @@ msgid ""
 "File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
 "etc."
 msgstr ""
+"Obsługiwane są załączniki oraz ustawianie tematu, kopii, ukrytej kopii itp."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
@@ -124,7 +125,7 @@ msgstr ""
 
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
-msgstr ""
+msgstr "Aby użyć, należy wybrać „Wyślij do…” na pliku w menedżerze plików."
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 msgid "Put GMail on your desktop"
@@ -145,28 +146,3 @@ msgstr "Obsługuje wiele kont Gmail"
 #: ../gnome-gmail.appdata.xml.in.h:11
 msgid "OAuth2 authentication - no password needed"
 msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"
-
-#~ msgid "Copyright 2010 - Dave Steele"
-#~ msgstr "Copyright 2010 Dave Steele"
-
-#~ msgid "comment"
-#~ msgstr "komentarz"
-
-#~ msgid "Configure"
-#~ msgstr "Skonfiguruj"
-
-#~ msgid ""
-#~ "Enter your Gmail credentials\n"
-#~ "for the file upload"
-#~ msgstr ""
-#~ "Proszę podać dane uwierzytelniające serwisu Gmail,\n"
-#~ "aby wysłać plik"
-
-#~ msgid "User Name"
-#~ msgstr "Nazwa użytkownika"
-
-#~ msgid "Password"
-#~ msgstr "Hasło"
-
-#~ msgid "Remember Password"
-#~ msgstr "Zapamiętanie hasła"
