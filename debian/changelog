@@ -1,8 +1,8 @@
-gnome-gmail (2.5.3-1) UNRELEASED; urgency=medium
+gnome-gmail (2.5.3-1) unstable; urgency=medium
 
   * Fix GTK i18n.
 
- -- David Steele <steele@debian.org>  Tue, 26 Dec 2017 13:12:07 -0500
+ -- David Steele <steele@debian.org>  Tue, 26 Dec 2017 13:59:13 -0500
 
 gnome-gmail (2.5.2-1) unstable; urgency=medium
 
