@@ -17,7 +17,6 @@ import os.path
 import re
 import textwrap
 import locale
-import gettext
 import string
 import json
 import mimetypes
@@ -55,13 +54,15 @@ from gi.repository import Notify    # noqa
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
+_ = locale.gettext
+locale.bindtextdomain("gnome-gmail", "/usr/share/locale")
+locale.textdomain("gnome-gmail")
 try:
     locale.setlocale(locale.LC_ALL, '')
 except locale.Error:
     locale.setlocale(locale.LC_CTYPE, "en_US.UTF-8")
 
-gettext.textdomain("gnome-gmail")
-_ = gettext.gettext
+
 
 try:
     environ = os.environ['XDG_CURRENT_DESKTOP']
@@ -673,6 +674,7 @@ def getFromAddress(last_address, config, gladefile):
     dlgid = "user_select_dialog"
 
     builder = Gtk.Builder()
+    builder.set_translation_domain("gnome-gmail")
     builder.add_objects_from_file(gladefile, (dlgid, ))
 
     dlg = builder.get_object(dlgid)
@@ -830,6 +832,7 @@ def do_preferred(glade_file, config):
     dlgid = "preferred_app_dialog"
 
     builder = Gtk.Builder()
+    builder.set_translation_domain("gnome-gmail")
     builder.add_objects_from_file(glade_file, (dlgid, ))
 
     hdlr = Handler()
