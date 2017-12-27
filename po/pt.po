@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: GNOME Gmail\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-29 20:49-0500\n"
+"POT-Creation-Date: 2017-12-26 23:28-0500\n"
 "PO-Revision-Date: 2011-05-15 13:08+0000\n"
 "Last-Translator: Almufadado <Unknown>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,38 +19,42 @@ msgstr ""
 "X-Generator: Launchpad (build 13037)\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:230
+#: ../gnomegmail.py:231
 msgid "Could not access default screen"
 msgstr ""
 
-#: ../gnomegmail.py:257
+#: ../gnomegmail.py:258
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:352
+#: ../gnomegmail.py:353
 #, python-format
 msgid "Sending %s"
 msgstr "A enviar %s"
 
-#: ../gnomegmail.py:358
+#: ../gnomegmail.py:359
 msgid "Mime message attached"
 msgstr "Mensagem MIME em anexo"
 
-#: ../gnomegmail.py:391
+#: ../gnomegmail.py:392
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:476
+#: ../gnomegmail.py:477
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:492 ../gnomegmail.py:518
+#: ../gnomegmail.py:493 ../gnomegmail.py:519
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:603
+#: ../gnomegmail.py:533
+msgid "The 'From' address is not specified"
+msgstr ""
+
+#: ../gnomegmail.py:607
 msgid "Error creating message with attachment"
 msgstr "Erro ao criar mensagem com anexo"
 
