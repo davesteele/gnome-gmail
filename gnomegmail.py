@@ -529,6 +529,9 @@ class GMailURL():
         self.from_address = from_address
         self.message = message
 
+        if not self.from_address:
+            raise GGError(_("The 'From' address is not specified"))
+
         if self.mailto_url:
             self.mail_dict = self.mailto2dict()
         else:
