@@ -3,73 +3,73 @@
         {
             "code": "hy", 
             "language": "Armenian", 
-            "percent": 85, 
+            "percent": 66, 
             "translator": "Serj Safarian "
         }, 
         {
             "code": "zh_CN", 
             "language": "Chinese", 
-            "percent": 15, 
+            "percent": 0, 
             "translator": "Lele Long "
         }, 
         {
             "code": "zh_TW", 
             "language": "Chinese", 
-            "percent": 78, 
+            "percent": 62, 
             "translator": "Po-Chun Huang "
         }, 
         {
             "code": "hr", 
             "language": "Croatian", 
-            "percent": 80, 
+            "percent": 62, 
             "translator": "kvaju "
         }, 
         {
             "code": "cs", 
             "language": "Czech", 
-            "percent": 78, 
+            "percent": 66, 
             "translator": "Kuvaly [LCT] "
         }, 
         {
             "code": "et", 
             "language": "Estonian", 
-            "percent": 18, 
+            "percent": 3, 
             "translator": "lyyser "
         }, 
         {
             "code": "fr", 
             "language": "French", 
-            "percent": 96, 
+            "percent": 95, 
             "translator": "Mathieu LEFEBVRE Mathdabomb "
         }, 
         {
             "code": "de", 
             "language": "German", 
-            "percent": 86, 
+            "percent": 81, 
             "translator": "Mauro Sbicego "
         }, 
         {
             "code": "el", 
             "language": "Greek", 
-            "percent": 81, 
+            "percent": 66, 
             "translator": ""
         }, 
         {
             "code": "hu", 
             "language": "Hungarian", 
-            "percent": 84, 
+            "percent": 71, 
             "translator": "\u00dar Bal\u00e1zs "
         }, 
         {
             "code": "id", 
             "language": "Indonesian", 
-            "percent": 82, 
+            "percent": 70, 
             "translator": "dhardiputra "
         }, 
         {
             "code": "it", 
             "language": "Italian", 
-            "percent": 86, 
+            "percent": 81, 
             "translator": "Massimo Branchini "
         }, 
         {
@@ -81,49 +81,49 @@
         {
             "code": "ms", 
             "language": "Malay", 
-            "percent": 82, 
+            "percent": 70, 
             "translator": "abuyop "
         }, 
         {
             "code": "fa", 
             "language": "Persian", 
-            "percent": 15, 
+            "percent": 10, 
             "translator": "Danial Behzadi "
         }, 
         {
             "code": "pl", 
             "language": "Polish", 
-            "percent": 100, 
+            "percent": 96, 
             "translator": "Piotr Dr\u0105g "
         }, 
         {
             "code": "pt", 
             "language": "Portuguese", 
-            "percent": 81, 
+            "percent": 66, 
             "translator": "Almufadado "
         }, 
         {
             "code": "pt_BR", 
             "language": "Portuguese", 
-            "percent": 86, 
+            "percent": 81, 
             "translator": "Pablo Almeida "
         }, 
         {
             "code": "ps", 
             "language": "Pushto", 
-            "percent": 6, 
+            "percent": 7, 
             "translator": "Said Marjan Zazai "
         }, 
         {
             "code": "ro", 
             "language": "Romanian", 
-            "percent": 88, 
+            "percent": 75, 
             "translator": "Daniel \u0218erb\u0103nescu "
         }, 
         {
             "code": "ru", 
             "language": "Russian", 
-            "percent": 96, 
+            "percent": 85, 
             "translator": "cdrw winiks1@gmail.com\\n\"\n"
         }, 
         {
@@ -141,25 +141,25 @@
         {
             "code": "es", 
             "language": "Spanish", 
-            "percent": 85, 
+            "percent": 78, 
             "translator": "Alberto Dom\u00ednguez "
         }, 
         {
             "code": "sv", 
             "language": "Swedish", 
-            "percent": 82, 
+            "percent": 70, 
             "translator": "__a "
         }, 
         {
             "code": "ta", 
             "language": "Tamil", 
-            "percent": 80, 
+            "percent": 62, 
             "translator": "Jackseen Jeyaluck "
         }, 
         {
             "code": "tr", 
             "language": "Turkish", 
-            "percent": 80, 
+            "percent": 62, 
             "translator": ""
         }, 
         {
@@ -171,13 +171,13 @@
         {
             "code": "uk", 
             "language": "Ukrainian", 
-            "percent": 80, 
+            "percent": 62, 
             "translator": ""
         }, 
         {
             "code": "vi", 
             "language": "Vietnamese", 
-            "percent": 80, 
+            "percent": 62, 
             "translator": "L\u00ea Tr\u01b0\u1eddng An "
         }
     ]
