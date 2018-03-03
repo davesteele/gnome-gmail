@@ -53,7 +53,7 @@ msgstr "Erreur renvoyée par GMail - %s %s"
 
 #: ../gnomegmail.py:533
 msgid "The 'From' address is not specified"
-msgstr ""
+msgstr "L'adresse "From" n'est pas spécifiée"
 
 #: ../gnomegmail.py:607
 msgid "Error creating message with attachment"
@@ -121,6 +121,8 @@ msgid ""
 "File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
 "etc."
 msgstr ""
+"Les pièces jointes sont prises en charge, ainsi que les paramètres "
+"Subject, Cc, Bcc, etc."
 
 #: ../gnome-gmail.appdata.xml.in.h:5
 msgid "Logout, or launch GNOME GMail, to complete the configuration."
@@ -129,6 +131,8 @@ msgstr "Déconnexion, ou lancer GNOME GMail, pour terminer la configuration."
 #: ../gnome-gmail.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
 msgstr ""
+"Pour démontrer, sélectionnez \"Envoyer à ...\" sur un fichier dans le "
+"navigateur de fichiers."
 
 #: ../gnome-gmail.appdata.xml.in.h:7
 #, fuzzy
