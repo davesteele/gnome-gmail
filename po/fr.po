@@ -53,7 +53,7 @@ msgstr "Erreur renvoyée par GMail - %s %s"
 
 #: ../gnomegmail.py:533
 msgid "The 'From' address is not specified"
-msgstr "L'adresse "From" n'est pas spécifiée"
+msgstr "L'adresse 'From' n'est pas spécifiée"
 
 #: ../gnomegmail.py:607
 msgid "Error creating message with attachment"
