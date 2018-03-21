@@ -1,8 +1,8 @@
-gnome-gmail (2.5.4-2) UNRELEASED; urgency=medium
+gnome-gmail (2.5.4-2) unstable; urgency=medium
 
   * Update autopkgtest dependencies.
 
- -- David Steele <dsteele@gmail.com>  Wed, 21 Mar 2018 09:06:53 -0400
+ -- David Steele <steele@debian.org>  Wed, 21 Mar 2018 09:10:34 -0400
 
 gnome-gmail (2.5.4-1) unstable; urgency=medium
 
