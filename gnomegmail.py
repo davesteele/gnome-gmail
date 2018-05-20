@@ -37,7 +37,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from six.moves import urllib
-from six.moves.configparser import SafeConfigParser
+from six.moves.configparser import ConfigParser
 
 import gi
 from gi.repository import Gio       # noqa
@@ -713,7 +713,7 @@ def fromFromMessage(message):
     return email
 
 
-class GgConfig(SafeConfigParser):
+class GgConfig(ConfigParser):
     def __init__(self, *args, **kwargs):
 
         self.fpath = os.path.expanduser(self.strip_kwarg(kwargs, 'fpath'))
@@ -721,7 +721,7 @@ class GgConfig(SafeConfigParser):
         initvals = self.strip_kwarg(kwargs, 'initvals')
         self.header = self.strip_kwarg(kwargs, 'header')
 
-        SafeConfigParser.__init__(self, *args, **kwargs)
+        ConfigParser.__init__(self, *args, **kwargs)
 
         self.add_section(self.section)
 
