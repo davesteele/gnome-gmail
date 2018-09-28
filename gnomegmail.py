@@ -137,9 +137,14 @@ def is_default_mailer():
 
 
 def browser():
-    cmd = "xdg-settings get default-web-browser"
-    brsr_name = subprocess.check_output(
-        cmd.split(), universal_newlines=True).strip()
+    specified_browser = config.get_str('use_browser')
+
+    if specified_browser:
+        brsr_name = set([specified_browser])
+    else:
+        cmd = "xdg-settings get default-web-browser"
+        brsr_name = subprocess.check_output(
+            cmd.split(), universal_newlines=True).strip()
 
     browser = webbrowser.get()
 
@@ -922,17 +927,20 @@ def main():
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
         #
+        # use_browser
+        #     What browser to use. If unspecified, uses system default browser.
+        #     Examples: firefox | google-chrome
+        #
         # browser_options
         #     Replace the command line arguments used to call the browser. Note
-        #     that these options are not portable acrosss browsers. '%s' is
-        #     replaced with the url. '%action' is replaced with an option that
-        #     that implements the 'new_browser' functionality. Default options
-        #     are:
-        #         Chrome - "%action %s"
-        #         Mozilla - "-remote openurl(%s%action)"
+        #     that these options are not portable acrosss browsers. '%%s' is
+        #     replaced with the url. Default options are:
+        #         Chrome - "--app=%%s"
+        #         Mozilla - "-new-window %%s"
         #         ...
         #
         """)
+
     config = GgConfig(
                 fpath="~/.config/gnome-gmail/gnome-gmail.conf",
                 section='gnome-gmail',
@@ -941,6 +949,7 @@ def main():
                     'suppress_account_selection': '0',
                     'new_browser': '1',
                     'last_email': '',
+                    'use_browser': '',
                     'browser_options': '',
                 },
                 header=header,
