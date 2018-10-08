@@ -136,6 +136,7 @@ setup(
     url='https://davesteele.github.io/gnome-gmail/',
     scripts=['gnome-gmail'],
     requires=['gi', 'six'],
+    install_requires=['mock', 'pytest'],
     data_files=[
         ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
         ('share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),

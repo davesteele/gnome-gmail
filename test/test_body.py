@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import nose
 import pytest
 from six.moves import urllib
 
