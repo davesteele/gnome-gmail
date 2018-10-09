@@ -1,8 +1,8 @@
-gnome-gmail (2.5.5-1) UNRELEASED; urgency=medium
+gnome-gmail (2.5.5-1) unstable; urgency=medium
 
   * Add use_browser option to specify browser (thanks Dan Upshaw).
 
- -- David Steele <steele@debian.org>  Mon, 08 Oct 2018 13:36:35 -0400
+ -- David Steele <steele@debian.org>  Mon, 08 Oct 2018 21:11:47 -0400
 
 gnome-gmail (2.5.4-3) unstable; urgency=medium
 
