@@ -30,12 +30,22 @@
       <section>
       <a href="index.html">back</a>
         <h3>GNOME Gmail Privacy Policy.</h3>
-        GNOME Gmail requires permission to create draft messages on Gmail, and, if possible, determine a valid URL for user interaction with that draft.
-<br><br>
-No personal information is shared outside of this process. This includes user information, including email address, and all authentication tokens.
+	GNOME Gmail requests the Gmail "compose" permissions. It uses this to create Draft messages in the user's Gmail account,
+	based on email "send" requests
+	by the user from the local desktop or command line, and, optionally, to send those messages to the specified recipient. In
+	other cases, a link is determined and opened to view the composed email on the user's browser.
+	<p>
+	<p>
+
+	To accomplish this, GNOME Gmail stores tokens required to authenticate against the Gmail API. These tokens are stored in
+	the GNOME Keyring.
+
+
+	It also stores the last-used sender email address, to offer as a default for future use.
+	<p>
+	No other personal information is stored or shared, nor is the identified information used or shared beyond what is described here.
+
         
-        <br><br>
-        GNOME Gmail does not do ads.
       </section>
       <footer>
         <p>This project is maintained by <a href="https://github.com/davesteele">davesteele</a></p>
