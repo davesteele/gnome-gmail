@@ -107,8 +107,8 @@ def test_body2html(encbody, body, result):
 
 
 @pytest.mark.parametrize("mailto, needs_api", (
-    ("mailto:joe", False),
-    ("mailto:joe?subject=hi", False),
+    ("mailto:joe", True),
+    ("mailto:joe?subject=hi", True),
     ("mailto:joe?body=%20", True),
     ("mailto:joe?attach=file", True),
     ("mailto:joe?attachment=file", True),
