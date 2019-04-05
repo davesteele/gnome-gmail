@@ -569,7 +569,8 @@ class GMailURL():
 
         qsdict = urllib.parse.parse_qs(query_string)
 
-        qsdict['to'] = [address]
+        if address:
+            qsdict['to'] = [address]
 
         if 'attachment' in qsdict:
             qsdict['attach'] = qsdict['attachment']
@@ -586,6 +587,9 @@ class GMailURL():
 
         if 'su' in qsdict:
             outdict["subject"] = outdict["su"]
+
+        if "body" not in qsdict:
+            outdict["body"] = " "
 
         return(outdict)
 
