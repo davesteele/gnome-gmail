@@ -1,8 +1,8 @@
-gnome-gmail (2.6-1) UNRELEASED; urgency=medium
+gnome-gmail (2.6-1) unstable; urgency=medium
 
   * Fix Gmail bug - bad message if no body (Closes: 926487).
 
- -- David Steele <steele@debian.org>  Fri, 05 Apr 2019 18:55:07 -0400
+ -- David Steele <steele@debian.org>  Fri, 05 Apr 2019 21:18:19 -0400
 
 gnome-gmail (2.5.6-1) unstable; urgency=medium
 
