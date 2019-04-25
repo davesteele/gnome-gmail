@@ -572,9 +572,6 @@ class GMailURL():
         if address:
             qsdict['to'] = [address]
 
-        if 'attachment' in qsdict:
-            qsdict['attach'] = qsdict['attachment']
-
         outdict = {}
         for (key, value) in qsdict.items():
             for i in range(0, len(value)):
@@ -585,11 +582,14 @@ class GMailURL():
 
             outdict[key.lower()] = value
 
-        if 'su' in qsdict:
+        if 'su' in outdict:
             outdict["subject"] = outdict["su"]
 
-        if "body" not in qsdict:
+        if "body" not in outdict:
             outdict["body"] = " "
+
+        if 'attachment' in outdict:
+            outdict['attach'] = outdict['attachment']
 
         return(outdict)
 
