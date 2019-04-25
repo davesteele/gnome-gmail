@@ -1,3 +1,9 @@
+gnome-gmail (2.6.1-1) UNRELEASED; urgency=medium
+
+  * Fix bug causing body (with link) to be deleted.
+
+ -- David Steele <steele@debian.org>  Thu, 25 Apr 2019 19:19:34 -0400
+
 gnome-gmail (2.6-1) unstable; urgency=medium
 
   * Fix Gmail bug - bad message if no body (Closes: 926487).
