@@ -63,6 +63,8 @@ except locale.Error:
     locale.setlocale(locale.LC_CTYPE, "en_US.UTF-8")
 
 
+glade_file = None
+
 
 try:
     environ = os.environ['XDG_CURRENT_DESKTOP']
@@ -200,11 +202,14 @@ class GMOauth():
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
 
-    def get_urn(self):
-        if Wnck.Screen.get_default():
-            return "urn:ietf:wg:oauth:2.0:oob"
+    def can_get_code(self):
+        with nullfd(1), nullfd(2):
+            screen = Wnck.Screen.get_default()
+
+        if screen:
+            return True
         else:
-            return "http://127.0.0.1:%d/" % oauthport
+            return False
 
 
     def get_code(self, login_hint):
@@ -214,7 +219,7 @@ class GMOauth():
         args = {
                     "response_type": "code",
                     "client_id": self.client_id,
-                    "redirect_uri": self.get_urn(),
+                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
                     "prompt": "consent",
                     "scope": self.scope,
                     "state": state,
@@ -226,7 +231,8 @@ class GMOauth():
         with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
 
-        if "oob" in self.get_urn():
+
+        if self.can_get_code():
             now = time.time()
 
             while time.time() - now < 120:
@@ -243,22 +249,7 @@ class GMOauth():
 
                         return m.group(1)
         else:
-            class RequestHandler(BaseHTTPRequestHandler):
-                code = None
-                def do_GET(s):
-                    m = re.search("state=%s.code=([^ ]+)" % state, s.path)
-                    if m:
-                        RequestHandler.code = m.group(1)
-
-                    s.send_response(200)
-                    s.send_header("Content-type", "text/html")
-                    s.end_headers()
-                    s.wfile.write("<html><head><title>Title</title></head>".encode())
-
-            httpd = HTTPServer(('127.0.0.1', oauthport), RequestHandler)
-            httpd.socket.settimeout(120)
-            httpd.handle_request()
-            return RequestHandler.code
+            return getCodeFromDialog()
 
         raise GGError(_("Timeout getting OAuth authentication"))
 
@@ -268,7 +259,7 @@ class GMOauth():
                     "code": code,
                     "client_id": self.client_id,
                     "client_secret": self.client_secret,
-                    "redirect_uri": self.get_urn(),
+                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
                     "grant_type": "authorization_code",
                }
 
@@ -652,7 +643,7 @@ class GMailURL():
 
 
 def getFromAddress(last_address, config, gladefile):
-    class Handler:
+    class Handler(object):
         def __init__(self, fromInit, dlg):
             self.txtbox = builder.get_object("entryFrom")
             self.txtbox.set_activates_default(True)
@@ -703,6 +694,50 @@ def getFromAddress(last_address, config, gladefile):
     config.set_bool('suppress_account_selection', sup_acc_sel)
 
     return hdlr.txt
+
+
+def getCodeFromDialog():
+    class Handler(object):
+        def __init__(self, builder, dlg):
+            self.txtbox = builder.get_object("codeText")
+
+            self.code = ""
+
+            self.dlg = dlg
+
+        def onOkClicked(self, button):
+            buffer = self.txtbox.get_property("buffer")
+            self.code = buffer.get_property("text")
+            self.dlg.hide()
+            Gtk.main_quit()
+
+        def onCancelClicked(self, button):
+            self.code = ""
+            self.dlg.hide()
+            Gtk.main_quit()
+
+        def onUserSelClose(self, foo):
+            self.onCancelClicked(foo)
+
+        def onDestroy(self, foo):
+            self.onCancelClicked(foo)
+
+    dlgid = "code_entry_dialog"
+
+    builder = Gtk.Builder()
+    builder.set_translation_domain("gnome-gmail")
+    builder.add_objects_from_file(glade_file, (dlgid, ))
+
+    dlg = builder.get_object(dlgid)
+
+    hdlr = Handler(builder, dlg)
+    builder.connect_signals(hdlr)
+
+    dlg.show_all()
+
+    Gtk.main()
+
+    return hdlr.code
 
 
 def getGoogleFromAddress(last_address, config, gladefile):
@@ -912,6 +947,7 @@ def main():
     gmail web page """
 
     global config
+    global glade_file
 
     args = parse_args()
 
