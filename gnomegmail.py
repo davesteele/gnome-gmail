@@ -204,7 +204,7 @@ class GMOauth():
         if Wnck.Screen.get_default():
             return "urn:ietf:wg:oauth:2.0:oob"
         else:
-            return "http://127.0.0.1:%d/" % oauthport
+            return "http://localhost:%d/" % oauthport
 
 
     def get_code(self, login_hint):
@@ -255,7 +255,7 @@ class GMOauth():
                     s.end_headers()
                     s.wfile.write("<html><head><title>Title</title></head>".encode())
 
-            httpd = HTTPServer(('127.0.0.1', oauthport), RequestHandler)
+            httpd = HTTPServer(('localhost', oauthport), RequestHandler)
             httpd.socket.settimeout(120)
             httpd.handle_request()
             return RequestHandler.code
