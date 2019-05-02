@@ -1,4 +1,10 @@
-gnome-gmail (2.6.1-1) unstable; urgency=medium
+gnome-gmail (2.7-1) unstable; urgency=medium
+
+  * Use "localhost" instead of 127.0.0.1 for OAuth2 redirect.
+
+ -- David Steele <steele@debian.org>  Wed, 01 May 2019 21:16:02 -0400
+
+gnome-gmail (2.6.1-1) gnome-gmailppa; urgency=medium
 
   * Fix bug causing body (with link) to be deleted (Closes: 927985).
 
