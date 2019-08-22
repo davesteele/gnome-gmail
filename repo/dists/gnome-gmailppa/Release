@@ -1,7 +1,7 @@
 Origin: gnome-gmail
 Label: gnome-gmail
 Codename: gnome-gmailppa
-Date: Thu, 02 May 2019 02:19:21 UTC
+Date: Thu, 22 Aug 2019 11:58:41 UTC
 Architectures: amd64 i386 armhf armel
 Components: main
 Description: Apt repository for project cloudprint
