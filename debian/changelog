@@ -1,3 +1,9 @@
+gnome-gmail (2.7-2) UNRELEASED; urgency=medium
+
+  * Trim trailing whitespace.
+
+ -- Debian Janitor <janitor@jelmer.uk>  Wed, 18 Sep 2019 11:48:10 +0000
+
 gnome-gmail (2.7-1) unstable; urgency=medium
 
   * Use "localhost" instead of 127.0.0.1 for OAuth2 redirect.
@@ -67,7 +73,7 @@ gnome-gmail (2.5.1-1) unstable; urgency=medium
 
 gnome-gmail (2.5-2) unstable; urgency=medium
 
-  * Remove Python 2 tests from autopkgtest. 
+  * Remove Python 2 tests from autopkgtest.
 
  -- David Steele <steele@debian.org>  Mon, 09 Oct 2017 22:25:29 -0400
 
@@ -138,7 +144,7 @@ gnome-gmail (2.2-1) unstable; urgency=medium
     - Chrome launches in a tabless 'app' window.
 
  -- David Steele <steele@debian.org>  Mon, 27 Jun 2016 16:20:00 -0400
- 
+
 gnome-gmail (2.1-1) UNRELEASED; urgency=medium
 
   * Update to gtk-update-icon-cache for icon update (Closes: #825451).
@@ -320,5 +326,3 @@ gnome-gmail (1.7-1) unstable; urgency=low
   * Minor bug fixes
 
  -- David Steele <daves@users.sourceforge.net>  Sun, 17 Oct 2010 21:53:12 -0400
-
-
