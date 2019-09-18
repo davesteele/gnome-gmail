@@ -2,11 +2,10 @@ Source: gnome-gmail
 Maintainer: David Steele <steele@debian.org>
 Section: mail
 Priority: optional
-Build-Depends: debhelper (>= 10),
-               dh-python,
+Build-Depends: dh-python,
                intltool,
                python3,
-               python3-distutils,
+               python3-distutils,,debhelper-compat (= 12)
 Standards-Version: 4.1.2
 Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
