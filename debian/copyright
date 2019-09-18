@@ -1,6 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: gnome-gmail
 Source: http://gnome-gmail.sourceforge.net/
+Upstream-Contact: David Steele <steele@debian.org>
 
 Files: *
 Copyright: 2010, David Steele <daves@users.sourceforge.net>
