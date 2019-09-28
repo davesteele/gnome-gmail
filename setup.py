@@ -146,7 +146,7 @@ setup(
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
         ('share/viagee', ['gnomegmail.glade', 'viagee.py']),
-        ('share/metainfo', ['gnome-gmail.appdata.xml']),
+        ('share/metainfo', ['viagee.appdata.xml']),
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',
