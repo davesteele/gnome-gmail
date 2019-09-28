@@ -960,7 +960,7 @@ def main():
              )
 
     # anyone know how to do this right?
-    glade_suffix = "share/gnome-gmail/gnomegmail.glade"
+    glade_suffix = "share/viagee/viagee.glade"
     glade_file = os.path.join('/usr', glade_suffix)
     for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
         if os.path.isfile(gpath):

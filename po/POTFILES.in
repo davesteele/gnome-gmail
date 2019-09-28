@@ -1,7 +1,7 @@
 # List of source files which contain translatable strings.
 
 viagee.py
-gnomegmail.glade
+viagee.glade
 gnome-gmail.desktop.in
 gnome-gmail-startup.desktop.in
 viagee.appdata.xml.in

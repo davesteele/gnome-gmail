@@ -98,7 +98,7 @@ class my_clean(clean):
 
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
-        filelist += ['gnomegmail.glade~', 'conftest.pyc']
+        filelist += ['viagee.glade~', 'conftest.pyc']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
@@ -145,7 +145,7 @@ setup(
             ['icons/256x256/gnome-gmail.png']),
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
-        ('share/viagee', ['gnomegmail.glade', 'viagee.py']),
+        ('share/viagee', ['viagee.glade', 'viagee.py']),
         ('share/metainfo', ['viagee.appdata.xml']),
                ] + polist(),
     classifiers=[
