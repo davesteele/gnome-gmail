@@ -128,13 +128,13 @@ class my_test(Command):
 
 
 setup(
-    name='gnome-gmail',
+    name='viagee',
     version='2.7',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
     url='https://davesteele.github.io/gnome-gmail/',
-    scripts=['gnome-gmail'],
+    scripts=['viagee'],
     requires=['gi', 'six'],
     data_files=[
         ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
@@ -145,7 +145,7 @@ setup(
             ['icons/256x256/gnome-gmail.png']),
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
-        ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
+        ('share/viagee', ['gnomegmail.glade', 'viagee.py']),
         ('share/metainfo', ['gnome-gmail.appdata.xml']),
                ] + polist(),
     classifiers=[

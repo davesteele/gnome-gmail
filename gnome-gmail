@@ -1,4 +1,0 @@
-#!/bin/sh
-
-exec /usr/share/gnome-gmail/gnomegmail.py "$@"
-

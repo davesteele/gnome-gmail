@@ -1,17 +1,17 @@
 
 import pytest
 
-import gnomegmail
+import viagee
 
 
 def test_oauth_get_code(oauth_fxt):
-    oauth = gnomegmail.GMOauth()
+    oauth = viagee.GMOauth()
     code = oauth.get_code('hint')
     assert code == "thecode"
 
 
 def test_oauth_generate_tokens(oauth_fxt):
-    oauth = gnomegmail.GMOauth()
+    oauth = viagee.GMOauth()
     access, refresh = oauth.generate_tokens('login')
 
 
@@ -22,6 +22,6 @@ def test_oauth_generate_tokens(oauth_fxt):
     )
 )
 def test_oauth_access_iter(oauth_fxt, access, refresh):
-    oauth = gnomegmail.GMOauth()
+    oauth = viagee.GMOauth()
     for aout, rout in oauth.access_iter(access, refresh, 'login'):
         pass
