@@ -97,7 +97,7 @@ def nullfd(fd):
 def set_as_default_mailer():
     if environ in ['GNOME', 'Unity']:
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
-            if app.get_id() == "gnome-gmail.desktop":
+            if app.get_id() == "viagee.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
@@ -125,7 +125,7 @@ def is_default_mailer():
                     True
                  )
         try:
-            returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+            returnvalue = mailer.get_id() == "viagee.desktop"
         except AttributeError:
             pass
     elif environ == 'KDE':

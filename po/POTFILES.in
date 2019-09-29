@@ -2,6 +2,6 @@
 
 viagee.py
 viagee.glade
-gnome-gmail.desktop.in
-gnome-gmail-startup.desktop.in
+viagee.desktop.in
+viagee-startup.desktop.in
 viagee.appdata.xml.in
