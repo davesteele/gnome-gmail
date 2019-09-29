@@ -1,13 +1,13 @@
-.\" Copyright 2011-2014 David Steele <dsteele@gmail.com>
-.\" This file is part of gnome-gmail
+.\" Copyright 2019 David Steele <dsteele@gmail.com>
+.\" This file is part of viagee
 .\" Available under the terms of the GNU General Public License version 2 or later
-.TH gnome-gmail 1 "7 June 2015" Linux "User Commands"
+.TH viagee 1 "7 June 2015" Linux "User Commands"
 .SH NAME
-gnome-gmail \- Integrate GMail into the GNOME desktop
+viagee \- Integrate GMail into the GNOME desktop
 .SH SYNOPSIS
-\fBgnome-gmail\fP [\fB\-r\fP \fIfile\fP|\fI<mailto-URL>\fP] [\fB\-\-send\fP]
+\fBviagee\fP [\fB\-r\fP \fIfile\fP|\fI<mailto-URL>\fP] [\fB\-\-send\fP]
 .SH DESCRIPTION
-The \fBgnome-gmail\fP script opens a GMail page on the default web browser, with a message composed according
+The \fBviagee\fP script opens a GMail page on the default web browser, with a message composed according
 to the supplied RFC2368 \fImailto:\fP URL. This script is used to support GMail as a GNOME Preferred Application for email.
 .SH OPTIONS
 A \fImailto:\fP URL. The 'To', 'CC', 'BCC', 'Subject', and 'Body' fields are supported. The 'Attach' keyword is used to
@@ -20,7 +20,7 @@ send immediately
 .B \-r \fIfile\fP, \-\-rfc \fIfile\fP
 send the RFC822-formatted file \fIfile\fP
 .SH FILES
-~/.config/gnome-gmail/gnome-gmail.conf - Configuration file
+~/.config/viagee/viagee.conf - Configuration file
 .SH BUGS
 No known bugs.
 .SH AUTHOR
