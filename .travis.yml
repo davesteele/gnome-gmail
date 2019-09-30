@@ -8,7 +8,13 @@ virtualenv:
 
 matrix:
   include:
-    - python: "3.4"
+    - python:
+        - "3.4"
+        - "pypy3.5"
+        - "3.5"
+        - "3.6"
+        - "3.7"
+        - "3.8-dev"
       addons:
         apt:
           packages:
@@ -25,5 +31,5 @@ matrix:
 
 script:
   - python setup.py build test
-  - desktop-file-validate gnome-gmail.desktop
-  - desktop-file-validate gnome-gmail-startup.desktop
+  - desktop-file-validate viagee.desktop
+  - desktop-file-validate viagee-startup.desktop
