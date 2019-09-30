@@ -1,9 +1,9 @@
 
 [![Packaging status](https://repology.org/badge/tiny-repos/viagee.svg)](https://repology.org/metapackage/viagee)
 
-## GNOME Gmail
+## Viagee
 
-This is part of the GNOME Gmail project.
+This is part of the Viagee project.
 
 Home page: https://davesteele.github.io/viagee/
 
