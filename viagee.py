@@ -55,8 +55,8 @@ gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
 _ = locale.gettext
-locale.bindtextdomain("gnome-gmail", "/usr/share/locale")
-locale.textdomain("gnome-gmail")
+locale.bindtextdomain("viagee", "/usr/share/locale")
+locale.textdomain("viagee")
 try:
     locale.setlocale(locale.LC_ALL, '')
 except locale.Error:
@@ -686,7 +686,7 @@ def getFromAddress(last_address, config, gladefile):
     dlgid = "user_select_dialog"
 
     builder = Gtk.Builder()
-    builder.set_translation_domain("gnome-gmail")
+    builder.set_translation_domain("viagee")
     builder.add_objects_from_file(gladefile, (dlgid, ))
 
     dlg = builder.get_object(dlgid)
@@ -844,7 +844,7 @@ def do_preferred(glade_file, config):
     dlgid = "preferred_app_dialog"
 
     builder = Gtk.Builder()
-    builder.set_translation_domain("gnome-gmail")
+    builder.set_translation_domain("viagee")
     builder.add_objects_from_file(glade_file, (dlgid, ))
 
     hdlr = Handler()

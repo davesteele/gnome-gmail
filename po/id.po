@@ -1,13 +1,13 @@
-# Indonesian translation for gnome-gmail
+# Indonesian translation for viagee
 # Copyright (c) 2013 Rosetta Contributors and Canonical Ltd 2013
-# This file is distributed under the same license as the gnome-gmail package.
+# This file is distributed under the same license as the viagee package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2013.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: gnome-gmail\n"
+"Project-Id-Version: viagee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-26 23:28-0500\n"
+"POT-Creation-Date: 2019-09-29 20:51-0400\n"
 "PO-Revision-Date: 2013-04-26 07:41+0000\n"
 "Last-Translator: dhardiputra <dhardiputra@gmail.com>\n"
 "Language-Team: Indonesian <id@li.org>\n"
@@ -19,133 +19,112 @@ msgstr ""
 "X-Generator: Launchpad (build 16807)\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:231
+#: ../viagee.py:236
 msgid "Could not access default screen"
 msgstr ""
 
-#: ../gnomegmail.py:258
+#: ../viagee.py:263
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:353
+#: ../viagee.py:358
 #, python-format
 msgid "Sending %s"
 msgstr "Mengirim %s"
 
-#: ../gnomegmail.py:359
+#: ../viagee.py:364
 msgid "Mime message attached"
 msgstr "Pesan Mime disertakan"
 
-#: ../gnomegmail.py:392
+#: ../viagee.py:397
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:477
+#: ../viagee.py:482
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:493 ../gnomegmail.py:519
+#: ../viagee.py:498 ../viagee.py:524
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:533
+#: ../viagee.py:538
 msgid "The 'From' address is not specified"
 msgstr ""
 
-#: ../gnomegmail.py:607
+#: ../viagee.py:616
 msgid "Error creating message with attachment"
 msgstr "Gangguan saat mengolah pesan dengan lampiran"
 
-#: ../gnomegmail.glade.h:1
+#: ../viagee.glade.h:1
 msgid ""
-"GNOME Gmail is not currently your Preferred Email Application. Would you "
-"like your emails to be sent using the Gmail web page?"
+"Viagee is not currently your Preferred Email Application. Would you like "
+"your emails to be sent using the Gmail web page?"
 msgstr ""
-"GNOME Gmail saat ini tidak anda pilih sebagai Aplikasi Email. Apakah anda "
-"ingin email dikirim menggunakan halaman web Gmail?"
+"Viagee saat ini tidak anda pilih sebagai Aplikasi Email. Apakah anda ingin "
+"email dikirim menggunakan halaman web Gmail?"
 
-#: ../gnomegmail.glade.h:2
+#: ../viagee.glade.h:2
 msgid "Don't ask again"
 msgstr "Jangan tanya lagi"
 
-#: ../gnomegmail.glade.h:3
+#: ../viagee.glade.h:3
 msgid "Which Google email account should be used?"
 msgstr ""
 
-#: ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
+#: ../viagee.desktop.in.h:1 ../viagee.appdata.xml.in.h:1
+msgid "Viagee"
 msgstr "Gmail Gnome"
 
-#: ../gnome-gmail.desktop.in.h:2
+#: ../viagee.desktop.in.h:2
 msgid "GMail Web Integration"
 msgstr ""
 
-#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
+#: ../viagee.desktop.in.h:3 ../viagee.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Mengintegrasikan GMail dengan desktop Anda"
 
-#: ../gnome-gmail.desktop.in.h:4
+#: ../viagee.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr ""
 
-#: ../gnome-gmail-startup.desktop.in.h:1
+#: ../viagee-startup.desktop.in.h:1
 #, fuzzy
-msgid "Gnome Gmail Configurator"
+msgid "Viagee Configurator"
 msgstr "Konfigurator Open Office Gmail Gnome"
 
-#: ../gnome-gmail-startup.desktop.in.h:2
+#: ../viagee-startup.desktop.in.h:2
 #, fuzzy
-msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgid "Offer to make Viagee the Preferred Email application"
 msgstr "Set Open Office untuk menggunakan Gnome Preferred Application Email"
 
-#: ../gnome-gmail.appdata.xml.in.h:1
-msgid "GNOME GMail"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:3
+#: ../viagee.appdata.xml.in.h:3
 msgid ""
-"GNOME GMail integrates the GMail web interface into the GNOME environment. "
-"Once installed, GMail becomes a choice as the default Mail Reader in the "
-"GNOME Preferred Applications administration application. When selected, a "
-"GMail web page will be used whenever an email service is requested."
+"Viagee integrates the GMail web interface into the GNOME environment. Once "
+"installed, GMail becomes a choice as the default Mail Reader in the GNOME "
+"Preferred Applications administration application. When selected, a GMail "
+"web page will be used whenever an email service is requested."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:4
+#: ../viagee.appdata.xml.in.h:4
 msgid ""
 "File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
 "etc."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:5
-msgid "Logout, or launch GNOME GMail, to complete the configuration."
+#: ../viagee.appdata.xml.in.h:5
+msgid "Logout, or launch Viagee, to complete the configuration."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:6
+#: ../viagee.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:7
 #, fuzzy
-msgid "Put GMail on your desktop"
-msgstr "Mengintegrasikan GMail dengan desktop Anda"
-
-#: ../gnome-gmail.appdata.xml.in.h:8
-msgid "Uses the GMail web interface"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:9
-msgid "Send from the File Browser, or other applications"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:10
-msgid "Supports multiple GMail accounts"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:11
-msgid "OAuth2 authentication - no password needed"
-msgstr ""
+#~ msgid "Put GMail on your desktop"
+#~ msgstr "Mengintegrasikan GMail dengan desktop Anda"
 
 #~ msgid "Copyright 2010 - Dave Steele"
 #~ msgstr "Dave Steele - Copyright 2010"
@@ -223,73 +202,72 @@ msgstr ""
 #~ msgid "Remember the Google Account password in the Gnome keychain."
 #~ msgstr "Ingat sandi Akun Google di Gnome keychain."
 
-#~ msgid "Configure Gnome Gmail for use with a Google App account."
+#~ msgid "Configure Viagee for use with a Google App account."
 #~ msgstr ""
 #~ "Mengkonfigurasi Gmail Gnome untuk digunakan bersama akun Google App."
 
 #~ msgid "Don't change the Preferred Email Application"
 #~ msgstr "Jangan ganti Aplikasi Email yang Diinginkan"
 
-#~ msgid "Use GNOME Gmail for sending mail"
+#~ msgid "Use Viagee for sending mail"
 #~ msgstr "Gunakan Gmail GNOME untuk mengirim email"
 
 #~ msgid "Save IMAP password?"
 #~ msgstr "Simpan password IMAP?"
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
-#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ "When checked, Viagee will save the IMAP password in the Gnome keyring. "
+#~ "IMAP is used to upload file attachments to GMail."
 #~ msgstr ""
-#~ "Saat diperiksa, Gnome Gmail akan menyimpan sandi IMAP di Gnome keyring. "
-#~ "IMAP digunakan untuk mengunggah file lampiran ke GMail."
+#~ "Saat diperiksa, Viagee akan menyimpan sandi IMAP di Gnome keyring. IMAP "
+#~ "digunakan untuk mengunggah file lampiran ke GMail."
 
 #~ msgid "Saved IMAP user name"
 #~ msgstr "Simpan nama user IMAP"
 
 #~ msgid ""
-#~ "Gnome Gmail will save the last user name for file attachment uploads here."
+#~ "Viagee will save the last user name for file attachment uploads here."
 #~ msgstr ""
-#~ "Gnome Gmail akan menyimpan nama pengguna terakhir untuk lampiran file "
-#~ "upload di sini."
+#~ "Viagee akan menyimpan nama pengguna terakhir untuk lampiran file upload "
+#~ "di sini."
 
 #~ msgid "Google Apps domain"
 #~ msgstr "Domain Google Apps"
 
-#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
+#~ msgid "To use Viagee with Google Apps, enter the domain name here"
 #~ msgstr ""
-#~ "Untuk menggunakan Gnome Gmail dengan Google Apps, masukkan nama domain di "
-#~ "sini"
+#~ "Untuk menggunakan Viagee dengan Google Apps, masukkan nama domain di sini"
 
 #~ msgid "Hide confirmation dialog"
 #~ msgstr "Sembunyikan dialog konfirmasi"
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will suppress the confirmation notification "
-#~ "that appears with each message created. The notification includes a link "
-#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ "When checked, Viagee will suppress the confirmation notification that "
+#~ "appears with each message created. The notification includes a link to "
+#~ "allow Viagee to be configured for Google Apps support."
 #~ msgstr ""
-#~ "Saat diperiksa, Gnome Gmail akan menekan pemberitahuan konfirmasi yang "
-#~ "muncul dengan setiap pesan yang dibuat. Pemberitahuan berisi link Gnome "
-#~ "Gmail untuk dikonfigurasikan untuk mendukung Google Apps."
+#~ "Saat diperiksa, Viagee akan menekan pemberitahuan konfirmasi yang muncul "
+#~ "dengan setiap pesan yang dibuat. Pemberitahuan berisi link Gnome Gmail "
+#~ "untuk dikonfigurasikan untuk mendukung Google Apps."
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
-#~ "the currently selected Gnome Preferred Email Application with each login, "
-#~ "using a Gnome Gmail compatibility application."
+#~ "When checked, Viagee will attempt to configure Open Office to use the "
+#~ "currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Viagee compatibility application."
 #~ msgstr ""
-#~ "Saat diperiksa, Gnome Gmail akan mencoba untuk mengkonfigurasi Open "
-#~ "Office untuk menggunakan dipilih Gnome Preferred Aplikasi Email dengan "
-#~ "setiap login, menggunakan aplikasi kompatibilitas Gnome Gmail."
+#~ "Saat diperiksa, Viagee akan mencoba untuk mengkonfigurasi Open Office "
+#~ "untuk menggunakan dipilih Gnome Preferred Aplikasi Email dengan setiap "
+#~ "login, menggunakan aplikasi kompatibilitas Viagee."
 
-#~ msgid "Suppress the GNOME Gmail Preferred Application Dialog"
-#~ msgstr "Menekan GNOME Gmail Preferred Dialog Aplikasi"
+#~ msgid "Suppress the Viagee Preferred Application Dialog"
+#~ msgstr "Menekan Viagee Preferred Dialog Aplikasi"
 
 #~ msgid ""
-#~ "When checked, GNOME Gmail will not offer to set itself as the GNOME "
-#~ "Preferred Mail application. Otherwise, the program will ask if you want "
-#~ "it to be the mail application, if it isn't already."
+#~ "When checked, Viagee will not offer to set itself as the GNOME Preferred "
+#~ "Mail application. Otherwise, the program will ask if you want it to be "
+#~ "the mail application, if it isn't already."
 #~ msgstr ""
-#~ "Saat diperiksa, GNOME Gmail tidak akan menawarkan untuk mengatur dirinya "
+#~ "Saat diperiksa, Viagee tidak akan menawarkan untuk mengatur dirinya "
 #~ "sebagai GNOME aplikasi Mail Preferred. Jika tidak, program akan "
 #~ "menanyakan apakah Anda ingin menjadi aplikasi e-mail, jika belum."
 

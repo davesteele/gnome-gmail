@@ -1,14 +1,14 @@
-# Polish translation for GNOME Gmail.
-# Copyright © 2010-2017 the GNOME Gmail authors.
-# This file is distributed under the same license as the GNOME Gmail package.
+# Polish translation for Viagee.
+# Copyright © 2010-2017 the Viagee authors.
+# This file is distributed under the same license as the Viagee package.
 # Piotr Drąg <piotrdrag@gmail.com>, 2010-2017.
 # Aviary.pl <community-poland@mozilla.org>, 2010-2017.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME Gmail\n"
+"Project-Id-Version: Viagee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-26 23:28-0500\n"
+"POT-Creation-Date: 2019-09-29 20:51-0400\n"
 "PO-Revision-Date: 2017-12-03 00:22+0100\n"
 "Last-Translator: Piotr Drąg <piotrdrag@gmail.com>\n"
 "Language-Team: Polish <community-poland@mozilla.org>\n"
@@ -20,133 +20,123 @@ msgstr ""
 "|| n%100>=20) ? 1 : 2);\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:231
+#: ../viagee.py:236
 msgid "Could not access default screen"
 msgstr "Nie można uzyskać dostępu do domyślnego ekranu"
 
-#: ../gnomegmail.py:258
+#: ../viagee.py:263
 msgid "Timeout getting OAuth authentication"
 msgstr "Przekroczono czas oczekiwania podczas uwierzytelniania OAuth"
 
-#: ../gnomegmail.py:353
+#: ../viagee.py:358
 #, python-format
 msgid "Sending %s"
 msgstr "Wysyłanie %s"
 
-#: ../gnomegmail.py:359
+#: ../viagee.py:364
 msgid "Mime message attached"
 msgstr "Załączono wiadomość MIME"
 
-#: ../gnomegmail.py:392
+#: ../viagee.py:397
 #, python-format
 msgid "File not found - %s"
 msgstr "Nie odnaleziono pliku — %s"
 
-#: ../gnomegmail.py:477
+#: ../viagee.py:482
 msgid "Unable to authenticate with GMail"
 msgstr "Nie można uwierzytelnić z serwisem Gmail"
 
-#: ../gnomegmail.py:493 ../gnomegmail.py:519
+#: ../viagee.py:498 ../viagee.py:524
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr "Zwrócono błąd z API serwisu Gmail — %s — %s"
 
-#: ../gnomegmail.py:533
+#: ../viagee.py:538
 msgid "The 'From' address is not specified"
 msgstr ""
 
-#: ../gnomegmail.py:607
+#: ../viagee.py:616
 msgid "Error creating message with attachment"
 msgstr "Błąd podczas tworzenia wiadomości z załącznikiem"
 
-#: ../gnomegmail.glade.h:1
+#: ../viagee.glade.h:1
 msgid ""
-"GNOME Gmail is not currently your Preferred Email Application. Would you "
-"like your emails to be sent using the Gmail web page?"
+"Viagee is not currently your Preferred Email Application. Would you like "
+"your emails to be sent using the Gmail web page?"
 msgstr ""
-"GNOME Gmail nie jest obecnie preferowanym klientem poczty. Wysyłać pocztę za "
+"Viagee nie jest obecnie preferowanym klientem poczty. Wysyłać pocztę za "
 "pomocą interfejsu serwisu Gmail?"
 
-#: ../gnomegmail.glade.h:2
+#: ../viagee.glade.h:2
 msgid "Don't ask again"
 msgstr "Bez pytania ponownie"
 
-#: ../gnomegmail.glade.h:3
+#: ../viagee.glade.h:3
 msgid "Which Google email account should be used?"
 msgstr "Którego konta e-mail Google użyć?"
 
-#: ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
-msgstr "GNOME Gmail"
+#: ../viagee.desktop.in.h:1 ../viagee.appdata.xml.in.h:1
+msgid "Viagee"
+msgstr "Viagee"
 
-#: ../gnome-gmail.desktop.in.h:2
+#: ../viagee.desktop.in.h:2
 msgid "GMail Web Integration"
 msgstr "Integracja z serwisem Gmail"
 
-#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
+#: ../viagee.desktop.in.h:3 ../viagee.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Integracja serwisu Gmail ze środowiskiem"
 
-#: ../gnome-gmail.desktop.in.h:4
+#: ../viagee.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr "email;e-mail;poczta;skrzynka;wyślij;mail;mejl;Google;"
 
-#: ../gnome-gmail-startup.desktop.in.h:1
-msgid "Gnome Gmail Configurator"
-msgstr "Konfiguracja GNOME Gmail"
+#: ../viagee-startup.desktop.in.h:1
+msgid "Viagee Configurator"
+msgstr "Konfiguracja Viagee"
 
-#: ../gnome-gmail-startup.desktop.in.h:2
-msgid "Offer to make GNOME Gmail the Preferred Email application"
-msgstr "Umożliwia ustawienie GNOME Gmail jako preferowanego klienta poczty"
+#: ../viagee-startup.desktop.in.h:2
+msgid "Offer to make Viagee the Preferred Email application"
+msgstr "Umożliwia ustawienie Viagee jako preferowanego klienta poczty"
 
-#: ../gnome-gmail.appdata.xml.in.h:1
-msgid "GNOME GMail"
-msgstr "GNOME Gmail"
-
-#: ../gnome-gmail.appdata.xml.in.h:3
+#: ../viagee.appdata.xml.in.h:3
 msgid ""
-"GNOME GMail integrates the GMail web interface into the GNOME environment. "
-"Once installed, GMail becomes a choice as the default Mail Reader in the "
-"GNOME Preferred Applications administration application. When selected, a "
-"GMail web page will be used whenever an email service is requested."
+"Viagee integrates the GMail web interface into the GNOME environment. Once "
+"installed, GMail becomes a choice as the default Mail Reader in the GNOME "
+"Preferred Applications administration application. When selected, a GMail "
+"web page will be used whenever an email service is requested."
 msgstr ""
-"GNOME Gmail integruje interfejs serwisu Gmail ze środowiskiem GNOME. Po "
+"Viagee integruje interfejs serwisu Gmail ze środowiskiem GNOME. Po "
 "zainstalowaniu można wybrać Gmail jako domyślny klient poczty w ustawieniach "
 "preferowanych programów GNOME. Po wybraniu interfejs serwisu Gmail będzie "
 "używany do wysyłania poczty."
 
-#: ../gnome-gmail.appdata.xml.in.h:4
+#: ../viagee.appdata.xml.in.h:4
 msgid ""
 "File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
 "etc."
 msgstr ""
 "Obsługiwane są załączniki oraz ustawianie tematu, kopii, ukrytej kopii itp."
 
-#: ../gnome-gmail.appdata.xml.in.h:5
-msgid "Logout, or launch GNOME GMail, to complete the configuration."
-msgstr ""
-"Należy się wylogować lub uruchomić GNOME Gmail, aby ukończyć konfigurację."
+#: ../viagee.appdata.xml.in.h:5
+msgid "Logout, or launch Viagee, to complete the configuration."
+msgstr "Należy się wylogować lub uruchomić Viagee, aby ukończyć konfigurację."
 
-#: ../gnome-gmail.appdata.xml.in.h:6
+#: ../viagee.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
 msgstr "Aby użyć, należy wybrać „Wyślij do…” na pliku w menedżerze plików."
 
-#: ../gnome-gmail.appdata.xml.in.h:7
-msgid "Put GMail on your desktop"
-msgstr "Integruje serwis Gmail ze środowiskiem"
+#~ msgid "Put GMail on your desktop"
+#~ msgstr "Integruje serwis Gmail ze środowiskiem"
 
-#: ../gnome-gmail.appdata.xml.in.h:8
-msgid "Uses the GMail web interface"
-msgstr "Używa interfejsu serwisu Gmail"
+#~ msgid "Uses the GMail web interface"
+#~ msgstr "Używa interfejsu serwisu Gmail"
 
-#: ../gnome-gmail.appdata.xml.in.h:9
-msgid "Send from the File Browser, or other applications"
-msgstr "Umożliwia wysyłanie z przeglądarki plików i innych programów"
+#~ msgid "Send from the File Browser, or other applications"
+#~ msgstr "Umożliwia wysyłanie z przeglądarki plików i innych programów"
 
-#: ../gnome-gmail.appdata.xml.in.h:10
-msgid "Supports multiple GMail accounts"
-msgstr "Obsługuje wiele kont Gmail"
+#~ msgid "Supports multiple GMail accounts"
+#~ msgstr "Obsługuje wiele kont Gmail"
 
-#: ../gnome-gmail.appdata.xml.in.h:11
-msgid "OAuth2 authentication - no password needed"
-msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"
+#~ msgid "OAuth2 authentication - no password needed"
+#~ msgstr "Uwierzytelnianie OAuth2 — hasło nie jest wymagane"

@@ -26,7 +26,7 @@ def mkmo(lang):
     os.makedirs(outpath)
 
     inpath = os.path.join(podir, lang + pext)
-    cmd = "msgfmt %s -o %s/gnome-gmail.mo" % (inpath, outpath)
+    cmd = "msgfmt %s -o %s/viagee.mo" % (inpath, outpath)
 
     subprocess.call(cmd, shell=True) and sys.exit(1)
 
@@ -65,7 +65,7 @@ class my_build(build):
 
 def polist():
     dst_tmpl = "share/locale/%s/LC_MESSAGES/"
-    polist = [(dst_tmpl % x, ["%s/gnome-gmail.mo" % modir(x)]) for x in langs]
+    polist = [(dst_tmpl % x, ["%s/viagee.mo" % modir(x)]) for x in langs]
 
     return polist
 
@@ -82,13 +82,13 @@ class my_build_i18n(Command):
 
     def run(self):
         print("Creating POT file")
-        cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
+        cmd = "cd po; intltool-update --pot --gettext-package=viagee"
         subprocess.call(cmd, shell=True)
 
         for lang in langs:
             print("Updating %s PO file" % lang)
             cmd = "cd po; intltool-update --dist \
-                   --gettext-package=gnome-gmail %s >/dev/null 2>&1" % lang
+                   --gettext-package=viagee %s >/dev/null 2>&1" % lang
             subprocess.call(cmd, shell=True)
 
 
