@@ -133,7 +133,7 @@ setup(
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
-    url='https://davesteele.github.io/gnome-gmail/',
+    url='https://davesteele.github.io/viagee/',
     scripts=['viagee'],
     requires=['gi', 'six'],
     data_files=[
