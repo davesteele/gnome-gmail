@@ -8,7 +8,7 @@ virtualenv:
 
 matrix:
   include:
-    - python: "3.8-dev"
+    - python: "3.7"
       addons:
         apt:
           packages:
