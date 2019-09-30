@@ -1,7 +1,7 @@
 language: python
 
 sudo: required
-dist: trusty
+dist: bionic
 
 virtualenv:
   system_site_packages: true
