@@ -3,29 +3,25 @@ language: python
 sudo: required
 dist: trusty
 
-python:
-  - "pypy3.5"
-  - "3.5"
-  - "3.6"
-  - "3.7"
-  - "3.8-dev"
-
 virtualenv:
   system_site_packages: true
 
-before-install:
-  sudo apt-get update
-  sudo apt-get install -y python3-gi
-  sudo apt-get install -y gir1.2-gtk-3.0
-  sudo apt-get install -y gir1.2-notify-0.7
-  sudo apt-get install -y gir1.2-secret-1
-  sudo apt-get install -y gir1.2-wnck-3.0
-  sudo apt-get install -y gettext
-  sudo apt-get install -y intltool
-  sudo apt-get install -y desktop-file-utils
-  
-install:
-  pip install six
+matrix:
+  include:
+    - python: "3.8-dev"
+      addons:
+        apt:
+          packages:
+            - python3-gi
+            - gir1.2-gtk-3.0
+            - gir1.2-notify-0.7
+            - gir1.2-secret-1
+            - gir1.2-wnck-3.0
+            - gettext
+            - intltool
+            - desktop-file-utils
+      install:
+        - pip install six
 
 script:
   - python setup.py build test
