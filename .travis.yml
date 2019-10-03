@@ -1,14 +1,14 @@
 language: python
 
 sudo: required
-dist: bionic
+dist: trusty
 
 virtualenv:
   system_site_packages: true
 
 matrix:
   include:
-    - python: "3.7"
+    - python: "3.4"
       addons:
         apt:
           packages:
