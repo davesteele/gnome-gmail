@@ -63,7 +63,7 @@ msgid ""
 "Viagee is not currently your Preferred Email Application. Would you like "
 "your emails to be sent using the Gmail web page?"
 msgstr ""
-"Gmail GNOME bukanlah Aplikasi Emel Digemari semasa anda. Adakah anda ingin "
+"Viagee bukanlah Aplikasi Emel Digemari semasa anda. Adakah anda ingin "
 "emel anda dihantar menggunakan lama sesawang Gmail?"
 
 #: ../viagee.glade.h:2
@@ -209,7 +209,7 @@ msgstr ""
 #~ msgstr "Jangan ubah Aplikasi Emel Digemari"
 
 #~ msgid "Use Viagee for sending mail"
-#~ msgstr "Guna Gmail GNOME untuk menghantar mel"
+#~ msgstr "Guna Viagee untuk menghantar mel"
 
 #~ msgid "Save IMAP password?"
 #~ msgstr "Simpan kata laluan IMAP"
@@ -260,14 +260,14 @@ msgstr ""
 #~ "masuk, menggunakan aplikasi keserasian Gmail Gnome."
 
 #~ msgid "Suppress the Viagee Preferred Application Dialog"
-#~ msgstr "Paksa Dialog Aplikasi Digemari Gmail GNOME"
+#~ msgstr "Paksa Dialog Aplikasi Digemari Viagee"
 
 #~ msgid ""
 #~ "When checked, Viagee will not offer to set itself as the GNOME Preferred "
 #~ "Mail application. Otherwise, the program will ask if you want it to be "
 #~ "the mail application, if it isn't already."
 #~ msgstr ""
-#~ "Bila ditanda, Gmail GNOME tidak akan tawarkan dirinya ditetapkan sebagai "
+#~ "Bila ditanda, Viagee tidak akan tawarkan dirinya ditetapkan sebagai "
 #~ "aplikasi Mel Digemari GNOME. Jika tidak, program akan menanya ia "
 #~ "dijadikan aplikasi mel, jika tidak ditetapkan lagi."
 

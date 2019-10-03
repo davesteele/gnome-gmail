@@ -210,7 +210,7 @@ msgstr ""
 #~ msgstr "Jangan ganti Aplikasi Email yang Diinginkan"
 
 #~ msgid "Use Viagee for sending mail"
-#~ msgstr "Gunakan Gmail GNOME untuk mengirim email"
+#~ msgstr "Gunakan Viagee untuk mengirim email"
 
 #~ msgid "Save IMAP password?"
 #~ msgstr "Simpan password IMAP?"

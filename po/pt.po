@@ -195,7 +195,7 @@ msgstr ""
 #~ msgstr "Guardar a Palavra-passe da conta Google no Chaveiro do Gnome"
 
 #~ msgid "Configure Viagee for use with a Google App account."
-#~ msgstr "Configurar o GNOME GMAIL para ser usado com a conta Google App."
+#~ msgstr "Configurar o Viagee para ser usado com a conta Google App."
 
 #~ msgid "Save IMAP password?"
 #~ msgstr "Guardar a palavra-passe IMAP?"
@@ -214,7 +214,7 @@ msgstr ""
 #~ msgid ""
 #~ "Viagee will save the last user name for file attachment uploads here."
 #~ msgstr ""
-#~ "O GNOME GMAIL irá guardar aqui o último nome de utilizador para envio de "
+#~ "O Viagee irá guardar aqui o último nome de utilizador para envio de "
 #~ "ficheiros anexos."
 
 #~ msgid "Google Apps domain"
