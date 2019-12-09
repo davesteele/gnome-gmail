@@ -31,5 +31,6 @@ etc.</_p>
 </screenshots>
 <releases>
     <!-- Get timestamp with 'date +%s' -->
+    <release version="2.7" timestamp="1575863571"></release>
 </releases>
 </component>
