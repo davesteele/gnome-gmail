@@ -129,7 +129,7 @@ class my_test(Command):
 
 setup(
     name='viagee',
-    version='2.7',
+    version='3.0',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
