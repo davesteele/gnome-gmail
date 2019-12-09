@@ -138,7 +138,7 @@ setup(
     requires=['gi', 'six'],
     data_files=[
         ('share/icons/hicolor/16x16/apps', ['icons/16x16/viagee.png']),
-        ('share/icons/hicolor/24x24/apps', ['icons/24x24/viagee.png']),
+#        ('share/icons/hicolor/24x24/apps', ['icons/24x24/viagee.png']),
         ('share/icons/hicolor/32x32/apps', ['icons/32x32/viagee.png']),
         ('share/icons/hicolor/48x48/apps', ['icons/48x48/viagee.png']),
         ('share/icons/hicolor/256x256/apps',
