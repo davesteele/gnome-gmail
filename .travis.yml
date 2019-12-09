@@ -25,5 +25,5 @@ matrix:
 
 script:
   - python setup.py build test
-  - desktop-file-validate gnome-gmail.desktop
-  - desktop-file-validate gnome-gmail-startup.desktop
+  - desktop-file-validate viagee.desktop
+  - desktop-file-validate viagee-startup.desktop

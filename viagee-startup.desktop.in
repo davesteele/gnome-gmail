@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+_Name=Viagee Configurator
+_Comment=Offer to make Viagee the Preferred Email application
+Exec=/usr/bin/viagee -q
+OnlyShowIn=GNOME;Unity;
+X-GNOME-Autostart-Phase=Application

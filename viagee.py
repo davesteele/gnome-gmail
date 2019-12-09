@@ -1,11 +1,11 @@
 #!/usr/bin/python3 -tt
 #
-# Copyright 2011-2014 David Steele <dsteele@gmail.com>
-# This file is part of gnome-gmail
+# Copyright 2019 David Steele <dsteele@gmail.com>
+# This file is part of viagee
 # Available under the terms of the GNU General Public License version 2
 # or later
 #
-""" gnome-gmail
+""" viagee
 This script accepts an argument of a mailto url, and calls up an appropriate
 GMail web page to handle the directive. It is intended to support GMail as a
 GNOME Preferred Email application """
@@ -55,8 +55,8 @@ gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
 _ = locale.gettext
-locale.bindtextdomain("gnome-gmail", "/usr/share/locale")
-locale.textdomain("gnome-gmail")
+locale.bindtextdomain("viagee", "/usr/share/locale")
+locale.textdomain("viagee")
 try:
     locale.setlocale(locale.LC_ALL, '')
 except locale.Error:
@@ -97,7 +97,7 @@ def nullfd(fd):
 def set_as_default_mailer():
     if environ in ['GNOME', 'Unity']:
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
-            if app.get_id() == "gnome-gmail.desktop":
+            if app.get_id() == "viagee.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
@@ -110,7 +110,7 @@ def set_as_default_mailer():
         for line in cfglines:
             outlines.append(line)
             if 'PROFILE_Default' in line:
-                outlines.append("EmailClient[$e]=/usr/bin/gnome-gmail %u\n")
+                outlines.append("EmailClient[$e]=/usr/bin/viagee %u\n")
 
         with open(cfgpath, 'w') as cfp:
             cfp.writelines(outlines)
@@ -125,13 +125,13 @@ def is_default_mailer():
                     True
                  )
         try:
-            returnvalue = mailer.get_id() == "gnome-gmail.desktop"
+            returnvalue = mailer.get_id() == "viagee.desktop"
         except AttributeError:
             pass
     elif environ == 'KDE':
         cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
         with open(cfgpath, 'r') as cfp:
-            returnvalue = 'gnome-gmail' in cfp.read()
+            returnvalue = 'viagee' in cfp.read()
 
     return returnvalue
 
@@ -686,7 +686,7 @@ def getFromAddress(last_address, config, gladefile):
     dlgid = "user_select_dialog"
 
     builder = Gtk.Builder()
-    builder.set_translation_domain("gnome-gmail")
+    builder.set_translation_domain("viagee")
     builder.add_objects_from_file(gladefile, (dlgid, ))
 
     dlg = builder.get_object(dlgid)
@@ -844,7 +844,7 @@ def do_preferred(glade_file, config):
     dlgid = "preferred_app_dialog"
 
     builder = Gtk.Builder()
-    builder.set_translation_domain("gnome-gmail")
+    builder.set_translation_domain("viagee")
     builder.add_objects_from_file(glade_file, (dlgid, ))
 
     hdlr = Handler()
@@ -864,7 +864,7 @@ def parse_args():
         description="Send mail via the Gmail API and the browser interface.",
         usage="%(prog)s [-h|-q|[-s] <mailto>]",
         epilog=textwrap.dedent("""\
-            The gnome-gmail utility will create an email message from the
+            The viagee utility will create an email message from the
             mailto argument, upload it to Gmail using the Gmail API, and open
             a browser window showing the Draft message. If necessary, it will
             display a dialog asking for the From address, and use the default
@@ -916,10 +916,10 @@ def main():
     args = parse_args()
 
     header = textwrap.dedent("""\
-        # GNOME Gmail Configuration
+        # Viagee Configuration
         #
         # suppress_preferred
-        #     If True ('1', 'yes'...) don't ask if GNOME Gmail should be made
+        #     If True ('1', 'yes'...) don't ask if Viagee should be made
         #     the default mail program.
         # suppress_account_selection
         #     If True ('1', 'yes'...) don't ask account to use, if you have
@@ -946,8 +946,8 @@ def main():
         """)
 
     config = GgConfig(
-                fpath="~/.config/gnome-gmail/gnome-gmail.conf",
-                section='gnome-gmail',
+                fpath="~/.config/viagee/viagee.conf",
+                section='viagee',
                 initvals={
                     'suppress_preferred': '0',
                     'suppress_account_selection': '0',
@@ -960,7 +960,7 @@ def main():
              )
 
     # anyone know how to do this right?
-    glade_suffix = "share/gnome-gmail/gnomegmail.glade"
+    glade_suffix = "share/viagee/viagee.glade"
     glade_file = os.path.join('/usr', glade_suffix)
     for gpath in [os.path.join(x, glade_suffix) for x in ['/usr/local']]:
         if os.path.isfile(gpath):
@@ -974,7 +974,7 @@ def main():
     if args.quiet:
         sys.exit(0)
 
-    Notify.init("GNOME Gmail")
+    Notify.init("Viagee")
 
     from_address = None
     message = None
@@ -992,7 +992,7 @@ def main():
         gmailurl = gm_url.gmail_url(args.send)
     except GGError as gerr:
         notice = Notify.Notification.new(
-            "GNOME GMail",
+            "Viagee",
             gerr.value,
             "dialog-information"
         )

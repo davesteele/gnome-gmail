@@ -26,7 +26,7 @@ def mkmo(lang):
     os.makedirs(outpath)
 
     inpath = os.path.join(podir, lang + pext)
-    cmd = "msgfmt %s -o %s/gnome-gmail.mo" % (inpath, outpath)
+    cmd = "msgfmt %s -o %s/viagee.mo" % (inpath, outpath)
 
     subprocess.call(cmd, shell=True) and sys.exit(1)
 
@@ -65,7 +65,7 @@ class my_build(build):
 
 def polist():
     dst_tmpl = "share/locale/%s/LC_MESSAGES/"
-    polist = [(dst_tmpl % x, ["%s/gnome-gmail.mo" % modir(x)]) for x in langs]
+    polist = [(dst_tmpl % x, ["%s/viagee.mo" % modir(x)]) for x in langs]
 
     return polist
 
@@ -82,13 +82,13 @@ class my_build_i18n(Command):
 
     def run(self):
         print("Creating POT file")
-        cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
+        cmd = "cd po; intltool-update --pot --gettext-package=viagee"
         subprocess.call(cmd, shell=True)
 
         for lang in langs:
             print("Updating %s PO file" % lang)
             cmd = "cd po; intltool-update --dist \
-                   --gettext-package=gnome-gmail %s >/dev/null 2>&1" % lang
+                   --gettext-package=viagee %s >/dev/null 2>&1" % lang
             subprocess.call(cmd, shell=True)
 
 
@@ -98,7 +98,7 @@ class my_clean(clean):
 
         filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
         filelist += ['po/.intltool-merge-cache']
-        filelist += ['gnomegmail.glade~', 'conftest.pyc']
+        filelist += ['viagee.glade~', 'conftest.pyc']
         for infile in filelist:
             if os.path.exists(infile):
                 os.unlink(infile)
@@ -128,25 +128,25 @@ class my_test(Command):
 
 
 setup(
-    name='gnome-gmail',
+    name='viagee',
     version='2.7',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
-    url='https://davesteele.github.io/gnome-gmail/',
-    scripts=['gnome-gmail'],
+    url='https://davesteele.github.io/viagee/',
+    scripts=['viagee'],
     requires=['gi', 'six'],
     data_files=[
-        ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
-        ('share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
-        ('share/icons/hicolor/32x32/apps', ['icons/32x32/gnome-gmail.png']),
-        ('share/icons/hicolor/48x48/apps', ['icons/48x48/gnome-gmail.png']),
+        ('share/icons/hicolor/16x16/apps', ['icons/16x16/viagee.png']),
+        ('share/icons/hicolor/24x24/apps', ['icons/24x24/viagee.png']),
+        ('share/icons/hicolor/32x32/apps', ['icons/32x32/viagee.png']),
+        ('share/icons/hicolor/48x48/apps', ['icons/48x48/viagee.png']),
         ('share/icons/hicolor/256x256/apps',
-            ['icons/256x256/gnome-gmail.png']),
-        ('share/applications', ['gnome-gmail.desktop']),
-        ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
-        ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
-        ('share/metainfo', ['gnome-gmail.appdata.xml']),
+            ['icons/256x256/viagee.png']),
+        ('share/applications', ['viagee.desktop']),
+        ('share/viagee/autostart', ['viagee-startup.desktop']),
+        ('share/viagee', ['viagee.glade', 'viagee.py']),
+        ('share/metainfo', ['viagee.appdata.xml']),
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2019 David Steele <dsteele@gmail.com> -->
+<component type="desktop">
+<id type="desktop">viagee.desktop</id>
+<metadata_license>CC0-1.0</metadata_license>
+<_name>Viagee</_name>
+<_summary>Integrate GMail with your desktop</_summary>
+<description>
+<_p>Viagee integrates the GMail web interface into the GNOME environment.
+Once installed, GMail becomes a choice as the default Mail Reader in the GNOME
+Preferred Applications administration application. When selected, a GMail web
+page will be used whenever an email service is requested.</_p>
+<_p>File attachments are supported, as well as the setting of Subject, Cc, Bcc,
+etc.</_p>
+<_p>Logout, or launch Viagee, to complete the configuration.</_p>
+<_p>To demonstrate, select "Send To..." on a file in the File Browser.</_p>
+</description>
+<url type="homepage">https://davesteele.github.io/viagee/</url>
+<url type="bugtracker">https://github.com/davesteele/viagee/issues</url>
+<provides>
+    <binary>viagee</binary>
+</provides>
+<mimetypes>
+    <mimetype>x-scheme-handler/mailto</mimetype>
+</mimetypes>
+<project_license>GPL-2.0</project_license>
+<developer_name>David Steele</developer_name>
+<update_contact>dsteele_AT_gmail.com</update_contact>
+<translation type="gettext">viagee</translation>
+<screenshots>
+</screenshots>
+<releases>
+    <!-- Get timestamp with 'date +%s' -->
+</releases>
+</component>

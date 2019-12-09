@@ -7,18 +7,18 @@ import os
 
 @pytest.fixture()
 def config_fxt(monkeypatch):
-    monkeypatch.setattr("gnomegmail.GgConfig.save", Mock())
+    monkeypatch.setattr("viagee.GgConfig.save", Mock())
     return None
 
 
 @pytest.fixture()
 def keyring_fxt(monkeypatch):
     monkeypatch.setattr(
-        "gnomegmail.Secret.password_lookup_sync",
+        "viagee.Secret.password_lookup_sync",
         Mock(return_value="access:atoken;refresh:rtoken")
     )
     monkeypatch.setattr(
-        "gnomegmail.Secret.password_store_sync",
+        "viagee.Secret.password_store_sync",
         Mock()
     )
     return None
@@ -26,24 +26,24 @@ def keyring_fxt(monkeypatch):
 
 @pytest.fixture()
 def default_mailer_fxt(monkeypatch):
-    monkeypatch.setattr("gnomegmail.is_default_mailer",
+    monkeypatch.setattr("viagee.is_default_mailer",
                         Mock(return_value=True))
     return None
 
 
 @pytest.fixture()
 def notify_fxt(monkeypatch):
-    monkeypatch.setattr("gnomegmail.Notify", Mock())
+    monkeypatch.setattr("viagee.Notify", Mock())
     return None
 
 
 @pytest.fixture()
 def web_fxt(monkeypatch):
-    monkeypatch.setattr('gnomegmail.urllib.request.urlopen', Mock())
-    monkeypatch.setattr('gnomegmail.urllib.request.build_opener', Mock())
+    monkeypatch.setattr('viagee.urllib.request.urlopen', Mock())
+    monkeypatch.setattr('viagee.urllib.request.build_opener', Mock())
 
     monkeypatch.setattr(
-        'gnomegmail.json.loads',
+        'viagee.json.loads',
         Mock(return_value={
                 'message': {'id': '1'},
                 'access_token': 'atoke',
@@ -65,20 +65,20 @@ def tmpfile(request):
 @pytest.fixture()
 def oauth_fxt(monkeypatch, web_fxt):
     monkeypatch.setattr(
-        'gnomegmail.random.sample',
+        'viagee.random.sample',
         Mock(return_value=[chr(x) for x in range(ord('a'), ord('k'))])
     )
-    monkeypatch.setattr('gnomegmail.browser', Mock())
+    monkeypatch.setattr('viagee.browser', Mock())
     monkeypatch.setattr(
-        'gnomegmail.subprocess.check_output',
+        'viagee.subprocess.check_output',
         Mock(return_value='state=abcdefghij.code=thecode')
     )
 
-    monkeypatch.setattr('gnomegmail.Gtk.main_iteration', Mock())
+    monkeypatch.setattr('viagee.Gtk.main_iteration', Mock())
 
     Wnck = Mock()
     Wnck.tag = 'wnck'
-    monkeypatch.setattr('gnomegmail.Wnck', Wnck)
+    monkeypatch.setattr('viagee.Wnck', Wnck)
 
     screen = Mock()
     screen.tag = 'screen'

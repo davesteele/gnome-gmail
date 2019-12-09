@@ -5,9 +5,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: GNOME Gmail\n"
+"Project-Id-Version: Viagee\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-26 23:28-0500\n"
+"POT-Creation-Date: 2019-09-29 20:51-0400\n"
 "PO-Revision-Date: 2011-05-13 15:10+0000\n"
 "Last-Translator: FULL NAME <EMAIL>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,131 +19,110 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #. Possible in non-X11, e.g. Wayland
-#: ../gnomegmail.py:231
+#: ../viagee.py:236
 msgid "Could not access default screen"
 msgstr ""
 
-#: ../gnomegmail.py:258
+#: ../viagee.py:263
 msgid "Timeout getting OAuth authentication"
 msgstr ""
 
-#: ../gnomegmail.py:353
+#: ../viagee.py:358
 #, python-format
 msgid "Sending %s"
 msgstr "Надсилання %s"
 
-#: ../gnomegmail.py:359
+#: ../viagee.py:364
 msgid "Mime message attached"
 msgstr "Повідомлення mime приєднано"
 
-#: ../gnomegmail.py:392
+#: ../viagee.py:397
 #, python-format
 msgid "File not found - %s"
 msgstr ""
 
-#: ../gnomegmail.py:477
+#: ../viagee.py:482
 msgid "Unable to authenticate with GMail"
 msgstr ""
 
-#: ../gnomegmail.py:493 ../gnomegmail.py:519
+#: ../viagee.py:498 ../viagee.py:524
 #, python-format
 msgid "Error returned from the GMail API - %s - %s"
 msgstr ""
 
-#: ../gnomegmail.py:533
+#: ../viagee.py:538
 msgid "The 'From' address is not specified"
 msgstr ""
 
-#: ../gnomegmail.py:607
+#: ../viagee.py:616
 msgid "Error creating message with attachment"
 msgstr "Помилка створення повідомлення з вкладенням"
 
-#: ../gnomegmail.glade.h:1
+#: ../viagee.glade.h:1
 msgid ""
-"GNOME Gmail is not currently your Preferred Email Application. Would you "
-"like your emails to be sent using the Gmail web page?"
+"Viagee is not currently your Preferred Email Application. Would you like "
+"your emails to be sent using the Gmail web page?"
 msgstr ""
 
-#: ../gnomegmail.glade.h:2
+#: ../viagee.glade.h:2
 msgid "Don't ask again"
 msgstr ""
 
-#: ../gnomegmail.glade.h:3
+#: ../viagee.glade.h:3
 msgid "Which Google email account should be used?"
 msgstr ""
 
-#: ../gnome-gmail.desktop.in.h:1
-msgid "Gnome Gmail"
-msgstr "Gnome Gmail"
+#: ../viagee.desktop.in.h:1 ../viagee.appdata.xml.in.h:1
+msgid "Viagee"
+msgstr "Viagee"
 
-#: ../gnome-gmail.desktop.in.h:2
+#: ../viagee.desktop.in.h:2
 msgid "GMail Web Integration"
 msgstr ""
 
-#: ../gnome-gmail.desktop.in.h:3 ../gnome-gmail.appdata.xml.in.h:2
+#: ../viagee.desktop.in.h:3 ../viagee.appdata.xml.in.h:2
 msgid "Integrate GMail with your desktop"
 msgstr "Інтегрувати GMail в робоче середовище"
 
-#: ../gnome-gmail.desktop.in.h:4
+#: ../viagee.desktop.in.h:4
 msgid "email;mail;Google;"
 msgstr ""
 
-#: ../gnome-gmail-startup.desktop.in.h:1
+#: ../viagee-startup.desktop.in.h:1
 #, fuzzy
-msgid "Gnome Gmail Configurator"
-msgstr "Конфігуратор Open Office в Gnome Gmail"
+msgid "Viagee Configurator"
+msgstr "Конфігуратор Open Office в Viagee"
 
-#: ../gnome-gmail-startup.desktop.in.h:2
+#: ../viagee-startup.desktop.in.h:2
 #, fuzzy
-msgid "Offer to make GNOME Gmail the Preferred Email application"
+msgid "Offer to make Viagee the Preferred Email application"
 msgstr "Використовувати Open Office як основну поштову програму в Gnome"
 
-#: ../gnome-gmail.appdata.xml.in.h:1
-msgid "GNOME GMail"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:3
+#: ../viagee.appdata.xml.in.h:3
 msgid ""
-"GNOME GMail integrates the GMail web interface into the GNOME environment. "
-"Once installed, GMail becomes a choice as the default Mail Reader in the "
-"GNOME Preferred Applications administration application. When selected, a "
-"GMail web page will be used whenever an email service is requested."
+"Viagee integrates the GMail web interface into the GNOME environment. Once "
+"installed, GMail becomes a choice as the default Mail Reader in the GNOME "
+"Preferred Applications administration application. When selected, a GMail "
+"web page will be used whenever an email service is requested."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:4
+#: ../viagee.appdata.xml.in.h:4
 msgid ""
 "File attachments are supported, as well as the setting of Subject, Cc, Bcc, "
 "etc."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:5
-msgid "Logout, or launch GNOME GMail, to complete the configuration."
+#: ../viagee.appdata.xml.in.h:5
+msgid "Logout, or launch Viagee, to complete the configuration."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:6
+#: ../viagee.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
 msgstr ""
 
-#: ../gnome-gmail.appdata.xml.in.h:7
 #, fuzzy
-msgid "Put GMail on your desktop"
-msgstr "Інтегрувати GMail в робоче середовище"
-
-#: ../gnome-gmail.appdata.xml.in.h:8
-msgid "Uses the GMail web interface"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:9
-msgid "Send from the File Browser, or other applications"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:10
-msgid "Supports multiple GMail accounts"
-msgstr ""
-
-#: ../gnome-gmail.appdata.xml.in.h:11
-msgid "OAuth2 authentication - no password needed"
-msgstr ""
+#~ msgid "Put GMail on your desktop"
+#~ msgstr "Інтегрувати GMail в робоче середовище"
 
 #~ msgid "Copyright 2010 - Dave Steele"
 #~ msgstr "Авторське право 2010 - Dave Steele"
@@ -215,54 +194,52 @@ msgstr ""
 #~ msgid "Remember the Google Account password in the Gnome keychain."
 #~ msgstr "В'язка ключів Gnome пам'ятатиме пароль облікового запису в Google."
 
-#~ msgid "Configure Gnome Gmail for use with a Google App account."
-#~ msgstr "Налаштування Gnome Gmail для роботи з обліковим записом Google App."
+#~ msgid "Configure Viagee for use with a Google App account."
+#~ msgstr "Налаштування Viagee для роботи з обліковим записом Google App."
 
 #~ msgid "Save IMAP password?"
 #~ msgstr "Зберегти пароль IMAP?"
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will save the IMAP password in the Gnome "
-#~ "keyring. IMAP is used to upload file attachments to GMail."
+#~ "When checked, Viagee will save the IMAP password in the Gnome keyring. "
+#~ "IMAP is used to upload file attachments to GMail."
 #~ msgstr ""
-#~ "Якщо позначено, Gnome Gmail збереже пароль IMAP у в'язці ключів Gnome. "
-#~ "IMAP використовується для вивантаження приєднаних файлів до GMail."
+#~ "Якщо позначено, Viagee збереже пароль IMAP у в'язці ключів Gnome. IMAP "
+#~ "використовується для вивантаження приєднаних файлів до GMail."
 
 #~ msgid "Saved IMAP user name"
 #~ msgstr "Збережене ім'я користувача IMAP"
 
 #~ msgid ""
-#~ "Gnome Gmail will save the last user name for file attachment uploads here."
-#~ msgstr ""
-#~ "Gnome Gmail зберігатиме тут це ім'я для вивантажень вкладених файлів."
+#~ "Viagee will save the last user name for file attachment uploads here."
+#~ msgstr "Viagee зберігатиме тут це ім'я для вивантажень вкладених файлів."
 
 #~ msgid "Google Apps domain"
 #~ msgstr "Домен Google Apps"
 
-#~ msgid "To use Gnome Gmail with Google Apps, enter the domain name here"
-#~ msgstr ""
-#~ "Щоб користуватись Gnome Gmail з Google Apps, введіть тут назву домену"
+#~ msgid "To use Viagee with Google Apps, enter the domain name here"
+#~ msgstr "Щоб користуватись Viagee з Google Apps, введіть тут назву домену"
 
 #~ msgid "Hide confirmation dialog"
 #~ msgstr "Приховати діалог підтвердження"
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will suppress the confirmation notification "
-#~ "that appears with each message created. The notification includes a link "
-#~ "to allow Gnome Gmail to be configured for Google Apps support."
+#~ "When checked, Viagee will suppress the confirmation notification that "
+#~ "appears with each message created. The notification includes a link to "
+#~ "allow Viagee to be configured for Google Apps support."
 #~ msgstr ""
-#~ "Якщо позначено, Gnome Gmail блокуватиме повідомлення підтвердження, що "
+#~ "Якщо позначено, Viagee блокуватиме повідомлення підтвердження, що "
 #~ "з'являються після створення кожного листа. Повідомлення містить "
-#~ "посилання, що дає змогу налаштувати Gnome Gmail для підтримки Google Apps."
+#~ "посилання, що дає змогу налаштувати Viagee для підтримки Google Apps."
 
 #~ msgid ""
-#~ "When checked, Gnome Gmail will attempt to configure Open Office to use "
-#~ "the currently selected Gnome Preferred Email Application with each login, "
-#~ "using a Gnome Gmail compatibility application."
+#~ "When checked, Viagee will attempt to configure Open Office to use the "
+#~ "currently selected Gnome Preferred Email Application with each login, "
+#~ "using a Viagee compatibility application."
 #~ msgstr ""
-#~ "Якщо позначено, Gnome Gmail намагатиметься налаштувати Open Office "
-#~ "основною поштовою програмою в Gnome з кожним ім'ям користувача, що "
-#~ "використовується з сумісною з Gnome Gmail програмою."
+#~ "Якщо позначено, Viagee намагатиметься налаштувати Open Office основною "
+#~ "поштовою програмою в Gnome з кожним ім'ям користувача, що "
+#~ "використовується з сумісною з Viagee програмою."
 
 #~ msgid "Gmail"
 #~ msgstr "Gmail"

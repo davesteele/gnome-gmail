@@ -4,7 +4,7 @@ import pytest
 
 from six.moves import urllib
 
-import gnomegmail
+import viagee
 
 base_mail_dict = {
     'to': "to@exämple.com",
@@ -39,7 +39,7 @@ def test_gmailapi(web_fxt, tmpfile, su, bcc, cc, attach, body):
     if su:
         mail_dict['su'] = su
 
-    gmailapi = gnomegmail.GMailAPI(mail_dict)
+    gmailapi = viagee.GMailAPI(mail_dict)
     gmailapi.form_message()
     id = gmailapi.upload_mail('user', 'atoken')
 

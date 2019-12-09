@@ -1,17 +1,17 @@
 
-[![Packaging status](https://repology.org/badge/tiny-repos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
+[![Packaging status](https://repology.org/badge/tiny-repos/viagee.svg)](https://repology.org/metapackage/viagee)
 
-## GNOME Gmail
+## Viagee
 
-This is part of the GNOME Gmail project.
+This is part of the Viagee project.
 
-Home page: https://davesteele.github.io/gnome-gmail/
+Home page: https://davesteele.github.io/viagee/
 
 Once installed, Gmail can act as the default mail application for the desktop.
 'Mailto' links, file attachments, Nautilus/LibreOffice "Send to", etc. are
 supported.
 
-[Screenshots](https://davesteele.github.io/gnome-gmail/screenshots.html)
+[Screenshots](https://davesteele.github.io/viagee/screenshots.html)
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/viagee.svg)](https://repology.org/metapackage/viagee)
 

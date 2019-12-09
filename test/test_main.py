@@ -4,21 +4,21 @@ import base64
 import pytest
 from mock import patch, Mock
 
-import gnomegmail
+import viagee
 
 
 class MyTestException(Exception):
     pass
 
 
-@patch('gnomegmail.sys.exit', side_effect=MyTestException)
+@patch('viagee.sys.exit', side_effect=MyTestException)
 def test_main_quick(default_mailer_fxt, config_fxt, monkeypatch):
-    monkeypatch.setattr('gnomegmail.sys.argv', ['prog', '-q'])
+    monkeypatch.setattr('viagee.sys.argv', ['prog', '-q'])
 
     with pytest.raises(MyTestException):
-        gnomegmail.main()
+        viagee.main()
 
-    assert gnomegmail.sys.exit.calledwith(0)
+    assert viagee.sys.exit.calledwith(0)
 
 
 def b64grep(str, text):
@@ -47,11 +47,11 @@ def spy_decorator(method_to_decorate):
 @pytest.mark.parametrize('bcc', ("", 'bcc@example.com'))#,"bcc@exämple.com"))
 @pytest.mark.parametrize('su', ("", 'subject'))
 @patch(
-    'gnomegmail.getGoogleFromAddress',
+    'viagee.getGoogleFromAddress',
     Mock(return_value="me@example.com"),
 )
-@patch('gnomegmail.browser', Mock())
-@patch('gnomegmail.GMailAPI.upload_mail', Mock(return_value='1'))
+@patch('viagee.browser', Mock())
+@patch('viagee.GMailAPI.upload_mail', Mock(return_value='1'))
 def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
               notify_fxt, web_fxt, oauth_fxt,
               monkeypatch, su, bcc, cc, attach, body):
@@ -66,14 +66,14 @@ def test_main(default_mailer_fxt, config_fxt, keyring_fxt,
     if queries:
         mailto += "?" + '&'.join(queries)
 
-    monkeypatch.setattr('gnomegmail.sys.argv', ['prog', mailto])
+    monkeypatch.setattr('viagee.sys.argv', ['prog', mailto])
 
-    myform = spy_decorator(gnomegmail.GMailAPI.form_message)
-    with patch.object(gnomegmail.GMailAPI, 'form_message', myform):
-        gnomegmail.main()
-        rfc822txt = gnomegmail.GMailAPI.form_message.msgtxt[0]
+    myform = spy_decorator(viagee.GMailAPI.form_message)
+    with patch.object(viagee.GMailAPI, 'form_message', myform):
+        viagee.main()
+        rfc822txt = viagee.GMailAPI.form_message.msgtxt[0]
 
-    assert gnomegmail.GMailAPI.upload_mail.called
+    assert viagee.GMailAPI.upload_mail.called
 
     assert "To: joe@example.com" in rfc822txt
 

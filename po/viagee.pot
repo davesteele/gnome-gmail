@@ -1,22 +1,21 @@
-# Armenian translation for viagee
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
-# This file is distributed under the same license as the viagee package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: viagee\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-09-29 20:51-0400\n"
-"PO-Revision-Date: 2011-05-20 09:03+0000\n"
-"Last-Translator: Serj Safarian <serjsafarian@gmail.com>\n"
-"Language-Team: Armenian <hy@li.org>\n"
-"Language: hy\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-08-14 14:56+0000\n"
-"X-Generator: Launchpad (build 13674)\n"
 
 #. Possible in non-X11, e.g. Wayland
 #: ../viagee.py:236
@@ -30,7 +29,7 @@ msgstr ""
 #: ../viagee.py:358
 #, python-format
 msgid "Sending %s"
-msgstr "Ուղարկում է` %s"
+msgstr ""
 
 #: ../viagee.py:364
 msgid "Mime message attached"
@@ -74,7 +73,7 @@ msgstr ""
 
 #: ../viagee.desktop.in.h:1 ../viagee.appdata.xml.in.h:1
 msgid "Viagee"
-msgstr "Viagee"
+msgstr ""
 
 #: ../viagee.desktop.in.h:2
 msgid "GMail Web Integration"
@@ -89,9 +88,8 @@ msgid "email;mail;Google;"
 msgstr ""
 
 #: ../viagee-startup.desktop.in.h:1
-#, fuzzy
 msgid "Viagee Configurator"
-msgstr "Viagee"
+msgstr ""
 
 #: ../viagee-startup.desktop.in.h:2
 msgid "Offer to make Viagee the Preferred Email application"
@@ -118,28 +116,3 @@ msgstr ""
 #: ../viagee.appdata.xml.in.h:6
 msgid "To demonstrate, select \"Send To...\" on a file in the File Browser."
 msgstr ""
-
-#~ msgid "comment"
-#~ msgstr "մեկնաբանություն"
-
-#~ msgid "User Name"
-#~ msgstr "Օգտվողի անուն"
-
-#~ msgid "Password"
-#~ msgstr "Գաղտնաբառը"
-
-#~ msgid "Remember Password"
-#~ msgstr "Հիշել գաղտնաբառը"
-
-#~ msgid "Drafts"
-#~ msgstr "Սեւագրեր"
-
-#, fuzzy
-#~ msgid "User cancelled"
-#~ msgstr "Օգտվողի անուն"
-
-#~ msgid "Your Gmail password"
-#~ msgstr "Gmail֊ի Ձեր գաղտնաբառը"
-
-#~ msgid "Gmail"
-#~ msgstr "Gmail"

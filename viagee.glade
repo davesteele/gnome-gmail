@@ -68,7 +68,7 @@
           <object class="GtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
-            <property name="label" translatable="yes">GNOME Gmail is not currently your Preferred Email Application. Would you like your emails to be sent using the Gmail web page?</property>
+            <property name="label" translatable="yes">Viagee is not currently your Preferred Email Application. Would you like your emails to be sent using the Gmail web page?</property>
             <property name="wrap">True</property>
           </object>
           <packing>

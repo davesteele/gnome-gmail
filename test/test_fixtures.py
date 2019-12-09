@@ -1,9 +1,9 @@
 
-import gnomegmail
+import viagee
 
 
 def test_config_fixture(config_fxt):
-    config = gnomegmail.GgConfig(
+    config = viagee.GgConfig(
                 fpath="~/.config/gnome-gmail/gnome-gmail.conf",
                 section='gnome-gmail',
                 initvals={
@@ -21,37 +21,37 @@ def test_config_fixture(config_fxt):
     config.set_str('last_email', 'joe@example.com')
     config.set_bool('new_browser', True)
 
-    assert gnomegmail.GgConfig.save.called
+    assert viagee.GgConfig.save.called
 
 
 def test_keyring_fixture(keyring_fxt):
-    keyring = gnomegmail.Oauth2Keyring("scope")
+    keyring = viagee.Oauth2Keyring("scope")
 
     assert keyring.getTokens("user") == ('atoken', 'rtoken')
 
     keyring.setTokens('user', 'atoken', 'rtoken')
-    assert gnomegmail.Secret.password_store_sync.called
-    assert gnomegmail.Secret.password_store_sync.call_args[0][4] == \
+    assert viagee.Secret.password_store_sync.called
+    assert viagee.Secret.password_store_sync.call_args[0][4] == \
         "access:atoken;refresh:rtoken"
 
 
 def test_default_mailer_fixture(default_mailer_fxt):
-    assert gnomegmail.is_default_mailer() == True
-    assert gnomegmail.is_default_mailer.called
+    assert viagee.is_default_mailer() == True
+    assert viagee.is_default_mailer.called
 
 
 def test_notify_fixture(notify_fxt):
-    gnomegmail.Notify.init("scope")
-    assert gnomegmail.Notify.init.called
+    viagee.Notify.init("scope")
+    assert viagee.Notify.init.called
 
-    gnomegmail.Notify.Notification.new('args')
-    assert gnomegmail.Notify.Notification.new.called
+    viagee.Notify.Notification.new('args')
+    assert viagee.Notify.Notification.new.called
 
 
 def test_oauth_fixture(oauth_fxt):
-    assert gnomegmail.Wnck.tag == 'wnck'
+    assert viagee.Wnck.tag == 'wnck'
 
-    screen = gnomegmail.Wnck.Screen.get_default()
+    screen = viagee.Wnck.Screen.get_default()
     assert screen.tag == 'screen'
 
     win = screen.get_windows()[0]
