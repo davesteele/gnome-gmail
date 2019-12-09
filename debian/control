@@ -24,6 +24,7 @@ Depends: ${misc:Depends},
 Provides: exec<viagee>,
           mime<x-scheme-handler/mailto>
 Replaces: gnome-gmail
+Conflicts: gnome-gmail
 Description: support for Gmail as the preferred email application in GNOME
  Viagee integrates the Gmail web interface into the GNOME environment.
  Once installed, Gmail becomes a choice as the default Mail Reader in the GNOME
