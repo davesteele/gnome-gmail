@@ -8,10 +8,10 @@ Last-Update: 2017-10-08
 +++ b/setup.py
 @@ -135,7 +135,7 @@
      author_email='dsteele@gmail.com',
-     url='https://davesteele.github.io/gnome-gmail/',
-     scripts=['gnome-gmail'],
+     url='https://davesteele.github.io/viagee/',
+     scripts=['viagee'],
 -    requires=['gi', 'six'],
 +    requires=['six'],
      data_files=[
-         ('share/icons/hicolor/16x16/apps', ['icons/16x16/gnome-gmail.png']),
-         ('share/icons/hicolor/24x24/apps', ['icons/24x24/gnome-gmail.png']),
+         ('share/icons/hicolor/16x16/apps', ['icons/16x16/viagee.png']),
+ #        ('share/icons/hicolor/24x24/apps', ['icons/24x24/viagee.png']),
