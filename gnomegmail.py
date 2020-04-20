@@ -88,7 +88,7 @@ def set_as_default_mailer():
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
     elif environ == 'KDE':
-        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
+        cfgpath = os.path.expanduser('/usr/share/applications/defaults.list')
         with open(cfgpath, 'r') as cfp:
             cfglines = cfp.readlines()
 
@@ -117,7 +117,7 @@ def is_default_mailer():
         except AttributeError:
             pass
     elif environ == 'KDE':
-        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
+        cfgpath = os.path.expanduser('/usr/share/applications/defaults.list')
         with open(cfgpath, 'r') as cfp:
             returnvalue = 'gnome-gmail' in cfp.read()
 
@@ -134,6 +134,7 @@ def browser():
             return webbrowser.get(using=candidate)
 
     return webbrowser.get()
+
 
 
 class GMOauth():
@@ -188,6 +189,7 @@ class GMOauth():
                     return m.group(1)
 
         raise GGError(_("Timeout getting OAuth authentication"))
+
 
     def get_token_dict(self, code):
 
