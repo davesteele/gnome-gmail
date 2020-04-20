@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from distutils.core import setup, Command
 from distutils.command.build import build
@@ -120,12 +120,16 @@ class my_test(Command):
 
     def run(self):
         import pytest
-        errno = pytest.main(self.pytest_args)
+        args = self.pytest_args
+        if type(args) == str:
+            args = args.split()
+        errno = pytest.main(args)
         sys.exit(errno)
+
 
 setup(
     name='gnome-gmail',
-    version='2.0.1',
+    version='2.7',
     description='support for Gmail as the preferred GNOME email application',
     author='David Steele',
     author_email='dsteele@gmail.com',
@@ -142,12 +146,11 @@ setup(
         ('share/applications', ['gnome-gmail.desktop']),
         ('share/gnome/autostart', ['gnome-gmail-startup.desktop']),
         ('share/gnome-gmail', ['gnomegmail.glade', 'gnomegmail.py']),
-        ('share/appdata', ['gnome-gmail.appdata.xml']),
+        ('share/metainfo', ['gnome-gmail.appdata.xml']),
                ] + polist(),
     classifiers=[
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3',
         'Topic :: Communications :: Email',
         'Topic :: Desktop Environment :: Gnome',
         'License :: OSI Approved :: " \

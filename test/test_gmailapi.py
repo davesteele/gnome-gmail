@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 import pytest
 
@@ -6,8 +7,8 @@ from six.moves import urllib
 import gnomegmail
 
 base_mail_dict = {
-    'to': "to@example.com",
-    'from': "from@example.com",
+    'to': "to@exämple.com",
+    'from': "from@exämple.com",
 }
 
 
@@ -40,6 +41,6 @@ def test_gmailapi(web_fxt, tmpfile, su, bcc, cc, attach, body):
 
     gmailapi = gnomegmail.GMailAPI(mail_dict)
     gmailapi.form_message()
-    id = gmailapi.send_mail('user', 'atoken')
+    id = gmailapi.upload_mail('user', 'atoken')
 
     assert id == '1'

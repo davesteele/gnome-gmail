@@ -1,4 +1,4 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python3 -tt
 #
 # Copyright 2011-2014 David Steele <dsteele@gmail.com>
 # This file is part of gnome-gmail
@@ -17,14 +17,17 @@ import os.path
 import re
 import textwrap
 import locale
-import gettext
 import string
 import json
 import mimetypes
 import random
 import time
 import subprocess
+import shlex
+import unicodedata
+import argparse
 from contextlib import contextmanager
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 from email import encoders
 from email.mime.audio import MIMEAudio
@@ -34,7 +37,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
 from six.moves import urllib
-from six.moves.configparser import SafeConfigParser
+from six.moves.configparser import ConfigParser
 
 import gi
 from gi.repository import Gio       # noqa
@@ -51,15 +54,24 @@ from gi.repository import Notify    # noqa
 gi.require_version('Wnck', '3.0')
 from gi.repository import Wnck      # noqa
 
-locale.setlocale(locale.LC_ALL, '')
-gettext.textdomain("gnome-gmail")
-_ = gettext.gettext
+_ = locale.gettext
+locale.bindtextdomain("gnome-gmail", "/usr/share/locale")
+locale.textdomain("gnome-gmail")
+try:
+    locale.setlocale(locale.LC_ALL, '')
+except locale.Error:
+    locale.setlocale(locale.LC_CTYPE, "en_US.UTF-8")
+
+
 
 try:
     environ = os.environ['XDG_CURRENT_DESKTOP']
+    environ = environ.split(':')[-1]
 except:
     environ = 'GNOME'
 
+config = None
+oauthport = 27478
 
 class GGError(Exception):
     """ Gnome Gmail exception """
@@ -83,7 +95,7 @@ def nullfd(fd):
 
 
 def set_as_default_mailer():
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         for app in Gio.app_info_get_all_for_type("x-scheme-handler/mailto"):
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
@@ -107,7 +119,7 @@ def set_as_default_mailer():
 def is_default_mailer():
     returnvalue = True
 
-    if environ == 'GNOME':
+    if environ in ['GNOME', 'Unity']:
         mailer = Gio.app_info_get_default_for_type(
                     "x-scheme-handler/mailto",
                     True
@@ -125,15 +137,50 @@ def is_default_mailer():
 
 
 def browser():
-    cmd = "xdg-settings get default-web-browser"
-    brsr_name = subprocess.check_output(
-        cmd.split(), universal_newlines=True).strip()
+    specified_browser = config.get_str('use_browser')
+
+    if specified_browser:
+        brsr_name = set([specified_browser])
+    else:
+        cmd = "xdg-settings get default-web-browser"
+        brsr_name = subprocess.check_output(
+            cmd.split(), universal_newlines=True).strip()
+
+    browser = webbrowser.get()
 
     for candidate in webbrowser._tryorder:
         if candidate in brsr_name:
-            return webbrowser.get(using=candidate)
+            browser = webbrowser.get(using=candidate)
 
-    return webbrowser.get()
+    return customize_browser(browser)
+
+
+def customize_browser(browser):
+
+    argmap = {
+        'Chrome': '--app=%s',
+        'Konqueror': '',
+        'Mozilla': '-new-window %s',
+        'Galeon': '',
+        'Opera': '',
+        'Grail': '',
+    }
+
+    replace_args = config.get_str('browser_options')
+
+    if replace_args:
+        browser.remote_args = shlex.split(replace_args)
+    else:
+        try:
+            std_args = argmap[type(browser).__name__]
+
+            if std_args:
+                browser.remote_args = shlex.split(std_args)
+
+        except KeyError:
+            pass
+
+    return browser
 
 
 
@@ -153,6 +200,14 @@ class GMOauth():
         self.client_id = "284739582412.apps.googleusercontent.com"
         self.client_secret = "EVt3cQrYlI_hZIt2McsPeqSp"
 
+
+    def get_urn(self):
+        if Wnck.Screen.get_default():
+            return "urn:ietf:wg:oauth:2.0:oob"
+        else:
+            return "http://localhost:%d/" % oauthport
+
+
     def get_code(self, login_hint):
         s = string.ascii_letters + string.digits
         state = ''.join(random.sample(s, 10))
@@ -160,7 +215,7 @@ class GMOauth():
         args = {
                     "response_type": "code",
                     "client_id": self.client_id,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": self.get_urn(),
                     "prompt": "consent",
                     "scope": self.scope,
                     "state": state,
@@ -172,21 +227,39 @@ class GMOauth():
         with nullfd(1), nullfd(2):
             browser().open(code_url, 1, True)
 
-        now = time.time()
+        if "oob" in self.get_urn():
+            now = time.time()
 
-        while time.time() - now < 120:
-            time.sleep(0.1)
+            while time.time() - now < 120:
+                Gtk.main_iteration()
+                screen = Wnck.Screen.get_default()
+                if screen is None:  # Possible in non-X11, e.g. Wayland
+                    raise GGError(_("Could not access default screen"))
+                screen.force_update()
 
-            Gtk.main_iteration()
-            screen = Wnck.Screen.get_default()
-            screen.force_update()
+                for win in screen.get_windows():
+                    m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
+                    if m:
+                        win.close(time.time())
 
-            for win in screen.get_windows():
-                m = re.search("state=%s.code=([^ ]+)" % state, win.get_name())
-                if m:
-                    win.close(time.time())
+                        return m.group(1)
+        else:
+            class RequestHandler(BaseHTTPRequestHandler):
+                code = None
+                def do_GET(s):
+                    m = re.search("state=%s.code=([^ ]+)" % state, s.path)
+                    if m:
+                        RequestHandler.code = m.group(1)
 
-                    return m.group(1)
+                    s.send_response(200)
+                    s.send_header("Content-type", "text/html")
+                    s.end_headers()
+                    s.wfile.write("<html><head><title>Title</title></head>".encode())
+
+            httpd = HTTPServer(('localhost', oauthport), RequestHandler)
+            httpd.socket.settimeout(120)
+            httpd.handle_request()
+            return RequestHandler.code
 
         raise GGError(_("Timeout getting OAuth authentication"))
 
@@ -197,7 +270,7 @@ class GMOauth():
                     "code": code,
                     "client_id": self.client_id,
                     "client_secret": self.client_secret,
-                    "redirect_uri": "urn:ietf:wg:oauth:2.0:oob",
+                    "redirect_uri": self.get_urn(),
                     "grant_type": "authorization_code",
                }
 
@@ -288,7 +361,12 @@ class GMailAPI():
         except KeyError:
             pass
 
-        msg.preamble = _("Mime message attached")
+        """ prepare preamble to be ascii encoded: bug #29 """
+        """ normalization """
+        preamble = unicodedata.normalize('NFKD', u"%s" % str(_("Mime message attached")))
+        """ stripping of what is still ascii incompatible """
+        preamble = preamble.encode('ascii', 'ignore').decode('ascii')
+        msg.preamble = preamble
 
         try:
             body = self.mail_dict['body'][0]
@@ -309,10 +387,7 @@ class GMailAPI():
         except KeyError:
             pass
 
-        try:
-            self.message_text = msg.as_bytes()
-        except AttributeError:
-            self.message_text = msg.as_string()
+        self.message_text = msg.as_string()
 
     def file2mime(self, filename):
         if(filename.find("file://") == 0):
@@ -358,8 +433,8 @@ class GMailAPI():
             'gtalk', 'irc', 'magnet', 'market', 'skype', 'ssh', 'webcal',
             'xmpp',
         ]
-        rgx = "(?P<url>(%s):[^ \),]+[^ \)\],\.'\"])" % '|'.join(schemes)
-        substr = "<a href=\"\g<url>\">\g<url></a>"
+        rgx = "(?P<url>(%s):[^ \\),]+[^ \\)\\],\\.'\"])" % '|'.join(schemes)
+        substr = '<a href="\\g<url>">\\g<url></a>'
 
         text = re.sub(rgx, substr, text)
 
@@ -401,7 +476,7 @@ class GMailAPI():
 
         return self._has_attachment() or self._has_body()
 
-    def send_mail(self, user, access_token):
+    def upload_mail(self, user, access_token):
         """ transfer the message to GMail Drafts folder, using the GMail API.
         Return a message ID that can be used to reference the mail via URL"""
 
@@ -411,10 +486,11 @@ class GMailAPI():
         url = ("https://www.googleapis.com/upload/gmail/v1/users/%s/drafts" +
                "?uploadType=media") % urllib.parse.quote(user)
 
+        msgbytes = self.message_text.encode()
         opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
-        request = urllib.request.Request(url, data=self.message_text)
+        request = urllib.request.Request(url, data=msgbytes)
         request.add_header('Content-Type', 'message/rfc822')
-        request.add_header('Content-Length', str(len(self.message_text)))
+        request.add_header('Content-Length', str(len(msgbytes)))
         request.add_header('Authorization', "Bearer " + access_token)
         request.get_method = lambda: 'POST'
 
@@ -424,22 +500,49 @@ class GMailAPI():
             raise GGError(_("Error returned from the GMail API - %s - %s") %
                           (e.code, e.msg))
 
-        result = urlfp.fp.read().decode('utf-8')
-        json_result = json.loads(result)
+        result = urlfp.fp.read()
+        self.resource = result
+        json_result = json.loads(result.decode('utf-8'))
         id = json_result['message']['id']
 
         return id
+
+    def send_mail(self, user, access_token):
+        """ send the recently uploaded draft message"""
+
+        url = "https://www.googleapis.com/gmail/v1/users/%s/drafts/send" \
+              % urllib.parse.quote(user)
+
+        opener = urllib.request.build_opener(urllib.request.HTTPSHandler)
+        request = urllib.request.Request(url, data=self.resource)
+        request.add_header('Content-Type', 'application/json')
+        request.add_header('Content-Length', str(len(self.resource)))
+        request.add_header('Authorization', "Bearer " + access_token)
+        request.get_method = lambda: 'POST'
+
+        try:
+            urlfp = opener.open(request)
+        except urllib.error.HTTPError as e:
+            raise GGError(_("Error returned from the GMail API - %s - %s") %
+                          (e.code, e.msg))
 
 
 class GMailURL():
     """ Logic to convert a mailto link to an appropriate GMail URL, by
     any means necessary, including API uploads."""
 
-    def __init__(self, mailto_url, from_address):
+    def __init__(self, mailto_url, from_address, message=None):
         self.mailto_url = mailto_url
         self.from_address = from_address
+        self.message = message
 
-        self.mail_dict = self.mailto2dict()
+        if not self.from_address:
+            raise GGError(_("The 'From' address is not specified"))
+
+        if self.mailto_url:
+            self.mail_dict = self.mailto2dict()
+        else:
+            self.mail_dict = {}
 
     def mailto2dict(self):
         """ Convert a mailto: reference to a dictionary containing the
@@ -468,10 +571,8 @@ class GMailURL():
 
         qsdict = urllib.parse.parse_qs(query_string)
 
-        qsdict['to'] = [address]
-
-        if 'attachment' in qsdict:
-            qsdict['attach'] = qsdict['attachment']
+        if address:
+            qsdict['to'] = [address]
 
         outdict = {}
         for (key, value) in qsdict.items():
@@ -483,6 +584,15 @@ class GMailURL():
 
             outdict[key.lower()] = value
 
+        if 'su' in outdict:
+            outdict["subject"] = outdict["su"]
+
+        if "body" not in outdict:
+            outdict["body"] = " "
+
+        if 'attachment' in outdict:
+            outdict['attach'] = outdict['attachment']
+
         return(outdict)
 
     def simple_gmail_url(self):
@@ -490,7 +600,7 @@ class GMailURL():
 
         return("https://mail.google.com/mail/b/%s" % self.from_address)
 
-    def api_gmail_url(self):
+    def api_gmail_url(self, send=False):
         """ if the mailto refers to an attachment,
         use the GMail API to upload the file """
 
@@ -499,7 +609,11 @@ class GMailURL():
 
         try:
             gm_api = GMailAPI(self.mail_dict)
-            gm_api.form_message()
+
+            if self.message:
+                gm_api.message_text = self.message
+            else:
+                gm_api.form_message()
         except OSError:
             GGError(_("Error creating message with attachment"))
 
@@ -512,8 +626,7 @@ class GMailURL():
         for access, refresh in auth.access_iter(old_access, old_refresh,
                                                 self.from_address):
             try:
-                msg_id = gm_api.send_mail(self.from_address,
-                                          access)
+                msg_id = gm_api.upload_mail(self.from_address, access)
                 break
             except GGError as e:
                 error_str = e.value
@@ -521,18 +634,21 @@ class GMailURL():
         if msg_id:
             if (old_access, old_refresh) != (access, refresh):
                 keys.setTokens(self.from_address, access, refresh)
+
+            if send:
+                gm_api.send_mail(self.from_address, access)
         else:
             raise GGError(error_str)
 
         return(api_url + msg_id)
 
-    def gmail_url(self):
+    def gmail_url(self, send):
         """ Return a GMail URL appropriate for the mailto handled
         by this instance """
-        if(len(self.mailto_url) == 0):
+        if(len(self.mailto_url) == 0 and not self.message):
             gmailurl = self.simple_gmail_url()
         else:
-            gmailurl = self.api_gmail_url()
+            gmailurl = self.api_gmail_url(send)
 
         return(gmailurl)
 
@@ -569,10 +685,13 @@ def getFromAddress(last_address, config, gladefile):
     if last_address and suppress_account_selection:
         return last_address
 
-    builder = Gtk.Builder()
-    builder.add_from_file(gladefile)
+    dlgid = "user_select_dialog"
 
-    dlg = builder.get_object("user_select_dialog")
+    builder = Gtk.Builder()
+    builder.set_translation_domain("gnome-gmail")
+    builder.add_objects_from_file(gladefile, (dlgid, ))
+
+    dlg = builder.get_object(dlgid)
 
     hdlr = Handler(last_address, dlg)
     builder.connect_signals(hdlr)
@@ -597,7 +716,15 @@ def getGoogleFromAddress(last_address, config, gladefile):
     return retval
 
 
-class GgConfig(SafeConfigParser):
+def fromFromMessage(message):
+    line = [x for x in message.split('\n') if 'FROM:' in x.upper()][0]
+    email = line.split(' ')[-1]
+    email = re.sub('[<>]', '', email)
+
+    return email
+
+
+class GgConfig(ConfigParser):
     def __init__(self, *args, **kwargs):
 
         self.fpath = os.path.expanduser(self.strip_kwarg(kwargs, 'fpath'))
@@ -605,7 +732,7 @@ class GgConfig(SafeConfigParser):
         initvals = self.strip_kwarg(kwargs, 'initvals')
         self.header = self.strip_kwarg(kwargs, 'header')
 
-        SafeConfigParser.__init__(self, *args, **kwargs)
+        ConfigParser.__init__(self, *args, **kwargs)
 
         self.add_section(self.section)
 
@@ -716,13 +843,16 @@ def do_preferred(glade_file, config):
         def onCancelClicked(self, button):
             Gtk.main_quit()
 
+    dlgid = "preferred_app_dialog"
+
     builder = Gtk.Builder()
-    builder.add_from_file(glade_file)
+    builder.set_translation_domain("gnome-gmail")
+    builder.add_objects_from_file(glade_file, (dlgid, ))
 
     hdlr = Handler()
     builder.connect_signals(hdlr)
 
-    response = builder.get_object("preferred_app_dialog").run()
+    response = builder.get_object(dlgid).run()
 
     preferred_setting = builder.get_object("check_dont_ask_again").get_active()
     config.set_bool('suppress_preferred', preferred_setting)
@@ -731,14 +861,61 @@ def do_preferred(glade_file, config):
         set_as_default_mailer()
 
 
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Send mail via the Gmail API and the browser interface.",
+        usage="%(prog)s [-h|-q|[-s] <mailto>]",
+        epilog=textwrap.dedent("""\
+            The gnome-gmail utility will create an email message from the
+            mailto argument, upload it to Gmail using the Gmail API, and open
+            a browser window showing the Draft message. If necessary, it will
+            display a dialog asking for the From address, and use the default
+            browser to establish OAuth2 credentials. It's primary purpose is
+            as a helper program to integrate the Gmail web interface with the
+            desktop.
+            """
+        )
+    )
+
+    parser.add_argument(
+        'mailto',
+        nargs='?',
+        default="",
+        help="an RFC2368 mailto URL specifying the message to be sent",
+    )
+
+    parser.add_argument(
+        '-q', '--quiet',
+        action="store_true",
+        help="determine if this should be the desktop mail handler, and exit",
+    )
+
+    parser.add_argument(
+        '-s', '--send',
+        action="store_true",
+        help="actually send the draft. Otherwise, the draft is opened in a "
+             "browser compose window",
+    )
+
+    parser.add_argument(
+        '-r', '--rfc822',
+        metavar="file",
+        default=None,
+        help="upload an RFC822-formatted message",
+    )
+
+    args = parser.parse_args()
+
+    return args
+
+
 def main():
     """ given an optional parameter of a valid mailto url, open an appropriate
     gmail web page """
 
-    if(len(sys.argv) > 1):
-        mailto = sys.argv[1]
-    else:
-        mailto = ""
+    global config
+
+    args = parse_args()
 
     header = textwrap.dedent("""\
         # GNOME Gmail Configuration
@@ -756,7 +933,20 @@ def main():
         #     The email account used for the last run. It is used to populate
         #     the account selection dialog. This is updated automatically.
         #
+        # use_browser
+        #     What browser to use. If unspecified, uses system default browser.
+        #     Examples: firefox | google-chrome
+        #
+        # browser_options
+        #     Replace the command line arguments used to call the browser. Note
+        #     that these options are not portable acrosss browsers. '%%s' is
+        #     replaced with the url. Default options are:
+        #         Chrome - "--app=%%s"
+        #         Mozilla - "-new-window %%s"
+        #         ...
+        #
         """)
+
     config = GgConfig(
                 fpath="~/.config/gnome-gmail/gnome-gmail.conf",
                 section='gnome-gmail',
@@ -765,6 +955,8 @@ def main():
                     'suppress_account_selection': '0',
                     'new_browser': '1',
                     'last_email': '',
+                    'use_browser': '',
+                    'browser_options': '',
                 },
                 header=header,
              )
@@ -781,19 +973,25 @@ def main():
         do_preferred(glade_file, config)
 
     # quiet mode, to set preferred app in postinstall
-    if(len(sys.argv) > 1 and sys.argv[1] == "-q"):
+    if args.quiet:
         sys.exit(0)
 
     Notify.init("GNOME Gmail")
 
-    last_from = config.get_str('last_email')
-    from_address = getGoogleFromAddress(last_from, config, glade_file)
-    if from_address:
-        config.set_str('last_email', from_address)
+    from_address = None
+    message = None
+    if args.rfc822:
+        message = open(args.rfc822, 'r').read()
+        from_address = fromFromMessage(message)
+    else:
+        last_from = config.get_str('last_email')
+        from_address = getGoogleFromAddress(last_from, config, glade_file)
+        if from_address:
+            config.set_str('last_email', from_address)
 
     try:
-        gm_url = GMailURL(mailto, from_address)
-        gmailurl = gm_url.gmail_url()
+        gm_url = GMailURL(args.mailto, from_address, message)
+        gmailurl = gm_url.gmail_url(args.send)
     except GGError as gerr:
         notice = Notify.Notification.new(
             "GNOME GMail",
@@ -804,8 +1002,10 @@ def main():
         notice.show()
         time.sleep(5)
     else:
-        new_browser = config.get_bool('new_browser')
-        browser().open(gmailurl, new_browser, True)
+        if not args.send:
+            new_browser = config.get_bool('new_browser')
+            browser().open(gmailurl, new_browser, True)
+
 
 if __name__ == "__main__":
     main()

@@ -1,22 +1,22 @@
-# Pashto translation for gnome-gmail
-# Copyright (c) 2011 Rosetta Contributors and Canonical Ltd 2011
+# Serbian translation for gnome-gmail
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
 # This file is distributed under the same license as the gnome-gmail package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2011.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: gnome-gmail\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-26 23:28-0500\n"
-"PO-Revision-Date: 2011-10-26 00:29+0000\n"
-"Last-Translator: Said Marjan Zazai <saidsemail@gmail.com>\n"
-"Language-Team: Pashto <ps@li.org>\n"
-"Language: ps\n"
+"PO-Revision-Date: 2016-12-20 04:07+0000\n"
+"Last-Translator: Мирослав Николић <miroslavnikolic@rocketmail.com>\n"
+"Language-Team: Serbian <sr@li.org>\n"
+"Language: sr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2011-10-28 00:16+0000\n"
-"X-Generator: Launchpad (build 14197)\n"
+"X-Launchpad-Export-Date: 2017-06-20 12:36+0000\n"
+"X-Generator: Launchpad (build 18416)\n"
 
 #. Possible in non-X11, e.g. Wayland
 #: ../gnomegmail.py:231
@@ -30,7 +30,7 @@ msgstr ""
 #: ../gnomegmail.py:353
 #, python-format
 msgid "Sending %s"
-msgstr "ورځي %s"
+msgstr "Шаљем „%s“"
 
 #: ../gnomegmail.py:359
 msgid "Mime message attached"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: ../gnomegmail.glade.h:2
 msgid "Don't ask again"
-msgstr "بيا مه پوخته"
+msgstr ""
 
 #: ../gnomegmail.glade.h:3
 msgid "Which Google email account should be used?"
@@ -143,4 +143,4 @@ msgid "OAuth2 authentication - no password needed"
 msgstr ""
 
 #~ msgid "Drafts"
-#~ msgstr "ګارليک"
+#~ msgstr "Нацрти"

@@ -1,6 +1,5 @@
-#!/usr/bin/python2 -tt
+# -*- coding: utf-8 -*-
 
-import nose
 import pytest
 from six.moves import urllib
 
@@ -67,6 +66,11 @@ testCaseStrings = [
 
     ("a\nb", "a<br>\nb"),
     ("a\nb\nc", "a<br>\nb<br>\nc"),
+
+    # Unicode
+    ("ä", "ä"),
+    ("mailto:joe@exämple.com",
+        "<a href=\"mailto:joe@exämple.com\">mailto:joe@exämple.com</a>"),
  ]
 
 
@@ -103,8 +107,8 @@ def test_body2html(encbody, body, result):
 
 
 @pytest.mark.parametrize("mailto, needs_api", (
-    ("mailto:joe", False),
-    ("mailto:joe?subject=hi", False),
+    ("mailto:joe", True),
+    ("mailto:joe?subject=hi", True),
     ("mailto:joe?body=%20", True),
     ("mailto:joe?attach=file", True),
     ("mailto:joe?attachment=file", True),
