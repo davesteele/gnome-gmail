@@ -7,6 +7,7 @@ gnome-gmail (2.7-2) UNRELEASED; urgency=medium
   * Set fields Upstream-Contact in debian/copyright.
   * Remove obsolete fields Name, Contact from debian/upstream/metadata.
   * Wrap long lines in changelog entries: 1.7.3.
+  * Set upstream metadata fields: Bug-Submit.
 
  -- Debian Janitor <janitor@jelmer.uk>  Wed, 18 Sep 2019 11:48:10 +0000
 
