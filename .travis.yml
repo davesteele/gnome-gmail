@@ -7,9 +7,7 @@ virtualenv:
   system_site_packages: true
 
 python:
-  - "3.7"
   - "3.8"
-  - "3.9"
 
 addons:
   apt:
