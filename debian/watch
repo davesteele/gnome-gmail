@@ -2,6 +2,6 @@ version=4
 
 opts=filenamemangle=s/.+\/(\d\S*@ARCHIVE_EXT@)/@PACKAGE@-$1/,\
 pgpsigurlmangle=s/github.com/raw.githubusercontent.com/;\
-s/archive\/master/signatures/;\
+s/archive\/refs\/tags\/master/signatures/;\
 s/([^\/]+@ARCHIVE_EXT@)/@PACKAGE@-$1.asc/ \
 https://github.com/davesteele/@PACKAGE@/tags .*master/(\d\S*)@ARCHIVE_EXT@
