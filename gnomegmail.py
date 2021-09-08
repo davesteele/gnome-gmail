@@ -100,11 +100,15 @@ def set_as_default_mailer():
             if app.get_id() == "gnome-gmail.desktop":
                 app.set_as_default_for_type("x-scheme-handler/mailto")
     elif environ == 'KDE':
-        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
-        with open(cfgpath, 'r') as cfp:
-            cfglines = cfp.readlines()
+        cfgpath = os.path.expanduser('/usr/share/applications/defaults.list')
+        try:
+            with open(cfgpath, 'r') as cfp:
+                cfglines = cfp.readlines()
+        except FileNotFoundError:
+            cfglines = []
 
-        cfglines = [x for x in cfglines if 'EmailClient' not in x]
+        cfglines = [x for x in cfglines if 'EmailClient' not in x] or \
+                   ['[PROFILE_Default]']
 
         outlines = []
         for line in cfglines:
@@ -129,9 +133,12 @@ def is_default_mailer():
         except AttributeError:
             pass
     elif environ == 'KDE':
-        cfgpath = os.path.expanduser('~/.kde/share/config/emaildefaults')
-        with open(cfgpath, 'r') as cfp:
-            returnvalue = 'gnome-gmail' in cfp.read()
+        cfgpath = os.path.expanduser('/usr/share/applications/defaults.list')
+        try:
+            with open(cfgpath, 'r') as cfp:
+                returnvalue = 'gnome-gmail' in cfp.read()
+        except FileNotFoundError:
+            pass
 
     return returnvalue
 
@@ -181,6 +188,7 @@ def customize_browser(browser):
             pass
 
     return browser
+
 
 
 class GMOauth():
@@ -261,6 +269,7 @@ class GMOauth():
             return RequestHandler.code
 
         raise GGError(_("Timeout getting OAuth authentication"))
+
 
     def get_token_dict(self, code):
 
@@ -456,6 +465,8 @@ class GMailAPI():
             htmlbody = re.sub("&nbsp; &nbsp;", "&nbsp;&nbsp;&nbsp;", htmlbody)
 
         htmlbody = re.sub("\n", "<br>\n", htmlbody)
+        htmlbody = re.sub("CARRIAGE_RETURN", "<br>\n", htmlbody)
+        htmlbody = re.sub("TAB", "&emsp;", htmlbody)
 
         htmlhdr = "<html>\n<head>\n</head>\n<body>\n"
         htmltail = "\n</body>\n</html>"
@@ -546,6 +557,9 @@ class GMailURL():
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
+        self.mailto_url = re.sub("\t", "TAB", self.mailto_url)
+        self.mailto_url = re.sub("%09", "TAB", self.mailto_url)
+        self.mailto_url = re.sub("\n", "CARRIAGE_RETURN", self.mailto_url)
         usplit = urllib.parse.urlsplit(self.mailto_url, "mailto")
 
         path = usplit.path

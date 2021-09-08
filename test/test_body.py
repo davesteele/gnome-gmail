@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import pytest
+import re
 from six.moves import urllib
 
 import gnomegmail
