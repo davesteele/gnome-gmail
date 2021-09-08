@@ -465,6 +465,8 @@ class GMailAPI():
             htmlbody = re.sub("&nbsp; &nbsp;", "&nbsp;&nbsp;&nbsp;", htmlbody)
 
         htmlbody = re.sub("\n", "<br>\n", htmlbody)
+        htmlbody = re.sub("CARRIAGE_RETURN", "<br>\n", htmlbody)
+        htmlbody = re.sub("TAB", "&emsp;", htmlbody)
 
         htmlhdr = "<html>\n<head>\n</head>\n<body>\n"
         htmltail = "\n</body>\n</html>"
@@ -555,6 +557,9 @@ class GMailURL():
         """ Convert a mailto: reference to a dictionary containing the
         message parts """
         # get the path string from the 'possible' mailto url
+        self.mailto_url = re.sub("\t", "TAB", self.mailto_url)
+        self.mailto_url = re.sub("%09", "TAB", self.mailto_url)
+        self.mailto_url = re.sub("\n", "CARRIAGE_RETURN", self.mailto_url)
         usplit = urllib.parse.urlsplit(self.mailto_url, "mailto")
 
         path = usplit.path
