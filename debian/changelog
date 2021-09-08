@@ -1,3 +1,9 @@
+gnome-gmail (2.8-1) UNRELEASED; urgency=medium
+
+  * Fix the Python 3.9 handling of tab and new line.
+
+ -- David Steele <steele@debian.org>  Wed, 08 Sep 2021 12:49:52 -0400
+
 gnome-gmail (2.7-2) unstable; urgency=medium
 
   [ Debian Janitor ]
