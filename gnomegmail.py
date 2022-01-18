@@ -919,7 +919,7 @@ def parse_args():
     parser.add_argument(
         '-u', '--user',
         default=None,
-        help="User from email"
+        help="User \"from\" email"
     )
 
     args = parser.parse_args()
