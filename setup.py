@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 
-from distutils.core import setup, Command
-from distutils.command.build import build
-from distutils.command.clean import clean
+from setuptools import setup
+import setuptools.command.build_py
 
 import os
 import sys
@@ -53,9 +52,9 @@ def merge_i18n():
             subprocess.call(cmd + args, shell=True) and sys.exit(1)
 
 
-class my_build(build):
-    def run(self, *args):
-        build.run(self, *args)
+class my_build(setuptools.command.build_py.build_py):
+    def run(self):
+        setuptools.command.build_py.build_py.run(self)
 
         for lang in langs:
             mkmo(lang)
@@ -68,63 +67,6 @@ def polist():
     polist = [(dst_tmpl % x, ["%s/gnome-gmail.mo" % modir(x)]) for x in langs]
 
     return polist
-
-
-class my_build_i18n(Command):
-    description = "Create/update po/pot translation files"
-    user_options = []
-
-    def initialize_options(self):
-        pass
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        print("Creating POT file")
-        cmd = "cd po; intltool-update --pot --gettext-package=gnome-gmail"
-        subprocess.call(cmd, shell=True)
-
-        for lang in langs:
-            print("Updating %s PO file" % lang)
-            cmd = "cd po; intltool-update --dist \
-                   --gettext-package=gnome-gmail %s >/dev/null 2>&1" % lang
-            subprocess.call(cmd, shell=True)
-
-
-class my_clean(clean):
-    def run(self):
-        clean.run(self)
-
-        filelist = [x[:-3] for x in os.listdir('.') if x[-3:] == '.in']
-        filelist += ['po/.intltool-merge-cache']
-        filelist += ['gnomegmail.glade~', 'conftest.pyc']
-        for infile in filelist:
-            if os.path.exists(infile):
-                os.unlink(infile)
-
-        for dir in ['build/mo', 'build/scripts-2.7', 'build/scripts-3.4',
-                    'build/scripts-3.5', '__pycache__', 'test/__pycache__']:
-            if os.path.exists(dir):
-                shutil.rmtree(dir)
-
-
-class my_test(Command):
-    user_options = [('pytest-args=', 'a', "Arguments to pass to py.test")]
-
-    def initialize_options(self):
-        self.pytest_args = []
-
-    def finalize_options(self):
-        pass
-
-    def run(self):
-        import pytest
-        args = self.pytest_args
-        if type(args) == str:
-            args = args.split()
-        errno = pytest.main(args)
-        sys.exit(errno)
 
 
 setup(
@@ -158,9 +100,6 @@ setup(
         'Intended Audience :: End Users/Desktop',
                 ],
     cmdclass={
-        'build_i18n': my_build_i18n,
-        'clean': my_clean,
-        'build': my_build,
-        'test': my_test,
+        'build_py': my_build,
              },
      )
