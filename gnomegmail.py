@@ -876,7 +876,7 @@ def do_preferred(glade_file, config):
 def parse_args():
     parser = argparse.ArgumentParser(
         description="Send mail via the Gmail API and the browser interface.",
-        usage="%(prog)s [-h|-q|[-s] <mailto>]",
+        usage="%(prog)s [-h|-q|[-s [-u] <mailto>]",
         epilog=textwrap.dedent("""\
             The gnome-gmail utility will create an email message from the
             mailto argument, upload it to Gmail using the Gmail API, and open
@@ -914,6 +914,12 @@ def parse_args():
         metavar="file",
         default=None,
         help="upload an RFC822-formatted message",
+    )
+
+    parser.add_argument(
+        '-u', '--user',
+        default=None,
+        help="User \"from\" email"
     )
 
     args = parser.parse_args()
@@ -992,7 +998,9 @@ def main():
 
     from_address = None
     message = None
-    if args.rfc822:
+    if args.user:
+        from_address = args.user
+    elif args.rfc822:
         message = open(args.rfc822, 'r').read()
         from_address = fromFromMessage(message)
     else:
