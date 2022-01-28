@@ -1,2 +1,9 @@
 po/gnome-gmail.pot
 build/*/*/*/gnome-gmail.mo
+dist/
+gnome-gmail.appdata.xml
+gnome-gmail.desktop
+gnome-gmail-startup.desktop
+gnome_gmail.egg-info/
+po/.intltool-merge-cache
+po/.intltool-merge-cache.lock

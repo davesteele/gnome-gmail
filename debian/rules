@@ -27,6 +27,7 @@ override_dh_auto_build:
 	if [ ${DEBIAN_VERSION} != ${PRODUCT_VERSION} ] ; then exit 1 ; fi
 	if ! grep -q \"${DEBIAN_VERSION}\" gnome-gmail.appdata.xml.in ; then exit 1 ; fi
 	dh_auto_build
+	python3 ./setup.py build_py
 
 override_dh_clean:
 	dh_clean -X gnome-gmail.pot
