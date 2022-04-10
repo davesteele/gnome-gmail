@@ -1,3 +1,10 @@
+gnome-gmail (2.9-1) UNRELEASED; urgency=medium
+
+  * Add --user option.
+  * Remove distutils (Closes: #1009093).
+
+ -- David Steele <steele@debian.org>  Sun, 10 Apr 2022 15:14:29 -0400
+
 gnome-gmail (2.8-1) unstable; urgency=medium
 
   * Fix the Python 3.9 handling of tab and new line.
