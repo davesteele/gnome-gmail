@@ -1,2 +1,2 @@
-Test-Command: python3 setup.py test --pytest-args --ignore=test/test_setup.py
+Test-Command: PYTHONPATH=`pwd` python3 -m pytest --ignore=test/test_setup.py
 Depends: @, python3-pytest, python3-mock, python3-gi, python3-distutils,
