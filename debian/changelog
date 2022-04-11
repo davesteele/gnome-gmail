@@ -1,3 +1,9 @@
+gnome-gmail (2.9-2) unstable; urgency=medium
+
+  * Add build dependency for setuptools.
+
+ -- David Steele <steele@debian.org>  Sun, 10 Apr 2022 22:06:58 -0400
+
 gnome-gmail (2.9-1) unstable; urgency=medium
 
   * Add --user option.
