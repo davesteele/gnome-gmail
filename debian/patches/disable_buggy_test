@@ -1,0 +1,25 @@
+Description: Disable buggy test
+ .
+ The first test in test_main will hang with a modal dialog if
+ the app is not fully configured.
+Author: David Steele <steele@debian.org>
+
+--- a/test/test_main.py
++++ b/test/test_main.py
+@@ -11,16 +11,6 @@
+     pass
+ 
+ 
+-@patch('gnomegmail.sys.exit', side_effect=MyTestException)
+-def test_main_quick(default_mailer_fxt, config_fxt, monkeypatch):
+-    monkeypatch.setattr('gnomegmail.sys.argv', ['prog', '-q'])
+-
+-    with pytest.raises(MyTestException):
+-        gnomegmail.main()
+-
+-    assert gnomegmail.sys.exit.calledwith(0)
+-
+-
+ def b64grep(str, text):
+     try:
+         b64tst = base64.b64encode(str.encode()) in text.encode()

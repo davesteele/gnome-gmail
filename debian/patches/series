@@ -1,1 +1,2 @@
 remove-setup-gi-dep
+disable_buggy_test
