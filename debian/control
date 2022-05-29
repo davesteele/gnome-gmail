@@ -6,7 +6,7 @@ Build-Depends: dh-python,
                intltool,
                python3,
                python3-setuptools,
-               debhelper-compat (= 12),
+               debhelper-compat (= 13),
 Standards-Version: 4.1.2
 Rules-Requires-Root: no
 Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
