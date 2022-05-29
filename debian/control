@@ -8,6 +8,7 @@ Build-Depends: dh-python,
                python3-setuptools,
                debhelper-compat (= 12),
 Standards-Version: 4.1.2
+Rules-Requires-Root: no
 Vcs-Browser: https://github.com/davesteele/gnome-gmail/tree/debian
 Vcs-Git: https://github.com/davesteele/gnome-gmail.git -b debian
 Homepage: https://davesteele.github.io/gnome-gmail/
