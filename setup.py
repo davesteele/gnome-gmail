@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-from setuptools import setup
-import setuptools.command.build_py
-
 import os
-import sys
 import shutil
 import subprocess
+import sys
+
+import setuptools.command.build_py
+from setuptools import setup
 
 podir = "./po"
 pext = ".po"

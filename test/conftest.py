@@ -3,6 +3,7 @@ import pytest
 from mock import Mock
 import tempfile
 import os
+import urllib
 
 
 @pytest.fixture()
@@ -39,8 +40,8 @@ def notify_fxt(monkeypatch):
 
 @pytest.fixture()
 def web_fxt(monkeypatch):
-    monkeypatch.setattr('gnomegmail.urllib.request.urlopen', Mock())
-    monkeypatch.setattr('gnomegmail.urllib.request.build_opener', Mock())
+    monkeypatch.setattr('urllib.request.urlopen', Mock())
+    monkeypatch.setattr('urllib.request.build_opener', Mock())
 
     monkeypatch.setattr(
         'gnomegmail.json.loads',
