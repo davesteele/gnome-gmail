@@ -10,49 +10,47 @@ This script accepts an argument of a mailto url, and calls up an appropriate
 GMail web page to handle the directive. It is intended to support GMail as a
 GNOME Preferred Email application """
 
-import sys
-import webbrowser
+import argparse
+import json
+import locale
+import mimetypes
 import os
 import os.path
-import re
-import textwrap
-import locale
-import string
-import json
-import mimetypes
 import random
-import time
-import subprocess
+import re
 import shlex
+import string
+import subprocess
+import sys
+import textwrap
+import time
 import unicodedata
-import argparse
+import urllib
+import webbrowser
 from contextlib import contextmanager
-from http.server import HTTPServer, BaseHTTPRequestHandler
-
 from email import encoders
 from email.mime.audio import MIMEAudio
 from email.mime.base import MIMEBase
 from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
-from six.moves import urllib
-from six.moves.configparser import ConfigParser
+from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import gi
-from gi.repository import Gio       # noqa
+from gi.repository import Gio  # noqa
+from six.moves.configparser import ConfigParser
 
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk       # noqa
+from gi.repository import Gtk  # noqa
 
 gi.require_version('Secret', '1')
-from gi.repository import Secret    # noqa
+from gi.repository import Secret  # noqa
 
 gi.require_version('Notify', '0.7')
-from gi.repository import Notify    # noqa
+from gi.repository import Notify  # noqa
 
 gi.require_version('Wnck', '3.0')
-from gi.repository import Wnck      # noqa
+from gi.repository import Wnck  # noqa
 
 _ = locale.gettext
 locale.bindtextdomain("gnome-gmail", "/usr/share/locale")
