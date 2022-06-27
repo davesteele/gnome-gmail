@@ -207,10 +207,7 @@ class GMOauth():
 
 
     def get_urn(self):
-        if Wnck.Screen.get_default():
-            return "urn:ietf:wg:oauth:2.0:oob"
-        else:
-            return "http://localhost:%d/" % oauthport
+        return "http://localhost:%d/" % oauthport
 
 
     def get_code(self, login_hint):
