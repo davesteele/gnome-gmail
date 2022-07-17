@@ -22,6 +22,7 @@ Depends: ${misc:Depends},
          gir1.2-gtk-3.0,
          gir1.2-notify-0.7,
          gir1.2-wnck-3.0,
+         libnotify (>= 0.8),
 Provides: exec<gnome-gmail>,
           mime<x-scheme-handler/mailto>
 Description: support for Gmail as the preferred email application in GNOME
