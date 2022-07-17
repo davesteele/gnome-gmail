@@ -46,7 +46,7 @@ from gi.repository import Gtk  # noqa
 gi.require_version('Secret', '1')
 from gi.repository import Secret  # noqa
 
-gi.require_version('Notify', '0.7')
+gi.require_version('Notify', '0.8')
 from gi.repository import Notify  # noqa
 
 gi.require_version('Wnck', '3.0')
