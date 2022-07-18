@@ -1,3 +1,10 @@
+gnome-gmail (2.10-1) unstable; urgency=medium
+
+  * Update libnotify required version.
+  * Depracate "oob" OAuth2 authentication.
+
+ -- David Steele <steele@debian.org>  Mon, 18 Jul 2022 11:06:26 -0400
+
 gnome-gmail (2.9-3) unstable; urgency=medium
 
   * Fix some tests.
