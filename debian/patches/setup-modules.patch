@@ -1,0 +1,10 @@
+--- a/setup.py
++++ b/setup.py
+@@ -71,6 +71,7 @@
+ 
+ setup(
+     name='gnome-gmail',
++    py_modules=['gnome-gmail'],
+     version='2.10',
+     description='support for Gmail as the preferred GNOME email application',
+     author='David Steele',
