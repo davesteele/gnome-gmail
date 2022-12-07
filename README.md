@@ -1,6 +1,8 @@
 
 [![Packaging status](https://repology.org/badge/tiny-repos/gnome-gmail.svg)](https://repology.org/metapackage/gnome-gmail)
 
+Note that development of this project has been moved to [viagee](https://github.com/davesteele/viagee).
+
 ## GNOME Gmail
 
 This is part of the GNOME Gmail project.
